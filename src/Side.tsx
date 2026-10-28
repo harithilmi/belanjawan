@@ -102,6 +102,7 @@ function Breakdown({ items }: { items: readonly Line[] }) {
           👥 <b>{posts.toLocaleString(LANG === 'ms' ? 'ms-MY' : 'en-MY')}</b> {t.posts}
         </p>
       )}
+      <p className="muted small" title={t.srcBook(YEAR)}>{t.fromBook}</p>
     </div>
   )
 }

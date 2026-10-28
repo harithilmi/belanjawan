@@ -66,6 +66,7 @@ const ms = {
   plainTitle: 'Dalam bahasa mudah',
   aiTip: 'Ringkasan AI berdasarkan teks buku (visi, outcome dan fungsi aktiviti). Teks asal ada di bawah.',
   whereMoney: 'Ke mana duit pergi',
+  fromBook: 'Angka: buku MOF',
   /** Objek Am 10000–50000, in the data's order. */
   /** Objek Am names as printed in the book, with a short gloss where the term is heavy. */
   objek: ['Emolumen (gaji & elaun)', 'Perkhidmatan dan Bekalan', 'Aset', 'Pemberian dan Kenaan Bayaran Tetap (geran)', 'Perbelanjaan Lain'],
@@ -267,6 +268,7 @@ const en: typeof ms = {
   plainTitle: 'In plain words',
   aiTip: "AI summary of the book's text (vision, outcome and activity functions). The original text is below.",
   whereMoney: 'Where the money goes',
+  fromBook: 'Figures: MOF book',
   objek: ['Emolumen (salaries & allowances)', 'Perkhidmatan dan Bekalan (supplies & services)', 'Aset (assets)', 'Pemberian dan Kenaan Bayaran Tetap (grants & fixed charges)', 'Perbelanjaan Lain (other)'],
   objekTip: ['Objek Am 10000', 'Objek Am 20000', 'Objek Am 30000', 'Objek Am 40000', 'Objek Am 50000'],
   posts: 'posts',
