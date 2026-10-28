@@ -88,6 +88,8 @@ export function useSheet(on: boolean, onDismiss: () => void) {
       const pad = parseFloat(getComputedStyle(el).paddingBottom)
       const shown = end.getBoundingClientRect().bottom - el.getBoundingClientRect().top + el.scrollTop + pad
       s.fold = Math.max(0, el.offsetHeight - shown)
+      // Nothing to scroll: CSS then blocks touch panning, else iOS scrolls the page behind instead.
+      el.toggleAttribute('data-fits', el.scrollHeight <= el.clientHeight)
       el.closest<HTMLElement>('.desktop')?.style.setProperty('--fold', `${Math.ceil(shown)}px`)
       if (!s.drag && !s.raf) set(offset(s.to))
     }
