@@ -55,7 +55,7 @@ const ms = {
   folder: 'Folder',
   cut: 'jimat',
   status: { untouched: 'Belum diusik', shrunk: 'Dikecilkan', deleted: 'Dalam Tong Sampah', locked: 'Berkunci' },
-  per100: (x: string) => `RM${x} daripada setiap RM100 yang kerajaan belanjakan.`,
+  ofSpending: (x: string) => `${x}% daripada perbelanjaan kerajaan.`,
   visi: 'Visi',
   /** What is inside a line the book does not split, keyed by line name. */
   inside: {
@@ -224,7 +224,7 @@ const en: typeof ms = {
   folder: 'Folder',
   cut: 'cut',
   status: { untouched: 'Untouched', shrunk: 'Shrunk', deleted: 'In the Bin', locked: 'Locked' },
-  per100: (x) => `RM${x} of every RM100 the government spends.`,
+  ofSpending: (x) => `${x}% of government spending.`,
   visi: 'Vision (BM)',
   inside: {
     'Subsidi dan Bantuan Tunai':

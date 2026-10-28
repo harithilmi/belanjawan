@@ -53,6 +53,12 @@ export function RecycleBin({ plan, setPlan, onDrop }: { plan: Plan; setPlan: Set
   )
 }
 
+/** Share → "12.3", "0.04", "<0.01", "0": more decimals only where they matter. */
+const pct = (share: number) => {
+  const x = share * 100
+  return x >= 1 ? x.toFixed(1) : x >= 0.01 ? x.toFixed(2) : x > 0 ? '<0.01' : '0'
+}
+
 function SplitDetail({ items, plan }: { items: readonly Line[]; plan: Plan }) {
   const opex = sum(items.map((l) => (l.opex * keepOf(plan, l)) / 100))
   const devex = sum(items.map((l) => (l.devex * keepOf(plan, l)) / 100))
@@ -111,7 +117,7 @@ export function Properties({ plan, setPlan, selected }: { plan: Plan; setPlan: S
         {node.kind === 'line' && <span className="muted"> · {t.status[statusOf(plan, node.line)]}</span>}
       </div>
       {node.kind !== 'root' && (
-        <p>{t.per100(((now / tot.spending) * 100).toFixed(2))}</p>
+        <p>{t.ofSpending(pct(now / tot.spending))}</p>
       )}
       {about && <p className="about"><b>{about.label}:</b> “{about.text}”</p>}
       {node.kind === 'line' && t.inside[node.line.name] && <p className="note">ℹ️ {t.inside[node.line.name]}</p>}
