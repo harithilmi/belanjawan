@@ -9,9 +9,6 @@
   // these paths come here. /belanjawan redirects to /belanjawan/ (default auto-trailing-slash).
   "routes": [
     { "pattern": "harithilmi.com/belanjawan", "zone_name": "harithilmi.com" },
-    { "pattern": "harithilmi.com/belanjawan/*", "zone_name": "harithilmi.com" },
-    // UAT copy of the next version, built into .deploy/belanjawan-uat/.
-    { "pattern": "harithilmi.com/belanjawan-uat", "zone_name": "harithilmi.com" },
-    { "pattern": "harithilmi.com/belanjawan-uat/*", "zone_name": "harithilmi.com" }
+    { "pattern": "harithilmi.com/belanjawan/*", "zone_name": "harithilmi.com" }
   ]
 }
