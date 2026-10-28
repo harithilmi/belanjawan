@@ -210,10 +210,10 @@ export function App() {
             />
           </div>
           <div className="side">
-            {/* Map first: panels below it change height, and a tile must not move after you click it. */}
+            {/* Info first, in view. Its height is fixed on desktop, so map tiles don't move after a click. */}
+            <Properties plan={plan} setPlan={setPlan} selected={selected} />
             <MapView plan={plan} cwd={cwd} selected={selected} onSelect={pick} />
             <RecycleBin plan={plan} setPlan={setPlan} onDrop={onDelete} />
-            <Properties plan={plan} setPlan={setPlan} selected={selected} />
           </div>
         </div>
 

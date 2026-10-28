@@ -265,6 +265,9 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
 
 @media (max-width: 800px) {
   .body { grid-template-columns: 1fr; }
+  /* Info goes back under the map: the root's Info sits in the flow, and a tile must not move when tapping it docks a sheet. */
+  .side { display: flex; flex-direction: column; }
+  .side > .props { order: 1; }
   .tree-box { flex: none; min-height: 0; max-height: 70vh; }
   .hero h1 { font-size: 26px; }
   /* Selected row: Properties docks to the bottom as a sheet, so its buttons stay under the thumb. */
