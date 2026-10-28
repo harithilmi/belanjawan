@@ -70,3 +70,5 @@ export const EnterIcon = () => (
 )
 /** sparkles: marks AI-written text */
 export const SparklesIcon = () => <Sym d="M6.5 1.5 7.8 5.2 11.5 6.5 7.8 7.8 6.5 11.5 5.2 7.8 1.5 6.5 5.2 5.2ZM12.5 9.5l.6 1.9 1.9.6-1.9.6-.6 1.9-.6-1.9-1.9-.6 1.9-.6Z" />
+/** chevron.down / chevron.up */
+export const ChevronIcon = ({ up = false }: { up?: boolean }) => <Sym d={up ? 'M3.5 10 8 5.5l4.5 4.5' : 'M3.5 6 8 10.5 12.5 6'} />

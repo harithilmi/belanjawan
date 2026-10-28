@@ -1,7 +1,7 @@
 import { Suspense, use, useState } from 'react'
 import { activitiesIn, fmt, linesOf, nodeOf, REVENUE, SPENDING, sum, YEAR, type Line } from './data.ts'
 import { changes, isCut, keepOf, nowOf, remove, setKeep, shrink10, statusOf, totals, type Plan } from './plan.ts'
-import { BinIcon, CutIcon, LockIcon, SparklesIcon, TrashIcon, UndoIcon } from './Icons.tsx'
+import { BinIcon, ChevronIcon, CutIcon, LockIcon, SparklesIcon, TrashIcon, UndoIcon } from './Icons.tsx'
 import { LANG, t } from './i18n.ts'
 
 type SetPlan = (f: (p: Plan) => Plan) => void
@@ -169,7 +169,7 @@ export function Properties({ plan, setPlan, selected, look = false }: { plan: Pl
         <span>{t.props} — {title}</span>
         {sheet && (
           <button type="button" className="btn tb sheet-toggle" aria-expanded={full} aria-label={t.props} onClick={() => setFull((f) => !f)}>
-            {full ? '⌄' : '⌃'}
+            <ChevronIcon up={!full} />
           </button>
         )}
       </div>
