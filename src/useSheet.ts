@@ -14,8 +14,12 @@ const rubberband = (over: number, dim: number, c = 0.55) => (over * dim * c) / (
 const DETENTS = ['full', 'fold', 'gone'] as const
 type Detent = (typeof DETENTS)[number]
 type Sample = { t: number; y: number }
-type Drag = { id: number; from: number; start: number; hist: Sample[] }
-type State = { y: number; fold: number; to: Detent; raf: number; was: boolean; drag?: Drag; onDismiss?: () => void }
+type Drag = { id: number; at: Detent; from: number; start: number; hist: Sample[]; moved: boolean; tap: boolean }
+/** A touch not yet known to be a sheet drag or a content scroll. */
+type Touch = { id: number; y: number; t: number; tap: boolean }
+type State = { y: number; fold: number; to: Detent; raf: number; was: boolean; drag?: Drag; touch?: Touch; onDismiss?: () => void }
+/** Moves under this many px still count as a tap. */
+const SLOP = 4
 
 /**
  * Phone bottom sheet with three detents: full (y = 0), folded (pushed down until only the
@@ -106,39 +110,108 @@ export function useSheet(on: boolean, onDismiss: () => void) {
   })
   useLayoutEffect(() => () => cancelAnimationFrame(s.raf), [s])
 
-  // Drag handlers for the title bar (grabber). The chevron keeps its own click.
+  const toggle = () => go(s.to === 'full' ? 'fold' : 'full')
+
+  // One drag, fed by touch (whole sheet) or mouse (grabber only). `tap`: started on the grabber,
+  // so a press that doesn't move toggles, like iOS.
+  const begin = (id: number, y: number, t: number, tap: boolean) => {
+    cancelAnimationFrame(s.raf) // a sheet in flight stops under the finger
+    s.raf = 0
+    s.drag = { id, at: s.to, from: s.y, start: y, hist: [{ t, y }], moved: false, tap }
+  }
+  const move = (y: number, t: number) => {
+    const d = s.drag
+    if (!d) return
+    const raw = d.from + y - d.start
+    // Up past full resists; down past folded follows 1:1 towards dismissing.
+    set(raw < 0 ? -rubberband(-raw, ref.current?.offsetHeight ?? 1) : raw)
+    d.hist = [...d.hist.filter((p) => t - p.t < 100), { t, y }]
+    d.moved ||= Math.abs(y - d.start) > SLOP
+  }
+  const release = (t: number, cancel: boolean) => {
+    const d = s.drag
+    if (!d) return
+    s.drag = undefined
+    if (!d.moved) return d.tap && !cancel ? toggle() : go(s.to)
+    // Velocity over the last 100ms; a finger that stopped before lifting throws nothing, nor does a cancel.
+    const recent = d.hist.filter((p) => t - p.t < 100)
+    const [a, b] = [recent[0], recent.at(-1)]
+    const v = !cancel && a && b && b.t > a.t ? ((b.y - a.y) / (b.t - a.t)) * 1000 : 0
+    // Nearest detent to where the flick would land, one step at most: a hard flick from full folds, not dismisses.
+    const end = s.y + project(v)
+    const from = DETENTS.indexOf(d.at)
+    const near = DETENTS.filter((_, i) => Math.abs(i - from) <= 1)
+    go(near.reduce((x, k) => (Math.abs(offset(k) - end) < Math.abs(offset(x) - end) ? k : x)), v)
+  }
+
+  // Touch: anywhere on the sheet. A full sheet with content to scroll only drags when pulled
+  // down from scroll top; otherwise the content scrolls. Decided on the first move, the only
+  // one whose default (native scroll) can still be prevented.
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (!on || !el) return
+    const find = (e: TouchEvent) => [...e.changedTouches].find((x) => x.identifier === s.touch?.id)
+    const onStart = (e: TouchEvent) => {
+      const f = e.touches[0]
+      const at = e.target instanceof Element ? e.target : null
+      s.touch = undefined
+      if (e.touches.length !== 1 || !f || !phone() || at?.closest('input')) return
+      const tap = !!at?.closest('.props-title') && !at.closest('button')
+      s.touch = { id: f.identifier, y: f.clientY, t: e.timeStamp, tap }
+      if (s.raf) begin(f.identifier, f.clientY, e.timeStamp, false)
+    }
+    const onMove = (e: TouchEvent) => {
+      const p = s.touch
+      const f = find(e)
+      if (!p || !f) return
+      if (!s.drag) {
+        const scrolls = s.to === 'full' && el.scrollHeight > el.clientHeight
+        if (scrolls && !p.tap && !(el.scrollTop <= 0 && f.clientY > p.y)) {
+          s.touch = undefined // the content scrolls this one
+          return
+        }
+        begin(p.id, p.y, p.t, p.tap)
+      }
+      if (e.cancelable) e.preventDefault()
+      move(f.clientY, e.timeStamp)
+    }
+    const onEnd = (e: TouchEvent) => {
+      const p = s.touch
+      if (!p || !find(e)) return
+      s.touch = undefined
+      if (s.drag) release(e.timeStamp, e.type === 'touchcancel')
+      else if (p.tap && e.type === 'touchend') toggle()
+    }
+    el.addEventListener('touchstart', onStart, { passive: true })
+    el.addEventListener('touchmove', onMove, { passive: false })
+    el.addEventListener('touchend', onEnd)
+    el.addEventListener('touchcancel', onEnd)
+    return () => {
+      el.removeEventListener('touchstart', onStart)
+      el.removeEventListener('touchmove', onMove)
+      el.removeEventListener('touchend', onEnd)
+      el.removeEventListener('touchcancel', onEnd)
+    }
+  }, [on, s])
+
+  // Mouse/pen: the grabber only (touch is handled above).
   const grab = {
     onPointerDown(e: PointerEvent<HTMLElement>) {
-      if (!on || !phone() || e.button !== 0 || (e.target instanceof Element && e.target.closest('button'))) return
-      cancelAnimationFrame(s.raf)
-      s.raf = 0
-      s.drag = { id: e.pointerId, from: s.y, start: e.clientY, hist: [{ t: e.timeStamp, y: e.clientY }] }
+      const onButton = e.target instanceof Element && e.target.closest('button')
+      if (!on || !phone() || e.pointerType === 'touch' || e.button !== 0 || onButton) return
+      begin(e.pointerId, e.clientY, e.timeStamp, true)
       // No mouse compat events: else, once the sheet slides off the press point, the browser
       // starts a native drag of the tree row now under it and cancels this pointer.
       e.preventDefault()
       e.currentTarget.setPointerCapture(e.pointerId)
     },
     onPointerMove(e: PointerEvent<HTMLElement>) {
-      const d = s.drag
-      if (d?.id !== e.pointerId) return
-      const raw = d.from + e.clientY - d.start
-      // Up past full resists; down past folded follows 1:1 towards dismissing.
-      set(raw < 0 ? -rubberband(-raw, ref.current?.offsetHeight ?? 1) : raw)
-      d.hist = [...d.hist.filter((p) => e.timeStamp - p.t < 100), { t: e.timeStamp, y: e.clientY }]
+      if (e.pointerType !== 'touch' && s.drag?.id === e.pointerId) move(e.clientY, e.timeStamp)
     },
     onPointerUp(e: PointerEvent<HTMLElement>) {
-      const d = s.drag
-      if (d?.id !== e.pointerId) return
-      s.drag = undefined
-      // Velocity over the last 100ms; a finger that stopped before lifting throws nothing, nor does a cancel.
-      const recent = d.hist.filter((p) => e.timeStamp - p.t < 100)
-      const [a, b] = [recent[0], recent.at(-1)]
-      const v = e.type !== 'pointercancel' && a && b && b.t > a.t ? ((b.y - a.y) / (b.t - a.t)) * 1000 : 0
-      const end = s.y + project(v)
-      const near = DETENTS.reduce((x, k) => (Math.abs(offset(k) - end) < Math.abs(offset(x) - end) ? k : x))
-      go(near, v)
+      if (e.pointerType !== 'touch' && s.drag?.id === e.pointerId) release(e.timeStamp, e.type === 'pointercancel')
     },
   }
 
-  return { ref, full, toggle: () => go(s.to === 'full' ? 'fold' : 'full'), grab: { ...grab, onPointerCancel: grab.onPointerUp } }
+  return { ref, full, toggle, grab: { ...grab, onPointerCancel: grab.onPointerUp } }
 }
