@@ -150,7 +150,7 @@ const ms = {
     { icon: '🗑️', bold: 'Seret', text: 'ke Tong Sampah untuk buang' },
     { icon: '🔒', bold: 'Berkunci', text: 'Perbelanjaan Tanggungan (bayaran khidmat hutang, bayaran persaraan, pemberian dan serahan kepada kerajaan negeri) tak boleh dipotong' },
   ],
-  howFoot: 'Pelan disimpan automatik. Papan kekunci: ↑↓ gerak, Delete buang, − potong.',
+  howFoot: 'Pelan disimpan automatik. Papan kekunci: ↑↓ gerak, ⌘↓ ⌘↑ masuk/naik folder, Space lihat, − potong, Delete buang, ⌘Z buat asal, / cari.',
   start: 'Jom mula',
 
   /** Hover tooltips. */
@@ -328,7 +328,7 @@ const en: typeof ms = {
     { icon: '🗑️', bold: 'Drag', text: 'to the Bin to delete' },
     { icon: '🔒', bold: 'Locked', text: 'charged expenditure (debt service charges, retirement charges, grants and transfers to state governments) cannot be cut' },
   ],
-  howFoot: 'Your plan saves automatically. Keyboard: ↑↓ move, Delete removes, − shrinks.',
+  howFoot: 'Your plan saves automatically. Keyboard: ↑↓ move, ⌘↓ ⌘↑ into/out of folders, Space looks, − shrinks, Delete removes, ⌘Z undoes, / searches.',
   start: 'Start cleanup',
 
   tip: {

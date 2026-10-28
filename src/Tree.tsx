@@ -16,6 +16,8 @@ type Props = {
   onSelect: (key: string) => void
   /** Go into a folder (or up to one); `select` is the row to select there, the folder itself by default. */
   onEnter: (key: string, select?: string) => void
+  /** Quick Look (Space): everything about a row, in a window. */
+  onLook: (key: string) => void
   onShrink: (key: string) => void
   onDelete: (key: string) => void
 }
@@ -38,6 +40,12 @@ export function reveal(open: Open, key: string): Open {
   const above = ancestors(key)
   return above.every((k) => open.has(k)) ? open : new Set([...open, ...above])
 }
+
+/** A folder and every folder inside it. */
+const foldersIn = (key: string): string[] => [
+  key,
+  ...childrenOf(key).filter((c) => !lineById.has(c.key)).flatMap((c) => foldersIn(c.key)),
+]
 
 const totalOf = (items: readonly Line[]) => sum(items.map((l) => l.total))
 const alive = (plan: Plan, items: readonly Line[]) => items.some((l) => statusOf(plan, l) !== 'deleted')
@@ -102,7 +110,7 @@ export function PathBar({ cwd, selected, onGo }: { cwd: string; selected: string
   )
 }
 
-export function Tree({ plan, cwd, open, setOpen, selected, onSelect, onEnter, onShrink, onDelete }: Props) {
+export function Tree({ plan, cwd, open, setOpen, selected, onSelect, onEnter, onLook, onShrink, onDelete }: Props) {
   const toggle = (k: string, force?: boolean) =>
     setOpen((o) => {
       const n = new Set(o)
@@ -131,14 +139,37 @@ export function Tree({ plan, cwd, open, setOpen, selected, onSelect, onEnter, on
     document.getElementById(rowId(selected))?.scrollIntoView({ block: 'nearest' })
   }, [cwd]) // only when the folder changes, not on every selection
 
+  // Type-to-select, like Finder: letters typed within 800ms build one prefix.
+  const typed = useRef({ text: '', at: 0 })
+  function typeToSelect(ch: string) {
+    const now = Date.now()
+    const text = (now - typed.current.at < 800 ? typed.current.text : '') + ch.toLowerCase()
+    typed.current = { text, at: now }
+    // Search from the row after the selected one (same letter again = next match), wrapping round.
+    const from = keys.indexOf(selected) + (text.length === 1 ? 1 : 0)
+    const order = [...rows.slice(from), ...rows.slice(0, from)].map((r) => ({ key: r.key, name: r.label.toLowerCase() }))
+    // Name start first; else any word start, since most folders begin with "Kementerian".
+    const hit = order.find((r) => r.name.startsWith(text)) ?? order.find((r) => r.name.split(/[\s(]+/).some((w) => w.startsWith(text)))
+    if (hit) onSelect(hit.key)
+  }
+
   function onKeyDown(e: KeyboardEvent) {
     const i = keys.indexOf(selected)
     const folder = !lineById.has(selected)
     const go = (k: string | undefined) => k && onSelect(k)
     const cmd = e.metaKey || e.ctrlKey
+    // ⌥→ / ⌥←: open or close a folder and every folder inside it.
+    const deep = (on: boolean) => setOpen((o) => {
+      const all = foldersIn(selected)
+      return on ? new Set([...o, ...all]) : new Set([...o].filter((k) => !all.includes(k)))
+    })
     // Finder: ⌘↓ opens the selected folder, ⌘↑ goes to the one above.
     if (cmd && e.key === 'ArrowDown') { if (folder && selected !== cwd) onEnter(selected) }
     else if (cmd && e.key === 'ArrowUp') { if (cwd !== ROOT) onEnter(ancestors(cwd).at(-1) ?? ROOT, cwd) }
+    else if (e.altKey && e.key === 'ArrowRight' && folder) deep(true)
+    else if (e.altKey && e.key === 'ArrowLeft' && folder) deep(false)
+    else if (e.key === ' ') onLook(selected)
+    else if (!cmd && !e.altKey && /^[\p{L}\d]$/u.test(e.key)) typeToSelect(e.key)
     else if (e.key === 'ArrowDown') go(keys[i + 1])
     else if (e.key === 'ArrowUp') go(keys[i - 1])
     else if (e.key === 'ArrowRight' && folder) toggle(selected, true)

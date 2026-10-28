@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { cwdFor, fmt, lines, linesOf, nodeOf, REVENUE, revenueGroups, ROOT, SPENDING, YEAR } from './data.ts'
 import { remove, shrink10, totals, usePlan } from './plan.ts'
@@ -45,7 +45,7 @@ function HowToPlay({ onClose }: { onClose: () => void }) {
 }
 
 export function App() {
-  const [plan, setPlan] = usePlan()
+  const [plan, setPlan, undo] = usePlan()
   const [selected, setSelected] = useState(ROOT)
   const [open, setOpen] = useState<Open>(() => new Set())
   // Entered folder. Deleting everything in it shows the nearest folder above instead.
@@ -66,7 +66,7 @@ export function App() {
     const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches
     document.getElementById(rowId(key))?.scrollIntoView({ block: 'nearest', behavior: smooth ? 'smooth' : 'auto' })
   }
-  const [dialog, setDialog] = useState<'share' | 'howto' | null>(() => (localStorage.getItem(SEEN_KEY) ? null : 'howto'))
+  const [dialog, setDialog] = useState<'share' | 'howto' | 'look' | null>(() => (localStorage.getItem(SEEN_KEY) ? null : 'howto'))
   const tot = totals(plan)
 
   const act = (key: string, f: typeof shrink10) => {
@@ -77,6 +77,20 @@ export function App() {
     act(key, remove)
     if (nodeOf(key).kind === 'line') setSelected(cwd)
   }
+  // Page-wide keys, skipped while typing in a text box: ⌘Z undoes the last cut, / jumps to search
+  // (⌘F stays the browser's Find).
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const typing = e.target instanceof HTMLTextAreaElement || (e.target instanceof HTMLInputElement && e.target.type !== 'range')
+      if (typing) return
+      if ((e.metaKey || e.ctrlKey) && !e.shiftKey && e.key.toLowerCase() === 'z') undo()
+      else if (e.key === '/' && !dialog) document.querySelector<HTMLInputElement>('.search input')?.focus()
+      else return
+      e.preventDefault()
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  })
   const closeDialog = () => {
     if (dialog === 'howto') localStorage.setItem(SEEN_KEY, '1')
     setDialog(null)
@@ -154,6 +168,7 @@ export function App() {
               selected={selected}
               onSelect={setSelected}
               onEnter={enter}
+              onLook={() => setDialog('look')}
               onShrink={(k) => act(k, shrink10)}
               onDelete={onDelete}
             />
@@ -188,6 +203,11 @@ export function App() {
 
       {dialog === 'share' && <ShareDialog plan={plan} onClose={closeDialog} />}
       {dialog === 'howto' && <HowToPlay onClose={closeDialog} />}
+      {dialog === 'look' && (
+        <Dialog title={t.props} onClose={closeDialog}>
+          {() => <Properties plan={plan} setPlan={setPlan} selected={selected} look />}
+        </Dialog>
+      )}
     </main>
   )
 }

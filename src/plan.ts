@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { lineById, lines, sum, REVENUE, SPENDING, type Line } from './data.ts'
 
 /** Line id → percent kept (0–100). Missing = 100 (untouched). 0 = in the Recycle Bin. */
@@ -67,8 +67,32 @@ function load(): Plan {
   }
 }
 
+const samePlan = (a: Plan, b: Plan) => {
+  const ka = Object.keys(a)
+  return ka.length === Object.keys(b).length && ka.every((k) => a[k] === b[k])
+}
+
+/** The plan, saved in localStorage, with ⌘Z history. Changes less than 600ms apart (a slider drag) undo as one step. */
 export function usePlan() {
-  const [plan, setPlan] = useState<Plan>(load)
+  const [plan, setPlanState] = useState<Plan>(load)
   useEffect(() => localStorage.setItem(KEY, JSON.stringify(plan)), [plan])
-  return [plan, setPlan] as const
+  const past = useRef<Plan[]>([])
+  const lastAt = useRef(0)
+
+  const setPlan = (f: (p: Plan) => Plan) => {
+    const next = f(plan)
+    if (samePlan(next, plan)) return // e.g. shrinking a locked line: nothing to undo
+    const now = Date.now()
+    if (now - lastAt.current > 600) past.current = [...past.current.slice(-99), plan]
+    lastAt.current = now
+    setPlanState(next)
+  }
+  const undo = () => {
+    const prev = past.current.at(-1)
+    if (!prev) return
+    past.current = past.current.slice(0, -1)
+    lastAt.current = 0
+    setPlanState(prev)
+  }
+  return [plan, setPlan, undo] as const
 }

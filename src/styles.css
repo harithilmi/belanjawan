@@ -172,6 +172,8 @@ button, input { font: inherit; color: inherit; }
 /* Fixed room for the tallest Properties (measured 191–335px over every row), so arrowing through the tree
    doesn't change the side column's height and with it the tree's and the page's. Desktop only: phones stack. */
 @media (min-width: 801px) { .props { min-height: 340px; } }
+/* Quick Look: the dialog body is already the card. */
+.props.look { margin: 0; padding: 0; box-shadow: none; width: min(560px, 86vw); min-height: 0; }
 .props-title { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; margin-bottom: 6px; }
 .props-title > span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .sheet-toggle { display: none; }

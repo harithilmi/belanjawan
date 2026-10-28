@@ -145,7 +145,8 @@ function Activities({ line }: { line: Line }) {
   )
 }
 
-export function Properties({ plan, setPlan, selected }: { plan: Plan; setPlan: SetPlan; selected: string }) {
+/** `look`: shown in the Quick Look window, so never docked as the phone sheet. */
+export function Properties({ plan, setPlan, selected, look = false }: { plan: Plan; setPlan: SetPlan; selected: string; look?: boolean }) {
   const node = nodeOf(selected)
   const items = linesOf(node)
   const before = sum(items.map((l) => l.total))
@@ -164,10 +165,10 @@ export function Properties({ plan, setPlan, selected }: { plan: Plan; setPlan: S
     : t.root
   // On narrow screens a selected row's Properties docks to the bottom (CSS), folded to amount + buttons.
   const [full, setFull] = useState(false)
-  const sheet = node.kind !== 'root'
+  const sheet = !look && node.kind !== 'root'
 
   return (
-    <section className={`props groupbox${sheet ? ' sheet' : ''}${full ? ' full' : ''}`} aria-label={t.props}>
+    <section className={`props groupbox${sheet ? ' sheet' : ''}${full ? ' full' : ''}${look ? ' look' : ''}`} aria-label={t.props}>
       <div className="props-title">
         <span>{t.props} — {title}</span>
         {sheet && (
