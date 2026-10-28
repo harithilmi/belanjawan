@@ -54,3 +54,9 @@ export const TrashIcon = () => <Sym d="M2.5 4h11M6 4V2.5h4V4M4 4l.7 9.2a1 1 0 0 
 export const UndoIcon = () => <Sym d="M5.5 3 2.5 6l3 3M2.5 6h7a4 4 0 0 1 0 8H7" />
 /** square.and.arrow.up */
 export const ShareIcon = () => <Sym d="M8 10V1.5M5 4.5l3-3 3 3M5.5 7H4a1 1 0 0 0-1 1v5.5a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-1.5" />
+/** doc.on.doc */
+export const CopyIcon = () => <Sym d="M5.5 5.5V3a1 1 0 0 1 1-1H13a1 1 0 0 1 1 1v6.5a1 1 0 0 1-1 1h-2.5M3 5.5h6.5a1 1 0 0 1 1 1V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z" />
+/** arrow.down.to.line */
+export const DownloadIcon = () => <Sym d="M8 1.5V10M4.5 6.5 8 10l3.5-3.5M2.5 14h11" />
+/** text.alignleft */
+export const TextIcon = () => <Sym d="M2.5 3.5h11M2.5 6.5h7M2.5 9.5h11M2.5 12.5h7" />

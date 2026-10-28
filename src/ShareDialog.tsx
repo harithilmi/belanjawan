@@ -3,6 +3,7 @@ import { Dialog } from './Dialog.tsx'
 import type { Plan } from './plan.ts'
 import { planImage, planText, SIZES, type Format } from './share.ts'
 import { t } from './i18n.ts'
+import { CopyIcon, DownloadIcon, ShareIcon, TextIcon } from './Icons.tsx'
 
 const FORMATS = ['story', 'wide'] as const satisfies readonly Format[]
 
@@ -38,40 +39,43 @@ export function ShareDialog({ plan, onClose }: { plan: Plan; onClose: () => void
     <Dialog title={t.shareTitle} onClose={onClose}>
       {() => (
         <>
-          <div className="btns tabs" role="group" aria-label={t.shareTitle}>
-            {FORMATS.map((f) => (
-              <button type="button" key={f} className="btn" aria-pressed={f === format} onClick={() => setFormat(f)}>
-                {f === 'story' ? t.formatStory : t.formatWide}
-              </button>
-            ))}
+          <div className="share-seg">
+            <span className="seg" role="group" aria-label={t.shareTitle}>
+              {FORMATS.map((f) => (
+                <button type="button" key={f} aria-pressed={f === format} onClick={() => setFormat(f)}>
+                  {f === 'story' ? t.formatStory : t.formatWide}
+                </button>
+              ))}
+            </span>
           </div>
           <div className="sunken preview">
             {url ? <img src={url} alt={t.imageAlt} width={SIZES[format].w} height={SIZES[format].h} /> : t.drawing}
           </div>
-          <div className="btns">
+          {/* One blue button: the system share sheet on phones, else copying the image. */}
+          <div className="share-acts">
             {canShare && file && (
-              <button type="button" className="btn" onClick={() => run('', () => navigator.share({ files: [file], text }))}>
-                {t.shareBtn}
+              <button type="button" className="btn default" onClick={() => run('', () => navigator.share({ files: [file], text }))}>
+                <ShareIcon /> {t.shareBtn}
               </button>
             )}
             <button
               type="button"
-              className="btn"
+              className={canShare ? 'btn fill' : 'btn default'}
               disabled={!blob}
               onClick={() => blob && run(t.imageCopied, () => navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]))}
             >
-              {t.copyImage}
+              <CopyIcon /> {t.copyImage}
             </button>
-            {url && <a className="btn" href={url} download={name}>{t.download}</a>}
-            <button type="button" className="btn" onClick={() => run(t.textCopied, () => navigator.clipboard.writeText(text))}>
-              {t.copyText}
+            {url && <a className="btn fill" href={url} download={name}><DownloadIcon /> {t.download}</a>}
+            <button type="button" className="btn fill" onClick={() => run(t.textCopied, () => navigator.clipboard.writeText(text))}>
+              <TextIcon /> {t.copyText}
             </button>
-            <span className="muted" role="status">{msg}</span>
           </div>
-          <details>
+          <p className="muted small share-msg" role="status">{msg}</p>
+          <details className="disclosure">
             <summary>{t.showText}</summary>
             <pre className="sunken">{text}</pre>
-        </details>
+          </details>
         </>
       )}
     </Dialog>
