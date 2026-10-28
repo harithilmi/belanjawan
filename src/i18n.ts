@@ -67,8 +67,9 @@ const ms = {
   aiTip: 'Ringkasan AI berdasarkan teks buku (visi, outcome dan fungsi aktiviti). Teks asal ada di bawah.',
   whereMoney: 'Ke mana duit pergi',
   /** Objek Am 10000–50000, in the data's order. */
-  objek: ['Gaji & elaun', 'Bekalan & perkhidmatan', 'Aset', 'Geran & bayaran tetap', 'Lain-lain'],
-  objekTip: ['Emolumen (Objek Am 10000)', 'Perkhidmatan dan Bekalan (Objek Am 20000)', 'Aset (Objek Am 30000)', 'Pemberian dan Kenaan Bayaran Tetap (Objek Am 40000)', 'Perbelanjaan Lain (Objek Am 50000)'],
+  /** Objek Am names as printed in the book, with a short gloss where the term is heavy. */
+  objek: ['Emolumen (gaji & elaun)', 'Perkhidmatan dan Bekalan', 'Aset', 'Pemberian dan Kenaan Bayaran Tetap (geran)', 'Perbelanjaan Lain'],
+  objekTip: ['Objek Am 10000', 'Objek Am 20000', 'Objek Am 30000', 'Objek Am 40000', 'Objek Am 50000'],
   posts: 'jawatan',
   postsTip: 'Bil. Jawatan 2027 dalam buku: jawatan yang diluluskan, bukan bilangan orang yang bekerja.',
   topActs: 'Aktiviti terbesar',
@@ -246,8 +247,8 @@ const en: typeof ms = {
   plainTitle: 'In plain words',
   aiTip: "AI summary of the book's text (vision, outcome and activity functions). The original text is below.",
   whereMoney: 'Where the money goes',
-  objek: ['Salaries & allowances', 'Supplies & services', 'Assets', 'Grants & fixed payments', 'Other'],
-  objekTip: ['Emolumen (Objek Am 10000)', 'Perkhidmatan dan Bekalan (Objek Am 20000)', 'Aset (Objek Am 30000)', 'Pemberian dan Kenaan Bayaran Tetap (Objek Am 40000)', 'Perbelanjaan Lain (Objek Am 50000)'],
+  objek: ['Emolumen (salaries & allowances)', 'Perkhidmatan dan Bekalan (supplies & services)', 'Aset (assets)', 'Pemberian dan Kenaan Bayaran Tetap (grants & fixed charges)', 'Perbelanjaan Lain (other)'],
+  objekTip: ['Objek Am 10000', 'Objek Am 20000', 'Objek Am 30000', 'Objek Am 40000', 'Objek Am 50000'],
   posts: 'posts',
   postsTip: 'Bil. Jawatan 2027 in the book: approved positions, not a headcount.',
   topActs: 'Biggest activities',
