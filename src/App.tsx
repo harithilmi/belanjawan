@@ -234,6 +234,8 @@ export function App() {
 
         <div className="statusbar">
           <span>{t.counts(lines.length, tot.deleted, tot.shrunk)}</span>
+          <span className="grow" />
+          <button type="button" className="keys-hint" onClick={() => setDialog('keys')}><kbd>?</kbd> {t.keysHint}</button>
         </div>
       </div>
 

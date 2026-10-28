@@ -224,6 +224,11 @@ button, input { font: inherit; color: inherit; }
 .sources p { margin: 4px 0; max-width: 820px; }
 
 .statusbar { display: flex; padding: 4px 10px 0; font-size: 11px; color: var(--muted); }
+.keys-hint { border: 0; background: none; padding: 0; font-size: 11px; color: var(--muted); }
+.keys-hint kbd { font-size: 10px; min-width: 16px; padding: 0 4px; }
+.keys-hint:hover { color: var(--text); }
+/* No keyboard on touch screens. */
+@media (hover: none) { .keys-hint { display: none; } }
 
 /* Share dialog */
 .dialog { border: 0; padding: 0 6px 6px; max-width: min(760px, 96vw); color: var(--text); }

@@ -156,6 +156,7 @@ const ms = {
 
   /** Shortcuts window (press ?). */
   keysTitle: 'Pintasan papan kekunci',
+  keysHint: 'pintasan papan kekunci',
   keys: {
     move: 'Pilih baris atas / bawah',
     fold: 'Buka / tutup folder',
@@ -354,6 +355,7 @@ const en: typeof ms = {
   start: 'Start cleanup',
 
   keysTitle: 'Keyboard shortcuts',
+  keysHint: 'keyboard shortcuts',
   keys: {
     move: 'Select the row above / below',
     fold: 'Open / close a folder',
