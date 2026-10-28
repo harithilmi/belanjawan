@@ -160,7 +160,7 @@ export function App() {
           </div>
           <div className="side">
             {/* Map first: panels below it change height, and a tile must not move after you click it. */}
-            <MapView plan={plan} selected={selected} onSelect={pick} />
+            <MapView plan={plan} cwd={cwd} selected={selected} onSelect={pick} />
             <RecycleBin plan={plan} setPlan={setPlan} onDrop={onDelete} />
             <Properties plan={plan} setPlan={setPlan} selected={selected} />
           </div>

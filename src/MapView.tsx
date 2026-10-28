@@ -1,4 +1,4 @@
-import { fmt, ministryKey, sectorKey, sectors, sum, type Line } from './data.ts'
+import { ancestors, fmt, ministryKey, sectorKey, sectors, sum, type Line } from './data.ts'
 import { isCut, nowOf, type Plan, type Status } from './plan.ts'
 import { squarify, type Rect } from './squarify.ts'
 import { t } from './i18n.ts'
@@ -20,8 +20,12 @@ function statusOfAll(plan: Plan, items: readonly Line[]): Exclude<Status, 'delet
   return isCut(plan, items) ? 'shrunk' : 'untouched'
 }
 
-/** Treemap of what is left: sectors, then ministries inside. Deleted ministries disappear. */
-export function MapView({ plan, selected, onSelect }: { plan: Plan; selected: string; onSelect: (key: string) => void }) {
+/** Treemap of what is left: sectors, then ministries inside. Deleted ministries disappear.
+ *  Tiles outside the folder the tree has entered fade, so the map shows where you are. */
+export function MapView({ plan, cwd, selected, onSelect }: { plan: Plan; cwd: string; selected: string; onSelect: (key: string) => void }) {
+  // In view: the entered folder, anything inside it, and (for a ministry) its sector's label.
+  const here = [...ancestors(cwd), cwd]
+  const out = (key: string) => (here.includes(key) || ancestors(key).includes(cwd) ? '' : ' out')
   const remaining = sectors.map((s) => ({ s, now: nowSum(plan, s.lines) })).filter((x) => x.now > 0)
   const tiles = squarify(remaining, (x) => x.now, { x: 0, y: 0, w: W, h: H })
 
@@ -35,7 +39,7 @@ export function MapView({ plan, selected, onSelect }: { plan: Plan; selected: st
             <div key={st.item.s.name}>
               <button
                 type="button"
-                className={`map-group${selected === sectorKey(st.item.s) ? ' sel' : ''}`}
+                className={`map-group${selected === sectorKey(st.item.s) ? ' sel' : ''}${out(sectorKey(st.item.s))}`}
                 style={pct({ ...st, h: HEAD })}
                 onClick={() => onSelect(sectorKey(st.item.s))}
               >
@@ -50,7 +54,7 @@ export function MapView({ plan, selected, onSelect }: { plan: Plan; selected: st
                   <button
                     type="button"
                     key={key}
-                    className={`tile ${status}${selected === key ? ' sel' : ''}`}
+                    className={`tile ${status}${selected === key ? ' sel' : ''}${out(key)}`}
                     style={pct(mt)}
                     title={`${m.code} ${m.name}: ${fmt(now)}`}
                     aria-label={`${m.name}, ${fmt(now)}${status === 'locked' ? ` · ${t.status.locked}` : ''}`}
