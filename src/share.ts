@@ -6,15 +6,13 @@ export const SITE = location.origin + location.pathname
 
 const describe = (keep: number) => (keep === 0 ? t.deleted : t.shrunkBy(100 - keep))
 
+/** Share caption: two short lines, the card carries the detail. */
 export function planText(plan: Plan): string {
   const tot = totals(plan)
-  const list = changes(plan).map((c) => `${c.line.name} (${c.line.ministry}): ${describe(c.keep)}, ${fmt(c.freed)}`)
-  return [
-    t.textIntro(fmt(tot.cut), YEAR, tot.gap > 0 ? t.textShort(fmt(tot.gap)) : t.textBalanced),
-    list.length ? t.textList(list.join('; ')) : t.textNone,
-    t.textTotal(fmt(tot.cut), fmt(SPENDING - REVENUE)),
-    t.textUrl(SITE),
-  ].join('\n')
+  const head = tot.cut > 0
+    ? `${t.textCut(fmt(tot.cut), YEAR)} ${tot.gap > 0 ? t.textShort(fmt(tot.gap)) : t.textBalanced}`
+    : t.textNone
+  return `${head}\n${t.textUrl(SITE)}`
 }
 
 const STRIPE = { a: '#e00000', b: '#fff' }
