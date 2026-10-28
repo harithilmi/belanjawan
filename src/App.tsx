@@ -125,6 +125,7 @@ export function App() {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') (e.shiftKey ? redo : undo)()
       else if (e.key === '/' && !dialog) document.querySelector<HTMLInputElement>('.search input')?.focus()
       else if (e.key === '?' && !dialog) setDialog('keys')
+      else if (e.key === 'Escape' && !dialog && !deleting) setSelected(ROOT) // also closes the phone sheet
       else return
       e.preventDefault()
     }
@@ -215,7 +216,7 @@ export function App() {
           </div>
           <div className="side">
             {/* Info first, in view. Its height is fixed on desktop, so map tiles don't move after a click. */}
-            <Properties plan={plan} setPlan={setPlan} selected={selected} onDelete={onDelete} />
+            <Properties plan={plan} setPlan={setPlan} selected={selected} onDelete={onDelete} onDismiss={() => setSelected(ROOT)} />
             <MapView plan={plan} cwd={cwd} selected={selected} onSelect={pick} />
             <RecycleBin plan={plan} setPlan={setPlan} onDrop={onDelete} />
           </div>

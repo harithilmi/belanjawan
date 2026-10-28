@@ -159,12 +159,14 @@ function Activities({ line }: { line: Line }) {
 }
 
 /** `look`: shown in the Quick Look window, so never docked as the phone sheet. */
-export function Properties({ plan, setPlan, selected, onDelete, look = false }: {
+export function Properties({ plan, setPlan, selected, onDelete, onDismiss = () => {}, look = false }: {
   plan: Plan
   setPlan: SetPlan
   selected: string
   /** Asks first for folders (App). */
   onDelete: (key: string) => void
+  /** Phone sheet swiped away. */
+  onDismiss?: () => void
   look?: boolean
 }) {
   const node = nodeOf(selected)
@@ -180,7 +182,7 @@ export function Properties({ plan, setPlan, selected, onDelete, look = false }: 
     : t.root
   // On narrow screens a selected row's Properties docks to the bottom (CSS), folded to amount + buttons.
   const sheet = !look && node.kind !== 'root'
-  const { ref, full, toggle, grab } = useSheet(sheet)
+  const { ref, full, toggle, grab } = useSheet(sheet, onDismiss)
 
   return (
     <section ref={ref} className={`props groupbox${sheet ? ' sheet' : ''}${full ? ' full' : ''}${look ? ' look' : ''}`} aria-label={t.props}>
@@ -256,17 +258,19 @@ function Controls({ items, plan, setPlan, onDelete }: { items: readonly Line[]; 
         <button type="button" className="btn tint" title={t.tip.shrink10} onClick={() => setPlan((p) => shrink10(p, editable))}>
           <CutIcon /> {t.shrink10}
         </button>
-        <button type="button" className="btn tint danger" title={t.tip.toBin} onClick={onDelete}>
-          <TrashIcon /> {t.toBin}
+        {/* Phone sheet shows these two as icons only (CSS), so the label is also the accessible name. */}
+        <button type="button" className="btn tint danger" title={t.tip.toBin} aria-label={t.toBin} onClick={onDelete}>
+          <TrashIcon /> <span className="lbl">{t.toBin}</span>
         </button>
         <button
           type="button"
           className="btn fill"
           title={t.tip.restore}
+          aria-label={t.restore}
           disabled={editable.every((l) => keepOf(plan, l) === 100)}
           onClick={() => setPlan((p) => setKeep(p, editable, () => 100))}
         >
-          <UndoIcon /> {t.restore}
+          <UndoIcon /> <span className="lbl">{t.restore}</span>
         </button>
       </div>
       {!one && <p className="muted">{t.folderNote}</p>}
