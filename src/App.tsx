@@ -4,7 +4,7 @@ import { cwdFor, fmt, lines, linesOf, nodeOf, REVENUE, revenueGroups, ROOT, SPEN
 import { remove, shrink10, totals, usePlan } from './plan.ts'
 import { switchLang, t } from './i18n.ts'
 import { DriveIcon, ShareIcon } from './Icons.tsx'
-import { liveCwd, PathBar, reveal, rowId, Tree, type Open } from './Tree.tsx'
+import { liveCwd, PathBar, reveal, revealRow, Tree, type Open } from './Tree.tsx'
 import { Properties, RecycleBin } from './Side.tsx'
 import { MapView } from './MapView.tsx'
 import { ShareDialog } from './ShareDialog.tsx'
@@ -99,7 +99,7 @@ export function App() {
       setOpen((o) => reveal(o, key))
     })
     const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches
-    document.getElementById(rowId(key))?.scrollIntoView({ block: 'nearest', behavior: smooth ? 'smooth' : 'auto' })
+    revealRow(key, smooth ? 'smooth' : 'auto')
   }
   const [dialog, setDialog] = useState<'share' | 'howto' | 'look' | 'keys' | null>(() => (localStorage.getItem(SEEN_KEY) ? null : 'howto'))
   const tot = totals(plan)

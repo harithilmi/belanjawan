@@ -268,7 +268,8 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
   /* Info goes back under the map: the root's Info sits in the flow, and a tile must not move when tapping it docks a sheet. */
   .side { display: flex; flex-direction: column; }
   .side > .props { order: 1; }
-  .tree-box { flex: none; min-height: 0; max-height: 70vh; }
+  /* Fixed height: the tree grows as you open folders, and that would push the map down under your finger. */
+  .tree-box { flex: none; min-height: 0; height: 60svh; }
   .hero h1 { font-size: 26px; }
   /* Selected row: Properties docks to the bottom as a sheet, so its buttons stay under the thumb. */
   .props.sheet {

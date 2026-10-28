@@ -69,6 +69,19 @@ function maxByDepth(cwd: string): number[] {
 }
 
 export const rowId = (key: string) => `row-${key.replace(/[^a-z0-9-]/gi, '_')}`
+
+/** Scroll a row into view inside the tree box only. scrollIntoView also scrolls the page, which on phones
+    moves the map (below the tree) under your finger. The sticky header covers the box's top. */
+export function revealRow(key: string, behavior: ScrollBehavior = 'auto') {
+  const row = document.getElementById(rowId(key))
+  const box = row?.closest('.tree-box')
+  if (!row || !box) return
+  const r = row.getBoundingClientRect()
+  const b = box.getBoundingClientRect()
+  const top = b.top + (box.querySelector('.tree-head')?.getBoundingClientRect().height ?? 0)
+  const by = r.top < top ? r.top - top : r.bottom > b.bottom ? r.bottom - b.bottom : 0
+  if (by) box.scrollBy({ top: by, behavior })
+}
 /** Size bar: width = current size / biggest at this level, filled with the opex/devex split. */
 function SizeBar({ items, plan, max }: { items: readonly Line[]; plan: Plan; max: number }) {
   const opex = sum(items.map((l) => (l.opex * keepOf(plan, l)) / 100))
@@ -136,7 +149,7 @@ export function Tree({ plan, cwd, open, setOpen, selected, onSelect, onEnter, on
   const box = useRef<HTMLDivElement>(null)
   useLayoutEffect(() => {
     box.current?.scrollTo({ top: 0 })
-    document.getElementById(rowId(selected))?.scrollIntoView({ block: 'nearest' })
+    revealRow(selected)
   }, [cwd]) // only when the folder changes, not on every selection
 
   // Type-to-select, like Finder: letters typed within 800ms build one prefix.
