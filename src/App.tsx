@@ -15,6 +15,9 @@ const SOURCE_URL = 'https://belanjawan.mof.gov.my/pdf/belanjawan2027/hasil/tinja
 const BOOK_URL = 'https://belanjawan.mof.gov.my/ms/perbelanjaan'
 const LEVELS = [1, 2, 3] as const
 const SEEN_KEY = 'malaysias-disk.seen-how-to'
+const ME_URL = 'https://x.com/harithilmi'
+const INSPIRATION_URL = 'https://britains-disk.pages.dev'
+const INSPIRATION_BY_URL = 'https://x.com/SAshworthHayes'
 
 /** Line whose original size is closest to the amount still to find. */
 const closestLine = (gap: number) =>
@@ -89,6 +92,11 @@ export function App() {
           </span>
         </div>
         <p>{t.intro(fmt(SPENDING), fmt(REVENUE), YEAR)}</p>
+        <p className="byline">
+          {t.by} <a href={ME_URL} target="_blank" rel="noreferrer">@harithilmi</a> · {t.inspiredBy}{' '}
+          <a href={INSPIRATION_URL} target="_blank" rel="noreferrer">Britain's Disk Is Full</a>{' '}
+          (<a href={INSPIRATION_BY_URL} target="_blank" rel="noreferrer">@SAshworthHayes</a>)
+        </p>
       </header>
 
       <div className="window">

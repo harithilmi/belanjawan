@@ -28,6 +28,9 @@ button, input { font: inherit; color: inherit; }
 .hero-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .hero h1 { margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -0.5px; }
 .hero p { margin: 4px 0 0; max-width: 620px; font-size: 15px; color: var(--muted); }
+.hero .byline { font-size: 13px; margin-top: 6px; }
+.byline a { color: var(--blue); text-decoration: none; }
+.byline a:hover { text-decoration: underline; }
 
 /* Window chrome */
 .window { background: var(--win); border-radius: 12px; box-shadow: 0 0 0 0.5px rgb(0 0 0 / 0.2), 0 20px 50px rgb(0 0 0 / 0.12); padding: 0 6px 6px; }

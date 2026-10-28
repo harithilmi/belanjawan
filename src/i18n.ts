@@ -24,6 +24,8 @@ const ms = {
   intro: (s: string, r: string, y: number) =>
     `Kerajaan nak belanja ${s} pada ${y}, tapi hasil yang dijangka cuma ${r}. Potong perbelanjaan sampai semuanya muat dalam cakera.`,
   otherLang: 'English',
+  by: 'Oleh',
+  inspiredBy: 'Diilhamkan oleh',
   root: 'Perbelanjaan',
   window: 'Storan',
   drive: 'Perbendaharaan',
@@ -191,6 +193,8 @@ const en: typeof ms = {
   intro: (s, r, y) =>
     `The federal government plans to spend ${s} in ${y} but expects only ${r} in revenue. Free up space by cutting spending until it fits on the disk.`,
   otherLang: 'Bahasa Melayu',
+  by: 'By',
+  inspiredBy: 'Inspired by',
   root: 'Spending',
   window: 'Storage',
   drive: 'Treasury',
