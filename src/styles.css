@@ -234,6 +234,20 @@ button, input { font: inherit; color: inherit; }
 /* Occasional, so it may animate: quick fade + slight scale from centre. */
 .dialog[open] { transition: opacity 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-bezier(0.23, 1, 0.32, 1); }
 @starting-style { .dialog[open] { opacity: 0; transform: scale(0.98); } }
+/* macOS alert (ConfirmDialog). */
+.alert { width: min(260px, 86vw); box-sizing: border-box; padding: 18px 16px 16px; border: 0; border-radius: 24px; color: var(--text);
+  background: rgb(246 246 246 / 0.92); backdrop-filter: blur(30px) saturate(180%); box-shadow: 0 0 0 0.5px rgb(0 0 0 / 0.2), 0 20px 50px rgb(0 0 0 / 0.3); }
+.alert::backdrop { background: rgb(0 0 0 / 0.12); }
+.alert[open] { transition: opacity 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-bezier(0.23, 1, 0.32, 1); }
+@starting-style { .alert[open] { opacity: 0; transform: scale(0.96); } }
+.alert > svg { width: 56px; height: 56px; display: block; }
+.alert h2 { margin: 12px 0 6px; font-size: 14px; font-weight: 700; line-height: 1.3; }
+.alert p { margin: 0 0 16px; font-size: 13px; line-height: 1.35; }
+.alert-btns { display: flex; gap: 8px; }
+.alert-btns .btn { flex: 1; justify-content: center; min-height: 30px; border-radius: 999px; box-shadow: none; font-size: 13px; }
+.alert-btns .btn:not(.default) { background: rgb(0 0 0 / 0.08); }
+/* The default button is already marked by its fill; no ring, as on macOS. Cancel keeps its ring when tabbed to. */
+.alert-btns .btn.default:focus-visible { outline: none; }
 .dialog-body { padding: 12px 14px; background: var(--card); border-radius: 8px; box-shadow: var(--edge); }
 .preview { padding: 4px; min-height: 120px; display: grid; place-items: center; }
 .preview img { display: block; width: auto; height: auto; max-width: 100%; max-height: 60vh; }
@@ -328,7 +342,7 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
   .seg button { min-height: 30px; }
   .bin-list li { padding: 3px 4px; }
 }
-@media (prefers-reduced-motion: reduce) { .disk > div { transition: none; } .dialog[open] { transition-property: opacity; } }
+@media (prefers-reduced-motion: reduce) { .disk > div { transition: none; } :is(.dialog, .alert)[open] { transition-property: opacity; } }
 
 /* Info panel, iOS grouped style: grey ground, each book section a white card. */
 .props { background: #f2f2f7; }

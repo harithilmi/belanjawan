@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, type MouseEvent, type ReactNode } from 'react'
+import { BinIcon } from './Icons.tsx'
 import { t } from './i18n.ts'
 
 /** macOS-style window on a native modal <dialog> (gives Esc, focus trap and backdrop for free). */
@@ -34,7 +35,8 @@ export function Dialog({ title, onClose, children }: { title: string; onClose: (
   )
 }
 
-/** Ask before a destructive action. Cancel is the default button, as on macOS. */
+/** macOS alert: icon, bold question, one line of detail, Cancel | action. The action is the default button
+    (Return), Esc cancels, and clicking outside does nothing, as in Finder's "Empty Trash?". */
 export function ConfirmDialog({ title, message, action, onConfirm, onClose }: {
   title: string
   message: string
@@ -42,17 +44,23 @@ export function ConfirmDialog({ title, message, action, onConfirm, onClose }: {
   onConfirm: () => void
   onClose: () => void
 }) {
+  const ref = useRef<HTMLDialogElement>(null)
+  const go = useRef<HTMLButtonElement>(null)
+  const id = useId()
+  const close = () => ref.current?.close()
+  useEffect(() => {
+    if (!ref.current?.open) ref.current?.showModal()
+    go.current?.focus() // showModal focuses the first button (Cancel); React's autoFocus runs before it
+  }, [])
   return (
-    <Dialog title={title} onClose={onClose}>
-      {(close) => (
-        <>
-          <p>{message}</p>
-          <div className="btns end">
-            <button type="button" className="btn tint danger" onClick={() => { onConfirm(); close() }}>{action}</button>
-            <button type="button" className="btn default" autoFocus onClick={close}>{t.cancel}</button>
-          </div>
-        </>
-      )}
-    </Dialog>
+    <dialog ref={ref} className="alert" onClose={onClose} aria-labelledby={`${id}t`} aria-describedby={`${id}m`}>
+      <BinIcon full />
+      <h2 id={`${id}t`}>{title}</h2>
+      <p id={`${id}m`}>{message}</p>
+      <div className="alert-btns">
+        <button type="button" className="btn" onClick={close}>{t.cancel}</button>
+        <button ref={go} type="button" className="btn default" onClick={() => { onConfirm(); close() }}>{action}</button>
+      </div>
+    </dialog>
   )
 }

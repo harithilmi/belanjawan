@@ -247,7 +247,7 @@ export function App() {
         <ConfirmDialog
           title={t.delTitle(nameOf(nodeOf(deleting)))}
           message={t.delAsk(doomed.length, fmt(sum(doomed.map((l) => nowOf(plan, l)))))}
-          action={t.toBin}
+          action={t.delAction}
           onConfirm={() => del(deleting)}
           onClose={() => setDeleting(null)}
         />
