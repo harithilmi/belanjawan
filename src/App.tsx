@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { flushSync } from 'react-dom'
-import { fmt, lines, linesOf, nodeOf, REVENUE, revenueGroups, ROOT, SPENDING, YEAR } from './data.ts'
+import { cwdFor, fmt, lines, linesOf, nodeOf, REVENUE, revenueGroups, ROOT, SPENDING, YEAR } from './data.ts'
 import { remove, shrink10, totals, usePlan } from './plan.ts'
 import { switchLang, t } from './i18n.ts'
 import { DriveIcon, ShareIcon } from './Icons.tsx'
-import { openToLevel, reveal, rowId, Tree, type Open } from './Tree.tsx'
+import { liveCwd, PathBar, reveal, rowId, Tree, type Open } from './Tree.tsx'
 import { Properties, RecycleBin } from './Side.tsx'
 import { MapView } from './MapView.tsx'
 import { ShareDialog } from './ShareDialog.tsx'
@@ -13,7 +13,6 @@ import { Search } from './Search.tsx'
 
 const SOURCE_URL = 'https://belanjawan.mof.gov.my/pdf/belanjawan2027/hasil/tinjauan_fiskal_2027.pdf'
 const BOOK_URL = 'https://belanjawan.mof.gov.my/ms/perbelanjaan'
-const LEVELS = [1, 2, 3] as const
 const SEEN_KEY = 'malaysias-disk.seen-how-to'
 const ME_URL = 'https://x.com/harithilmi'
 const INSPIRATION_URL = 'https://britains-disk.pages.dev'
@@ -48,14 +47,20 @@ function HowToPlay({ onClose }: { onClose: () => void }) {
 export function App() {
   const [plan, setPlan] = usePlan()
   const [selected, setSelected] = useState(ROOT)
-  const [open, setOpen] = useState<Open>(() => openToLevel(1))
-  // Last view picked in the segmented control; folders toggled by hand don't change it.
-  const [level, setLevel] = useState<(typeof LEVELS)[number]>(1)
-  /** Select from the map: open its folders, then scroll the row into view. */
+  const [open, setOpen] = useState<Open>(() => new Set())
+  // Entered folder. Deleting everything in it shows the nearest folder above instead.
+  const [entered, setEntered] = useState(ROOT)
+  const cwd = liveCwd(plan, entered)
+  const enter = (key: string, select = key) => {
+    setEntered(key)
+    setSelected(select)
+  }
+  /** Select from the map or search: step out of the entered folder if needed, open its folders, then scroll the row into view. */
   const pick = (key: string) => {
     // flushSync so the row exists in the DOM before we scroll to it.
     flushSync(() => {
       setSelected(key)
+      setEntered(cwdFor(cwd, key))
       setOpen((o) => reveal(o, key))
     })
     const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -70,7 +75,7 @@ export function App() {
   }
   const onDelete = (key: string) => {
     act(key, remove)
-    if (nodeOf(key).kind === 'line') setSelected(ROOT)
+    if (nodeOf(key).kind === 'line') setSelected(cwd)
   }
   const closeDialog = () => {
     if (dialog === 'howto') localStorage.setItem(SEEN_KEY, '1')
@@ -137,28 +142,18 @@ export function App() {
 
         <div className="body">
           <div className="main-col">
-            <div className="levels">
-              <span className="seg" role="group" aria-label={t.show}>
-                {LEVELS.map((n) => (
-                  <button
-                    type="button"
-                    key={n}
-                    aria-pressed={n === level}
-                    title={t.tip.levels[n - 1]}
-                    onClick={() => { setLevel(n); setOpen(() => openToLevel(n)) }}
-                  >
-                    {t.levelNames[n - 1]}
-                  </button>
-                ))}
-              </span>
+            <div className="toolbar">
+              <PathBar cwd={cwd} selected={selected} onGo={enter} />
               <Search plan={plan} onPick={pick} />
             </div>
             <Tree
               plan={plan}
+              cwd={cwd}
               open={open}
               setOpen={setOpen}
               selected={selected}
               onSelect={setSelected}
+              onEnter={enter}
               onShrink={(k) => act(k, shrink10)}
               onDelete={onDelete}
             />

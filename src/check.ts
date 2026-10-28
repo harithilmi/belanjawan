@@ -1,6 +1,6 @@
 // Smoke check: `npm run check`. Data totals, tree shape, plan math and treemap areas.
 import assert from 'node:assert/strict'
-import { lines, linesOf, ministries, nodeOf, REVENUE, sectors, SPENDING, sum } from './data.ts'
+import { ancestors, cwdFor, lines, linesOf, ministries, nodeOf, REVENUE, ROOT, sectors, SPENDING, sum } from './data.ts'
 import { remove, setKeep, shrink10, totals } from './plan.ts'
 import { squarify } from './squarify.ts'
 import { search } from './search.ts'
@@ -23,6 +23,12 @@ assert.equal(linesOf(nodeOf('m:B/P.42')).length, ministries.find((m) => m.code =
 const debt = lines.find((l) => l.code === 'T.13')
 const health = lines.find((l) => l.code === 'B/P.42')
 assert.ok(debt?.locked && health)
+
+// Folder nav: a pick outside the entered folder moves the view up to a folder that shows its row.
+assert.deepEqual(ancestors(health.id), [ROOT, 's:Sosial', 'm:B/P.42'])
+assert.equal(cwdFor('m:B/P.42', health.id), 'm:B/P.42', 'inside: stay')
+assert.equal(cwdFor('m:B/P.42', 'm:B/P.42'), 's:Sosial', 'the folder itself: show its row one up')
+assert.equal(cwdFor('m:B/P.42', 'm:T.13'), ROOT, 'other sector: back to root')
 
 assert.deepEqual(remove({}, [debt]), {}, 'locked lines never change')
 let p = shrink10(shrink10({}, [health]), [health])

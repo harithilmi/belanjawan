@@ -60,3 +60,11 @@ export const CopyIcon = () => <Sym d="M5.5 5.5V3a1 1 0 0 1 1-1H13a1 1 0 0 1 1 1v
 export const DownloadIcon = () => <Sym d="M8 1.5V10M4.5 6.5 8 10l3.5-3.5M2.5 14h11" />
 /** text.alignleft */
 export const TextIcon = () => <Sym d="M2.5 3.5h11M2.5 6.5h7M2.5 9.5h11M2.5 12.5h7" />
+
+/** Circled arrow, like the old Finder/iTunes "go" button: opens a folder in place. */
+export const EnterIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+    <circle cx="8" cy="8" r="7.5" fill="currentColor" />
+    <path d="M4.5 8h6M8 5l3 3-3 3" fill="none" stroke="var(--blue)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+)

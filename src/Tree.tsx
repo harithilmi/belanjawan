@@ -1,50 +1,66 @@
-import { type KeyboardEvent } from 'react'
-import { fmt, inBillions, lineById, lines, ministries, ministryKey, nodeOf, ROOT, sectorKey, sectors, sum, type Line } from './data.ts'
+import { Fragment, type KeyboardEvent, useLayoutEffect, useMemo, useRef } from 'react'
+import { ancestors, fmt, inBillions, lineById, linesOf, ministryKey, nodeOf, ROOT, sectorKey, sectors, sum, type Line } from './data.ts'
 import { isCut, keepOf, nowOf, statusOf, type Plan } from './plan.ts'
-import { FileIcon, FolderIcon, LockIcon } from './Icons.tsx'
+import { EnterIcon, FileIcon, FolderIcon, LockIcon } from './Icons.tsx'
 import { t } from './i18n.ts'
 
 export type Open = ReadonlySet<string>
 
 type Props = {
   plan: Plan
+  /** Entered folder: the tree lists only what is inside it. */
+  cwd: string
   open: Open
   setOpen: (f: (o: Open) => Open) => void
   selected: string
   onSelect: (key: string) => void
+  /** Go into a folder (or up to one); `select` is the row to select there, the folder itself by default. */
+  onEnter: (key: string, select?: string) => void
   onShrink: (key: string) => void
   onDelete: (key: string) => void
 }
 
-/** Open folders so rows down to `level` show: 0 = root only, 1 = sectors, 2 = ministries, 3 = programmes. */
-export function openToLevel(level: 0 | 1 | 2 | 3): Open {
-  return new Set([
-    ...(level >= 1 ? [ROOT] : []),
-    ...(level >= 2 ? sectors.map(sectorKey) : []),
-    ...(level >= 3 ? ministries.map(ministryKey) : []),
-  ])
+type Item = { key: string; label: string; code?: string; items: readonly Line[] }
+
+/** What a folder holds, one level down. */
+function childrenOf(key: string): Item[] {
+  const n = nodeOf(key)
+  switch (n.kind) {
+    case 'root': return sectors.map((s) => ({ key: sectorKey(s), label: s.name, items: s.lines }))
+    case 'sector': return n.sector.ministries.map((m) => ({ key: ministryKey(m), label: m.name, code: m.code, items: m.lines }))
+    case 'ministry': return n.ministry.lines.map((l) => ({ key: l.id, label: l.name, items: [l] }))
+    case 'line': return []
+  }
 }
 
 /** Open the folders above a key, so a row picked elsewhere (e.g. the map) is visible. */
 export function reveal(open: Open, key: string): Open {
-  const node = nodeOf(key)
-  const m = node.kind === 'line' ? ministries.find((x) => x.code === node.line.code) : node.kind === 'ministry' ? node.ministry : undefined
-  const s = m ? sectors.find((x) => x.ministries.includes(m)) : node.kind === 'sector' ? node.sector : undefined
-  const above = [ROOT, ...(s ? [sectorKey(s)] : []), ...(m && node.kind === 'line' ? [ministryKey(m)] : [])]
+  const above = ancestors(key)
   return above.every((k) => open.has(k)) ? open : new Set([...open, ...above])
 }
 
 const totalOf = (items: readonly Line[]) => sum(items.map((l) => l.total))
-// Bars are scaled against the biggest original size at each level, so cuts shrink them live.
-const MAX = [
-  totalOf(lines),
-  Math.max(...sectors.map((s) => totalOf(s.lines))),
-  Math.max(...ministries.map((m) => totalOf(m.lines))),
-  Math.max(...lines.map((l) => l.total)),
-]
-export const rowId = (key: string) => `row-${key.replace(/[^a-z0-9-]/gi, '_')}`
 const alive = (plan: Plan, items: readonly Line[]) => items.some((l) => statusOf(plan, l) !== 'deleted')
 
+/** The entered folder, or the nearest one above it that still has something in it. */
+export const liveCwd = (plan: Plan, cwd: string): string =>
+  cwd === ROOT || alive(plan, linesOf(nodeOf(cwd))) ? cwd : liveCwd(plan, ancestors(cwd).at(-1) ?? ROOT)
+
+/** Biggest original size at each depth inside a folder. Bars use it, so cuts shrink them live
+ *  and an entered folder's rows fill the column instead of looking tiny next to the whole budget. */
+function maxByDepth(cwd: string): number[] {
+  const max: number[] = []
+  const walk = (key: string, d: number) => {
+    for (const c of childrenOf(key)) {
+      max[d] = Math.max(max[d] ?? 0, totalOf(c.items))
+      walk(c.key, d + 1)
+    }
+  }
+  walk(cwd, 0)
+  return max
+}
+
+export const rowId = (key: string) => `row-${key.replace(/[^a-z0-9-]/gi, '_')}`
 /** Size bar: width = current size / biggest at this level, filled with the opex/devex split. */
 function SizeBar({ items, plan, max }: { items: readonly Line[]; plan: Plan; max: number }) {
   const opex = sum(items.map((l) => (l.opex * keepOf(plan, l)) / 100))
@@ -59,7 +75,34 @@ function SizeBar({ items, plan, max }: { items: readonly Line[]; plan: Plan; max
   )
 }
 
-export function Tree({ plan, open, setOpen, selected, onSelect, onShrink, onDelete }: Props) {
+/** Finder-style path bar: every folder from the root down to the entered one. Click one to go there. */
+export function PathBar({ cwd, selected, onGo }: { cwd: string; selected: string; onGo: (key: string) => void }) {
+  return (
+    <nav className="path" aria-label={t.pathAria}>
+      {[...ancestors(cwd), cwd].map((k, i) => {
+        const n = nodeOf(k)
+        const label = n.kind === 'root' ? t.root : n.kind === 'sector' ? n.sector.name : n.kind === 'ministry' ? n.ministry.name : n.line.name
+        return (
+          <Fragment key={k}>
+            {i > 0 && <span className="sep" aria-hidden="true">›</span>}
+            <button
+              type="button"
+              className={`crumb${k === selected ? ' sel' : ''}`}
+              aria-current={k === cwd ? 'location' : undefined}
+              title={label}
+              onClick={() => onGo(k)}
+            >
+              <FolderIcon open={k === cwd} />
+              <span>{label}</span>
+            </button>
+          </Fragment>
+        )
+      })}
+    </nav>
+  )
+}
+
+export function Tree({ plan, cwd, open, setOpen, selected, onSelect, onEnter, onShrink, onDelete }: Props) {
   const toggle = (k: string, force?: boolean) =>
     setOpen((o) => {
       const n = new Set(o)
@@ -68,27 +111,35 @@ export function Tree({ plan, open, setOpen, selected, onSelect, onShrink, onDele
       return n
     })
 
-  // Visible rows in order, for keyboard navigation and rendering.
-  type Row = { key: string; level: number; label: string; code?: string; items: readonly Line[] }
-  const rows: Row[] = [{ key: ROOT, level: 0, label: t.root, items: lines }]
-  if (open.has(ROOT))
-    for (const s of sectors.filter((x) => alive(plan, x.lines))) {
-      rows.push({ key: sectorKey(s), level: 1, label: s.name, items: s.lines })
-      if (!open.has(sectorKey(s))) continue
-      for (const m of s.ministries.filter((x) => alive(plan, x.lines))) {
-        rows.push({ key: ministryKey(m), level: 2, label: m.name, code: m.code, items: m.lines })
-        if (open.has(ministryKey(m)))
-          for (const l of m.lines.filter((x) => statusOf(plan, x) !== 'deleted'))
-            rows.push({ key: l.id, level: 3, label: l.name, items: [l] })
-      }
+  // Visible rows in order, for keyboard navigation and rendering. Indent restarts inside the entered folder.
+  type Row = Item & { level: number }
+  const rows: Row[] = []
+  const walk = (key: string, level: number) => {
+    for (const c of childrenOf(key).filter((x) => alive(plan, x.items))) {
+      rows.push({ ...c, level })
+      if (open.has(c.key)) walk(c.key, level + 1)
     }
+  }
+  walk(cwd, 0)
   const keys = rows.map((r) => r.key)
+  const max = useMemo(() => maxByDepth(cwd), [cwd])
+
+  // New folder: start at its top, but keep the selected row (e.g. the folder you just left) in view.
+  const box = useRef<HTMLDivElement>(null)
+  useLayoutEffect(() => {
+    box.current?.scrollTo({ top: 0 })
+    document.getElementById(rowId(selected))?.scrollIntoView({ block: 'nearest' })
+  }, [cwd]) // only when the folder changes, not on every selection
 
   function onKeyDown(e: KeyboardEvent) {
     const i = keys.indexOf(selected)
     const folder = !lineById.has(selected)
     const go = (k: string | undefined) => k && onSelect(k)
-    if (e.key === 'ArrowDown') go(keys[i + 1])
+    const cmd = e.metaKey || e.ctrlKey
+    // Finder: ⌘↓ opens the selected folder, ⌘↑ goes to the one above.
+    if (cmd && e.key === 'ArrowDown') { if (folder && selected !== cwd) onEnter(selected) }
+    else if (cmd && e.key === 'ArrowUp') { if (cwd !== ROOT) onEnter(ancestors(cwd).at(-1) ?? ROOT, cwd) }
+    else if (e.key === 'ArrowDown') go(keys[i + 1])
     else if (e.key === 'ArrowUp') go(keys[i - 1])
     else if (e.key === 'ArrowRight' && folder) toggle(selected, true)
     else if (e.key === 'ArrowLeft' && folder) toggle(selected, false)
@@ -100,7 +151,7 @@ export function Tree({ plan, open, setOpen, selected, onSelect, onShrink, onDele
   }
 
   const row = ({ key, level, label, code, items }: Row) => {
-    const folder = level < 3
+    const folder = !lineById.has(key)
     const before = totalOf(items)
     const now = sum(items.map((l) => nowOf(plan, l)))
     const locked = items.every((l) => l.locked)
@@ -114,10 +165,10 @@ export function Tree({ plan, open, setOpen, selected, onSelect, onShrink, onDele
         aria-selected={isSel}
         aria-expanded={folder ? open.has(key) : undefined}
         className={`row${isSel ? ' sel' : ''}`}
-        draggable={key !== ROOT && !locked}
+        draggable={!locked}
         onDragStart={(e) => e.dataTransfer.setData('text/plain', key)}
         onClick={() => onSelect(key)}
-        onDoubleClick={folder ? () => toggle(key) : undefined}
+        onDoubleClick={folder ? () => onEnter(key) : undefined}
       >
         {/* Size stays in a fixed column (like Explorer's details view); only the name side is indented. */}
         <span className="amt" title={fmt(now)}>{inBillions(now)}</span>
@@ -125,7 +176,7 @@ export function Tree({ plan, open, setOpen, selected, onSelect, onShrink, onDele
           className={`tw${open.has(key) ? ' open' : ''}`}
           style={{ marginLeft: `calc(${level} * var(--indent))` }}
           onClick={(e) => { e.stopPropagation(); toggle(key) }}
-          onDoubleClick={(e) => e.stopPropagation()} // its two clicks already toggled; don't add a third
+          onDoubleClick={(e) => e.stopPropagation()} // its two clicks already toggled; don't also enter
         >
           {folder ? '›' : ''}
         </span>
@@ -135,19 +186,25 @@ export function Tree({ plan, open, setOpen, selected, onSelect, onShrink, onDele
         {locked && <span title={t.tip.locked}><LockIcon /></span>}
         {isCut(plan, items) && <span className="freed" title={t.tip.freed}>−{inBillions(before - now)}</span>}
         <span className="grow" />
-        {isSel && key !== ROOT && !locked && (
+        {isSel && !locked && (
           <span className="acts">
             <button type="button" className="btn tiny" onClick={(e) => { e.stopPropagation(); onShrink(key) }} aria-label={t.shrinkAria(label)} title={t.tip.shrink10}>−10%</button>
             <button type="button" className="btn tiny" onClick={(e) => { e.stopPropagation(); onDelete(key) }} aria-label={t.delAria(label)} title={t.tip.toBin}>{t.del}</button>
           </span>
         )}
-        <SizeBar items={items} plan={plan} max={MAX[level] ?? 1} />
+        {/* Phones have no double-click: the selected folder gets a button to go in. */}
+        {isSel && folder && (
+          <button type="button" className="enter" onClick={(e) => { e.stopPropagation(); onEnter(key) }} aria-label={t.enterAria(label)} title={t.tip.enter}>
+            <EnterIcon />
+          </button>
+        )}
+        <SizeBar items={items} plan={plan} max={max[level] ?? 1} />
       </div>
     )
   }
 
   return (
-    <div className="tree-box sunken">
+    <div className="tree-box sunken" ref={box}>
       <div className="tree-head" aria-hidden="true">
         <span className="h-amt" title={t.tip.size}>{t.colSize}</span>
         <span className="grow">{t.colName}</span>
@@ -160,7 +217,7 @@ export function Tree({ plan, open, setOpen, selected, onSelect, onShrink, onDele
         role="tree"
         aria-label={t.spending}
         tabIndex={0}
-        aria-activedescendant={rowId(selected)}
+        aria-activedescendant={keys.includes(selected) ? rowId(selected) : undefined}
         onKeyDown={onKeyDown}
       >
         {rows.map(row)}

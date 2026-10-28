@@ -97,3 +97,19 @@ export function linesOf(n: TreeNode): Line[] {
     case 'root': return lines
   }
 }
+
+/** Folders above a key, root first. */
+export function ancestors(key: string): string[] {
+  const n = nodeOf(key)
+  if (n.kind === 'root') return []
+  if (n.kind === 'sector') return [ROOT]
+  const m = n.kind === 'ministry' ? n.ministry : ministries.find((x) => x.code === n.line.code)
+  const s = m && sectors.find((x) => x.ministries.includes(m))
+  return [ROOT, ...(s ? [sectorKey(s)] : []), ...(m && n.kind === 'line' ? [ministryKey(m)] : [])]
+}
+
+/** Deepest folder that is the entered one or above it, and holds `key` (so its row can show). */
+export const cwdFor = (cwd: string, key: string) => {
+  const here = [...ancestors(cwd), cwd]
+  return ancestors(key).findLast((k) => here.includes(k)) ?? ROOT
+}

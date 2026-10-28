@@ -77,8 +77,8 @@ const ms = {
   devexShort: 'Pembangunan',
   colSize: 'RM bilion',
   colName: 'Nama',
-  show: 'Tunjuk',
-  levelNames: ['Sektor', 'Kementerian', 'Program'],
+  pathAria: 'Laluan folder',
+  enterAria: (n: string) => `Masuk ${n}`,
   del: 'Buang',
   shrinkAria: (n: string) => `Potong ${n} sebanyak 10%`,
   delAria: (n: string) => `Buang ${n} ke Tong Sampah`,
@@ -142,7 +142,7 @@ const ms = {
 
   /** Hover tooltips. */
   tip: {
-    levels: ['Tunjuk sektor sahaja', 'Buka sampai kementerian', 'Buka semua, sampai program'],
+    enter: 'Masuk folder ini (klik dua kali, ⌘↓). Naik semula: ⌘↑',
     borrowed: 'Beza antara perbelanjaan dengan hasil. Kerajaan kena pinjam jumlah ini.',
     revenue: 'Kapasiti storan: hasil yang dijangka kerajaan dapat tahun ini',
     cutSoFar: 'Jumlah yang anda dah potong setakat ini',
@@ -244,8 +244,8 @@ const en: typeof ms = {
   devexShort: 'Development',
   colSize: 'RM bn',
   colName: 'Name',
-  show: 'Show',
-  levelNames: ['Sectors', 'Ministries', 'Programmes'],
+  pathAria: 'Folder path',
+  enterAria: (n) => `Open ${n}`,
   del: 'Del',
   shrinkAria: (n) => `Shrink ${n} by 10%`,
   delAria: (n) => `Move ${n} to the Bin`,
@@ -308,7 +308,7 @@ const en: typeof ms = {
   start: 'Start cleanup',
 
   tip: {
-    levels: ['Show sectors only', 'Open down to ministries', 'Open everything, down to programmes'],
+    enter: 'Open this folder (double-click, ⌘↓). Back up: ⌘↑',
     borrowed: 'Gap between spending and revenue. The government borrows this.',
     revenue: 'Disk capacity: revenue the government expects this year',
     cutSoFar: 'How much you have cut so far',

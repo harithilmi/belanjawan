@@ -104,14 +104,23 @@ button, input { font: inherit; color: inherit; }
 .hit small { color: var(--muted); }
 .hit.sel { background: var(--blue); color: #fff; }
 .hit.sel small { color: #fff; }
-.levels { display: flex; align-items: center; gap: 8px; padding: 8px 6px 2px; }
+.toolbar { display: flex; align-items: center; gap: 8px; padding: 8px 6px 2px; }
+/* Finder path bar: folder › folder › folder. Earlier crumbs give up width first; the last one keeps its name longest. */
+.path { display: flex; align-items: center; min-width: 0; flex: 1; }
+.crumb { display: inline-flex; align-items: center; gap: 4px; min-width: 2.5em; flex: 0 100 auto; border: 0; background: none; padding: 2px 5px; border-radius: 5px; font-size: 12px; white-space: nowrap; }
+.crumb:last-of-type { flex-shrink: 1; font-weight: 500; }
+.crumb > span { overflow: hidden; text-overflow: ellipsis; }
+.path .sep { flex: none; color: var(--muted); font-size: 14px; padding: 0 1px; }
+.crumb:hover { background: rgb(0 0 0 / 0.05); }
+.crumb.sel { background: var(--blue); color: #fff; }
+.crumb:focus-visible { outline: 3px solid rgb(0 122 255 / 0.5); }
 /* Segmented control: grey track, the picked segment is a raised white pill. */
 .seg { display: inline-flex; flex: none; background: rgb(0 0 0 / 0.07); border-radius: 7px; padding: 2px; }
 .seg button { border: 0; background: none; border-radius: 5px; padding: 2px 11px; min-height: 22px; font-size: 12px; transition: background-color 150ms ease; }
 .seg button[aria-pressed='true'] { background: #fff; box-shadow: 0 0 0 0.5px rgb(0 0 0 / 0.15), 0 1px 2px rgb(0 0 0 / 0.12); font-weight: 500; }
 .seg button:active { background: rgb(0 0 0 / 0.06); }
 .seg button:focus-visible { outline: 3px solid rgb(0 122 255 / 0.5); }
-.levels .search { flex: 1; width: auto; max-width: 280px; margin-left: auto; }
+.toolbar .search { flex: none; width: min(280px, 40%); }
 
 /* Main body: tree + side panels */
 /* The tree fills the height of the side column (bin + properties + map) and scrolls inside. */
@@ -146,6 +155,10 @@ button, input { font: inherit; color: inherit; }
 .split { display: inline-flex; height: 8px; border-radius: 4px; flex: none; overflow: hidden; }
 .split i { display: block; min-width: 0; }
 .row.sel .split { box-shadow: 0 0 0 1.5px #fff; }
+/* Go-into-folder button on the selected row: white circled arrow on the blue selection. */
+.row .enter { display: inline-flex; flex: none; border: 0; padding: 2px; margin: -2px 0; background: none; color: #fff; border-radius: 50%; }
+.row .enter:active { opacity: 0.6; }
+.row .enter:focus-visible { outline: 2px solid #fff; }
 
 .side { min-width: 0; }
 .bin.over { background: #e5f0ff; box-shadow: 0 0 0 2px var(--blue); }
@@ -261,10 +274,11 @@ button, input { font: inherit; color: inherit; }
   /* One fact per line: spending, borrowed, cut, revenue. */
   .drive .legend { flex-direction: column; align-items: flex-start; gap: 2px; }
   .drive .legend .grow { display: none; }
-  .levels { flex-wrap: wrap; }
   .seg { width: 100%; }
   .seg button { flex: 1; }
-  .levels .search { width: 100%; max-width: none; flex-basis: 100%; }
+  /* Search on top, full width; the path bar sits right above the tree. */
+  .toolbar { flex-wrap: wrap; }
+  .toolbar .search { width: 100%; order: -1; }
   .hits { left: 0; width: auto; }
   /* Tree: slimmer columns; −10%/Buang and the cut amount live in the bottom sheet instead. */
   .row .amt { font-size: 11px; }
@@ -289,6 +303,8 @@ button, input { font: inherit; color: inherit; }
 @media (pointer: coarse) {
   .row { min-height: 30px; }
   .row .tw { width: 16px; height: 16px; line-height: 15px; }
+  .row .enter { padding: 6px; margin: -6px -2px; }
+  .crumb { min-height: 30px; }
   .btn.tiny { min-height: 28px; padding: 0 10px; }
   .seg button { min-height: 30px; }
   .bin-list li { padding: 3px 4px; }
