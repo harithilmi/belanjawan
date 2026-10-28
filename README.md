@@ -9,18 +9,18 @@ npm run build    # tsc + vite build into dist/
 npm run check
 ```
 
-## Deploy (harithilmi.com/disk/)
+## Deploy (harithilmi.com/belanjawan/)
 
-Served by its own Cloudflare Worker (`malaysias-disk`, static assets only), next to the
+Served by its own Cloudflare Worker (`belanjawan`, static assets only), next to the
 `harithilmi-com` Worker that serves `/tuju/` (repo: `~/Documents/tuju-article/site`).
 
-- `wrangler.jsonc` adds zone routes `harithilmi.com/disk` and `harithilmi.com/disk/*`.
+- `wrangler.jsonc` adds zone routes `harithilmi.com/belanjawan` and `harithilmi.com/belanjawan/*`.
   Routes run before the `harithilmi-com` Custom Domain, so tuju is untouched.
-- `npm run deploy` builds into `.deploy/disk/` (so file paths match the URL path) and runs `wrangler deploy`.
+- `npm run deploy` builds into `.deploy/belanjawan/` (so file paths match the URL path) and runs `wrangler deploy`.
 - Needs `npx wrangler login` with access to the `harithilmi.com` zone.
-- Check without uploading: `npx vite build --outDir .deploy/disk --emptyOutDir && npx wrangler deploy --dry-run`
+- Check without uploading: `npx vite build --outDir .deploy/belanjawan --emptyOutDir && npx wrangler deploy --dry-run`
 
-Change the path: replace `disk` in `wrangler.jsonc` (both routes) and in the `deploy` script.
+Change the path: replace `belanjawan` in `wrangler.jsonc` (both routes) and in the `deploy` script.
 `base: './'` and `src/share.ts` need no change.
 
-Undo: `npx wrangler delete malaysias-disk` removes the Worker and its routes.
+Undo: `npx wrangler delete belanjawan` removes the Worker and its routes.

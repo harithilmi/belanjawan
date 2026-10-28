@@ -7,7 +7,7 @@
     "build": "tsc --noEmit && vite build",
     "check": "node src/check.ts",
     "preview": "vite preview",
-    "deploy": "tsc --noEmit && vite build --outDir .deploy/disk --emptyOutDir && wrangler deploy"
+    "deploy": "tsc --noEmit && vite build --outDir .deploy/belanjawan --emptyOutDir && wrangler deploy"
   },
   "dependencies": {
     "react": "^19.3.1",

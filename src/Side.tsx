@@ -88,10 +88,20 @@ export function Properties({ plan, setPlan, selected }: { plan: Plan; setPlan: S
     : node.kind === 'ministry' ? `${node.ministry.code} ${node.ministry.name}`
     : node.kind === 'sector' ? node.sector.name
     : t.root
+  // On narrow screens a selected row's Properties docks to the bottom (CSS), folded to amount + buttons.
+  const [full, setFull] = useState(false)
+  const sheet = node.kind !== 'root'
 
   return (
-    <section className="props groupbox" aria-label={t.props}>
-      <div className="props-title">{t.props} — {title}</div>
+    <section className={`props groupbox${sheet ? ' sheet' : ''}${full ? ' full' : ''}`} aria-label={t.props}>
+      <div className="props-title">
+        <span>{t.props} — {title}</span>
+        {sheet && (
+          <button type="button" className="btn tb sheet-toggle" aria-expanded={full} aria-label={t.props} onClick={() => setFull((f) => !f)}>
+            {full ? '▼' : '▲'}
+          </button>
+        )}
+      </div>
       <div className="muted caps">
         {node.kind === 'root' ? t.rootCaps(YEAR) : `${node.kind === 'line' ? `${node.line.code} ${node.line.ministry}` : t.folder} · ${YEAR}`}
       </div>

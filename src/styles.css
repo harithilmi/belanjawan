@@ -114,7 +114,8 @@ button, input { font: inherit; }
 .row .acts { display: flex; gap: 2px; }
 /* Selected row needs room for −10%/Buang; Properties panel shows the cut. */
 .row.sel .freed { display: none; }
-.bar-col { width: 150px; flex: none; display: flex; align-items: center; gap: 4px; box-sizing: border-box; }
+/* Right padding: a 100% bar would otherwise run into the window edge and look cut off. */
+.bar-col { width: 150px; flex: none; display: flex; align-items: center; gap: 4px; box-sizing: border-box; padding-right: 8px; }
 .split { display: inline-flex; height: 12px; box-sizing: border-box; border: 1px solid #000; background: #fff; flex: none; overflow: hidden; }
 .split i { display: block; min-width: 0; }
 .row.sel .split { border-color: #fff; }
@@ -128,7 +129,9 @@ button, input { font: inherit; }
 .bin-list .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bin-list .name small { display: block; overflow: hidden; text-overflow: ellipsis; font-size: 11px; }
 
-.props-title { background: var(--navy); color: #fff; font-weight: bold; padding: 2px 6px; margin: -8px -8px 8px; }
+.props-title { display: flex; align-items: center; gap: 6px; background: var(--navy); color: #fff; font-weight: bold; padding: 2px 3px 2px 6px; margin: -8px -8px 8px; }
+.props-title > span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sheet-toggle { display: none; }
 .caps { text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px; }
 .props-amt { font-size: 14px; margin: 2px 0; }
 .props-amt > b { font-size: 22px; }
@@ -160,6 +163,9 @@ button, input { font: inherit; }
 .tile.sel { outline: 2px solid #ffff00; outline-offset: -3px; }
 @media (hover: hover) and (pointer: fine) { .tile:hover { filter: brightness(1.35); } }
 .tile span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Labels only when the tile is big enough on screen, whatever the map's width. */
+.tile { container-type: size; }
+@container (max-width: 64px) or (max-height: 30px) { .tile > * { display: none; } }
 .map-box .legend { margin-top: 6px; }
 
 .sources summary { font-weight: bold; }
@@ -192,8 +198,51 @@ button, input { font: inherit; }
 @media (max-width: 800px) {
   .body { grid-template-columns: 1fr; }
   .tree-box { flex: none; min-height: 0; max-height: 70vh; }
-  .bar-col { width: 110px; }
   .hero h1 { font-size: 26px; }
+  /* Selected row: Properties docks to the bottom as a sheet, so its buttons stay under the thumb. */
+  .props.sheet {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 4; margin: 0;
+    border: 0; background: var(--face); box-shadow: var(--raised), 0 -2px 0 #000;
+    max-height: 75vh; overflow: auto; padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  }
+  .props.sheet .props-title { position: sticky; top: -8px; z-index: 1; }
+  .props.sheet .sheet-toggle { display: inline-flex; }
+  .props.sheet:not(.full) > :is(.caps, p:not(.locked-note), .split-detail), .props.sheet:not(.full) .controls > p { display: none; }
+  .props.sheet .controls { margin-bottom: 0; }
+  /* Room so the sheet never covers the statusbar. */
+  .desktop:has(.props.sheet) { padding-bottom: 190px; }
+}
+@media (max-width: 600px) {
+  .desktop { padding: 10px 6px 24px; }
+  .hero-top { flex-wrap: wrap; }
+  .hero h1 { font-size: 22px; }
+  .hero p { font-size: 13px; }
+  .drive-head { flex-wrap: wrap; }
+  .drive-head > div:nth-child(2) { flex-basis: calc(100% - 50px); }
+  .drive-head .warn { flex: 1; }
+  .levels { flex-wrap: wrap; }
+  .levels .btn { white-space: nowrap; }
+  .levels .grow { display: none; }
+  .search { width: 100%; margin-top: 3px; }
+  .hits { left: 0; width: auto; }
+  /* Tree: slimmer columns; −10%/Buang and the cut amount live in the bottom sheet instead. */
+  .row .amt, .tree-head .h-amt { width: 84px; font-size: 11px; }
+  .tree-head .h-amt { width: 94px; }
+  .row :is(.acts, .freed) { display: none; }
+  .row .name { min-width: 4em; }
+  .props.sheet .btn { padding: 4px 8px; }
+  .bar-col { width: 44px; }
+  .tree-head .bar-col > * { display: none; }
+  /* Taller map so tiles and the sector strip get room. Overrides the inline W/H ratio. */
+  .map { aspect-ratio: 1 / 1 !important; }
+}
+/* Fingers: bigger rows and buttons. */
+@media (pointer: coarse) {
+  .row { height: 30px; }
+  .row .tw { width: 15px; height: 15px; line-height: 13px; }
+  .btn.tiny { min-height: 28px; padding: 0 10px; }
+  .btn.tiny:active:not(:disabled) { padding: 1px 9px 0 11px; }
+  .bin-list li { padding: 3px 4px; }
 }
 @media (prefers-reduced-motion: reduce) { .disk > div { transition: none; } .dialog[open] { transition-property: opacity; } }
 

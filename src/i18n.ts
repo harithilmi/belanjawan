@@ -58,7 +58,7 @@ const ms = {
   /** What is inside a line the book does not split, keyed by line name. */
   inside: {
     'Subsidi dan Bantuan Tunai':
-      'Buku tak pecahkan baris ini. Tinjauan Fiskal 2027 sebut subsidi dan bantuan sosial (RM72.7 bilion, semua kementerian) merangkumi subsidi bahan api BUDI95 dan BUDI Diesel, minyak masak (eCOSS), Sumbangan Tunai Rahmah (STR), Sumbangan Asas Rahmah (SARA) dan bantuan bil elektrik. Tiada angka bagi setiap satu.',
+      'Buku tak pecahkan baris ini. Tinjauan Fiskal 2027 sebut subsidi dan bantuan sosial (RM72.7 bilion, semua kementerian) merangkumi subsidi bahan api BUDI95 dan BUDI Diesel, minyak masak (eCOSS), Sumbangan Tunai Rahmah (STR), Sumbangan Asas Rahmah (SARA) dan bantuan bil elektrik. Ucapan Belanjawan 2027 sebut bahan api RM40 bilion dan STR + SARA RM16 bilion, tapi jumlah itu (RM56 bilion) lebih daripada baris ini, jadi sebahagiannya mungkin di tempat lain.',
   } as Record<string, string>,
   outcome: 'Outcome',
   rootText: (p: string) => `Untuk imbangkan belanjawan, potong ${p}% daripada semua perbelanjaan. Pilih folder atau fail di sebelah kiri untuk kecilkan atau buang.`,
@@ -220,7 +220,7 @@ const en: typeof ms = {
   visi: 'Vision (BM)',
   inside: {
     'Subsidi dan Bantuan Tunai':
-      'The book does not split this line. Tinjauan Fiskal 2027 says subsidies and social assistance (RM72.7bn, all ministries) cover the BUDI95 and BUDI Diesel fuel subsidies, cooking oil (eCOSS), Sumbangan Tunai Rahmah (STR), Sumbangan Asas Rahmah (SARA) and electricity bill aid. No amount is given for each.',
+      'The book does not split this line. Tinjauan Fiskal 2027 says subsidies and social assistance (RM72.7bn, all ministries) cover the BUDI95 and BUDI Diesel fuel subsidies, cooking oil (eCOSS), Sumbangan Tunai Rahmah (STR), Sumbangan Asas Rahmah (SARA) and electricity bill aid. The Budget 2027 speech says fuel RM40bn and STR + SARA RM16bn, but that (RM56bn) is more than this line, so some of it may sit elsewhere.',
   },
   outcome: 'Outcome (BM)',
   rootText: (p) => `To balance the budget, cut ${p}% of all spending. Pick a folder or file on the left to shrink or delete it.`,
