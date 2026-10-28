@@ -122,7 +122,7 @@ button, input { font: inherit; color: inherit; }
 /* Finder list header */
 .tree-head { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; gap: 5px; height: 26px; padding: 0 6px 0 4px; background: rgb(255 255 255 / 0.95); border-bottom: 1px solid var(--sep); font-size: 11px; font-weight: 600; color: var(--muted); white-space: nowrap; }
 .tree-head > span { padding: 0 4px; }
-.tree-head .h-amt { width: 114px; text-align: right; box-sizing: border-box; }
+.tree-head .h-amt { width: 72px; text-align: right; box-sizing: border-box; }
 /* Legend may be wider than the bars below it: grow left into the name column instead of clipping. */
 .tree-head .bar-col { width: auto; min-width: 150px; justify-content: flex-end; gap: 8px; }
 .tree:focus-visible .row.sel { box-shadow: 0 0 0 2px rgb(0 122 255 / 0.4); }
@@ -133,7 +133,7 @@ button, input { font: inherit; color: inherit; }
 .row .tw.open { transform: rotate(90deg); }
 .row .tw:empty { visibility: hidden; }
 .row svg { flex: none; }
-.row .amt { width: 104px; flex: none; text-align: right; font-variant-numeric: tabular-nums; }
+.row .amt { width: 64px; flex: none; text-align: right; font-variant-numeric: tabular-nums; }
 .row .name { overflow: hidden; text-overflow: ellipsis; min-width: 6em; }
 .row .freed { color: var(--good); font-size: 11px; font-weight: 600; }
 .row.sel, .row.sel:nth-child(even) { background: var(--blue); color: #fff; }
@@ -264,14 +264,12 @@ button, input { font: inherit; color: inherit; }
   .hits { left: 0; width: auto; }
   /* Tree: slimmer columns; −10%/Buang and the cut amount live in the bottom sheet instead. */
   .row .amt { font-size: 11px; }
-  .row .amt { width: 50px; }
-  /* Header unit wraps to two lines here. */
-  .tree-head { height: auto; min-height: 18px; }
-  .tree-head .h-amt { width: 60px; line-height: 1.1; white-space: normal; }
+  .row .amt { width: 54px; }
+  .tree-head .h-amt { width: 62px; }
   .row :is(.acts, .freed) { display: none; }
   /* Phones lack Tahoma (Verdana is wider): let names and sizes wrap instead of clipping. */
   .tree { --indent: 10px; }
-  .row { height: auto; min-height: 26px; white-space: normal; line-height: 1.2; }
+  .row { height: auto; min-height: 26px; white-space: normal; line-height: 1.2; padding-block: 3px; }
   .row .amt { overflow-wrap: anywhere; }
   .row .name { min-width: 4em; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; }
   /* iOS-style action group: two short actions side by side, the destructive one full width last. */
