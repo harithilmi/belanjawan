@@ -51,7 +51,7 @@ export function ShareDialog({ plan, onClose }: { plan: Plan; onClose: () => void
           <div className="sunken preview">
             {url ? <img src={url} alt={t.imageAlt} width={SIZES[format].w} height={SIZES[format].h} /> : t.drawing}
           </div>
-          {/* One blue button: the system share sheet on phones, else copying the image. */}
+          {/* One labelled blue button (share sheet on phones, else copy image); the rest are icon-only, named by tooltip. */}
           <div className="share-acts">
             {canShare && file && (
               <button type="button" className="btn default" onClick={() => run('', () => navigator.share({ files: [file], text }))}>
@@ -60,22 +60,20 @@ export function ShareDialog({ plan, onClose }: { plan: Plan; onClose: () => void
             )}
             <button
               type="button"
-              className={canShare ? 'btn fill' : 'btn default'}
+              className={canShare ? 'btn fill icon' : 'btn default'}
               disabled={!blob}
+              aria-label={t.copyImage}
+              title={t.copyImage}
               onClick={() => blob && run(t.imageCopied, () => navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]))}
             >
-              <CopyIcon /> {t.copyImage}
+              <CopyIcon /> {!canShare && t.copyImage}
             </button>
-            {url && <a className="btn fill" href={url} download={name}><DownloadIcon /> {t.download}</a>}
-            <button type="button" className="btn fill" onClick={() => run(t.textCopied, () => navigator.clipboard.writeText(text))}>
-              <TextIcon /> {t.copyText}
+            {url && <a className="btn fill icon" href={url} download={name} aria-label={t.download} title={t.download}><DownloadIcon /></a>}
+            <button type="button" className="btn fill icon" aria-label={t.copyText} title={t.copyText} onClick={() => run(t.textCopied, () => navigator.clipboard.writeText(text))}>
+              <TextIcon />
             </button>
           </div>
           <p className="muted small share-msg" role="status">{msg}</p>
-          <details className="disclosure">
-            <summary>{t.showText}</summary>
-            <pre className="sunken">{text}</pre>
-          </details>
         </>
       )}
     </Dialog>
