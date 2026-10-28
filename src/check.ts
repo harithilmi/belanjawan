@@ -45,6 +45,10 @@ assert.ok(search('air').hits.every((h) => !/pengairan/i.test(h.label)), 'air ≠
 assert.equal(search('xyzzy').hits.length, 0)
 assert.equal(search('gaji menteri').note, 'minister')
 assert.ok(search('banjir').hits.every((h) => !/pengairan/i.test(h.label)), 'banjir ≠ pengairan')
+assert.equal(search('ron').note, 'fuel', 'half-typed alias')
+assert.equal(search('KPT').hits[0]?.key, 'm:B/P.64')
+assert.equal(search('kpm').hits[0]?.key, 'm:B/P.63')
+assert.equal(search('kdn').hits[0]?.key, 'm:B/P.62')
 for (const q of ['lrt', 'ptptn', 'kos sara hidup', 'warga emas', 'sampah', 'scam']) assert.ok(search(q).hits.length > 0, q)
 
 console.log('ok')

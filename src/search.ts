@@ -12,7 +12,8 @@ type Note = keyof typeof t.searchNote
  * Everyday worries → words the book uses. `note` explains when the book has no line of its own for it.
  * ponytail: hand-made list; add words when people search for something and get nothing.
  */
-const GROUPS: { words: string[]; terms: string[]; note?: Note }[] = [
+type Group = { words: string[]; terms: string[]; note?: Note }
+const GROUPS: Group[] = [
   // Money in people's pockets. B.11 has one line for fuel subsidy and cash aid; the book does not split them.
   { words: ['ron95', 'ron97', 'petrol', 'diesel', 'bahan api', 'minyak', 'harga minyak', 'subsidi minyak', 'budi95', 'budi', 'fuel', 'str', 'sara', 'bantuan tunai', 'rahmah', 'sumbangan', 'cash aid'], terms: ['subsidi dan bantuan tunai'], note: 'fuel' },
   { words: ['kos sara hidup', 'harga barang', 'barang mahal', 'harga', 'inflasi', 'ayam', 'telur', 'gula', 'beras', 'cost of living', 'prices'], terms: ['kos sara hidup', 'pengguna', 'subsidi dan bantuan tunai'], note: 'prices' },
@@ -55,7 +56,46 @@ const GROUPS: { words: string[]; terms: string[]; note?: Note }[] = [
   { words: ['masjid', 'surau', 'agama', 'islam', 'mosque', 'religion'], terms: ['islam', 'masjid'] },
   { words: ['bola', 'sukan', 'sport', 'football'], terms: ['sukan'] },
 ]
-const byWord = new Map(GROUPS.flatMap((g) => g.words.map((w) => [compact(w), g] as const)))
+/** Ministry short forms people actually type (BM and English) → the book's name. */
+const ACRONYMS: Record<string, string> = {
+  kpn: 'kementerian perpaduan negara',
+  kkm: 'kementerian kesihatan', moh: 'kementerian kesihatan',
+  kpkt: 'kementerian perumahan dan kerajaan tempatan',
+  kbs: 'kementerian belia dan sukan',
+  kesuma: 'kementerian sumber manusia', mohr: 'kementerian sumber manusia',
+  kpwkm: 'kementerian pembangunan wanita',
+  kpm: 'kementerian pendidikan', moe: 'kementerian pendidikan',
+  kpt: 'kementerian pendidikan tinggi', mohe: 'kementerian pendidikan tinggi',
+  kpk: 'kementerian perladangan dan komoditi',
+  kpkm: 'kementerian pertanian', mafs: 'kementerian pertanian',
+  kkdw: 'kementerian kemajuan desa',
+  nres: 'kementerian sumber asli',
+  miti: 'kementerian pelaburan',
+  kpdn: 'kementerian perdagangan dalam negeri',
+  kuskop: 'kementerian pembangunan usahawan',
+  kkr: 'kementerian kerja raya',
+  mot: 'kementerian pengangkutan',
+  mosti: 'kementerian sains',
+  motac: 'kementerian pelancongan',
+  petra: 'kementerian peralihan tenaga',
+  kkd: 'kementerian komunikasi',
+  mindef: 'kementerian pertahanan',
+  kdn: 'kementerian dalam negeri', moha: 'kementerian dalam negeri',
+  jpm: 'jabatan perdana menteri', pmo: 'jabatan perdana menteri',
+  jpa: 'jabatan perkhidmatan awam',
+  spa: 'suruhanjaya perkhidmatan awam',
+  spr: 'suruhanjaya pilihan raya',
+  agc: 'jabatan peguam negara',
+  kln: 'kementerian luar negeri',
+  mof: 'perbendaharaan',
+  spp: 'suruhanjaya perkhidmatan pendidikan',
+}
+const byWord = new Map<string, Group>([
+  ...Object.entries(ACRONYMS).map(([w, name]): [string, Group] => [w, { words: [w], terms: [name] }]),
+  ...GROUPS.flatMap((g) => g.words.map((w): [string, Group] => [compact(w), g])),
+])
+/** Half-typed alias ("ron" → "ron95"), only used when the literal words find nothing. */
+const byPrefix = (q: string) => (q.length < 3 ? undefined : [...byWord].find(([w]) => w.startsWith(q))?.[1])
 
 type Entry = { key: string; label: string; sub: string; size: number; hay: string; name: string }
 const entry = (key: string, label: string, sub: string, size: number): Entry =>
@@ -76,8 +116,14 @@ export function search(query: string, limit = 10): Result {
   if (!q) return { hits: [], terms: [] }
   // Whole query as one alias first ("bahan api", "ron 95"), else word by word.
   const whole = byWord.get(compact(q))
-  const words = whole ? [whole] : q.split(' ').map((w) => byWord.get(w) ?? { words: [w], terms: [w] })
-  const matches = entries.filter((e) => words.every((g) => g.terms.some((term) => has(e.hay, term))))
+  let words = whole ? [whole] : q.split(' ').map((w) => byWord.get(w) ?? { words: [w], terms: [w] })
+  const find = () => entries.filter((e) => words.every((g) => g.terms.some((term) => has(e.hay, term))))
+  let matches = find()
+  const guess = matches.length ? undefined : byPrefix(compact(q))
+  if (guess) {
+    words = [guess]
+    matches = find()
+  }
   // Name matches first (a ministry's own name beats its programmes), then biggest first.
   const inName = (e: Entry) => words.every((g) => g.terms.some((term) => has(e.name, term)))
   matches.sort((a, b) => Number(inName(b)) - Number(inName(a)) || b.size - a.size)
