@@ -153,11 +153,8 @@ export function Properties({ plan, setPlan, selected, look = false }: { plan: Pl
   const before = sum(items.map((l) => l.total))
   const now = sum(items.map((l) => nowOf(plan, l)))
   const tot = totals(plan)
-  // Short description from the book: ministry VISI or programme Outcome.
-  const about =
-    node.kind === 'ministry' && node.ministry.about ? { label: t.visi, text: node.ministry.about }
-    : node.kind === 'line' && node.line.about ? { label: t.outcome, text: node.line.about }
-    : undefined
+  // Ministry VISI, quoted from the book.
+  const visi = node.kind === 'ministry' ? node.ministry.about : undefined
   const plain = node.kind === 'line' ? node.line.plain : node.kind === 'ministry' ? node.ministry.plain : undefined
   const title =
     node.kind === 'line' ? node.line.name
@@ -207,7 +204,7 @@ export function Properties({ plan, setPlan, selected, look = false }: { plan: Pl
             <p>{plain}</p>
           </div>
         )}
-        {about && <p className="about"><b>{about.label}:</b> “{about.text}”</p>}
+        {visi && <p className="about"><b>{t.visi}:</b> “{visi}”</p>}
         {node.kind === 'line' && t.inside[node.line.name] && <p className="note">ℹ️ {t.inside[node.line.name]}</p>}
         <Breakdown items={items} />
         {node.kind === 'line' && (

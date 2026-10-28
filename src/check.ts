@@ -74,6 +74,6 @@ assert.ok(actsOf(perubatan).some((a) => a.name === 'Rawatan Kecemasan dan Pesaki
 assert.ok(ministries.every((m) => m.plain), 'every ministry has a plain summary')
 const keys = new Set([...ministries.map((m) => m.code), ...lines.map((l) => `${l.code}|${l.name}`)])
 for (const k of Object.keys(plainText)) assert.ok(keys.has(k), `plain summary for a missing line: ${k}`)
-assert.ok(lines.filter((l) => l.about).every((l) => l.plain), 'lines with book text have a summary')
+assert.equal(lines.filter((l) => l.plain).length, 115, 'every programme with book text has a summary')
 
 console.log('ok')

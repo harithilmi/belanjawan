@@ -15,8 +15,6 @@ export type Line = {
   devex: number
   total: number
   locked: boolean
-  /** Programme outcome quoted from the book, if it has one. */
-  about?: string
   /** AI-written plain-language summary of the book's text, if any. */
   plain?: string
   /** OE by Objek Am, RM million: emolumen, perkhidmatan & bekalan, aset, pemberian & kenaan bayaran tetap, lain. */
@@ -73,7 +71,6 @@ export const sectors: Sector[] = book.sectors.map((s) => {
       devex: p.devex,
       total: p.opex + p.devex,
       locked: m.locked,
-      about: p.about,
       plain: plainOf(`${m.code}|${p.name}`),
       objek: p.objek ?? NO_OBJEK, // DE projects have none
       posts: p.posts ?? 0,

@@ -62,9 +62,8 @@ const ms = {
     'Subsidi dan Bantuan Tunai':
       'Buku tak pecahkan baris ini. Tinjauan Fiskal 2027 sebut subsidi dan bantuan sosial (RM72.7 bilion, semua kementerian) merangkumi subsidi bahan api BUDI95 dan BUDI Diesel, minyak masak (eCOSS), Sumbangan Tunai Rahmah (STR), Sumbangan Asas Rahmah (SARA) dan bantuan bil elektrik. Ucapan Belanjawan 2027 sebut bahan api RM40 bilion dan STR + SARA RM16 bilion, tapi jumlah itu (RM56 bilion) lebih daripada baris ini, jadi sebahagiannya mungkin di tempat lain.',
   } as Record<string, string>,
-  outcome: 'Outcome',
   plainTitle: 'Dalam bahasa mudah',
-  aiTip: 'Ringkasan AI berdasarkan teks buku (visi, outcome dan fungsi aktiviti). Teks asal ada di bawah.',
+  aiTip: 'Ringkasan AI berdasarkan teks buku (visi, outcome dan fungsi aktiviti).',
   whereMoney: 'Ke mana duit pergi',
   fromBook: 'Angka: buku MOF',
   /** Objek Am 10000–50000, in the data's order. */
@@ -208,7 +207,7 @@ const ms = {
     'ialah Perbelanjaan Mengurus (OE) campur Perbelanjaan Pembangunan (DE). Potongan kena pada kedua-duanya dengan kadar yang sama.',
   srcNames: 'Nama:',
   srcNamesBody:
-    'nama kementerian dan program ditulis seperti yang dicetak oleh Kementerian Kewangan (nama HURUF BESAR ditukar ke huruf biasa). Visi kementerian, outcome program, pecahan Objek Am, bilangan jawatan dan fungsi aktiviti dipetik dari buku yang sama; projek pembangunan dan Perbelanjaan Tanggungan tiada teks begini. Kotak ✨ “Dalam bahasa mudah” ditulis oleh AI berdasarkan teks buku itu sahaja.',
+    'nama kementerian dan program ditulis seperti yang dicetak oleh Kementerian Kewangan (nama HURUF BESAR ditukar ke huruf biasa). Visi kementerian, pecahan Objek Am, bilangan jawatan dan fungsi aktiviti dipetik dari buku yang sama; projek pembangunan dan Perbelanjaan Tanggungan tiada teks begini. Kotak ✨ “Dalam bahasa mudah” ditulis oleh AI berdasarkan teks buku itu sahaja.',
   srcLocked: 'Fail berkunci:',
   srcLockedBody:
     'Perbelanjaan Tanggungan (T.1–T.14): bayaran khidmat hutang, bayaran persaraan, pemberian dan serahan kepada kerajaan negeri, dan tanggungan lain di bawah Perlembagaan. Kesan ekonomi daripada potongan tidak diambil kira. Pelan anda disimpan dalam pelayar ini sahaja.',
@@ -265,9 +264,8 @@ const en: typeof ms = {
     'Subsidi dan Bantuan Tunai':
       'The book does not split this line. Tinjauan Fiskal 2027 says subsidies and social assistance (RM72.7bn, all ministries) cover the BUDI95 and BUDI Diesel fuel subsidies, cooking oil (eCOSS), Sumbangan Tunai Rahmah (STR), Sumbangan Asas Rahmah (SARA) and electricity bill aid. The Budget 2027 speech says fuel RM40bn and STR + SARA RM16bn, but that (RM56bn) is more than this line, so some of it may sit elsewhere.',
   },
-  outcome: 'Outcome (BM)',
   plainTitle: 'In plain words',
-  aiTip: "AI summary of the book's text (vision, outcome and activity functions). The original text is below.",
+  aiTip: "AI summary of the book's text (vision, outcome and activity functions).",
   whereMoney: 'Where the money goes',
   fromBook: 'Figures: MOF book',
   objek: ['Emolumen (salaries & allowances)', 'Perkhidmatan dan Bekalan (supplies & services)', 'Aset (assets)', 'Pemberian dan Kenaan Bayaran Tetap (grants & fixed charges)', 'Perbelanjaan Lain (other)'],
@@ -405,7 +403,7 @@ const en: typeof ms = {
   srcLinesBody: 'is operating (OE) plus development (DE) expenditure. Cuts apply to both by the same share.',
   srcNames: 'Names:',
   srcNamesBody:
-    'ministry and programme names are in Malay, as printed by MOF (ALL CAPS names put in normal case), in both languages. Ministry visions, programme outcomes, the Objek Am split, post counts and activity functions come from the same book (text in Malay); development projects and charged expenditure have no such text. The ✨ “In plain words” box is written by AI from that book text only.',
+    'ministry and programme names are in Malay, as printed by MOF (ALL CAPS names put in normal case), in both languages. Ministry visions, the Objek Am split, post counts and activity functions come from the same book (text in Malay); development projects and charged expenditure have no such text. The ✨ “In plain words” box is written by AI from that book text only.',
   srcLocked: 'Locked files:',
   srcLockedBody:
     'charged expenditure (T.1–T.14): debt service charges, retirement charges, grants and transfers to state governments, and other constitutional charges. No economic effects of cuts are modelled. Your plan is saved only in this browser.',
