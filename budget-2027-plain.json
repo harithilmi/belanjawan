@@ -1,0 +1,634 @@
+{
+ "B/P.14": {
+  "ms": "Kementerian yang memupuk perpaduan antara kaum, serta urus Perpustakaan Negara, Arkib Negara dan muzium.",
+  "en": "The ministry that builds unity among communities, and runs the National Library, National Archives and museums."
+ },
+ "B/P.14|Pengurusan": {
+  "ms": "Kos pejabat dan staf yang mentadbir Kementerian Perpaduan supaya perkhidmatannya berjalan dengan cekap.",
+  "en": "Covers the offices and staff who run the Unity Ministry so its services work smoothly."
+ },
+ "B/P.14|Perpaduan Negara": {
+  "ms": "Duit untuk program perpaduan masyarakat berbilang kaum, Perpustakaan Negara, Arkib Negara, dan muzium dengan pameran serta lawatan berpandu.",
+  "en": "Pays for unity programmes across communities, the National Library, National Archives, and museums with exhibitions and guided tours."
+ },
+ "B/P.42": {
+  "ms": "Kementerian yang menjalankan hospital, klinik kesihatan, pergigian dan farmasi kerajaan, serta menjaga keselamatan makanan dan kesihatan awam.",
+  "en": "The ministry that runs government hospitals, health clinics, dental and pharmacy services, and looks after food safety and public health."
+ },
+ "B/P.42|Pengurusan": {
+  "ms": "Kos pejabat yang mentadbir kementerian kesihatan: kewangan, sumber manusia, sistem ICT dan latihan staf.",
+  "en": "Office costs for running the health ministry: finance, human resources, ICT systems and staff training."
+ },
+ "B/P.42|Perubatan": {
+  "ms": "Duit untuk hospital kerajaan: wad, klinik pakar, pembedahan, bersalin, dan rawatan kecemasan termasuk ambulans dan talian 999.",
+  "en": "Pays for government hospitals: wards, specialist clinics, surgery, childbirth, and emergency care including ambulances and the 999 line."
+ },
+ "B/P.42|Kesihatan Awam": {
+  "ms": "Bayar klinik kesihatan keluarga, kawalan penyakit berjangkit, ubat dan vaksin, serta kempen pemakanan dan cara hidup sihat.",
+  "en": "Pays for family health clinics, infectious disease control, medicines and vaccines, and nutrition and healthy living campaigns."
+ },
+ "B/P.42|Kesihatan Pergigian": {
+  "ms": "Duit untuk klinik gigi kerajaan, pakar pergigian di hospital, pergigian sekolah, saringan kanser mulut dan fluorida dalam air minuman.",
+  "en": "Pays for government dental clinics, hospital dental specialists, school dental care, mouth cancer screening and fluoride in drinking water."
+ },
+ "B/P.42|Perkhidmatan Farmasi": {
+  "ms": "Kos mendaftar dan memantau ubat serta kosmetik di pasaran, tindakan ke atas produk haram, dan mendaftar ahli farmasi.",
+  "en": "Covers registering and monitoring medicines and cosmetics on sale, enforcement against illegal products, and registering pharmacists."
+ },
+ "B/P.42|Penyelidikan dan Sokongan Teknikal": {
+  "ms": "Bayar kejuruteraan fasiliti kesihatan, kawalan radiasi perubatan, kawal selia peranti perubatan dan penyelidikan untuk dasar kesihatan.",
+  "en": "Pays for health facility engineering, medical radiation control, medical device regulation and research that shapes health policy."
+ },
+ "B/P.42|Keselamatan dan Kualiti Makanan": {
+  "ms": "Kos memeriksa makanan import, tempatan dan premis makanan, mencegah keracunan makanan, dan mengawal makanan untuk eksport.",
+  "en": "Covers inspecting imported and local food and food premises, preventing food poisoning, and checking food for export."
+ },
+ "B/P.43": {
+  "ms": "Kementerian yang urus perumahan rakyat, kerajaan tempatan, sisa pepejal, taman awam dan perkhidmatan bomba.",
+  "en": "The ministry handling public housing, local councils, solid waste, public parks and the fire and rescue service."
+ },
+ "B/P.43|Pengurusan": {
+  "ms": "Kos pentadbiran, staf dan kewangan kementerian, serta institut latihan tentang perancangan bandar dan perkhidmatan perbandaran.",
+  "en": "Covers the ministry's admin, staff and finances, plus a training institute on town planning and municipal services."
+ },
+ "B/P.43|Persekitaran Bandar Mampan": {
+  "ms": "Duit untuk kutipan sampah dan pembersihan awam SWCorp, bantuan kepada majlis tempatan, perancangan bandar, taman dan Kampung Baru.",
+  "en": "Funds SWCorp rubbish collection and public cleaning, help for local councils, town planning, parks and New Villages."
+ },
+ "B/P.43|Komuniti Bandar Mampan": {
+  "ms": "Kebanyakannya untuk bomba: cegah dan padam kebakaran serta kerja menyelamat. Juga urus rumah PPR dan tribunal tuntutan pembeli rumah.",
+  "en": "Mostly pays for firefighters: preventing and fighting fires and rescue work. Also covers PPR housing and a homebuyer claims tribunal."
+ },
+ "B/P.45": {
+  "ms": "Kementerian yang membangunkan belia melalui latihan kemahiran dan program kepimpinan, serta menggalakkan sukan dan melatih atlet negara.",
+  "en": "Develops young people through skills training and leadership programmes, and promotes sport and trains national athletes."
+ },
+ "B/P.45|Pengurusan": {
+  "ms": "Kos pentadbiran kementerian, menyelenggara stadium negara, dan penyelidikan tentang belia.",
+  "en": "Covers ministry admin, running and maintaining national stadiums, and youth research."
+ },
+ "B/P.45|Pembangunan Belia dan Sukan": {
+  "ms": "Bayar latihan kemahiran TVET untuk belia, program sukarelawan dan keusahawanan, latihan atlet negara, serta sains dan perubatan sukan.",
+  "en": "Pays for TVET skills training for youth, volunteering and entrepreneurship programmes, national athlete training, and sports science and medicine."
+ },
+ "B/P.46": {
+  "ms": "Kementerian yang urus tenaga kerja negara: latihan kemahiran, sijil SKM, keselamatan di tempat kerja, hak pekerja dan kesatuan sekerja.",
+  "en": "The ministry for the national workforce: skills training, SKM certificates, workplace safety, worker rights and trade unions."
+ },
+ "B/P.46|Pengurusan": {
+  "ms": "Kos pejabat dan staf yang mentadbir Kementerian Sumber Manusia supaya perkhidmatannya berjalan.",
+  "en": "Covers the offices and staff who run the Human Resources Ministry so its services keep working."
+ },
+ "B/P.46|Pembangunan Modal Insan": {
+  "ms": "Duit untuk latihan teknikal dan vokasional (TVET) sebelum bekerja, naik taraf kemahiran pekerja, dan sijil kemahiran seperti SKM dan DKM.",
+  "en": "Pays for technical and vocational (TVET) training before work, upskilling current workers, and skills certificates like SKM and DKM."
+ },
+ "B/P.46|Pengurusan Perburuhan Negara": {
+  "ms": "Jaga keselamatan dan kesihatan di tempat kerja, lindungi pekerja swasta, selesaikan pertikaian majikan-pekerja, dan Mahkamah Perusahaan.",
+  "en": "Covers workplace safety and health, protecting private-sector workers, settling employer-worker disputes, and the Industrial Court."
+ },
+ "B/P.48": {
+  "ms": "Kementerian yang bantu wanita, keluarga dan golongan memerlukan melalui perkhidmatan kebajikan, rumah jagaan dan program keluarga.",
+  "en": "The ministry that helps women, families and people in need through welfare services, care homes and family programmes."
+ },
+ "B/P.48|Pengurusan": {
+  "ms": "Kos pejabat dan staf yang mentadbir kementerian.",
+  "en": "Office and staff costs for running the ministry."
+ },
+ "B/P.48|Kesejahteraan Wanita, Keluarga dan Masyarakat": {
+  "ms": "Kebanyakannya untuk Jabatan Kebajikan Masyarakat, juga LPPKN untuk kesihatan reproduktif, program wanita dan tribunal gangguan seksual.",
+  "en": "Mostly funds the Social Welfare Department, plus LPPKN for reproductive health, women's programmes and a sexual harassment tribunal."
+ },
+ "B/P.63": {
+  "ms": "Kementerian yang menjalankan sekolah kerajaan dari prasekolah hingga menengah, matrikulasi, latihan guru, asrama, buku teks dan biasiswa.",
+  "en": "Runs government schooling from preschool to secondary, plus matriculation, teacher training, hostels, textbooks and scholarships."
+ },
+ "B/P.63|Pengurusan": {
+  "ms": "Kos pentadbiran kementerian dan pejabat pendidikan negeri dan daerah: kewangan, staf, kaunseling, ICT, audit dan biasiswa bakal guru.",
+  "en": "Admin costs for the ministry and state and district education offices: finance, staff, counselling, ICT, audits and trainee-teacher scholarships."
+ },
+ "B/P.63|Dasar, Penilaian dan Pengurusan Prestasi": {
+  "ms": "Kerja merangka dasar pendidikan negara supaya jelas dan boleh dilaksanakan di sekolah.",
+  "en": "Covers drafting national education policy so it is clear and workable in schools."
+ },
+ "B/P.63|Operasi Pendidikan": {
+  "ms": "Duit untuk menjalankan sekolah rendah, sekolah menengah hingga tingkatan enam, prasekolah dan program persediaan lepasan SPM.",
+  "en": "Pays for running primary schools, secondary schools up to Form Six, preschools and post-SPM preparatory programmes."
+ },
+ "B/P.63|Pengukuhan Operasi Pendidikan": {
+  "ms": "Bayar buku teks dan skim pinjamannya, sukatan pelajaran, peperiksaan termasuk STPM, pemeriksaan sekolah dan Dewan Bahasa dan Pustaka.",
+  "en": "Pays for textbooks and the textbook loan scheme, the syllabus, exams including STPM, school inspections and Dewan Bahasa dan Pustaka."
+ },
+ "B/P.63|Pembangunan Profesionalisme": {
+  "ms": "Kos melatih bakal guru, serta kursus dan program kepimpinan untuk guru dan pengetua yang sudah berkhidmat.",
+  "en": "Covers training new teachers, plus courses and leadership programmes for serving teachers and school leaders."
+ },
+ "B/P.64": {
+  "ms": "Kementerian yang membiayai universiti awam, politeknik, kolej komuniti, hospital pengajar universiti dan biasiswa penyelidikan.",
+  "en": "The ministry that funds public universities, polytechnics, community colleges, university teaching hospitals and research scholarships."
+ },
+ "B/P.64|Pengurusan": {
+  "ms": "Kos pentadbiran kementerian, termasuk agensi MQA yang mengiktiraf kualiti kursus dan program latihan pemimpin universiti.",
+  "en": "Covers running the ministry, including MQA, which accredits course quality, and leadership training for university leaders."
+ },
+ "B/P.64|Pendidikan Tinggi": {
+  "ms": "Duit operasi universiti awam seperti UiTM, UM, USM, UKM dan UPM untuk mengajar pelajar dan menjalankan penyelidikan.",
+  "en": "Pays the running costs of public universities such as UiTM, UM, USM, UKM and UPM for teaching students and doing research."
+ },
+ "B/P.64|Hospital Pengajar": {
+  "ms": "Bayar hospital universiti seperti PPUM dan HCTM yang merawat pesakit sambil melatih doktor dan petugas kesihatan.",
+  "en": "Pays for university hospitals such as PPUM and HCTM, which treat patients while training doctors and health workers."
+ },
+ "B/P.64|Pendidikan dan Latihan Teknikal dan Vokasional (TVET)": {
+  "ms": "Duit untuk institusi latihan teknikal dan vokasional (TVET) yang mengajar kemahiran kerja.",
+  "en": "Pays for technical and vocational training (TVET) institutions that teach job skills."
+ },
+ "B/P.15": {
+  "ms": "Kementerian yang merancang pembangunan ekonomi negara, menghasilkan statistik rasmi dan menyelaras pembangunan wilayah koridor.",
+  "en": "Plans the country's economic development, produces official statistics and coordinates the regional economic corridors."
+ },
+ "B/P.15|Pengurusan": {
+  "ms": "Kos pejabat dan staf yang mentadbir kementerian.",
+  "en": "Office and staff costs for running the ministry."
+ },
+ "B/P.15|Perancangan Pembangunan Nasional": {
+  "ms": "Bayar Jabatan Perangkaan untuk data dan statistik rasmi, serta kerja merancang ekonomi dan membahagikan peruntukan projek pembangunan.",
+  "en": "Pays the statistics department for official data, plus economic planning and deciding how development project money is shared out."
+ },
+ "B/P.15|Pembangunan Ekonomi Wilayah Koridor": {
+  "ms": "Duit untuk badan yang memajukan wilayah koridor utara, Iskandar, Pantai Timur, SCORE di Sarawak dan Sabah dengan menarik pelaburan.",
+  "en": "Funds the bodies developing the northern corridor, Iskandar, the East Coast, Sarawak's SCORE and Sabah by drawing in investment."
+ },
+ "B/P.20": {
+  "ms": "Kementerian yang memajukan industri sawit, getah, kayu, koko, lada, kenaf dan tembakau melalui lembaga-lembaganya.",
+  "en": "The ministry that develops the palm oil, rubber, timber, cocoa, pepper, kenaf and tobacco industries through its boards."
+ },
+ "B/P.20|Pengurusan": {
+  "ms": "Kos pejabat dan staf yang mentadbir kementerian perladangan dan komoditi.",
+  "en": "Office and staff costs for running the plantation and commodities ministry."
+ },
+ "B/P.20|Pembangunan Agrikomoditi": {
+  "ms": "Bayar lembaga koko, kayu, lada, kenaf dan tembakau untuk memajukan, memasarkan dan mengawal selia industri masing-masing.",
+  "en": "Pays the cocoa, timber, pepper, kenaf and tobacco boards to grow, market and regulate their industries."
+ },
+ "B/P.21": {
+  "ms": "Kementerian yang menjaga bekalan makanan negara: tanaman, padi, ternakan, perikanan, pengairan sawah, kuarantin dan pemasaran hasil tani.",
+  "en": "Looks after the country's food supply: crops, rice, livestock, fisheries, paddy irrigation, quarantine and farm produce marketing."
+ },
+ "B/P.21|Pengurusan": {
+  "ms": "Kos pejabat yang mentadbir kementerian, merancang dasar pertanian dan menyimpan statistik pertanian.",
+  "en": "Office costs for running the ministry, planning farm policy and keeping agricultural statistics."
+ },
+ "B/P.21|Bekalan Makanan Negara": {
+  "ms": "Duit untuk penyelidikan tanaman, khidmat kepada petani, nelayan dan penternak, kawalan penyakit haiwan, industri padi dan kuarantin di pintu masuk.",
+  "en": "Pays for crop research, support for farmers, fishers and livestock breeders, animal disease control, the rice industry and border quarantine."
+ },
+ "B/P.21|Industri Agromakanan dan Keusahawanan Tani": {
+  "ms": "Bantu usahawan tani menjual hasil melalui FAMA, majukan industri nanas, latihan kemahiran pertanian dan produk makanan hiliran.",
+  "en": "Helps agri-entrepreneurs sell produce through FAMA, grows the pineapple industry, and funds farm skills training and processed food products."
+ },
+ "B/P.22": {
+  "ms": "Kementerian untuk kawasan luar bandar: jalan kampung, bekalan air dan elektrik, lampu jalan, tadika KEMAS, MARA, RISDA dan bantuan Orang Asli.",
+  "en": "The ministry for rural areas: village roads, water and power supply, street lights, KEMAS preschools, MARA, RISDA and help for Orang Asli communities."
+ },
+ "B/P.22|Pengurusan": {
+  "ms": "Kos pejabat yang mentadbir kementerian: kewangan, sumber manusia, ICT, perolehan, aduan awam dan penyelarasan dasar latihan kemahiran (TVET).",
+  "en": "Runs the ministry's offices: finance, staff, ICT, purchasing, public complaints and coordinating skills training (TVET) policy."
+ },
+ "B/P.22|Pembangunan Infrastruktur dan Kemudahan Asas": {
+  "ms": "Duit untuk lembaga kemajuan wilayah seperti KETENGAH, KESEDAR, KEJORA, KEDA dan PERDA yang membangunkan perumahan, industri dan kemudahan di kawasan mereka.",
+  "en": "Funds regional development boards like KETENGAH, KESEDAR, KEJORA, KEDA and PERDA that build housing, industry and facilities in their areas."
+ },
+ "B/P.22|Pengupayaan Ekonomi Luar Bandar": {
+  "ms": "Kebanyakannya untuk MARA, juga RISDA bagi pekebun kecil getah, JAKOA untuk kampung Orang Asli, dan bantuan usahawan desa memulakan perniagaan.",
+  "en": "Mostly goes to MARA, plus RISDA for rubber smallholders, JAKOA for Orang Asli villages, and help for rural entrepreneurs starting businesses."
+ },
+ "B/P.22|Pembangunan Modal Insan dan Pendidikan": {
+  "ms": "Bayar KEMAS yang mengendalikan pendidikan awal kanak-kanak luar bandar, serta latihan INFRA untuk pemimpin kampung dan pengurusan jawatankuasa kampung.",
+  "en": "Pays for KEMAS, which runs early childhood education in rural areas, plus INFRA training for village leaders and village committee management."
+ },
+ "B/P.23": {
+  "ms": "Kementerian yang jaga sumber asli dan alam sekitar: tanah, ukur dan peta, mineral, hutan, hidupan liar, pencemaran dan cuaca.",
+  "en": "The ministry looking after natural resources and the environment: land, surveying and maps, minerals, forests, wildlife, pollution and weather."
+ },
+ "B/P.23|Pengurusan": {
+  "ms": "Kos pentadbiran kementerian serta perancangan dasar untuk mineral, tanah, ukur, peta, data geospatial, hutan dan biodiversiti.",
+  "en": "Covers ministry admin plus policy planning for minerals, land, surveying, maps, geospatial data, forests and biodiversity."
+ },
+ "B/P.23|Pengurusan Geologi dan Tanah": {
+  "ms": "Bayar kerja ukur tanah dan peta, ambil tanah untuk projek, urus pusaka kecil, cari mineral, serta kira waktu solat dan arah kiblat.",
+  "en": "Pays for land surveys and maps, acquiring land for projects, small estate inheritance, mineral exploration, and prayer times and qibla tables."
+ },
+ "B/P.23|Pengurusan Hutan dan Biodiversiti": {
+  "ms": "Duit untuk PERHILITAN, penyelidikan hutan FRIM dan Jabatan Perhutanan: jaga hidupan liar, taman negara dan hutan simpan.",
+  "en": "Funds PERHILITAN, FRIM forest research and the Forestry Department: protecting wildlife, national parks and forest reserves."
+ },
+ "B/P.23|Pengurusan Alam Sekitar dan Perubahan Iklim": {
+  "ms": "Kawal pencemaran, nilai laporan EIA, urus buangan terjadual, beri ramalan cuaca serta amaran gempa bumi dan tsunami.",
+  "en": "Controls pollution, reviews environmental impact reports, manages scheduled waste, and gives weather forecasts plus earthquake and tsunami alerts."
+ },
+ "B/P.24": {
+  "ms": "Kementerian yang menarik pelaburan, menggalakkan eksport dan perdagangan antarabangsa, dan membangunkan industri serta kilang tempatan.",
+  "en": "Attracts investment, promotes exports and international trade, and develops local industry and manufacturing."
+ },
+ "B/P.24|Pengurusan": {
+  "ms": "Kos pejabat dan staf yang mentadbir kementerian: kewangan, sumber manusia, ICT, undang-undang, media dan perancangan.",
+  "en": "Office and staff costs for running the ministry: finance, HR, ICT, legal, media and planning."
+ },
+ "B/P.24|Pembangunan Industri dan Daya Saing": {
+  "ms": "Kos meningkatkan produktiviti syarikat, menetapkan standard, mengurus lesen import dan eksport, dan dasar untuk sektor kilang.",
+  "en": "Covers boosting company productivity, setting standards, handling import and export licences, and policy for manufacturing."
+ },
+ "B/P.24|Pengukuhan Perdagangan Antarabangsa": {
+  "ms": "Duit untuk promosi eksport melalui MATRADE, rundingan perjanjian perdagangan bebas, hubungan ASEAN dan melindungi industri tempatan daripada lambakan.",
+  "en": "Pays for export promotion via MATRADE, free trade deal talks, ASEAN ties and shielding local industry from dumping."
+ },
+ "B/P.24|Pengukuhan Pelaburan Berkualiti": {
+  "ms": "Bayar MIDA untuk menarik pelabur asing dan tempatan ke sektor kilang dan perkhidmatan, serta urus insentif pelaburan.",
+  "en": "Pays MIDA to bring foreign and local investors into manufacturing and services, and manages investment incentives."
+ },
+ "B/P.25": {
+  "ms": "Kementerian yang mengawal harga dan bekalan barang, melindungi pengguna, menguruskan subsidi minyak, dan menangani kos sara hidup.",
+  "en": "The ministry that watches prices and supply of goods, protects consumers, handles fuel subsidies and tackles the cost of living."
+ },
+ "B/P.25|Pengurusan": {
+  "ms": "Kos pejabat KPDN di setiap negeri dan ibu pejabat: penguatkuasaan, kewangan, ICT, sumber manusia, audit, integriti dan komunikasi.",
+  "en": "Runs KPDN's state and head offices: enforcement, finance, ICT, staff, audits, integrity and communications."
+ },
+ "B/P.25|Pembangunan Perdagangan Dalam Negeri": {
+  "ms": "Duit untuk penguatkuasa yang memeriksa peniaga, kawalan petrol, diesel, minyak masak dan gula bersubsidi, aplikasi Price Catcher dan Food Bank.",
+  "en": "Pays enforcement officers who check traders, controls on subsidised petrol, diesel, cooking oil and sugar, the Price Catcher app and food banks."
+ },
+ "B/P.25|Pemerkasaan Pengguna": {
+  "ms": "Bayar pendidikan pengguna, khidmat nasihat aduan, standard keselamatan barang, dan Tribunal Tuntutan Pengguna untuk tuntut ganti rugi secara murah dan cepat.",
+  "en": "Pays for consumer education, complaint advice, product safety standards, and the Consumer Claims Tribunal for cheap, quick refund claims."
+ },
+ "B/P.26": {
+  "ms": "Kementerian yang membantu usahawan dan koperasi: pembiayaan PKS, TEKUN, kontraktor Bumiputera, industri halal dan latihan keusahawanan.",
+  "en": "The ministry that helps entrepreneurs and cooperatives: small business financing, TEKUN, Bumiputera contractors, halal industry and business training."
+ },
+ "B/P.26|Pengurusan": {
+  "ms": "Kos pejabat dan staf kementerian: pentadbiran am, sistem dan keselamatan ICT, serta sumber manusia.",
+  "en": "Runs the ministry's offices: general admin, ICT systems and security, and staff management."
+ },
+ "B/P.26|Pembangunan Usahawan": {
+  "ms": "Bayar SME Corp yang memberi nasihat dan program untuk perniagaan kecil, Pusat Khidmat Kontraktor untuk Sijil Taraf Bumiputera, dan program vendor halal.",
+  "en": "Pays SME Corp for small business advice and programmes, the Contractor Service Centre for Bumiputera status certificates, and halal vendor programmes."
+ },
+ "B/P.26|Pembangunan Koperasi": {
+  "ms": "Duit untuk Suruhanjaya Koperasi yang memajukan koperasi, dan Institut Koperasi yang melatih ahli serta pengurus koperasi.",
+  "en": "Funds the Cooperative Commission that grows cooperatives, and the Cooperative Institute that trains cooperative members and managers."
+ },
+ "B/P.27": {
+  "ms": "Kementerian yang membina dan menjaga jalan, jambatan, Lebuhraya Pan Borneo dan bangunan kerajaan, serta memajukan industri pembinaan negara.",
+  "en": "The ministry that builds and maintains roads, bridges, the Pan Borneo Highway and government buildings, and grows the country's construction industry."
+ },
+ "B/P.27|Pengurusan": {
+  "ms": "Kos pejabat JKR dan kementerian: dasar projek, kewangan, sumber manusia, ICT, nasihat undang-undang, latihan jurutera dan nasihat teknikal pembinaan.",
+  "en": "Runs the JKR and ministry offices: project policy, finance, staff, ICT, legal advice, engineer training and technical advice on construction."
+ },
+ "B/P.27|Pembangunan Infrastruktur Jalan dan Pembangunan Industri Pembinaan": {
+  "ms": "Bayar jurutera yang merancang dan menyelia pembinaan jalan dan jambatan, kerja geoteknik, serta memantau kontraktor penyelenggaraan jalan yang diswastakan.",
+  "en": "Pays engineers who plan and supervise road and bridge building, do geotechnical work, and check on privatised road maintenance contractors."
+ },
+ "B/P.27|Pembinaan Infrastruktur Bangunan": {
+  "ms": "Pasukan JKR yang mereka dan membina bangunan kerajaan seperti sekolah, hospital dan premis keselamatan: arkitek, elektrik, mekanikal, struktur dan kontrak.",
+  "en": "JKR teams that design and build government buildings like schools, hospitals and security sites: architects, electrical, mechanical, structural and contract work."
+ },
+ "B/P.27|Penyelenggaraan Aset Tak Alih": {
+  "ms": "Duit untuk menyenggara bangunan kerajaan dan jalan persekutuan, menjaga cerun daripada tanah runtuh, serta kerja JKR di Kuala Lumpur, Putrajaya dan Labuan.",
+  "en": "Pays to maintain government buildings and federal roads, guard slopes against landslides, and fund JKR work in Kuala Lumpur, Putrajaya and Labuan."
+ },
+ "B/P.28": {
+  "ms": "Kementerian yang menjaga pengangkutan darat, laut dan udara: lesen kenderaan, keselamatan jalan raya, kereta api, pelabuhan dan lapangan terbang.",
+  "en": "Oversees land, sea and air transport: vehicle licensing, road safety, railways, ports and airports."
+ },
+ "B/P.28|Pengurusan": {
+  "ms": "Kos pejabat kementerian: kewangan, akaun, staf, ICT, dasar pengangkutan udara, darat dan laut, siasatan nahas udara dan logistik.",
+  "en": "Ministry office costs: finance, accounts, staff, ICT, air, land and sea transport policy, air crash investigations and logistics."
+ },
+ "B/P.28|Perkhidmatan Pengangkutan": {
+  "ms": "Duit untuk urusan jalan raya: daftar kenderaan, lesen dan ujian memandu, penguatkuasaan, serta keselamatan laut dan lesen kenderaan perdagangan.",
+  "en": "Pays for road transport work: vehicle registration, driving tests and licences, road enforcement, plus maritime safety and commercial vehicle licences."
+ },
+ "B/P.30": {
+  "ms": "Kementerian yang memajukan sains dan teknologi negara: penyelidikan, agensi angkasa dan nuklear, makmal kimia, serta membantu penemuan baharu dijual di pasaran.",
+  "en": "The ministry that pushes science and technology: research, the space and nuclear agencies, the chemistry lab, and helping new inventions reach the market."
+ },
+ "B/P.30|Pengurusan": {
+  "ms": "Kos pejabat dan staf yang mentadbir kementerian sains, teknologi dan inovasi.",
+  "en": "Covers the office and staff that run the science, technology and innovation ministry."
+ },
+ "B/P.30|Perancangan dan Pembudayaan Sains": {
+  "ms": "Duit untuk Pusat Sains Negara, Planetarium Negara, Minggu Sains Negara dan program sains ke luar bandar, serta kawal selia lesen objek angkasa.",
+  "en": "Funds the National Science Centre, the National Planetarium, National Science Week and rural science outreach, plus licensing of space objects."
+ },
+ "B/P.30|Pembangunan Teknologi": {
+  "ms": "Bayar makmal Jabatan Kimia untuk siasatan polis dan kesihatan awam, Agensi Nuklear, Agensi Angkasa, kawalan keselamatan sinaran dan bantuan teknologi untuk IKS.",
+  "en": "Pays the Chemistry Department labs for police and public health work, the nuclear and space agencies, radiation safety control and tech help for small firms."
+ },
+ "B/P.31": {
+  "ms": "Kementerian yang promosi Malaysia kepada pelancong dan jaga seni, budaya, kraftangan dan warisan negara.",
+  "en": "The ministry that promotes Malaysia to tourists and looks after the country's arts, culture, crafts and heritage."
+ },
+ "B/P.31|Pengurusan": {
+  "ms": "Kos pejabat kementerian dan pejabat negerinya: kewangan, akaun, ICT, staf, serta urusan homestay dan lesen pelancongan di peringkat negeri.",
+  "en": "Office costs for the ministry and its state offices: finance, accounts, ICT, staff, plus homestay and tourism licensing at state level."
+ },
+ "B/P.31|Pembangunan dan Promosi Pelancongan": {
+  "ms": "Kebanyakannya untuk Tourism Malaysia (LPPM) promosi negara, juga pusat pelancong, lesen syarikat pelancongan dan program MM2H.",
+  "en": "Mostly funds Tourism Malaysia (LPPM) to promote the country, plus the tourist centre, tour operator licences and the MM2H programme."
+ },
+ "B/P.31|Pembangunan dan Promosi Kebudayaan": {
+  "ms": "Duit untuk kraftangan, Istana Budaya, akademi seni ASWARA, lembaga seni visual dan pemuliharaan warisan negara.",
+  "en": "Funds handicrafts, Istana Budaya, the ASWARA arts academy, the national visual arts board and heritage conservation."
+ },
+ "B/P.33": {
+  "ms": "Kementerian untuk bekalan elektrik dan air: tenaga boleh baharu, empangan, tebatan banjir, sungai, sistem pembetungan dan projek air setiap negeri.",
+  "en": "The ministry for power and water: renewable energy, dams, flood control, rivers, sewerage and water supply projects in each state."
+ },
+ "B/P.33|Pengurusan": {
+  "ms": "Kos pejabat dan staf yang mentadbir kementerian tenaga dan air.",
+  "en": "Covers the office and staff that run the energy and water ministry."
+ },
+ "B/P.33|Pengurusan Tenaga": {
+  "ms": "Pegawai yang menggubal dasar bekalan elektrik yang selamat dan cekap, serta menggalakkan tenaga boleh baharu dan penjimatan tenaga.",
+  "en": "Pays officers who set policy for safe, efficient electricity supply and promote renewable energy and saving power."
+ },
+ "B/P.33|Pengurusan Air dan Pembetungan": {
+  "ms": "Duit untuk JPS yang mengurangkan banjir dan pencemaran sungai, bekalan air bersih Labuan, sistem pembetungan dan penyelidikan air NAHRIM.",
+  "en": "Funds JPS to cut flooding and river pollution, clean water supply in Labuan, sewerage systems and NAHRIM water research."
+ },
+ "B/P.47": {
+  "ms": "Kementerian yang mahu Malaysia terhubung dan berinformasi: RTM, BERNAMA, FINAS, maklumat kerajaan, jalur lebar dan talian kecemasan 999.",
+  "en": "The ministry for a connected, informed Malaysia: RTM, BERNAMA, FINAS, government information, broadband and the 999 emergency line."
+ },
+ "B/P.47|Pengurusan": {
+  "ms": "Kos pejabat yang mentadbir kementerian: kewangan, akaun, sumber manusia, ICT, audit dalam, aset dan kenderaan.",
+  "en": "Covers the office running the ministry: finance, accounts, staff, ICT, internal audit, assets and vehicles."
+ },
+ "B/P.47|Komunikasi Strategik dan Industri Kreatif": {
+  "ms": "Duit untuk siaran RTM, berita BERNAMA, industri filem FINAS, penerangan dasar kerajaan kepada rakyat, dan latihan pengamal media.",
+  "en": "Pays for RTM broadcasts, BERNAMA news, FINAS film industry support, explaining government policy to the public, and media training."
+ },
+ "B/P.47|Infrastruktur dan Telekomunikasi": {
+  "ms": "Rancang jalur lebar gentian optik dekat sekolah dan kawasan penduduk, rangkaian 5G, kabel dasar laut dan sistem kecemasan 999.",
+  "en": "Plans fibre broadband near schools and populated areas, the 5G network, undersea cables and the 999 emergency system."
+ },
+ "B/P.50": {
+  "ms": "Kementerian yang terajui pendigitalan negara: perkhidmatan kerajaan dalam talian, ekonomi digital dan perlindungan data peribadi.",
+  "en": "The ministry leading Malaysia's digital push: online government services, the digital economy and personal data protection."
+ },
+ "B/P.50|Pengurusan": {
+  "ms": "Kos pentadbiran kementerian: staf, kewangan, perolehan, ICT, hubungan antarabangsa dan makmal untuk uji teknologi baharu.",
+  "en": "Admin costs for the ministry: staff, finance, purchasing, ICT, international ties and a lab for testing new technology."
+ },
+ "B/P.50|Pembangunan Digital": {
+  "ms": "Bayar projek digital kerajaan merentas agensi, penguatkuasaan akta perlindungan data peribadi, latihan kemahiran digital dan kesedaran keselamatan siber.",
+  "en": "Pays for cross-agency government digital projects, enforcing the personal data protection law, digital skills training and cybersecurity awareness."
+ },
+ "B/P.60": {
+  "ms": "Kementerian yang membiayai Angkatan Tentera Malaysia (darat, laut, udara), bangunan dan kelengkapan tentera, serta hal ehwal veteran.",
+  "en": "The ministry that funds the Malaysian Armed Forces (army, navy, air force), military buildings and equipment, and veterans' affairs."
+ },
+ "B/P.60|Pengurusan": {
+  "ms": "Kos mentadbir kementerian pertahanan, termasuk membayar faedah persaraan veteran tentera dan program kerjaya kedua mereka.",
+  "en": "Covers running the defence ministry, including paying retired soldiers' benefits and second-career programmes for veterans."
+ },
+ "B/P.60|Pertahanan Negara": {
+  "ms": "Duit untuk tentera darat, laut dan udara supaya sentiasa bersiap siaga mempertahankan sempadan dan perairan negara.",
+  "en": "Pays for the army, navy and air force to stay ready to defend the country's land, waters and airspace."
+ },
+ "B/P.62": {
+  "ms": "Kementerian yang menjaga keselamatan negara melalui polis, imigresen, pendaftaran negara, penjara, RELA dan agensi antidadah.",
+  "en": "The ministry that keeps the country safe through the police, immigration, national registration, prisons, RELA and the anti-drug agency."
+ },
+ "B/P.62|Pengurusan": {
+  "ms": "Kos merancang dasar keselamatan dalam negeri dan mentadbir kementerian: kewangan, staf, perolehan dan aset.",
+  "en": "Covers planning internal security policy and running the ministry: finance, staff, procurement and assets."
+ },
+ "B/P.62|Keselamatan Dalam Negeri dan Ketenteraman Awam": {
+  "ms": "Sebahagian besar untuk polis mencegah jenayah dan menangkap penjenayah, juga penguatkuasaan maritim, RELA dan ESSCOM di Sabah Timur.",
+  "en": "Mostly pays the police to prevent crime and catch criminals, plus maritime enforcement, RELA volunteers and ESSCOM in eastern Sabah."
+ },
+ "B/P.62|Pengurusan Pendaftaran, Imigresen, Kawalan Sempadan dan Pintu Masuk": {
+  "ms": "Bayar urusan pasport, visa, kad pengenalan, sijil lahir dan kahwin, pemeriksaan di sempadan dan pendaftaran pertubuhan.",
+  "en": "Pays for passports, visas, identity cards, birth and marriage records, border checks and registering societies."
+ },
+ "B/P.62|Pencegahan, Rawatan dan Pemulihan": {
+  "ms": "Kos menjalankan penjara dan program pemulihan banduan, serta pemulihan dan kesedaran tentang bahaya dadah.",
+  "en": "Covers running prisons and rehabilitation for inmates, plus drug rehab programmes and awareness about drug abuse."
+ },
+ "B.1": {
+  "ms": "Parlimen Malaysia, tempat undang-undang negara dibahas dan diluluskan oleh Ahli Parlimen.",
+  "en": "Malaysia's Parliament, where Members of Parliament debate and pass the country's laws."
+ },
+ "B.1|Urusan Parlimen": {
+  "ms": "Kos persidangan Parlimen supaya berjalan lancar, pentadbiran, keselamatan, ICT, dan lawatan rasmi Ahli Parlimen ke luar negara.",
+  "en": "Covers running Parliament sittings smoothly, plus admin, security, ICT, and official overseas visits by MPs."
+ },
+ "B.2": {
+  "ms": "Pejabat kecil yang menjadi penghubung antara istana Raja-Raja negeri dengan Kerajaan Persekutuan.",
+  "en": "A small office that links the state royal palaces with the Federal Government."
+ },
+ "B.3": {
+  "ms": "Jabatan bebas yang memeriksa akaun dan perbelanjaan kerajaan, agensi dan syarikat kerajaan.",
+  "en": "An independent office that checks the accounts and spending of government, its agencies and government-linked companies."
+ },
+ "B.3|Pengurusan": {
+  "ms": "Kos pentadbiran jabatan audit dan akademi yang melatih pegawai audit.",
+  "en": "Covers running the audit department and the academy that trains its auditors."
+ },
+ "B.3|Pengauditan": {
+  "ms": "Kerja mengaudit penyata kewangan dan akaun kerajaan negeri, menilai sama ada projek kerajaan berbaloi, dan memeriksa syarikat yang guna wang awam.",
+  "en": "Audits financial statements and state government accounts, checks whether government projects deliver, and inspects companies using public money."
+ },
+ "B.4": {
+  "ms": "Suruhanjaya yang mendaftar pengundi dan menjalankan pilihan raya umum dan pilihan raya kecil.",
+  "en": "The commission that registers voters and runs general elections and by-elections."
+ },
+ "B.4|Pengurusan": {
+  "ms": "Kos pentadbiran SPR, sistem ICT dan pangkalan data pengundi, penyelidikan pilihan raya, dan latihan petugas pilihan raya.",
+  "en": "Covers election commission admin, ICT and voter databases, election research, and training election workers."
+ },
+ "B.4|Pilihan Raya": {
+  "ms": "Duit untuk pejabat pilihan raya negeri, pendaftaran pengundi, menjalankan pilihan raya, menyemak sempadan kawasan dan memantau kempen.",
+  "en": "Pays for state election offices, voter registration, running elections, reviewing constituency boundaries and monitoring campaigns."
+ },
+ "B.5": {
+  "ms": "Badan yang mengambil dan melantik penjawat awam, serta menguruskan kenaikan pangkat dan tindakan tatatertib mereka.",
+  "en": "The body that recruits and appoints civil servants, and handles their promotions and disciplinary action."
+ },
+ "B.5|Pengurusan": {
+  "ms": "Kos pejabat suruhanjaya: kewangan, sumber manusia, sistem ICT dan portal, perancangan dasar dan urusan mesyuarat suruhanjaya.",
+  "en": "Runs the commission's office: finance, staff, ICT systems and portal, policy planning and commission meetings."
+ },
+ "B.5|Pengambilan": {
+  "ms": "Kerja memilih dan melantik calon untuk menjadi pegawai kerajaan.",
+  "en": "Covers the work of selecting and appointing candidates as government officers."
+ },
+ "B.5|Perkhidmatan": {
+  "ms": "Urusan penjawat awam selepas dilantik: pengesahan jawatan, gaji permulaan, taraf berpencen, kenaikan pangkat dan tatatertib, termasuk di Sabah dan Sarawak.",
+  "en": "Handles civil servants after hiring: job confirmation, starting pay, pension status, promotions and discipline, including in Sabah and Sarawak."
+ },
+ "B/P.6": {
+  "ms": "Jabatan di bawah Perdana Menteri: menyelaras pembangunan negara, keselamatan, mahkamah, hal ehwal Islam, integriti dan Wilayah Persekutuan.",
+  "en": "The Prime Minister's Department: coordinates national development, security, courts, Islamic affairs, integrity and the Federal Territories."
+ },
+ "B/P.6|Pengurusan": {
+  "ms": "Kos pentadbiran jabatan, kuarters dan pejabat kakitangan awam, urusan Kabinet, hal Sabah dan Sarawak, serta acara rasmi seperti Hari Kebangsaan.",
+  "en": "Covers department admin, civil servant quarters and offices, Cabinet business, Sabah and Sarawak affairs, and official events like National Day."
+ },
+ "B/P.6|Penyelarasan Pembangunan Nasional": {
+  "ms": "Pantau projek pembangunan Rancangan Malaysia dan projek khas Perdana Menteri, serta urus projek kerjasama kerajaan dengan swasta.",
+  "en": "Tracks Malaysia Plan development projects and the Prime Minister's special projects, and manages public-private partnership projects."
+ },
+ "B/P.6|Pengurusan Keselamatan": {
+  "ms": "Duit untuk Angkatan Pertahanan Awam, Majlis Keselamatan Negara dan NADMA: bantu mangsa bencana, latih rakyat hadapi kecemasan, dan lindungi rahsia kerajaan.",
+  "en": "Funds the Civil Defence Force, National Security Council and NADMA: disaster help, emergency training for the public, and protecting government secrets."
+ },
+ "B/P.6|Pengurusan Kehakiman dan Perundangan": {
+  "ms": "Bayar mahkamah sivil dan syariah, penggubalan undang-undang, latihan hakim dan pegawai undang-undang, serta program perlindungan saksi.",
+  "en": "Pays for civil and syariah courts, drafting laws, training judges and legal officers, and the witness protection programme."
+ },
+ "B/P.6|Kemajuan Islam": {
+  "ms": "Duit untuk JAKIM, JAWI, MAIWP dan Mufti Wilayah: urus undang-undang syarak, pendidikan Islam, fatwa dan tauliah mengajar agama.",
+  "en": "Funds JAKIM, JAWI, MAIWP and the Federal Territory Mufti: syariah law, Islamic education, fatwas and religious teaching permits."
+ },
+ "B/P.6|Pengurusan Integriti": {
+  "ms": "Terima dan urus aduan orang ramai tentang perkhidmatan kerajaan dan salah laku pegawai penguat kuasa, serta latihan antirasuah.",
+  "en": "Handles public complaints about government services and misconduct by enforcement officers, plus anti-corruption training."
+ },
+ "B/P.6|Pengurusan Wilayah Persekutuan": {
+  "ms": "Bangunkan Kuala Lumpur, Putrajaya dan Labuan: jalan, parit, taman awam, pusat komuniti, urusan tanah, sukan dan Kampong Bharu.",
+  "en": "Develops Kuala Lumpur, Putrajaya and Labuan: roads, drains, public parks, community centres, land matters, sports and Kampong Bharu."
+ },
+ "B/P.7": {
+  "ms": "Jabatan yang urus pekerja kerajaan: pengambilan, latihan, gaji, kenaikan pangkat, pencen dan biasiswa JPA.",
+  "en": "The department managing government workers: hiring, training, pay, promotions, pensions and JPA scholarships."
+ },
+ "B/P.7|Pengurusan": {
+  "ms": "Kos pentadbiran JPA serta sistem digital yang menyimpan rekod dan urusan sumber manusia semua agensi kerajaan.",
+  "en": "Covers JPA admin and the digital systems holding staff records and HR work for all government agencies."
+ },
+ "B/P.7|Pembangunan Sumber Manusia": {
+  "ms": "Latih pegawai awam di INTAN, urus program tajaan dan latihan, kutip balik pinjaman, dan rancang pembaharuan perkhidmatan awam.",
+  "en": "Trains civil servants at INTAN, runs sponsorship and training schemes, collects loan repayments, and plans civil service reform."
+ },
+ "B/P.7|Pengurusan Sumber Manusia": {
+  "ms": "Tetapkan jawatan, gaji, elaun, kenaikan pangkat dan tatatertib pegawai awam, luluskan pencen, dan sediakan khidmat psikologi.",
+  "en": "Sets civil servant posts, pay, allowances, promotions and discipline, approves pensions, and provides psychology services."
+ },
+ "B.8": {
+  "ms": "Pejabat peguam kerajaan: gubal undang-undang, dakwa penjenayah di mahkamah, wakili kerajaan dalam kes saman dan beri nasihat undang-undang.",
+  "en": "The government's lawyers: drafting laws, prosecuting criminals in court, representing the government in lawsuits and giving legal advice."
+ },
+ "B.8|Pengurusan": {
+  "ms": "Kos pentadbiran jabatan dan pejabat penasihat undang-undang di setiap negeri yang kendali nasihat, kes jenayah dan saman.",
+  "en": "Covers the department's admin and the state legal adviser offices that handle advice, criminal cases and civil suits."
+ },
+ "B.8|Perundangan": {
+  "ms": "Bayar kerja menggubal dan menyemak undang-undang, cetak semula akta, dan terjemah undang-undang lama ke Bahasa Melayu.",
+  "en": "Pays for drafting and revising laws, reprinting acts, and translating old laws from English into Malay."
+ },
+ "B.8|Litigasi": {
+  "ms": "Duit untuk peguam kerajaan dakwa kes jenayah di mahkamah, kendali rayuan, dan wakili kerajaan dalam kes saman.",
+  "en": "Funds government lawyers prosecuting criminal cases in court, handling appeals, and representing the government in civil suits."
+ },
+ "B.8|Penasihat": {
+  "ms": "Beri nasihat undang-undang kepada kerajaan, termasuk undang-undang antarabangsa, perjanjian dengan negara lain dan undang-undang syariah.",
+  "en": "Gives the government legal advice, including on international law, treaties with other countries and syariah law."
+ },
+ "B.9": {
+  "ms": "SPRM: agensi yang menyiasat dan mendakwa rasuah, serta mendidik orang ramai untuk mencegahnya.",
+  "en": "MACC: the agency that investigates and prosecutes corruption, and teaches the public how to prevent it."
+ },
+ "B.9|Pengurusan": {
+  "ms": "Kos pejabat SPRM di ibu pejabat dan negeri: pentadbiran, kewangan, keselamatan dan akademi latihan pegawai.",
+  "en": "Office costs for MACC headquarters and state offices: administration, finance, security and the officer training academy."
+ },
+ "B.9|Operasi": {
+  "ms": "Bayar kerja risikan, siasatan rasuah, forensik kewangan, kes pengubahan wang haram dan pendakwaan di mahkamah.",
+  "en": "Pays for intelligence work, corruption investigations, financial forensics, money laundering cases and prosecution in court."
+ },
+ "B.9|Pencegahan": {
+  "ms": "Kos mendidik orang ramai melawan rasuah dan memeriksa cara kerja agensi kerajaan untuk menutup ruang rasuah.",
+  "en": "Covers teaching the public to fight corruption and checking how government agencies work to close gaps for bribery."
+ },
+ "B/P.10": {
+  "ms": "Kementerian Kewangan: urus bajet negara, cukai, kastam, perolehan kerajaan, perakaunan awam dan pelaburan kerajaan.",
+  "en": "The Finance Ministry: runs the national budget, taxes, customs, government purchasing, public accounts and state investments."
+ },
+ "B/P.10|Pengurusan": {
+  "ms": "Kos pentadbiran Kementerian Kewangan: staf, kewangan, ICT dan keselamatan siber, termasuk menggubal dasar gaji penjawat awam.",
+  "en": "Admin costs of the Finance Ministry: staff, finance, ICT and cybersecurity, including setting civil service pay policy."
+ },
+ "B/P.10|Strategi Fiskal": {
+  "ms": "Hampir semuanya untuk Kastam Diraja Malaysia yang kutip cukai tidak langsung, selain kerja dasar cukai dan menyediakan bajet negara.",
+  "en": "Almost all goes to the Royal Malaysian Customs, which collects indirect taxes, plus tax policy work and drawing up the national budget."
+ },
+ "B/P.10|Strategi Pelaburan": {
+  "ms": "Duit untuk LADA bagi memajukan pelancongan Langkawi, serta urus aset, pinjaman dan syarikat pelaburan milik kerajaan.",
+  "en": "Funds LADA to develop Langkawi tourism, and manages government assets, borrowing and state-owned investment companies."
+ },
+ "B/P.10|Perkhidmatan Kewangan Awam": {
+  "ms": "Bayar kerja menilai harta tanah, sistem perolehan kerajaan secara elektronik, dan tribunal yang dengar rayuan cukai pendapatan dan kastam.",
+  "en": "Pays for property valuation, the government's electronic purchasing system, and tribunals hearing income tax and customs appeals."
+ },
+ "B/P.10|Perkhidmatan Perakaunan": {
+  "ms": "Kos Akauntan Negara: pejabat perakaunan, sistem akaun kerajaan, audit dalam, latihan di IPN dan urusan wang tak dituntut.",
+  "en": "Covers the Accountant General's work: accounting offices, government accounts systems, internal audit, IPN training and unclaimed money."
+ },
+ "B.11": {
+  "ms": "Bayaran am yang diurus Perbendaharaan: subsidi dan bantuan tunai, sewa kereta kerajaan, pampasan tuntutan, bayaran balik hasil dan bantuan kemanusiaan.",
+  "en": "General payments run by the Treasury: subsidies and cash aid, government car rental, claim compensation, revenue refunds and humanitarian aid."
+ },
+ "B.12": {
+  "ms": "Duit yang dimasukkan ke tabung khas kerajaan seperti tabung persaraan, bantuan bencana, bantuan perubatan, pelajar miskin dan sukan negara.",
+  "en": "Money put into special government funds such as the retirement fund, disaster relief, medical aid, poor students and national sports."
+ },
+ "B/P.13": {
+  "ms": "Kementerian yang mewakili Malaysia di luar negara: kedutaan, hubungan dengan negara lain, ASEAN, PBB dan bantuan teknikal MTCP.",
+  "en": "The ministry that represents Malaysia abroad: embassies, ties with other countries, ASEAN, the UN and MTCP technical aid."
+ },
+ "B/P.13|Pengurusan": {
+  "ms": "Kos pejabat kementerian: kewangan, sumber manusia, ICT, undang-undang, serta urusan protokol untuk diplomat asing dan lawatan pembesar luar.",
+  "en": "Office costs for the ministry: finance, HR, ICT, legal work, plus protocol for foreign diplomats and visiting dignitaries."
+ },
+ "B/P.13|Hubungan Diplomasi dan Kerjasama Pelbagai Hala": {
+  "ms": "Bayar penglibatan Malaysia di ASEAN, PBB, OIC dan Komanwel, termasuk isu keselamatan, hak asasi manusia dan pemeriksaan senjata kimia.",
+  "en": "Pays for Malaysia's role in ASEAN, the UN, OIC and the Commonwealth, including security, human rights and chemical weapons inspections."
+ },
+ "B/P.13|Perancangan Dasar, Strategik dan Penyelidikan": {
+  "ms": "Duit untuk latihan diplomat di IDFR, pusat mencegah keganasan SEARCCT, kajian dasar luar dan rundingan sempadan laut dengan negara jiran.",
+  "en": "Funds diplomat training at IDFR, the SEARCCT counter-terrorism centre, foreign policy research and sea border talks with neighbours."
+ },
+ "B/P.13|Hubungan Diplomasi dan Kerjasama Dua Hala": {
+  "ms": "Kebanyakannya untuk kedutaan Malaysia di luar negara, juga rundingan dengan negara Asia, Eropah, Amerika dan Afrika serta lawatan rasmi pemimpin.",
+  "en": "Mostly runs Malaysia's embassies abroad, plus talks with countries in Asia, Europe, the Americas and Africa and official leader visits."
+ },
+ "B.40": {
+  "ms": "Suruhanjaya yang melantik, menaikkan pangkat dan mengambil tindakan tatatertib ke atas guru dan pegawai pendidikan.",
+  "en": "The commission that hires, promotes and disciplines teachers and education officers."
+ },
+ "B.40|Urusan Pengambilan dan Perkhidmatan Anggota Perkhidmatan Pendidikan": {
+  "ms": "Kos melantik guru dan pegawai pendidikan, urusan kenaikan pangkat dan tatatertib, termasuk cawangan Sabah dan Sarawak.",
+  "en": "Covers hiring teachers and education officers, handling promotions and discipline, including the Sabah and Sarawak branches."
+ },
+ "T.1-T.11": {
+  "ms": "Bayaran yang ditetapkan Perlembagaan: peruntukan diraja Agong, hakim, Ketua Audit Negara, Yang di-Pertua Dewan, SPR dan suruhanjaya perkhidmatan.",
+  "en": "Payments set by the Constitution: royal allowances for the King, judges, the Auditor-General, House Speakers, the Election Commission and service commissions."
+ },
+ "T.12": {
+  "ms": "Pemberian kepada negeri dan majlis tempatan ikut bilangan penduduk dan jalan negeri, serta sumbangan kepada bank pembangunan antarabangsa.",
+  "en": "Money owed to states and local councils based on population and state roads, plus contributions to international development banks."
+ },
+ "T.13": {
+  "ms": "Bayar faedah atas hutang kerajaan: bon dan bil perbendaharaan dalam negeri, serta pinjaman dari luar negara.",
+  "en": "Pays interest on government debt: local bonds and Treasury bills, plus loans from abroad."
+ },
+ "T.14": {
+  "ms": "Bayaran pencen, ganjaran dan ex-gratia kepada bekas penjawat awam, polis, tentera, hakim dan ahli Parlimen, serta gantian cuti rehat.",
+  "en": "Pays pensions, gratuities and ex-gratia to retired civil servants, police, soldiers, judges and MPs, plus cash for unused leave."
+ }
+}
