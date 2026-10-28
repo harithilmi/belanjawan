@@ -66,6 +66,9 @@ export function fmt(m: number): string {
   return a >= 1000 ? `${sign}RM${(a / 1000).toFixed(1)}${t.bn}` : `${sign}RM${Math.round(a)}${t.m}`
 }
 
+/** Bare billions for the tree's size column (the unit is in its header). 2 dp so decimals line up. */
+export const inBillions = (m: number) => (m / 1000).toFixed(2)
+
 /** Tree nodes are addressed by a string key, so selection and drag data stay plain strings. */
 export type TreeNode =
   | { kind: 'root' }

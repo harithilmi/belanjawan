@@ -103,6 +103,7 @@ button, input { font: inherit; }
 .tree-head .h-amt { width: 114px; text-align: right; box-sizing: border-box; border-right: 1px solid var(--lo); }
 .tree-head .bar-col { border-left: 1px solid var(--lo); }
 .tree:focus-visible .row.sel { outline: 1px dotted #fff; outline-offset: -1px; }
+.tree { --indent: 16px; }
 .row { display: flex; align-items: center; gap: 5px; height: 22px; padding-left: 4px; white-space: nowrap; }
 .row .tw { width: 11px; height: 11px; font-size: 10px; line-height: 9px; text-align: center; border: 1px solid var(--lo); background: #fff; color: #000; flex: none; }
 .row .tw:empty { visibility: hidden; }
@@ -129,6 +130,9 @@ button, input { font: inherit; }
 .bin-list .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bin-list .name small { display: block; overflow: hidden; text-overflow: ellipsis; font-size: 11px; }
 
+/* Fixed room for the tallest Properties (measured 191–335px over every row), so arrowing through the tree
+   doesn't change the side column's height and with it the tree's and the page's. Desktop only: phones stack. */
+@media (min-width: 801px) { .props { min-height: 340px; } }
 .props-title { display: flex; align-items: center; gap: 6px; background: var(--navy); color: #fff; font-weight: bold; padding: 2px 3px 2px 6px; margin: -8px -8px 8px; }
 .props-title > span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .sheet-toggle { display: none; }
@@ -183,7 +187,9 @@ button, input { font: inherit; }
 @starting-style { .dialog[open] { opacity: 0; transform: scale(0.98); } }
 .dialog-body { padding: 10px; }
 .preview { padding: 4px; min-height: 120px; display: grid; place-items: center; }
-.preview img { width: 100%; display: block; }
+.preview img { display: block; width: auto; height: auto; max-width: 100%; max-height: 60vh; }
+.btns.tabs { margin: 0 0 8px; }
+.btn[aria-pressed='true'] { box-shadow: var(--pressed); background: #dfdfdf; font-weight: bold; }
 .dialog pre { white-space: pre-wrap; padding: 6px; margin: 6px 0 0; font: 12px/1.4 'Courier New', monospace; }
 .dialog details { margin-top: 10px; }
 .btns.end { justify-content: flex-end; }
@@ -226,19 +232,26 @@ button, input { font: inherit; }
   .search { width: 100%; margin-top: 3px; }
   .hits { left: 0; width: auto; }
   /* Tree: slimmer columns; −10%/Buang and the cut amount live in the bottom sheet instead. */
-  .row .amt, .tree-head .h-amt { width: 84px; font-size: 11px; }
-  .tree-head .h-amt { width: 94px; }
+  .row .amt { font-size: 11px; }
+  .row .amt { width: 50px; }
+  /* Header unit wraps to two lines here. */
+  .tree-head { height: auto; min-height: 18px; }
+  .tree-head .h-amt { width: 60px; line-height: 1.1; white-space: normal; }
   .row :is(.acts, .freed) { display: none; }
-  .row .name { min-width: 4em; }
+  /* Phones lack Tahoma (Verdana is wider): let names and sizes wrap instead of clipping. */
+  .tree { --indent: 10px; }
+  .row { height: auto; min-height: 26px; white-space: normal; line-height: 1.2; }
+  .row .amt { overflow-wrap: anywhere; }
+  .row .name { min-width: 4em; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; }
   .props.sheet .btn { padding: 4px 8px; }
-  .bar-col { width: 44px; }
+  .bar-col { width: 32px; }
   .tree-head .bar-col > * { display: none; }
   /* Taller map so tiles and the sector strip get room. Overrides the inline W/H ratio. */
   .map { aspect-ratio: 1 / 1 !important; }
 }
 /* Fingers: bigger rows and buttons. */
 @media (pointer: coarse) {
-  .row { height: 30px; }
+  .row { min-height: 30px; }
   .row .tw { width: 15px; height: 15px; line-height: 13px; }
   .btn.tiny { min-height: 28px; padding: 0 10px; }
   .btn.tiny:active:not(:disabled) { padding: 1px 9px 0 11px; }

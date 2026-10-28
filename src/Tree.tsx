@@ -1,5 +1,5 @@
 import { type KeyboardEvent } from 'react'
-import { fmt, lineById, lines, ministries, ministryKey, nodeOf, ROOT, sectorKey, sectors, sum, type Line } from './data.ts'
+import { fmt, inBillions, lineById, lines, ministries, ministryKey, nodeOf, ROOT, sectorKey, sectors, sum, type Line } from './data.ts'
 import { isCut, keepOf, nowOf, statusOf, type Plan } from './plan.ts'
 import { FileIcon, FolderIcon, LockIcon } from './Icons.tsx'
 import { t } from './i18n.ts'
@@ -120,10 +120,10 @@ export function Tree({ plan, open, setOpen, selected, onSelect, onShrink, onDele
         onDoubleClick={folder ? () => toggle(key) : undefined}
       >
         {/* Size stays in a fixed column (like Explorer's details view); only the name side is indented. */}
-        <span className="amt">{fmt(now)}</span>
+        <span className="amt" title={fmt(now)}>{inBillions(now)}</span>
         <span
           className="tw"
-          style={{ marginLeft: level * 16 }}
+          style={{ marginLeft: `calc(${level} * var(--indent))` }}
           onClick={(e) => { e.stopPropagation(); toggle(key) }}
           onDoubleClick={(e) => e.stopPropagation()} // its two clicks already toggled; don't add a third
         >
@@ -133,7 +133,7 @@ export function Tree({ plan, open, setOpen, selected, onSelect, onShrink, onDele
         {/* Maksud code goes in the tooltip (and the Properties title), so long names get the room. */}
         <span className="name" title={code ? `${code} ${label}` : label}>{label}</span>
         {locked && <span title={t.tip.locked}><LockIcon /></span>}
-        {isCut(plan, items) && <span className="freed" title={t.tip.freed}>−{fmt(before - now)}</span>}
+        {isCut(plan, items) && <span className="freed" title={t.tip.freed}>−{inBillions(before - now)}</span>}
         <span className="grow" />
         {isSel && key !== ROOT && !locked && (
           <span className="acts">

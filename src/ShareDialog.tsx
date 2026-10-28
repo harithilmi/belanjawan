@@ -1,28 +1,34 @@
 import { useEffect, useState } from 'react'
 import { Dialog } from './Dialog.tsx'
 import type { Plan } from './plan.ts'
-import { planImage, planText } from './share.ts'
+import { planImage, planText, SIZES, type Format } from './share.ts'
 import { t } from './i18n.ts'
 
-const FILE = 'malaysias-disk-plan.png'
+const FORMATS = ['story', 'wide'] as const satisfies readonly Format[]
 
 export function ShareDialog({ plan, onClose }: { plan: Plan; onClose: () => void }) {
-  const [blob, setBlob] = useState<Blob>()
-  const [url, setUrl] = useState<string>()
+  // Story first: most shares come from phones.
+  const [format, setFormat] = useState<Format>('story')
+  // The card remembers its format, so switching tabs never shows the old image at the new size.
+  const [card, setCard] = useState<{ format: Format; blob: Blob; url: string }>()
   const [msg, setMsg] = useState('')
   const text = planText(plan)
 
   useEffect(() => {
     let u: string | undefined
-    planImage(plan).then((b) => {
-      u = URL.createObjectURL(b)
-      setBlob(b)
-      setUrl(u)
+    planImage(plan, format).then((blob) => {
+      u = URL.createObjectURL(blob)
+      setCard({ format, blob, url: u })
     }, () => setMsg(t.drawFailed))
     return () => { if (u) URL.revokeObjectURL(u) }
-  }, [plan])
+  }, [plan, format])
 
-  const file = blob && new File([blob], FILE, { type: 'image/png' })
+  const ready = card?.format === format ? card : undefined
+  const blob = ready?.blob
+  const url = ready?.url
+
+  const name = `malaysias-disk-${format}.png`
+  const file = blob && new File([blob], name, { type: 'image/png' })
   const canShare = !!file && typeof navigator.canShare === 'function' && navigator.canShare({ files: [file] })
 
   const run = (label: string, f: () => Promise<unknown>) =>
@@ -32,7 +38,16 @@ export function ShareDialog({ plan, onClose }: { plan: Plan; onClose: () => void
     <Dialog title={t.shareTitle} onClose={onClose}>
       {() => (
         <>
-          <div className="sunken preview">{url ? <img src={url} alt={t.imageAlt} /> : t.drawing}</div>
+          <div className="btns tabs" role="group" aria-label={t.shareTitle}>
+            {FORMATS.map((f) => (
+              <button type="button" key={f} className="btn" aria-pressed={f === format} onClick={() => setFormat(f)}>
+                {f === 'story' ? t.formatStory : t.formatWide}
+              </button>
+            ))}
+          </div>
+          <div className="sunken preview">
+            {url ? <img src={url} alt={t.imageAlt} width={SIZES[format].w} height={SIZES[format].h} /> : t.drawing}
+          </div>
           <div className="btns">
             {canShare && file && (
               <button type="button" className="btn" onClick={() => run('', () => navigator.share({ files: [file], text }))}>
@@ -47,7 +62,7 @@ export function ShareDialog({ plan, onClose }: { plan: Plan; onClose: () => void
             >
               {t.copyImage}
             </button>
-            {url && <a className="btn" href={url} download={FILE}>{t.download}</a>}
+            {url && <a className="btn" href={url} download={name}>{t.download}</a>}
             <button type="button" className="btn" onClick={() => run(t.textCopied, () => navigator.clipboard.writeText(text))}>
               {t.copyText}
             </button>
