@@ -1,13 +1,15 @@
 import { Suspense, use, useState } from 'react'
 import { activitiesIn, fmt, linesOf, nodeOf, REVENUE, SPENDING, sum, YEAR, type Line } from './data.ts'
 import { changes, isCut, keepOf, nowOf, remove, setKeep, shrink10, statusOf, totals, type Plan } from './plan.ts'
-import { BinIcon, ChevronIcon, CutIcon, LockIcon, SparklesIcon, TrashIcon, UndoIcon } from './Icons.tsx'
+import { Dialog } from './Dialog.tsx'
+import { BinIcon, ChevronIcon, CutIcon, LockIcon, PeopleIcon, SparklesIcon, TrashIcon, UndoIcon } from './Icons.tsx'
 import { LANG, t } from './i18n.ts'
 
 type SetPlan = (f: (p: Plan) => Plan) => void
 
 export function RecycleBin({ plan, setPlan, onDrop }: { plan: Plan; setPlan: SetPlan; onDrop: (key: string) => void }) {
   const [over, setOver] = useState(false)
+  const [asking, setAsking] = useState(false)
   const list = changes(plan)
   const freed = sum(list.map((c) => c.freed))
   return (
@@ -28,10 +30,24 @@ export function RecycleBin({ plan, setPlan, onDrop }: { plan: Plan; setPlan: Set
               : t.binSummary(list.filter((c) => c.keep === 0).length, list.filter((c) => c.keep > 0).length, fmt(freed))}
           </div>
         </div>
-        <button type="button" className="btn fill" disabled={list.length === 0} title={t.tip.restoreAll} onClick={() => setPlan(() => ({}))}>
+        <button type="button" className="btn fill" disabled={list.length === 0} title={t.tip.restoreAll} onClick={() => setAsking(true)}>
           {t.restoreAll}
         </button>
       </div>
+      {asking && (
+        <Dialog title={t.restoreAllTitle} onClose={() => setAsking(false)}>
+          {(close) => (
+            <>
+              <p>{t.restoreAllAsk(list.length, fmt(freed))}</p>
+              {/* Destructive: Cancel is the default button, as on macOS. */}
+              <div className="btns end">
+                <button type="button" className="btn tint danger" onClick={() => { setPlan(() => ({})); close() }}>{t.restoreAll}</button>
+                <button type="button" className="btn default" autoFocus onClick={close}>{t.cancel}</button>
+              </div>
+            </>
+          )}
+        </Dialog>
+      )}
       {list.length > 0 && (
         <ul className="bin-list sunken">
           {list.map(({ line, keep, freed }) => (
@@ -86,20 +102,20 @@ function Breakdown({ items }: { items: readonly Line[] }) {
             </div>
             {objek.map((o) => (
               <div key={o.i} className="sub" title={t.objekTip[o.i]}>
-                <dt><i className={`sw ob${o.i}`} /> {t.objek[o.i]}</dt><dd>{fmt(o.rm)}</dd><dd>{pctOf(o.rm, total)}</dd>
+                <dt><i className={`sw ob${o.i}`} /><span>{t.objek[o.i]}</span></dt><dd>{fmt(o.rm)}</dd><dd>{pctOf(o.rm, total)}</dd>
               </div>
             ))}
           </>
         )}
         {devex > 0 && (
           <div title={t.tip.devex}>
-            <dt><i className="sw dv" /> {t.devex}</dt><dd><b>{fmt(devex)}</b></dd><dd>{pctOf(devex, total)}</dd>
+            <dt><i className="sw dv" /><span>{t.devex}</span></dt><dd><b>{fmt(devex)}</b></dd><dd>{pctOf(devex, total)}</dd>
           </div>
         )}
       </dl>
       {posts > 0 && (
         <p className="posts" title={t.postsTip}>
-          👥 <b>{posts.toLocaleString(LANG === 'ms' ? 'ms-MY' : 'en-MY')}</b> {t.posts}
+          <PeopleIcon /> <b>{posts.toLocaleString(LANG === 'ms' ? 'ms-MY' : 'en-MY')}</b> {t.posts}
         </p>
       )}
       <p className="muted small" title={t.srcBook(YEAR)}>{t.fromBook}</p>
@@ -166,7 +182,7 @@ export function Properties({ plan, setPlan, selected, look = false }: { plan: Pl
   return (
     <section className={`props groupbox${sheet ? ' sheet' : ''}${full ? ' full' : ''}${look ? ' look' : ''}`} aria-label={t.props}>
       <div className="props-title">
-        <span>{t.props} — {title}</span>
+        <span>{title}</span>
         {sheet && (
           <button type="button" className="btn tb sheet-toggle" aria-expanded={full} aria-label={t.props} onClick={() => setFull((f) => !f)}>
             <ChevronIcon up={!full} />

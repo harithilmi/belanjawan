@@ -330,10 +330,12 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
 }
 @media (prefers-reduced-motion: reduce) { .disk > div { transition: none; } .dialog[open] { transition-property: opacity; } }
 
-/* Info panel: book detail. */
-.props h4 { margin: 12px 0 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); }
-.plain-box { margin: 8px 0; padding: 8px 10px; border-radius: 8px; background: rgb(175 82 222 / 0.08); }
-.plain-box h4 { margin: 0 0 2px; display: flex; align-items: center; gap: 4px; color: #8944ab; }
+/* Info panel, iOS grouped style: grey ground, each book section a white card. */
+.props { background: #f2f2f7; }
+.props .controls .btn:is(.fill, .danger) { background: var(--card); }
+.props h4 { margin: 0 0 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); }
+.props :is(.plain-box, .breakdown, .acts-list) { margin: 10px 0; padding: 10px 12px; border-radius: 10px; background: var(--card); }
+.plain-box h4 { display: flex; align-items: center; gap: 4px; color: #8944ab; }
 .plain-box h4 small { font-weight: 500; }
 .props .plain-box p { margin: 0; font-size: 14px; }
 .ob0 { background: var(--op); }
@@ -343,21 +345,25 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
 .ob4 { background: #c7c7cc; }
 .money { display: grid; grid-template-columns: minmax(0, 1fr) auto 3.2em; gap: 2px 10px; margin: 0; }
 .money > div { display: contents; }
+.money dt { display: flex; gap: 6px; align-items: baseline; overflow-wrap: anywhere; }
+.money dt .sw { flex: none; }
 .money dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
 .money dd:last-child { color: var(--muted); }
 .money .sub dt { padding-left: 12px; }
 .money .sub dd:nth-of-type(1) { color: var(--muted); }
-.money dt { overflow-wrap: anywhere; }
-.posts { margin-top: 8px; }
+.posts { display: flex; align-items: center; gap: 6px; margin-top: 8px; }
+.posts svg { color: var(--muted); }
 .acts-list ul { list-style: none; margin: 0; padding: 0; }
-.acts-list li { border-top: 1px solid var(--sep); }
+.acts-list li + li { border-top: 1px solid var(--sep); }
 .acts-list :is(summary, .act) { display: flex; gap: 8px; padding: 5px 0; }
 .acts-list summary { cursor: pointer; list-style: none; }
 .acts-list summary::-webkit-details-marker { display: none; }
-.acts-list summary::before { content: '›'; color: var(--muted); width: 8px; flex: none; transition: transform 150ms cubic-bezier(0.23, 1, 0.32, 1); }
-.acts-list details[open] summary::before { transform: rotate(90deg); }
-.acts-list .act { padding-left: 16px; }
+/* Disclosure chevron on the right, turning down when open, like iOS. */
+.acts-list summary::after { content: '›'; color: var(--muted); flex: none; transition: transform 150ms cubic-bezier(0.23, 1, 0.32, 1); }
+.acts-list details[open] summary::after { transform: rotate(90deg); }
+.acts-list .act { padding-right: 14px; }
 .acts-list :is(summary, .act) span { flex: 1; min-width: 0; overflow-wrap: anywhere; }
 .acts-list :is(summary, .act) b { font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.props .acts-list details p { margin: 0 0 8px 16px; font-size: 12px; color: var(--muted); }
+.props .acts-list details p { margin: 0 0 8px; font-size: 12px; color: var(--muted); }
 .acts-list .btn.plain { margin-top: 4px; padding: 0; }
+@media (max-width: 800px) { .props.sheet { background: rgb(242 242 247 / 0.97); } }
