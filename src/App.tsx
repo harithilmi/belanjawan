@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { flushSync } from 'react-dom'
-import { cwdFor, fmt, lines, linesOf, nodeOf, REVENUE, revenueGroups, ROOT, SPENDING, YEAR } from './data.ts'
-import { remove, shrink10, totals, usePlan } from './plan.ts'
+import { cwdFor, fmt, lines, linesOf, nameOf, nodeOf, REVENUE, revenueGroups, ROOT, SPENDING, sum, YEAR } from './data.ts'
+import { nowOf, remove, shrink10, totals, usePlan } from './plan.ts'
 import { switchLang, t } from './i18n.ts'
 import { DriveIcon, ShareIcon } from './Icons.tsx'
 import { liveCwd, PathBar, reveal, revealRow, Tree, type Open } from './Tree.tsx'
 import { Properties, RecycleBin } from './Side.tsx'
 import { MapView } from './MapView.tsx'
 import { ShareDialog } from './ShareDialog.tsx'
-import { Dialog } from './Dialog.tsx'
+import { ConfirmDialog, Dialog } from './Dialog.tsx'
 import { Search } from './Search.tsx'
 
 const SOURCE_URL = 'https://belanjawan.mof.gov.my/pdf/belanjawan2027/hasil/tinjauan_fiskal_2027.pdf'
@@ -108,10 +108,14 @@ export function App() {
     const node = nodeOf(key)
     if (node.kind !== 'root') setPlan((p) => f(p, linesOf(node)))
   }
-  const onDelete = (key: string) => {
+  // A line goes straight to the Bin (one tap restores it). A whole folder asks first.
+  const [deleting, setDeleting] = useState<string | null>(null)
+  const del = (key: string) => {
     act(key, remove)
     if (nodeOf(key).kind === 'line') setSelected(cwd)
   }
+  const onDelete = (key: string) => (nodeOf(key).kind === 'line' ? del(key) : setDeleting(key))
+  const doomed = deleting === null ? [] : linesOf(nodeOf(deleting)).filter((l) => !l.locked && nowOf(plan, l) > 0)
   // Page-wide keys, skipped while typing in a text box: ⌘Z / ⌘⇧Z undo and redo, / jumps to search
   // (⌘F stays the browser's Find), ? lists every shortcut (like YouTube and X).
   useEffect(() => {
@@ -211,7 +215,7 @@ export function App() {
           </div>
           <div className="side">
             {/* Info first, in view. Its height is fixed on desktop, so map tiles don't move after a click. */}
-            <Properties plan={plan} setPlan={setPlan} selected={selected} />
+            <Properties plan={plan} setPlan={setPlan} selected={selected} onDelete={onDelete} />
             <MapView plan={plan} cwd={cwd} selected={selected} onSelect={pick} />
             <RecycleBin plan={plan} setPlan={setPlan} onDrop={onDelete} />
           </div>
@@ -239,12 +243,21 @@ export function App() {
         </div>
       </div>
 
+      {deleting !== null && (
+        <ConfirmDialog
+          title={t.delTitle(nameOf(nodeOf(deleting)))}
+          message={t.delAsk(doomed.length, fmt(sum(doomed.map((l) => nowOf(plan, l)))))}
+          action={t.toBin}
+          onConfirm={() => del(deleting)}
+          onClose={() => setDeleting(null)}
+        />
+      )}
       {dialog === 'share' && <ShareDialog plan={plan} onClose={closeDialog} />}
       {dialog === 'howto' && <HowToPlay onClose={closeDialog} />}
       {dialog === 'keys' && <Shortcuts onClose={closeDialog} />}
       {dialog === 'look' && (
         <Dialog title={t.props} onClose={closeDialog}>
-          {() => <Properties plan={plan} setPlan={setPlan} selected={selected} look />}
+          {() => <Properties plan={plan} setPlan={setPlan} selected={selected} onDelete={onDelete} look />}
         </Dialog>
       )}
     </main>

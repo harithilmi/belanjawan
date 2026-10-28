@@ -129,6 +129,9 @@ export function nodeOf(key: string): TreeNode {
   return sector ? { kind: 'sector', sector } : { kind: 'root' }
 }
 
+export const nameOf = (n: TreeNode) =>
+  n.kind === 'root' ? t.root : n.kind === 'sector' ? n.sector.name : n.kind === 'ministry' ? n.ministry.name : n.line.name
+
 export function linesOf(n: TreeNode): Line[] {
   switch (n.kind) {
     case 'line': return [n.line]

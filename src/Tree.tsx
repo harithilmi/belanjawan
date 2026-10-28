@@ -1,5 +1,5 @@
 import { Fragment, type KeyboardEvent, useLayoutEffect, useMemo, useRef } from 'react'
-import { ancestors, fmt, inBillions, lineById, linesOf, ministryKey, nodeOf, ROOT, sectorKey, sectors, sum, type Line } from './data.ts'
+import { ancestors, fmt, inBillions, lineById, linesOf, ministryKey, nameOf, nodeOf, ROOT, sectorKey, sectors, sum, type Line } from './data.ts'
 import { isCut, keepOf, nowOf, statusOf, type Plan } from './plan.ts'
 import { EnterIcon, FileIcon, FolderIcon, LockIcon } from './Icons.tsx'
 import { t } from './i18n.ts'
@@ -101,8 +101,7 @@ export function PathBar({ cwd, selected, onGo }: { cwd: string; selected: string
   return (
     <nav className="path" aria-label={t.pathAria}>
       {[...ancestors(cwd), cwd].map((k, i) => {
-        const n = nodeOf(k)
-        const label = n.kind === 'root' ? t.root : n.kind === 'sector' ? n.sector.name : n.kind === 'ministry' ? n.ministry.name : n.line.name
+        const label = nameOf(nodeOf(k))
         return (
           <Fragment key={k}>
             {i > 0 && <span className="sep" aria-hidden="true">›</span>}

@@ -1,7 +1,7 @@
 import { Suspense, use, useState } from 'react'
 import { activitiesIn, fmt, linesOf, nodeOf, REVENUE, SPENDING, sum, YEAR, type Line } from './data.ts'
-import { changes, isCut, keepOf, nowOf, remove, setKeep, shrink10, statusOf, totals, type Plan } from './plan.ts'
-import { Dialog } from './Dialog.tsx'
+import { changes, isCut, keepOf, nowOf, setKeep, shrink10, statusOf, totals, type Plan } from './plan.ts'
+import { ConfirmDialog } from './Dialog.tsx'
 import { BinIcon, ChevronIcon, CutIcon, LockIcon, PeopleIcon, SparklesIcon, TrashIcon, UndoIcon } from './Icons.tsx'
 import { LANG, t } from './i18n.ts'
 
@@ -35,18 +35,13 @@ export function RecycleBin({ plan, setPlan, onDrop }: { plan: Plan; setPlan: Set
         </button>
       </div>
       {asking && (
-        <Dialog title={t.restoreAllTitle} onClose={() => setAsking(false)}>
-          {(close) => (
-            <>
-              <p>{t.restoreAllAsk(list.length, fmt(freed))}</p>
-              {/* Destructive: Cancel is the default button, as on macOS. */}
-              <div className="btns end">
-                <button type="button" className="btn tint danger" onClick={() => { setPlan(() => ({})); close() }}>{t.restoreAll}</button>
-                <button type="button" className="btn default" autoFocus onClick={close}>{t.cancel}</button>
-              </div>
-            </>
-          )}
-        </Dialog>
+        <ConfirmDialog
+          title={t.restoreAllTitle}
+          message={t.restoreAllAsk(list.length, fmt(freed))}
+          action={t.restoreAll}
+          onConfirm={() => setPlan(() => ({}))}
+          onClose={() => setAsking(false)}
+        />
       )}
       {list.length > 0 && (
         <ul className="bin-list sunken">
@@ -163,7 +158,14 @@ function Activities({ line }: { line: Line }) {
 }
 
 /** `look`: shown in the Quick Look window, so never docked as the phone sheet. */
-export function Properties({ plan, setPlan, selected, look = false }: { plan: Plan; setPlan: SetPlan; selected: string; look?: boolean }) {
+export function Properties({ plan, setPlan, selected, onDelete, look = false }: {
+  plan: Plan
+  setPlan: SetPlan
+  selected: string
+  /** Asks first for folders (App). */
+  onDelete: (key: string) => void
+  look?: boolean
+}) {
   const node = nodeOf(selected)
   const items = linesOf(node)
   const before = sum(items.map((l) => l.total))
@@ -207,7 +209,7 @@ export function Properties({ plan, setPlan, selected, look = false }: { plan: Pl
           <LockIcon /> {items.every((l) => l.code === 'T.13') ? t.lockedDebt : t.lockedOther}
         </p>
       ) : (
-        <Controls items={items} plan={plan} setPlan={setPlan} />
+        <Controls items={items} plan={plan} setPlan={setPlan} onDelete={() => onDelete(selected)} />
       )}
 
       {/* Desktop: fixed-height panel, so only this part scrolls and the page never jumps. Keyed: new row, back to top. */}
@@ -230,7 +232,7 @@ export function Properties({ plan, setPlan, selected, look = false }: { plan: Pl
   )
 }
 
-function Controls({ items, plan, setPlan }: { items: readonly Line[]; plan: Plan; setPlan: SetPlan }) {
+function Controls({ items, plan, setPlan, onDelete }: { items: readonly Line[]; plan: Plan; setPlan: SetPlan; onDelete: () => void }) {
   const editable = items.filter((l) => !l.locked)
   const one = editable.length === 1 ? editable[0] : undefined
   const keep = one ? keepOf(plan, one) : undefined
@@ -253,7 +255,7 @@ function Controls({ items, plan, setPlan }: { items: readonly Line[]; plan: Plan
         <button type="button" className="btn tint" title={t.tip.shrink10} onClick={() => setPlan((p) => shrink10(p, editable))}>
           <CutIcon /> {t.shrink10}
         </button>
-        <button type="button" className="btn tint danger" title={t.tip.toBin} onClick={() => setPlan((p) => remove(p, editable))}>
+        <button type="button" className="btn tint danger" title={t.tip.toBin} onClick={onDelete}>
           <TrashIcon /> {t.toBin}
         </button>
         <button

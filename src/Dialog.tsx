@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, type MouseEvent, type ReactNode } from 'react'
+import { t } from './i18n.ts'
 
 /** macOS-style window on a native modal <dialog> (gives Esc, focus trap and backdrop for free). */
 export function Dialog({ title, onClose, children }: { title: string; onClose: () => void; children: (close: () => void) => ReactNode }) {
@@ -30,5 +31,28 @@ export function Dialog({ title, onClose, children }: { title: string; onClose: (
       </div>
       <div className="dialog-body">{children(close)}</div>
     </dialog>
+  )
+}
+
+/** Ask before a destructive action. Cancel is the default button, as on macOS. */
+export function ConfirmDialog({ title, message, action, onConfirm, onClose }: {
+  title: string
+  message: string
+  action: string
+  onConfirm: () => void
+  onClose: () => void
+}) {
+  return (
+    <Dialog title={title} onClose={onClose}>
+      {(close) => (
+        <>
+          <p>{message}</p>
+          <div className="btns end">
+            <button type="button" className="btn tint danger" onClick={() => { onConfirm(); close() }}>{action}</button>
+            <button type="button" className="btn default" autoFocus onClick={close}>{t.cancel}</button>
+          </div>
+        </>
+      )}
+    </Dialog>
   )
 }
