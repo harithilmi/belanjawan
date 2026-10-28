@@ -38,3 +38,19 @@ export const DriveIcon = () => (
     <circle cx="31" cy="26" r="1.6" fill="#34c759" />
   </svg>
 )
+
+// SF Symbols-style line icons (SF Symbols themselves are licensed for Apple platforms only).
+// Stroke follows the button's text colour.
+const Sym = ({ d }: { d: string }) => (
+  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d={d} />
+  </svg>
+)
+/** scissors */
+export const CutIcon = () => <Sym d="M4 4.5a2 2 0 1 0 0 .01M4 11.5a2 2 0 1 0 0 .01M5.6 5.6 14 13M5.6 10.4 14 3" />
+/** trash */
+export const TrashIcon = () => <Sym d="M2.5 4h11M6 4V2.5h4V4M4 4l.7 9.2a1 1 0 0 0 1 .8h4.6a1 1 0 0 0 1-.8L12 4M6.8 6.5v5M9.2 6.5v5" />
+/** arrow.uturn.backward */
+export const UndoIcon = () => <Sym d="M5.5 3 2.5 6l3 3M2.5 6h7a4 4 0 0 1 0 8H7" />
+/** square.and.arrow.up */
+export const ShareIcon = () => <Sym d="M8 10V1.5M5 4.5l3-3 3 3M5.5 7H4a1 1 0 0 0-1 1v5.5a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-1.5" />

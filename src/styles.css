@@ -50,7 +50,8 @@ button, input { font: inherit; color: inherit; }
 .btn.default:active:not(:disabled) { background: #0062cc; }
 .btn.tiny { padding: 0 8px; min-height: 20px; font-size: 12px; }
 /* Apple tinted / gray-fill / plain styles: no outline, colour carries the meaning, red = destructive. */
-.btn:is(.tint, .fill, .plain) { box-shadow: none; border-radius: 8px; font-weight: 500; padding: 5px 12px; min-height: 28px; }
+.btn:is(.tint, .fill, .plain) { box-shadow: none; border-radius: 8px; font-weight: 500; padding: 5px 12px; min-height: 28px; gap: 5px; }
+.btn svg { flex: none; }
 .btn.tint { background: rgb(0 122 255 / 0.12); color: var(--blue); }
 .btn.tint:active:not(:disabled) { background: rgb(0 122 255 / 0.22); }
 .btn.tint.danger { background: rgb(255 59 48 / 0.12); color: var(--bad); }
@@ -67,7 +68,8 @@ button, input { font: inherit; color: inherit; }
 /* Drive + disk bar */
 .drive { background: var(--card); border-radius: 10px; box-shadow: var(--edge); padding: 14px 16px; margin: 0 6px 6px; }
 .drive-head { display: flex; align-items: center; gap: 12px; }
-.drive-head b { font-size: 17px; }
+/* Only the drive name is big; the bold status line under it stays body size. */
+.drive-head > div > b:first-child { font-size: 17px; }
 .drive-head > div:nth-child(2) { flex: 1; }
 .warn { color: var(--bad); font-weight: 600; font-size: 14px; }
 .ok { color: var(--good); font-weight: 600; font-size: 14px; }
@@ -248,7 +250,10 @@ button, input { font: inherit; color: inherit; }
   .hero p { font-size: 13px; }
   .drive-head { flex-wrap: wrap; }
   .drive-head > div:nth-child(2) { flex-basis: calc(100% - 56px); }
-  .drive-head .warn { flex: 1; }
+  .drive-head :is(.warn, .ok) { flex: 1; }
+  /* One fact per line: spending, borrowed, cut, revenue. */
+  .drive .legend { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .drive .legend .grow { display: none; }
   .levels { flex-wrap: wrap; }
   .seg { width: 100%; }
   .seg button { flex: 1; }
@@ -266,9 +271,10 @@ button, input { font: inherit; color: inherit; }
   .row { height: auto; min-height: 26px; white-space: normal; line-height: 1.2; }
   .row .amt { overflow-wrap: anywhere; }
   .row .name { min-width: 4em; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; }
-  /* Action row spans the sheet, like an iOS button group. */
-  .props.sheet .controls .btns { flex-wrap: nowrap; }
-  .props.sheet .controls .btn { flex: 1 1 auto; justify-content: center; padding: 8px 6px; min-height: 36px; }
+  /* iOS-style action group: two short actions side by side, the destructive one full width last. */
+  .props.sheet .controls .btns { display: grid; grid-template-columns: 1fr 1fr; }
+  .props.sheet .controls .btn { justify-content: center; padding: 8px 6px; min-height: 38px; }
+  .props.sheet .controls .btn.danger { grid-column: 1 / -1; order: 1; }
   .bar-col { width: 32px; }
   .tree-head .bar-col > * { display: none; }
   /* Taller map so tiles and the sector strip get room. Overrides the inline W/H ratio. */

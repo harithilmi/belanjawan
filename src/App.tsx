@@ -3,7 +3,7 @@ import { flushSync } from 'react-dom'
 import { fmt, lines, linesOf, nodeOf, REVENUE, revenueGroups, ROOT, SPENDING, YEAR } from './data.ts'
 import { remove, shrink10, totals, usePlan } from './plan.ts'
 import { switchLang, t } from './i18n.ts'
-import { DriveIcon } from './Icons.tsx'
+import { DriveIcon, ShareIcon } from './Icons.tsx'
 import { openToLevel, reveal, rowId, Tree, type Open } from './Tree.tsx'
 import { Properties, RecycleBin } from './Side.tsx'
 import { MapView } from './MapView.tsx'
@@ -109,7 +109,7 @@ export function App() {
             <div className={tot.gap > 0 ? 'warn' : 'ok'} role="status">
               {tot.gap > 0 ? `⚠ ${t.over(fmt(tot.gap))}` : `✔ ${t.fits(fmt(-tot.gap))}`}
             </div>
-            <button type="button" className="btn default" title={t.tip.share} onClick={() => setDialog('share')}>{t.share}</button>
+            <button type="button" className="btn default" title={t.tip.share} onClick={() => setDialog('share')}><ShareIcon /> {t.share}</button>
           </div>
 
           <div className="disk sunken" title={t.capacity(YEAR)} role="img" aria-label={`${t.spending} ${fmt(tot.spending)} · ${t.revenue} ${fmt(REVENUE)}`}>

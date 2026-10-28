@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { fmt, linesOf, nodeOf, REVENUE, SPENDING, sum, YEAR, type Line } from './data.ts'
 import { changes, isCut, keepOf, nowOf, remove, setKeep, shrink10, statusOf, totals, type Plan } from './plan.ts'
-import { BinIcon, LockIcon } from './Icons.tsx'
+import { BinIcon, CutIcon, LockIcon, TrashIcon, UndoIcon } from './Icons.tsx'
 import { t } from './i18n.ts'
 
 type SetPlan = (f: (p: Plan) => Plan) => void
@@ -152,10 +152,10 @@ function Controls({ items, plan, setPlan }: { items: readonly Line[]; plan: Plan
       )}
       <div className="btns">
         <button type="button" className="btn tint" title={t.tip.shrink10} onClick={() => setPlan((p) => shrink10(p, editable))}>
-          {t.shrink10}
+          <CutIcon /> {t.shrink10}
         </button>
         <button type="button" className="btn tint danger" title={t.tip.toBin} onClick={() => setPlan((p) => remove(p, editable))}>
-          {t.toBin}
+          <TrashIcon /> {t.toBin}
         </button>
         <button
           type="button"
@@ -164,7 +164,7 @@ function Controls({ items, plan, setPlan }: { items: readonly Line[]; plan: Plan
           disabled={editable.every((l) => keepOf(plan, l) === 100)}
           onClick={() => setPlan((p) => setKeep(p, editable, () => 100))}
         >
-          {t.restore}
+          <UndoIcon /> {t.restore}
         </button>
       </div>
       {!one && <p className="muted">{t.folderNote}</p>}
