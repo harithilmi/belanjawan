@@ -20,9 +20,9 @@ export function switchLang() {
 const ms = {
   bn: ' bilion',
   m: ' juta',
-  title: 'Cakera Malaysia Dah Penuh',
+  title: 'Storan Malaysia Dah Penuh',
   intro: (s: string, r: string, y: number) =>
-    `Kerajaan nak belanja ${s} pada ${y}, tapi hasil yang dijangka cuma ${r}. Potong perbelanjaan sampai semuanya muat dalam cakera.`,
+    `Kerajaan nak belanja ${s} pada ${y}, tapi hasil yang dijangka cuma ${r}. Potong perbelanjaan sampai semuanya muat dalam storan.`,
   otherLang: 'English',
   by: 'Oleh',
   inspiredBy: 'Diilhamkan oleh',
@@ -127,7 +127,7 @@ const ms = {
   textCut: (x: string, y: number) => `Saya potong ${x} daripada Belanjawan ${y}.`,
   textShort: (x: string) => `Masih kurang ${x}.`,
   textBalanced: 'Belanjawan dah seimbang.',
-  textNone: 'Cakera Malaysia dah penuh.',
+  textNone: 'Storan Malaysia dah penuh.',
   textUrl: (u: string) => `Cuba sendiri: ${u}`,
 
   howGoal: (g: string) => `Potong ${g}`,
@@ -144,7 +144,7 @@ const ms = {
   tip: {
     levels: ['Tunjuk sektor sahaja', 'Buka sampai kementerian', 'Buka semua, sampai program'],
     borrowed: 'Beza antara perbelanjaan dengan hasil. Kerajaan kena pinjam jumlah ini.',
-    revenue: 'Kapasiti cakera: hasil yang dijangka kerajaan dapat tahun ini',
+    revenue: 'Kapasiti storan: hasil yang dijangka kerajaan dapat tahun ini',
     cutSoFar: 'Jumlah yang anda dah potong setakat ini',
     share: 'Buat gambar atau teks pelan anda untuk dikongsi',
     opex: 'Mengurus (OE): gaji, bekalan, subsidi. Belanja harian kerajaan.',
