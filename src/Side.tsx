@@ -4,6 +4,7 @@ import { changes, isCut, keepOf, nowOf, setKeep, shrink10, statusOf, totals, typ
 import { ConfirmDialog } from './Dialog.tsx'
 import { BinIcon, ChevronIcon, CutIcon, LockIcon, PeopleIcon, SparklesIcon, TrashIcon, UndoIcon } from './Icons.tsx'
 import { LANG, t } from './i18n.ts'
+import { useSheet } from './useSheet.ts'
 
 type SetPlan = (f: (p: Plan) => Plan) => void
 
@@ -178,15 +179,15 @@ export function Properties({ plan, setPlan, selected, onDelete, look = false }: 
     : node.kind === 'sector' ? node.sector.name
     : t.root
   // On narrow screens a selected row's Properties docks to the bottom (CSS), folded to amount + buttons.
-  const [full, setFull] = useState(false)
   const sheet = !look && node.kind !== 'root'
+  const { ref, full, toggle, grab } = useSheet(sheet)
 
   return (
-    <section className={`props groupbox${sheet ? ' sheet' : ''}${full ? ' full' : ''}${look ? ' look' : ''}`} aria-label={t.props}>
-      <div className="props-title">
+    <section ref={ref} className={`props groupbox${sheet ? ' sheet' : ''}${full ? ' full' : ''}${look ? ' look' : ''}`} aria-label={t.props}>
+      <div className="props-title" {...grab}>
         <span>{title}</span>
         {sheet && (
-          <button type="button" className="btn tb sheet-toggle" aria-expanded={full} aria-label={t.props} onClick={() => setFull((f) => !f)}>
+          <button type="button" className="btn tb sheet-toggle" aria-expanded={full} aria-label={t.props} onClick={toggle}>
             <ChevronIcon up={!full} />
           </button>
         )}
@@ -200,7 +201,7 @@ export function Properties({ plan, setPlan, selected, onDelete, look = false }: 
         {node.kind === 'line' && <span className="muted"> · {t.status[statusOf(plan, node.line)]}</span>}
       </div>
       {node.kind !== 'root' && (
-        <p>{t.ofSpending(pct(now / tot.spending))}</p>
+        <p className="share">{t.ofSpending(pct(now / tot.spending))}</p>
       )}
       {node.kind === 'root' ? (
         <p>{t.rootText((((SPENDING - REVENUE) / SPENDING) * 100).toFixed(1))}</p>
