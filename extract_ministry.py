@@ -1,9 +1,12 @@
 """Build budget-2027-ministry.json from the MOF "Anggaran Perbelanjaan Persekutuan 2027" PDFs.
 
 Usage: python3 -I extract_ministry.py /tmp/mof27   (needs pdftotext; downloads missing PDFs)
+Writes budget-2027-ministry.json and budget-2027-activities.json (code -> line name -> activities).
 
 Tree: sector -> ministry (Maksud) -> programme, in RM million. Ministries carry their VISI and OE
-programmes their first Outcome as "about", when the book has one.
+programmes their first Outcome as "about", when the book has one. OE lines also carry the 2027 split by
+Objek Am ("objek": emolumen, perkhidmatan & bekalan, aset, pemberian & kenaan bayaran tetap, lain),
+their posts ("posts", Bil. Jawatan 2027), and their activities with each one's Fungsi text.
 - OE: top-level programmes (Butiran XX0000) of each Maksud. B.11, T.12, T.13 and T.14 go one level
   deeper (activities XXYY00), since one programme there holds most of the money.
 - DE: development projects of each Maksud ("Anggaran 2027": Cara Langsung + Pinjaman).
@@ -21,6 +24,7 @@ from pathlib import Path
 
 BASE = "https://belanjawan.mof.gov.my/pdf/belanjawan2027/perbelanjaan/"
 OUT = Path(__file__).with_name("budget-2027-ministry.json")
+ACTS = OUT.with_name("budget-2027-activities.json")
 SMALL = 5.0  # RM million
 DRILL = {"B.11", "T.12", "T.13", "T.14"}
 TOTAL = 459_840  # Tinjauan Fiskal 2027: OE 376,840 + DE 85,000 - P.70 2,000
@@ -107,8 +111,9 @@ def name_at(lines: list[str], i: int, first: str) -> str:
     return tidy(re.sub(r"\s+-\s*$", " -", " ".join(parts)).strip())
 
 
-def about(t: str) -> tuple[str, dict[str, str]]:
-    """The Maksud's VISI, and the first Outcome of each programme (keyed by tidy name)."""
+def about(t: str) -> tuple[str, dict[str, str], dict[tuple[str, str], str]]:
+    """The Maksud's VISI, the first Outcome of each programme (keyed by tidy name), and each
+    activity's Fungsi (keyed by tidy programme and activity names)."""
     lines = [ln.strip() for ln in t.splitlines()]
 
     def para(i: int, first: str = "") -> str:
@@ -123,28 +128,61 @@ def about(t: str) -> tuple[str, dict[str, str]]:
 
     visi = next((para(i + 1) for i, ln in enumerate(lines) if ln == "VISI"), "")
     outcomes: dict[str, str] = {}
-    prog = ""
+    fungsi: dict[tuple[str, str], str] = {}
+    prog = act = ""
     for i, ln in enumerate(lines):
         if m := re.match(r"PROGRAM(?: \d+)? : (.+)", ln):
             prog, j = m[1], i + 1
             while j < len(lines) and lines[j] and lines[j] != "PRESTASI OUTCOME PROGRAM":  # wrapped name
                 prog, j = f"{prog} {lines[j]}", j + 1
+            prog = tidy(prog)
         elif prog and (m := re.match(r"Outcome(?: \d+)? : (.+)", ln)):
-            outcomes.setdefault(tidy(prog), para(i + 1, m[1]))
-            prog = ""
-    return visi, outcomes
+            outcomes.setdefault(prog, para(i + 1, m[1]))
+        elif prog and (m := re.match(r"Aktiviti \d+ : (.+)", ln)):
+            act = para(i + 1, m[1])
+        elif prog and act and (m := re.match(r"Fungsi : (.+)", ln)):
+            fungsi[(prog, key(act))] = re.sub(r"\s+", " ", para(i + 1, m[1])).strip()
+            act = ""
+    return visi, outcomes, fungsi
 
 
-def oe_items(t: str, deep: bool) -> list[tuple[str, int]]:
-    """(name, RM 2027) per OE programme. Only the Maksud Bekalan/Tanggungan pages (Butiran table)."""
+def key(name: str) -> str:
+    """Loose match for names printed differently in the text and the table."""
+    return re.sub(r"[^a-z0-9]", "", name.lower())
+
+
+OBJEK = ["10000", "20000", "30000", "40000", "50000"]
+
+
+def oe_table(t: str) -> list[dict]:
+    """Rows of the Butiran table: programmes (XX0000) and activities (XXYY00), 2027 RM, Objek Am, posts."""
     lines = t.splitlines()
-    code = r"\s{10}(\d{4}00)" if deep else r"(\d{2}0000)"  # activities are indented under programmes
-    out = []
+    rows: list[dict] = []
     for i, ln in enumerate(lines):
-        m = re.match(rf"{code}\s+(.+?)\s{{2,}}({NUM})\s+({NUM})\s*$", ln)
-        if m:
-            out.append((name_at(lines, i, m[2]), rm(m[4])))
-    return out
+        if m := re.match(rf"(?:(\d{{2}}0000)|\s{{8,16}}(\d{{4}}00))\s+(.+?)\s{{2,}}({NUM})\s+({NUM})\s*$", ln):
+            rows.append({"code": m[1] or m[2], "prog": bool(m[1]), "name": name_at(lines, i, m[3]),
+                         "rm": rm(m[5]), "objek": [0] * 5, "posts": 0})
+        elif rows and (m := re.match(rf".*\s{{2}}([1-5])0000\s+({NUM})\s+({NUM})(?:\s+({NUM})\s+({NUM}))?\s*$", ln)):
+            rows[-1]["objek"][int(m[1]) - 1] = rm(m[3])
+            rows[-1]["posts"] += rm(m[5]) if m[5] else 0
+    for r in rows:
+        assert sum(r["objek"]) == r["rm"], (r["code"], r["name"], r["objek"], r["rm"])
+    return rows
+
+
+def oe_items(t: str, deep: bool) -> list[dict]:
+    """OE lines: programmes with their activities, or (deep) the activities themselves."""
+    rows = oe_table(t)
+    if deep:
+        return [{**r, "acts": []} for r in rows if not r["prog"]]
+    progs = [{**r, "acts": []} for r in rows if r["prog"]]
+    for r in rows:
+        if not r["prog"]:
+            prog = next(p for p in progs if p["code"][:2] == r["code"][:2])
+            prog["acts"].append(r)
+    for p in progs:
+        assert not p["acts"] or sum(a["rm"] for a in p["acts"]) == p["rm"], (p["code"], p["name"])
+    return progs
 
 
 def de_items(t: str) -> list[tuple[str, int]]:
@@ -165,8 +203,17 @@ def merge_small(progs: list[dict]) -> list[dict]:
     if small:
         big.append({"name": f"Lain-lain ({len(small)} butiran kecil)",
                     "opex": round(sum(p["opex"] for p in small), 4),
-                    "devex": round(sum(p["devex"] for p in small), 4)})
+                    "devex": round(sum(p["devex"] for p in small), 4), **joined(small)})
     return big
+
+
+def joined(progs: list[dict]) -> dict:
+    """Objek Am and posts of merged lines, when all their OE is split."""
+    if any(p["opex"] and "objek" not in p for p in progs) or not any("objek" in p for p in progs):
+        return {}
+    posts = sum(p.get("posts", 0) for p in progs)
+    return {"objek": [round(sum(p["objek"][i] for p in progs if "objek" in p), 4) for i in range(5)],
+            **({"posts": posts} if posts else {})}
 
 
 def mil(rm_: int) -> float:
@@ -178,14 +225,25 @@ def ministry(d: Path, s: dict, code: str) -> dict:
     t = text(d, code)
     oe = oe_items(t, code in DRILL) if sm["oe"] else []
     if sm["oe"] and not oe:  # no programme table (small T.x): one line
-        oe = [(sm["name"], sm["oe"])]
+        oe = [{"name": sm["name"], "rm": sm["oe"], "objek": None, "posts": 0, "acts": []}]
     de = de_items(t) if sm["de"] else []
-    assert sum(v for _, v in oe) == sm["oe"], (code, "OE", sum(v for _, v in oe), sm["oe"])
+    assert sum(p["rm"] for p in oe) == sm["oe"], (code, "OE", sum(p["rm"] for p in oe), sm["oe"])
     assert sum(v for _, v in de) == sm["de"], (code, "DE", sum(v for _, v in de), sm["de"])
-    visi, outcomes = about(t)
-    # "about" is only set when the book has text for it (DE projects and most T.x have none).
-    progs = [{"name": n, "opex": mil(v), "devex": 0, **({"about": outcomes[n]} if n in outcomes else {})}
-             for n, v in oe if v] + \
+    visi, outcomes, fungsi = about(t)
+
+    def acts(p: dict) -> list[dict]:
+        """Activities, biggest first, with Fungsi when the book has it."""
+        return [{"name": a["name"], "rm": mil(a["rm"]),
+                 **({"fungsi": f} if (f := fungsi.get((p["name"], key(a["name"])))) else {})}
+                for a in sorted(p["acts"], key=lambda a: -a["rm"]) if a["rm"]]
+
+    # "about" etc. are only set when the book has them (DE projects and most T.x have none).
+    progs = [{"name": p["name"], "opex": mil(p["rm"]), "devex": 0,
+              **({"about": outcomes[p["name"]]} if p["name"] in outcomes else {}),
+              **({"objek": [mil(v) for v in p["objek"]]} if p["objek"] else {}),
+              **({"posts": p["posts"]} if p["posts"] else {}),
+              **({"activities": a} if len(a := acts(p)) > 1 else {})}
+             for p in oe if p["rm"]] + \
             [{"name": n, "opex": 0, "devex": mil(v)} for n, v in de if v]
     return {"code": code, "name": sm["name"], "opex": mil(sm["oe"]), "devex": mil(sm["de"]),
             "locked": code.startswith("T"), **({"about": visi} if visi else {}), "programmes": merge_small(progs)}
@@ -208,8 +266,8 @@ def main(d: Path) -> None:
             parts = [ministry(d, s, c) for c in SMALL_T]
             ms.append({"code": code, "name": "Tanggungan Perlembagaan Lain",
                        "opex": round(sum(p["opex"] for p in parts), 4), "devex": 0, "locked": True,
-                       "programmes": [{"name": f"{p['code']} {p['name']}", "opex": p["opex"], "devex": 0}
-                                      for p in parts]})
+                       "programmes": [{"name": f"{p['code']} {p['name']}", "opex": p["opex"], "devex": 0,
+                                       **joined(p["programmes"])} for p in parts]})
         sectors.append({"name": sector, "ministries": ms})
 
     total = sum(p["opex"] + p["devex"] for sec in sectors for m in sec["ministries"] for p in m["programmes"])
@@ -218,11 +276,22 @@ def main(d: Path) -> None:
         for m in sec["ministries"]:
             assert abs(sum(p["opex"] for p in m["programmes"]) - m["opex"]) < 0.001, m["code"]
             assert abs(sum(p["devex"] for p in m["programmes"]) - m["devex"]) < 0.001, m["code"]
+            for p in m["programmes"]:  # the Objek Am split adds up to the line's OE
+                assert "objek" not in p or abs(sum(p["objek"]) - p["opex"]) < 0.001, (m["code"], p["name"])
+                assert "activities" not in p or abs(sum(a["rm"] for a in p["activities"]) - p["opex"]) < 0.001, \
+                    (m["code"], p["name"])
 
+    # Activities (mostly Fungsi text) go in their own file, so the app can load them after first paint.
+    acts = {m["code"]: {p["name"]: p.pop("activities") for p in m["programmes"] if "activities" in p}
+            for sec in sectors for m in sec["ministries"]}
     OUT.write_text(json.dumps({"year": 2027, "unit": "RM million", "sectors": sectors},
                               ensure_ascii=False, indent=1) + "\n")
-    n = sum(len(m["programmes"]) for sec in sectors for m in sec["ministries"])
-    print(f"ok: {len(s) - 1} Maksud, {n} lines, RM{total:,.1f}m -> {OUT.name}")
+    ACTS.write_text(json.dumps({c: a for c, a in acts.items() if a}, ensure_ascii=False, indent=1) + "\n")
+    progs = [p for sec in sectors for m in sec["ministries"] for p in m["programmes"]]
+    acts = [a for m in acts.values() for p in m.values() for a in p]
+    print(f"ok: {len(s) - 1} Maksud, {len(progs)} lines, RM{total:,.1f}m -> {OUT.name}")
+    print(f"   {sum('objek' in p for p in progs)}/{sum(p['opex'] > 0 for p in progs)} OE lines split by Objek Am, "
+          f"{len(acts)} activities, {sum('fungsi' in a for a in acts)} with Fungsi -> {ACTS.name}")
 
 
 if __name__ == "__main__":
