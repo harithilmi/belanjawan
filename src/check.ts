@@ -1,6 +1,8 @@
 // Smoke check: `npm run check`. Data totals, tree shape, plan math and treemap areas.
 import assert from 'node:assert/strict'
-import { ancestors, cwdFor, lines, linesOf, ministries, nodeOf, REVENUE, ROOT, sectors, SPENDING, sum } from './data.ts'
+import { activitiesIn, ancestors, cwdFor, lines, linesOf, ministries, nodeOf, REVENUE, ROOT, sectors, SPENDING, sum } from './data.ts'
+import plainText from '../budget-2027-plain.json' with { type: 'json' }
+import activities from '../budget-2027-activities.json' with { type: 'json' }
 import { remove, setKeep, shrink10, totals } from './plan.ts'
 import { squarify } from './squarify.ts'
 import { search } from './search.ts'
@@ -56,5 +58,22 @@ assert.equal(search('KPT').hits[0]?.key, 'm:B/P.64')
 assert.equal(search('kpm').hits[0]?.key, 'm:B/P.63')
 assert.equal(search('kdn').hits[0]?.key, 'm:B/P.62')
 for (const q of ['lrt', 'ptptn', 'kos sara hidup', 'warga emas', 'sampah', 'scam']) assert.ok(search(q).hits.length > 0, q)
+
+// Book detail: Objek Am adds up to OE, activities to the line, summaries to real keys.
+for (const l of lines) near(sum(l.objek), l.opex, `objek = OE: ${l.id} ${l.name}`)
+assert.ok(lines.filter((l) => l.opex > 0).every((l) => l.objek.some((x) => x > 0)), 'every OE line is split')
+const perubatan = lines.find((l) => l.code === 'B/P.42' && l.name === 'Perubatan')
+assert.equal(perubatan?.posts, 200_583)
+near(perubatan.objek[0] ?? 0, 13_904.6085) // emolumen
+const actsOf = activitiesIn(activities)
+for (const l of lines) {
+  const acts = actsOf(l)
+  if (acts.length) near(sum(acts.map((a) => a.rm)), l.opex, `activities = line: ${l.id}`)
+}
+assert.ok(actsOf(perubatan).some((a) => a.name === 'Rawatan Kecemasan dan Pesakit Luar' && a.fungsi?.includes('999')))
+assert.ok(ministries.every((m) => m.plain), 'every ministry has a plain summary')
+const keys = new Set([...ministries.map((m) => m.code), ...lines.map((l) => `${l.code}|${l.name}`)])
+for (const k of Object.keys(plainText)) assert.ok(keys.has(k), `plain summary for a missing line: ${k}`)
+assert.ok(lines.filter((l) => l.about).every((l) => l.plain), 'lines with book text have a summary')
 
 console.log('ok')

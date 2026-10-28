@@ -1,6 +1,7 @@
 import budget from '../budget-2027.json' with { type: 'json' }
 import spendingBook from '../budget-2027-ministry.json' with { type: 'json' }
-import { t, tn } from './i18n.ts'
+import plainText from '../budget-2027-plain.json' with { type: 'json' }
+import { LANG, t, tn } from './i18n.ts'
 
 export const YEAR = budget.year
 
@@ -16,16 +17,52 @@ export type Line = {
   locked: boolean
   /** Programme outcome quoted from the book, if it has one. */
   about?: string
+  /** AI-written plain-language summary of the book's text, if any. */
+  plain?: string
+  /** OE by Objek Am, RM million: emolumen, perkhidmatan & bekalan, aset, pemberian & kenaan bayaran tetap, lain. */
+  objek: readonly number[]
+  /** Bil. Jawatan 2027 (approved posts). */
+  posts: number
 }
 
-export type Ministry = { code: string; name: string; sector: string; lines: Line[]; /** VISI from the book. */ about?: string }
+export type Ministry = {
+  code: string
+  name: string
+  sector: string
+  lines: Line[]
+  /** VISI from the book. */
+  about?: string
+  plain?: string
+}
+
 export type Sector = { name: string; ministries: Ministry[]; lines: Line[] }
 
-export const sectors: Sector[] = spendingBook.sectors.map((s) => {
+/** Plain summaries are keyed by ministry code, or "code|line name". */
+const plain: Record<string, { ms: string; en: string } | undefined> = plainText
+const plainOf = (key: string) => plain[key]?.[LANG]
+
+/** Shape of budget-2027-ministry.json. Assigning (not casting) keeps TS checking the file against it. */
+type Book = {
+  sectors: {
+    name: string
+    ministries: {
+      code: string
+      name: string
+      locked: boolean
+      about?: string
+      programmes: { name: string; opex: number; devex: number; about?: string; objek?: number[]; posts?: number }[]
+    }[]
+  }[]
+}
+const book: Book = spendingBook
+const NO_OBJEK = [0, 0, 0, 0, 0]
+
+export const sectors: Sector[] = book.sectors.map((s) => {
   const ministries = s.ministries.map((m) => ({
     code: m.code,
     name: m.name,
     about: m.about,
+    plain: plainOf(m.code),
     sector: tn(s.name),
     lines: m.programmes.map((p, i) => ({
       id: `${m.code}#${i}`, // position in the book's order; bump the plan key when the data changes
@@ -36,11 +73,20 @@ export const sectors: Sector[] = spendingBook.sectors.map((s) => {
       devex: p.devex,
       total: p.opex + p.devex,
       locked: m.locked,
-      about: 'about' in p ? p.about : undefined, // JSON infers a union; only some lines have it
+      about: p.about,
+      plain: plainOf(`${m.code}|${p.name}`),
+      objek: p.objek ?? NO_OBJEK, // DE projects have none
+      posts: p.posts ?? 0,
     })),
   }))
   return { name: tn(s.name), ministries, lines: ministries.flatMap((m) => m.lines) }
 })
+
+export type Activity = { name: string; rm: number; fungsi?: string }
+
+/** budget-2027-activities.json: ministry code → line name → activities, biggest first. */
+export type ActivitiesByLine = Record<string, Record<string, Activity[] | undefined> | undefined>
+export const activitiesIn = (byLine: ActivitiesByLine) => (l: Line): readonly Activity[] => byLine[l.code]?.[l.name] ?? []
 
 export const ministries: Ministry[] = sectors.flatMap((s) => s.ministries)
 export const lines: Line[] = sectors.flatMap((s) => s.lines)

@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import { fmt, linesOf, nodeOf, REVENUE, SPENDING, sum, YEAR, type Line } from './data.ts'
+import { Suspense, use, useState } from 'react'
+import { activitiesIn, fmt, linesOf, nodeOf, REVENUE, SPENDING, sum, YEAR, type Line } from './data.ts'
 import { changes, isCut, keepOf, nowOf, remove, setKeep, shrink10, statusOf, totals, type Plan } from './plan.ts'
-import { BinIcon, CutIcon, LockIcon, TrashIcon, UndoIcon } from './Icons.tsx'
-import { t } from './i18n.ts'
+import { BinIcon, CutIcon, LockIcon, SparklesIcon, TrashIcon, UndoIcon } from './Icons.tsx'
+import { LANG, t } from './i18n.ts'
 
 type SetPlan = (f: (p: Plan) => Plan) => void
 
@@ -59,21 +59,88 @@ const pct = (share: number) => {
   return x >= 1 ? x.toFixed(1) : x >= 0.01 ? x.toFixed(2) : x > 0 ? '<0.01' : '0'
 }
 
-function SplitDetail({ items, plan }: { items: readonly Line[]; plan: Plan }) {
-  const opex = sum(items.map((l) => (l.opex * keepOf(plan, l)) / 100))
-  const devex = sum(items.map((l) => (l.devex * keepOf(plan, l)) / 100))
+/** Objek Am in display order (biggest kinds first), as indexes into Line.objek. */
+const OBJEK_ORDER = [0, 1, 3, 2, 4]
+/** Whole percent, for the money legend. */
+const pctOf = (x: number, total: number) => `${Math.round((x / total) * 100)}%`
+
+/** Where the money goes, by Objek Am, plus development spending. Book amounts, so it holds still as you cut. */
+function Breakdown({ items }: { items: readonly Line[] }) {
+  const objek = OBJEK_ORDER.map((i) => ({ i, rm: sum(items.map((l) => l.objek[i] ?? 0)) })).filter((o) => o.rm >= 0.5) // fmt shows RM0 below that
+  const opex = sum(items.map((l) => l.opex))
+  const devex = sum(items.map((l) => l.devex))
   const total = opex + devex || 1
+  const posts = sum(items.map((l) => l.posts))
   return (
-    <div className="split-detail">
+    <div className="breakdown">
+      <h4>{t.whereMoney}</h4>
       <div className="split big">
-        <i className="op" style={{ flex: opex }} />
+        {objek.map((o) => <i key={o.i} className={`ob${o.i}`} style={{ flex: o.rm }} />)}
         <i className="dv" style={{ flex: devex }} />
       </div>
-      <div className="legend">
-        {/* Hide a type the item never had (by original size), so pure-DE projects don't show "OE RM0 · 0%". */}
-        {items.some((l) => l.opex > 0) && <span><i className="sw op" /> {t.opex} <b>{fmt(opex)}</b> · {Math.round((opex / total) * 100)}%</span>}
-        {items.some((l) => l.devex > 0) && <span><i className="sw dv" /> {t.devex} <b>{fmt(devex)}</b> · {Math.round((devex / total) * 100)}%</span>}
-      </div>
+      <dl className="money">
+        {opex > 0 && (
+          <>
+            <div title={t.tip.opex}>
+              <dt>{t.opex}</dt><dd><b>{fmt(opex)}</b></dd><dd>{pctOf(opex, total)}</dd>
+            </div>
+            {objek.map((o) => (
+              <div key={o.i} className="sub" title={t.objekTip[o.i]}>
+                <dt><i className={`sw ob${o.i}`} /> {t.objek[o.i]}</dt><dd>{fmt(o.rm)}</dd><dd>{pctOf(o.rm, total)}</dd>
+              </div>
+            ))}
+          </>
+        )}
+        {devex > 0 && (
+          <div title={t.tip.devex}>
+            <dt><i className="sw dv" /> {t.devex}</dt><dd><b>{fmt(devex)}</b></dd><dd>{pctOf(devex, total)}</dd>
+          </div>
+        )}
+      </dl>
+      {posts > 0 && (
+        <p className="posts" title={t.postsTip}>
+          👥 <b>{posts.toLocaleString(LANG === 'ms' ? 'ms-MY' : 'en-MY')}</b> {t.posts}
+        </p>
+      )}
+    </div>
+  )
+}
+
+const TOP = 5
+// Mostly Fungsi text, so it is its own chunk, fetched now (after first paint) rather than in the main bundle.
+// If it fails (offline), the panel just shows no activities.
+const activitiesOf = import('../budget-2027-activities.json')
+  .then((m) => activitiesIn(m.default))
+  .catch(() => activitiesIn({}))
+
+/** The line's activities, top few first; each opens to its Fungsi from the book. */
+function Activities({ line }: { line: Line }) {
+  const acts = use(activitiesOf)(line)
+  const [all, setAll] = useState(false)
+  if (acts.length === 0) return null
+  return (
+    <div className="acts-list">
+      <h4>{t.topActs}</h4>
+      <ul>
+        {(all ? acts : acts.slice(0, TOP)).map((a, i) => {
+          const row = <><span>{a.name}</span><b>{fmt(a.rm)}</b></>
+          return (
+            <li key={i}>
+              {a.fungsi ? (
+                <details>
+                  <summary>{row}</summary>
+                  <p><b>{t.fungsi}:</b> {a.fungsi}</p>
+                </details>
+              ) : <div className="act">{row}</div>}
+            </li>
+          )
+        })}
+      </ul>
+      {acts.length > TOP && (
+        <button type="button" className="btn plain" aria-expanded={all} onClick={() => setAll((x) => !x)}>
+          {all ? t.fewerActs : t.moreActs(acts.length - TOP)}
+        </button>
+      )}
     </div>
   )
 }
@@ -89,6 +156,7 @@ export function Properties({ plan, setPlan, selected }: { plan: Plan; setPlan: S
     node.kind === 'ministry' && node.ministry.about ? { label: t.visi, text: node.ministry.about }
     : node.kind === 'line' && node.line.about ? { label: t.outcome, text: node.line.about }
     : undefined
+  const plain = node.kind === 'line' ? node.line.plain : node.kind === 'ministry' ? node.ministry.plain : undefined
   const title =
     node.kind === 'line' ? node.line.name
     : node.kind === 'ministry' ? `${node.ministry.code} ${node.ministry.name}`
@@ -119,6 +187,12 @@ export function Properties({ plan, setPlan, selected }: { plan: Plan; setPlan: S
       {node.kind !== 'root' && (
         <p>{t.ofSpending(pct(now / tot.spending))}</p>
       )}
+      {plain && (
+        <div className="plain-box">
+          <h4 title={t.aiTip}><SparklesIcon /> {t.plainTitle} <small>· AI</small></h4>
+          <p>{plain}</p>
+        </div>
+      )}
       {about && <p className="about"><b>{about.label}:</b> “{about.text}”</p>}
       {node.kind === 'line' && t.inside[node.line.name] && <p className="note">ℹ️ {t.inside[node.line.name]}</p>}
 
@@ -132,7 +206,12 @@ export function Properties({ plan, setPlan, selected }: { plan: Plan; setPlan: S
         <Controls items={items} plan={plan} setPlan={setPlan} />
       )}
 
-      <SplitDetail items={items} plan={plan} />
+      <Breakdown items={items} />
+      {node.kind === 'line' && (
+        <Suspense fallback={null}>
+          <Activities key={node.line.id} line={node.line} />
+        </Suspense>
+      )}
     </section>
   )
 }

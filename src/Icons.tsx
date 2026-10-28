@@ -68,3 +68,5 @@ export const EnterIcon = () => (
     <path d="M4.5 8h6M8 5l3 3-3 3" fill="none" stroke="var(--blue)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 )
+/** sparkles: marks AI-written text */
+export const SparklesIcon = () => <Sym d="M6.5 1.5 7.8 5.2 11.5 6.5 7.8 7.8 6.5 11.5 5.2 7.8 1.5 6.5 5.2 5.2ZM12.5 9.5l.6 1.9 1.9.6-1.9.6-.6 1.9-.6-1.9-1.9-.6 1.9-.6Z" />
