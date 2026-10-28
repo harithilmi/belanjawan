@@ -24,9 +24,9 @@ const ms = {
   intro: (s: string, r: string, y: number) =>
     `Kerajaan nak belanja ${s} pada ${y}, tapi hasil yang dijangka cuma ${r}. Potong perbelanjaan sampai semuanya muat dalam cakera.`,
   otherLang: 'English',
-  root: 'MY:\\Perbelanjaan\\',
-  window: 'Pembersihan Cakera',
-  drive: 'Perbendaharaan (C:)',
+  root: 'Perbelanjaan',
+  window: 'Storan',
+  drive: 'Perbendaharaan',
   capacity: (y: number) => `Kapasiti = hasil · Guna = perbelanjaan · Belanjawan ${y}`,
   over: (x: string) => `Lebih ${x} daripada kapasiti`,
   fits: (x: string) => `Dah muat! Ruang kosong ${x}`,
@@ -40,7 +40,7 @@ const ms = {
   howTo: 'Cara main',
   counts: (n: number, d: number, s: number) => `${n} baris · ${d} dibuang · ${s} dikecilkan`,
 
-  bin: 'Tong Kitar Semula',
+  bin: 'Tong Sampah',
   binEmpty: 'Kosong. Seret baris ke sini, atau pilih satu dan tekan Delete.',
   binSummary: (d: number, s: number, x: string) => `${d} dibuang, ${s} dikecilkan · jimat ${x}`,
   restoreAll: 'Pulihkan semua',
@@ -48,11 +48,11 @@ const ms = {
   deleted: 'dibuang',
   shrunkBy: (p: number) => `dipotong ${p}%`,
 
-  props: 'Sifat',
+  props: 'Maklumat',
   rootCaps: (y: number) => `Perbelanjaan Kerajaan Persekutuan · anggaran ${y}`,
   folder: 'Folder',
   cut: 'jimat',
-  status: { untouched: 'Belum diusik', shrunk: 'Dikecilkan', deleted: 'Dalam Tong Kitar Semula', locked: 'Berkunci' },
+  status: { untouched: 'Belum diusik', shrunk: 'Dikecilkan', deleted: 'Dalam Tong Sampah', locked: 'Berkunci' },
   per100: (x: string) => `RM${x} daripada setiap RM100 yang kerajaan belanjakan.`,
   visi: 'Visi',
   /** What is inside a line the book does not split, keyed by line name. */
@@ -67,7 +67,7 @@ const ms = {
     'Berkunci. Ini Perbelanjaan Tanggungan yang dijamin undang-undang (bayaran persaraan, pemberian dan serahan kepada kerajaan negeri).',
   keep: 'Kekalkan',
   shrink10: 'Potong 10%',
-  toBin: 'Buang ke Tong Kitar Semula',
+  toBin: 'Buang ke Tong Sampah',
   folderNote: 'Tindakan pada folder kena pada semua fail tak berkunci di dalamnya, dengan kadar yang sama.',
   opex: 'Perbelanjaan Mengurus (OE)',
   devex: 'Perbelanjaan Pembangunan (DE)',
@@ -75,12 +75,11 @@ const ms = {
   devexShort: 'Pembangunan',
   colSize: 'Saiz (RM bilion)',
   colName: 'Nama',
-  expand: 'Kembangkan:',
-  level: (n: number) => `Tahap ${n}`,
-  collapse: 'Runtuhkan',
+  show: 'Tunjuk',
+  levelNames: ['Sektor', 'Kementerian', 'Program'],
   del: 'Buang',
   shrinkAria: (n: string) => `Potong ${n} sebanyak 10%`,
-  delAria: (n: string) => `Buang ${n} ke Tong Kitar Semula`,
+  delAria: (n: string) => `Buang ${n} ke Tong Sampah`,
 
   searchPh: 'Cari… (cth: ron95, sekolah, hutang)',
   searchAria: 'Cari perbelanjaan',
@@ -94,7 +93,7 @@ const ms = {
     ptptn: 'PTPTN tiada baris sendiri dalam buku. Yang paling dekat: biasiswa dan pinjaman pelajaran.',
   },
   mapAria: 'Peta baki perbelanjaan',
-  mapGone: 'Baris yang dibuang hilang dari peta. Klik petak untuk tengok Sifat.',
+  mapGone: 'Baris yang dibuang hilang dari peta. Klik petak untuk tengok Maklumat.',
 
   shareTitle: 'Kongsi pelan anda',
   shareBtn: 'Kongsi…',
@@ -133,7 +132,7 @@ const ms = {
   howSub: (s: string, r: string) => `Belanja ${s}, hasil cuma ${r}. Buat sampai muat.`,
   howSteps: [
     { icon: '👆', bold: 'Klik', text: 'baris, tekan Potong 10%' },
-    { icon: '🗑️', bold: 'Seret', text: 'ke Tong Kitar Semula untuk buang' },
+    { icon: '🗑️', bold: 'Seret', text: 'ke Tong Sampah untuk buang' },
     { icon: '🔒', bold: 'Berkunci', text: 'Perbelanjaan Tanggungan (bayaran khidmat hutang, bayaran persaraan, pemberian dan serahan kepada kerajaan negeri) tak boleh dipotong' },
   ],
   howFoot: 'Pelan disimpan automatik. Papan kekunci: ↑↓ gerak, Delete buang, − potong.',
@@ -142,7 +141,6 @@ const ms = {
   /** Hover tooltips. */
   tip: {
     levels: ['Tunjuk sektor sahaja', 'Buka sampai kementerian', 'Buka semua, sampai program'],
-    collapse: 'Tutup semua folder',
     borrowed: 'Beza antara perbelanjaan dengan hasil. Kerajaan kena pinjam jumlah ini.',
     revenue: 'Kapasiti cakera: hasil yang dijangka kerajaan dapat tahun ini',
     cutSoFar: 'Jumlah yang anda dah potong setakat ini',
@@ -193,9 +191,9 @@ const en: typeof ms = {
   intro: (s, r, y) =>
     `The federal government plans to spend ${s} in ${y} but expects only ${r} in revenue. Free up space by cutting spending until it fits on the disk.`,
   otherLang: 'Bahasa Melayu',
-  root: 'MY:\\Spending\\',
-  window: 'Disk Cleanup',
-  drive: 'Treasury (C:)',
+  root: 'Spending',
+  window: 'Storage',
+  drive: 'Treasury',
   capacity: (y) => `Capacity: revenue · Used: spending · Budget ${y}`,
   over: (x) => `Over capacity by ${x}`,
   fits: (x) => `It fits! ${x} free`,
@@ -209,7 +207,7 @@ const en: typeof ms = {
   howTo: 'How to play',
   counts: (n, d, s) => `${n} lines · ${d} deleted · ${s} shrunk`,
 
-  bin: 'Recycle Bin',
+  bin: 'Bin',
   binEmpty: 'Empty. Drag a line here, or select one and press Delete.',
   binSummary: (d, s, x) => `${d} deleted, ${s} shrunk · ${x} freed`,
   restoreAll: 'Restore all',
@@ -217,11 +215,11 @@ const en: typeof ms = {
   deleted: 'deleted',
   shrunkBy: (p) => `shrunk ${p}%`,
 
-  props: 'Properties',
+  props: 'Info',
   rootCaps: (y) => `Federal government spending · ${y} estimate`,
   folder: 'Folder',
   cut: 'cut',
-  status: { untouched: 'Untouched', shrunk: 'Shrunk', deleted: 'In the Recycle Bin', locked: 'Locked' },
+  status: { untouched: 'Untouched', shrunk: 'Shrunk', deleted: 'In the Bin', locked: 'Locked' },
   per100: (x) => `RM${x} of every RM100 the government spends.`,
   visi: 'Vision (BM)',
   inside: {
@@ -234,7 +232,7 @@ const en: typeof ms = {
   lockedOther: 'Locked. This is charged expenditure (retirement charges, grants and transfers to state governments), so it stays in this game.',
   keep: 'Keep',
   shrink10: 'Shrink 10%',
-  toBin: 'Move to Recycle Bin',
+  toBin: 'Move to Bin',
   folderNote: 'Folder actions apply to every unlocked file inside, by the same share.',
   opex: 'Operating expenditure (OE)',
   devex: 'Development expenditure (DE)',
@@ -242,12 +240,11 @@ const en: typeof ms = {
   devexShort: 'Development',
   colSize: 'Size (RM bn)',
   colName: 'Name',
-  expand: 'Expand:',
-  level: (n) => `Level ${n}`,
-  collapse: 'Collapse',
+  show: 'Show',
+  levelNames: ['Sectors', 'Ministries', 'Programmes'],
   del: 'Del',
   shrinkAria: (n) => `Shrink ${n} by 10%`,
-  delAria: (n) => `Move ${n} to the Recycle Bin`,
+  delAria: (n) => `Move ${n} to the Bin`,
 
   searchPh: 'Search… (e.g. ron95, school, debt)',
   searchAria: 'Search spending',
@@ -261,7 +258,7 @@ const en: typeof ms = {
     ptptn: 'PTPTN has no line of its own in the book. Closest: scholarships and study loans.',
   },
   mapAria: 'Map of what remains',
-  mapGone: 'Deleted lines disappear from the map. Click a tile to see its Properties.',
+  mapGone: 'Deleted lines disappear from the map. Click a tile to see its Info.',
 
   shareTitle: 'Share your plan',
   shareBtn: 'Share…',
@@ -300,7 +297,7 @@ const en: typeof ms = {
   howSub: (s, r) => `Spending ${s}, revenue only ${r}. Make it fit.`,
   howSteps: [
     { icon: '👆', bold: 'Click', text: 'a line, press Shrink 10%' },
-    { icon: '🗑️', bold: 'Drag', text: 'to the Recycle Bin to delete' },
+    { icon: '🗑️', bold: 'Drag', text: 'to the Bin to delete' },
     { icon: '🔒', bold: 'Locked', text: 'charged expenditure (debt service charges, retirement charges, grants and transfers to state governments) cannot be cut' },
   ],
   howFoot: 'Your plan saves automatically. Keyboard: ↑↓ move, Delete removes, − shrinks.',
@@ -308,7 +305,6 @@ const en: typeof ms = {
 
   tip: {
     levels: ['Show sectors only', 'Open down to ministries', 'Open everything, down to programmes'],
-    collapse: 'Close all folders',
     borrowed: 'Gap between spending and revenue. The government borrows this.',
     revenue: 'Disk capacity: revenue the government expects this year',
     cutSoFar: 'How much you have cut so far',

@@ -46,6 +46,8 @@ export function App() {
   const [plan, setPlan] = usePlan()
   const [selected, setSelected] = useState(ROOT)
   const [open, setOpen] = useState<Open>(() => openToLevel(1))
+  // Last view picked in the segmented control; folders toggled by hand don't change it.
+  const [level, setLevel] = useState<(typeof LEVELS)[number]>(1)
   /** Select from the map: open its folders, then scroll the row into view. */
   const pick = (key: string) => {
     // flushSync so the row exists in the DOM before we scroll to it.
@@ -82,7 +84,7 @@ export function App() {
         <div className="hero-top">
           <h1>{t.title}</h1>
           <span className="btns">
-            <button type="button" className="btn" onClick={() => setDialog('howto')}>❓ {t.howTo}</button>
+            <button type="button" className="btn" onClick={() => setDialog('howto')}>{t.howTo}</button>
             <button type="button" className="btn" onClick={switchLang}>{t.otherLang}</button>
           </span>
         </div>
@@ -91,10 +93,8 @@ export function App() {
 
       <div className="window">
         <div className="titlebar">
-          <span>🧹 {t.window} — {t.root}</span>
-          <span className="tb-btns" aria-hidden="true">
-            <span className="btn tb">_</span><span className="btn tb">□</span><span className="btn tb">×</span>
-          </span>
+          <span className="tb-btns" aria-hidden="true"><i className="light" /><i className="light" /><i className="light" /></span>
+          <span>{t.window}</span>
         </div>
 
         <section className="drive" aria-label={t.drive}>
@@ -109,7 +109,7 @@ export function App() {
             <div className={tot.gap > 0 ? 'warn' : 'ok'} role="status">
               {tot.gap > 0 ? `⚠ ${t.over(fmt(tot.gap))}` : `✔ ${t.fits(fmt(-tot.gap))}`}
             </div>
-            <button type="button" className={`btn${eq ? '' : ' default'}`} title={t.tip.share} onClick={() => setDialog('share')}>📤 {t.share}</button>
+            <button type="button" className="btn default" title={t.tip.share} onClick={() => setDialog('share')}>{t.share}</button>
           </div>
 
           <div className="disk sunken" title={t.capacity(YEAR)} role="img" aria-label={`${t.spending} ${fmt(tot.spending)} · ${t.revenue} ${fmt(REVENUE)}`}>
@@ -129,15 +129,20 @@ export function App() {
 
         <div className="body">
           <div className="main-col">
-            <div className="levels" role="group" aria-label={t.expand}>
-              {t.expand}
-              {LEVELS.map((n) => (
-                <button type="button" key={n} className="btn tiny" title={t.tip.levels[n - 1]} onClick={() => setOpen(() => openToLevel(n))}>
-                  {n === 1 ? t.level(n) : n}
-                </button>
-              ))}
-              <button type="button" className="btn tiny" title={t.tip.collapse} onClick={() => setOpen(() => openToLevel(0))}>{t.collapse}</button>
-              <span className="grow" />
+            <div className="levels">
+              <span className="seg" role="group" aria-label={t.show}>
+                {LEVELS.map((n) => (
+                  <button
+                    type="button"
+                    key={n}
+                    aria-pressed={n === level}
+                    title={t.tip.levels[n - 1]}
+                    onClick={() => { setLevel(n); setOpen(() => openToLevel(n)) }}
+                  >
+                    {t.levelNames[n - 1]}
+                  </button>
+                ))}
+              </span>
               <Search plan={plan} onPick={pick} />
             </div>
             <Tree

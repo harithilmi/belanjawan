@@ -122,12 +122,12 @@ export function Tree({ plan, open, setOpen, selected, onSelect, onShrink, onDele
         {/* Size stays in a fixed column (like Explorer's details view); only the name side is indented. */}
         <span className="amt" title={fmt(now)}>{inBillions(now)}</span>
         <span
-          className="tw"
+          className={`tw${open.has(key) ? ' open' : ''}`}
           style={{ marginLeft: `calc(${level} * var(--indent))` }}
           onClick={(e) => { e.stopPropagation(); toggle(key) }}
           onDoubleClick={(e) => e.stopPropagation()} // its two clicks already toggled; don't add a third
         >
-          {folder ? (open.has(key) ? '−' : '+') : ''}
+          {folder ? '›' : ''}
         </span>
         {folder ? <FolderIcon open={open.has(key)} /> : <FileIcon />}
         {/* Maksud code goes in the tooltip (and the Properties title), so long names get the room. */}

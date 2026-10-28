@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, type MouseEvent, type ReactNode } from 'react'
 
-/** Win98 window on a native modal <dialog> (gives Esc, focus trap and backdrop for free). */
+/** macOS-style window on a native modal <dialog> (gives Esc, focus trap and backdrop for free). */
 export function Dialog({ title, onClose, children }: { title: string; onClose: () => void; children: (close: () => void) => ReactNode }) {
   const ref = useRef<HTMLDialogElement>(null)
   const id = useId()
@@ -25,8 +25,8 @@ export function Dialog({ title, onClose, children }: { title: string; onClose: (
       onClick={(e) => { if (downOutside.current && outside(e)) close() }}
     >
       <div className="titlebar">
+        <span className="tb-btns"><button type="button" className="light" aria-label="Close" onClick={close} /></span>
         <span id={id}>{title}</span>
-        <button type="button" className="btn tb" aria-label="Close" onClick={close}>×</button>
       </div>
       <div className="dialog-body">{children(close)}</div>
     </dialog>

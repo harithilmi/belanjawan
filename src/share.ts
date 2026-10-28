@@ -15,22 +15,23 @@ export function planText(plan: Plan): string {
   return `${head}\n${t.textUrl(SITE)}`
 }
 
-const STRIPE = { a: '#e00000', b: '#fff' }
 /** URL as printed on the cards: no protocol, no trailing slash. */
 const SHORT_SITE = SITE.replace(/^https?:\/\//, '').replace(/\/$/, '')
 
 export type Format = 'story' | 'wide'
 export const SIZES = { story: { w: 1080, h: 1920 }, wide: { w: 1200, h: 675 } } as const satisfies Record<Format, { w: number; h: number }>
 
-/** Canvas plus the Win98 drawing helpers both cards share. */
+const C = { text: '#1d1d1f', muted: '#6e6e73', blue: '#007aff', good: '#248a3d', bad: '#d70015', win: '#ececec', soft: '#f5f5f7', line: '#d1d1d6' }
+
+/** Canvas plus the macOS drawing helpers both cards share. */
 function canvas(W: number, H: number) {
   const c = document.createElement('canvas')
   c.width = W
   c.height = H
   const g = c.getContext('2d')
   if (!g) throw new Error('Canvas not supported')
-  const font = (px: number, bold = false) => `${bold ? 'bold ' : ''}${px}px Tahoma, Verdana, sans-serif`
-  const text = (s: string, x: number, y: number, px: number, color = '#000', bold = false, align: CanvasTextAlign = 'left') => {
+  const font = (px: number, bold = false) => `${bold ? 700 : 400} ${px}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif`
+  const text = (s: string, x: number, y: number, px: number, color = C.text, bold = false, align: CanvasTextAlign = 'left') => {
     g.font = font(px, bold)
     g.fillStyle = color
     g.textAlign = align
@@ -44,69 +45,80 @@ function canvas(W: number, H: number) {
     while (t.length > 1 && g.measureText(`${t}…`).width > maxW) t = t.slice(0, -1)
     return `${t.trimEnd()}…`
   }
-  const stripes = (x: number, y: number, w: number, h: number) => {
-    g.save()
+  const box = (x: number, y: number, w: number, h: number, r: number, fill: string, stroke?: string) => {
     g.beginPath()
-    g.rect(x, y, w, h)
-    g.clip()
-    g.fillStyle = STRIPE.b
-    g.fillRect(x, y, w, h)
-    g.fillStyle = STRIPE.a
-    for (let sx = x - h; sx < x + w; sx += 12) {
-      g.beginPath()
-      g.moveTo(sx, y + h); g.lineTo(sx + h, y); g.lineTo(sx + h + 6, y); g.lineTo(sx + 6, y + h)
-      g.fill()
+    g.roundRect(x, y, w, h, r)
+    g.fillStyle = fill
+    g.fill()
+    if (stroke) {
+      g.strokeStyle = stroke
+      g.lineWidth = 1.5
+      g.stroke()
     }
+  }
+  /** Pastel wash, same as the site's page background. */
+  const wallpaper = () => {
+    const bg = g.createLinearGradient(0, 0, W, H)
+    bg.addColorStop(0, '#dfe7f5')
+    bg.addColorStop(1, '#f3e9f2')
+    g.fillStyle = bg
+    g.fillRect(0, 0, W, H)
+  }
+  /** Grey window with traffic lights and a centred title. Returns the y where content starts. */
+  const macWindow = (x: number, y: number, w: number, h: number, title: string, px: number) => {
+    g.save()
+    g.shadowColor = 'rgb(0 0 0 / 0.18)'
+    g.shadowBlur = px * 2
+    g.shadowOffsetY = px * 0.6
+    box(x, y, w, h, px * 0.9, C.win)
     g.restore()
+    const bh = px * 2.4
+    ;['#ff5f57', '#febc2e', '#28c840'].forEach((col, i) => {
+      g.beginPath()
+      g.arc(x + px * 1.2 + i * px * 1.05, y + bh / 2, px * 0.38, 0, Math.PI * 2)
+      g.fillStyle = col
+      g.fill()
+    })
+    text(title, x + w / 2, y + bh / 2 + px * 0.36, px, '#4d4d4d', true, 'center')
+    return y + bh
   }
-  // Win98 bevel: light top-left, dark bottom-right
-  const bevel = (x: number, y: number, w: number, h: number, sunken = false) => {
-    g.fillStyle = sunken ? '#808080' : '#fff'
-    g.fillRect(x, y, w, 2); g.fillRect(x, y, 2, h)
-    g.fillStyle = sunken ? '#fff' : '#404040'
-    g.fillRect(x, y + h - 2, w, 2); g.fillRect(x + w - 2, y, 2, h)
-  }
-  const window98 = (x: number, y: number, w: number, h: number, title: string, titlePx: number) => {
-    g.fillStyle = '#c0c0c0'
-    g.fillRect(x, y, w, h)
-    bevel(x, y, w, h)
-    const bh = Math.round(titlePx * 1.75)
-    const bar = g.createLinearGradient(x, 0, x + w, 0)
-    bar.addColorStop(0, '#000080')
-    bar.addColorStop(1, '#1084d0')
-    g.fillStyle = bar
-    g.fillRect(x + 4, y + 4, w - 8, bh)
-    text(title, x + 4 + titlePx * 0.6, y + 4 + bh / 2 + titlePx * 0.36, titlePx, '#fff', true)
-    return y + 4 + bh
-  }
-  const button = (x: number, y: number, w: number, h: number, label: string, px: number, isDefault = false) => {
-    g.fillStyle = '#c0c0c0'
-    g.fillRect(x, y, w, h)
-    if (isDefault) {
-      g.fillStyle = '#000'
-      g.fillRect(x - 2, y - 2, w + 4, h + 4)
-      g.fillStyle = '#c0c0c0'
-      g.fillRect(x, y, w, h)
-    }
-    bevel(x, y, w, h)
-    text(label, x + w / 2, y + h / 2 + px * 0.36, px, '#000', isDefault, 'center')
+  const button = (x: number, y: number, w: number, h: number, label: string, px: number, primary = false) => {
+    box(x, y, w, h, h * 0.24, primary ? C.blue : '#fff', primary ? undefined : C.line)
+    text(label, x + w / 2, y + h / 2 + px * 0.36, px, primary ? '#fff' : C.text, primary, 'center')
   }
   const disk = (x: number, y: number, w: number, h: number, spending: number, gap: number) => {
     const s = w / Math.max(SPENDING, REVENUE)
-    g.fillStyle = '#fff'
+    g.save()
+    g.beginPath()
+    g.roundRect(x, y, w, h, h * 0.3)
+    g.clip()
+    g.fillStyle = '#e5e5ea'
     g.fillRect(x, y, w, h)
-    g.fillStyle = '#0000a8'
+    g.fillStyle = C.blue
     g.fillRect(x, y, Math.min(spending, REVENUE) * s, h)
-    if (gap > 0) stripes(x + REVENUE * s, y, gap * s, h)
-    g.fillStyle = '#000'
-    g.fillRect(x + REVENUE * s - 1, y - 4, 3, h + 8)
-    bevel(x - 2, y - 2, w + 4, h + 4, true)
+    if (gap > 0) {
+      const bx = x + REVENUE * s
+      g.beginPath()
+      g.rect(bx, y, gap * s, h)
+      g.clip()
+      g.fillStyle = '#ff9f9a'
+      g.fillRect(bx, y, gap * s, h)
+      g.fillStyle = '#ff3b30'
+      for (let sx = bx - h; sx < bx + gap * s; sx += 14) {
+        g.beginPath()
+        g.moveTo(sx, y + h); g.lineTo(sx + h, y); g.lineTo(sx + h + 7, y); g.lineTo(sx + 7, y + h)
+        g.fill()
+      }
+    }
+    g.restore()
+    g.fillStyle = C.text
+    g.fillRect(x + REVENUE * s - 1.5, y - 5, 3, h + 10)
   }
   const blob = () => new Promise<Blob>((res, rej) => c.toBlob((b) => (b ? res(b) : rej(new Error('toBlob failed'))), 'image/png'))
-  return { g, text, fit, bevel, window98, button, disk, blob }
+  return { g, text, fit, box, wallpaper, macWindow, button, disk, blob }
 }
 
-/** Share card: a tall Win98 "Disk Cleanup" dialog for stories, or the wide summary for X/WhatsApp. */
+/** Share card: a tall macOS "Storage" window for stories, or the wide summary for X/WhatsApp. */
 export function planImage(plan: Plan, format: Format): Promise<Blob> {
   try {
     return format === 'story' ? story(plan) : wide(plan)
@@ -119,84 +131,68 @@ export function planImage(plan: Plan, format: Format): Promise<Blob> {
 function story(plan: Plan): Promise<Blob> {
   const { w: W, h: H } = SIZES.story
   const k = canvas(W, H)
-  const { g, text, fit, bevel } = k
+  const { g, text, fit, box } = k
   const tot = totals(plan)
   const cuts = changes(plan)
   const shown = cuts.slice(0, 6)
   const rest = cuts.slice(shown.length)
 
-  // Measure first so the dialog can be centred in the safe area.
+  // Measure first so the window can be centred in the safe area.
   const ROW = 76
   const listH = 20 + Math.max(1, shown.length) * ROW + (rest.length ? 56 : 0)
   const winH = 56 + 300 + listH + 280
   const x = 60
   const w = W - 120
-  // Block = headline (110) + dialog + URL lines (150), centred between IG's top and bottom UI.
+  // Block = headline (110) + window + URL lines (150), centred between IG's top and bottom UI.
   const y = Math.max(360, Math.round((H - winH - 260) / 2) + 110)
 
-  g.fillStyle = '#008080'
-  g.fillRect(0, 0, W, H)
-  g.shadowColor = '#000'
-  g.shadowOffsetX = 3
-  g.shadowOffsetY = 3
-  text(t.title, W / 2, y - 44, 60, '#fff', true, 'center')
-  g.shadowColor = 'transparent'
-  const top = k.window98(x, y, w, winH, `${t.window} — MY:`, 30)
-  // Title bar ? and × buttons
-  k.button(x + w - 98, y + 12, 40, 36, '?', 24)
-  k.button(x + w - 52, y + 12, 40, 36, '×', 28)
+  k.wallpaper()
+  text(t.title, W / 2, y - 48, 60, C.text, true, 'center')
+  const top = k.macWindow(x, y, w, winH, t.window, 30)
 
+  // White content box inside the grey window, like the Storage pane.
   const px = x + 44
   const pw = w - 88
-  text('🧹', px, top + 84, 60)
-  text(t.freedUp, px + 90, top + 72, 38)
-  text(fmt(tot.cut), px, top + 196, 108, '#000', true)
-  text(t.toDelete(cuts.length), px, top + 262, 32)
+  box(x + 20, top, w - 40, winH - (top - y) - 20, 22, '#fff')
+  text(t.freedUp, px, top + 72, 38, C.muted)
+  text(fmt(tot.cut), px, top + 186, 108, C.text, true)
+  text(t.toDelete(cuts.length), px, top + 252, 32, C.muted)
 
-  // List box: checkbox, programme (ministry under it), amount freed
-  const ly = top + 290
-  g.fillStyle = '#fff'
-  g.fillRect(px, ly, pw, listH)
-  bevel(px, ly, pw, listH, true)
-  if (shown.length === 0) text(t.nothingYet, px + 24, ly + 64, 32, '#404040')
+  // List: blue check, programme (ministry under it), amount freed
+  const ly = top + 280
+  box(px, ly, pw, listH, 20, C.soft)
+  if (shown.length === 0) text(t.nothingYet, px + 24, ly + 64, 32, C.muted)
   shown.forEach((ch, i) => {
     const ry = ly + 10 + i * ROW
     const amt = `−${fmt(ch.freed)}`
-    g.font = '32px Tahoma, Verdana, sans-serif'
+    g.font = '700 32px -apple-system, BlinkMacSystemFont, sans-serif'
     const amtW = g.measureText(amt).width
-    // checkbox
-    g.fillStyle = '#fff'
-    g.fillRect(px + 20, ry + 14, 30, 30)
-    bevel(px + 20, ry + 14, 30, 30, true)
-    text('✓', px + 35, ry + 39, 26, '#000', true, 'center')
+    box(px + 20, ry + 14, 32, 32, 8, C.blue)
+    text('✓', px + 36, ry + 40, 24, '#fff', true, 'center')
     const nameW = pw - 90 - amtW - 50
-    text(fit(ch.line.name, nameW, 32, true), px + 68, ry + 40, 32, '#000', true)
-    text(fit(`${ch.line.ministry} · ${describe(ch.keep)}`, nameW, 22), px + 68, ry + 66, 22, '#606060')
-    text(amt, px + pw - 20, ry + 40, 32, '#006400', true, 'right')
+    text(fit(ch.line.name, nameW, 32, true), px + 70, ry + 40, 32, C.text, true)
+    text(fit(`${ch.line.ministry} · ${describe(ch.keep)}`, nameW, 22), px + 70, ry + 66, 22, C.muted)
+    text(amt, px + pw - 20, ry + 40, 32, C.good, true, 'right')
   })
   if (rest.length) {
     const ry = ly + 10 + shown.length * ROW
-    g.fillStyle = '#808080'
-    for (let dx = px + 20; dx < px + pw - 20; dx += 6) g.fillRect(dx, ry + 4, 3, 2)
-    text(t.moreCuts(rest.length, fmt(sum(rest.map((c) => c.freed)))), px + 20, ry + 40, 26, '#404040')
+    g.fillStyle = C.line
+    g.fillRect(px + 20, ry + 4, pw - 40, 2)
+    text(t.moreCuts(rest.length, fmt(sum(rest.map((c) => c.freed)))), px + 20, ry + 40, 26, C.muted)
   }
 
   const dy = ly + listH + 40
-  k.disk(px, dy, pw, 56, tot.spending, tot.gap)
+  k.disk(px, dy, pw, 40, tot.spending, tot.gap)
   text(
     tot.gap > 0 ? `⚠ ${t.stillOver(fmt(tot.gap))}` : `✔ ${t.fits(fmt(-tot.gap))}`,
-    px, dy + 112, 34, tot.gap > 0 ? '#c00000' : '#006400', true,
+    px, dy + 98, 34, tot.gap > 0 ? C.bad : C.good, true,
   )
-  const by = dy + 146
+  const by = dy + 136
   k.button(px + pw - 470, by, 270, 70, t.tryIt, 30, true)
   k.button(px + pw - 180, by, 180, 70, t.cancel, 30)
 
-  g.shadowColor = '#000'
-  g.shadowOffsetX = 3
-  g.shadowOffsetY = 3
-  text(SHORT_SITE, W / 2, y + winH + 76, 40, '#fff', true, 'center')
-  text(t.storyFoot(YEAR), W / 2, y + winH + 124, 26, '#fff', false, 'center')
-  g.shadowColor = 'transparent'
+  text(SHORT_SITE, W / 2, y + winH + 76, 40, C.text, true, 'center')
+  text(t.storyFoot(YEAR), W / 2, y + winH + 124, 26, C.muted, false, 'center')
   return k.blob()
 }
 
@@ -204,31 +200,28 @@ function story(plan: Plan): Promise<Blob> {
 function wide(plan: Plan): Promise<Blob> {
   const { w: W, h: H } = SIZES.wide
   const k = canvas(W, H)
-  const { g, text, fit, bevel } = k
+  const { g, text, fit, box } = k
   const tot = totals(plan)
 
-  g.fillStyle = '#008080'
-  g.fillRect(0, 0, W, H)
-  k.window98(24, 24, W - 48, H - 48, `${t.title} — ${t.root}`, 18)
+  k.wallpaper()
+  k.macWindow(24, 24, W - 48, H - 48, `${t.title} — ${t.window}`, 18)
 
   // Headline
-  text(t.myPlanCuts(fmt(tot.cut)), 56, 112, 40, '#000', true)
-  text(tot.gap > 0 ? `⚠ ${t.stillOver(fmt(tot.gap))}` : `✔ ${t.fits(fmt(-tot.gap))}`, 56, 146, 22, tot.gap > 0 ? '#c00000' : '#006400', true)
+  text(t.myPlanCuts(fmt(tot.cut)), 56, 116, 40, C.text, true)
+  text(tot.gap > 0 ? `⚠ ${t.stillOver(fmt(tot.gap))}` : `✔ ${t.fits(fmt(-tot.gap))}`, 56, 150, 22, tot.gap > 0 ? C.bad : C.good, true)
 
   const bx = 56
   const bw = W - 112
-  k.disk(bx, 166, bw, 36, tot.spending, tot.gap)
-  text(`${t.spending} ${fmt(tot.spending)}  ·  ${t.borrowed} ${fmt(Math.max(0, tot.gap))}`, bx, 226, 17)
-  text(`${t.revenue} ${fmt(REVENUE)}`, bx + bw, 226, 17, '#000', false, 'right')
+  k.disk(bx, 172, bw, 26, tot.spending, tot.gap)
+  text(`${t.spending} ${fmt(tot.spending)}  ·  ${t.borrowed} ${fmt(Math.max(0, tot.gap))}`, bx, 228, 17, C.muted)
+  text(`${t.revenue} ${fmt(REVENUE)}`, bx + bw, 228, 17, C.muted, false, 'right')
 
-  // Two panels: biggest cuts (left), what is left by sector (right)
-  const py = 262
+  // Two white boxes: biggest cuts (left), what is left by sector (right)
+  const py = 254
   const ph = 340
   const panel = (x: number, w: number, title: string) => {
-    bevel(x, py, w, ph, true)
-    g.fillStyle = '#fff'
-    g.fillRect(x + 2, py + 2, w - 4, ph - 4)
-    text(title, x + 16, py + 32, 20, '#000080', true)
+    box(x, py, w, ph, 14, '#fff')
+    text(title, x + 16, py + 32, 19, C.text, true)
   }
 
   const lx = 56
@@ -237,20 +230,20 @@ function wide(plan: Plan): Promise<Blob> {
   const cuts = changes(plan)
   const shown = cuts.slice(0, 7)
   const rest = cuts.slice(shown.length)
-  if (shown.length === 0) text(t.nothingYet, lx + 16, py + 70, 18, '#404040')
+  if (shown.length === 0) text(t.nothingYet, lx + 16, py + 70, 18, C.muted)
   shown.forEach((ch, i) => {
     // Two lines per cut: programme + how much, then its ministry (names like "Pengurusan" repeat).
     const y = py + 66 + i * 36
     const amt = `−${fmt(ch.freed)}`
-    g.font = 'bold 18px Tahoma, Verdana, sans-serif'
+    g.font = '700 18px -apple-system, BlinkMacSystemFont, sans-serif'
     const room = lw - 48 - g.measureText(amt).width
     const name = fit(ch.line.name, room - 90, 17, true)
-    text(name, lx + 16, y, 17, '#000', true)
-    text(describe(ch.keep), lx + 16 + g.measureText(name).width + 10, y, 14, '#404040')
-    text(fit(ch.line.ministry, room, 13), lx + 16, y + 15, 13, '#606060')
-    text(amt, lx + lw - 16, y, 18, '#006400', true, 'right')
+    text(name, lx + 16, y, 17, C.text, true)
+    text(describe(ch.keep), lx + 16 + g.measureText(name).width + 10, y, 14, C.muted)
+    text(fit(ch.line.ministry, room, 13), lx + 16, y + 15, 13, C.muted)
+    text(amt, lx + lw - 16, y, 18, C.good, true, 'right')
   })
-  if (rest.length) text(t.moreCuts(rest.length, fmt(sum(rest.map((c) => c.freed)))), lx + 16, py + ph - 14, 15, '#404040')
+  if (rest.length) text(t.moreCuts(rest.length, fmt(sum(rest.map((c) => c.freed)))), lx + 16, py + ph - 14, 15, C.muted)
 
   const rx = 600
   const rw = W - 56 - rx
@@ -260,20 +253,22 @@ function wide(plan: Plan): Promise<Blob> {
   const barW = rw - 32
   rows.forEach((r, i) => {
     const y = py + 66 + i * 52
-    text(r.name, rx + 16, y, 16, '#000', true)
-    text(fmt(r.now), rx + rw - 16, y, 16, '#000', false, 'right')
+    text(r.name, rx + 16, y, 16, C.text, true)
+    text(fmt(r.now), rx + rw - 16, y, 16, C.muted, false, 'right')
     const nowW = (r.now / max) * barW
     const cutW = ((r.before - r.now) / max) * barW
-    g.fillStyle = '#0000a8'
-    g.fillRect(rx + 16, y + 8, nowW, 14)
+    box(rx + 16, y + 8, Math.max(nowW, 2), 14, 4, C.blue)
     if (cutW > 0) {
-      g.strokeStyle = '#006400'
+      g.strokeStyle = C.good
+      g.lineWidth = 1.5
       g.setLineDash([4, 3])
-      g.strokeRect(rx + 16 + nowW + 0.5, y + 8.5, cutW - 1, 13)
+      g.beginPath()
+      g.roundRect(rx + 16 + nowW + 2, y + 8.5, Math.max(cutW - 3, 1), 13, 4)
+      g.stroke()
       g.setLineDash([])
     }
   })
 
-  text(t.footer(YEAR, SHORT_SITE), 56, H - 44, 15, '#202020')
+  text(t.footer(YEAR, SHORT_SITE), 56, H - 46, 15, C.muted)
   return k.blob()
 }

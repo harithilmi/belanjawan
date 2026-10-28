@@ -98,7 +98,7 @@ export function Properties({ plan, setPlan, selected }: { plan: Plan; setPlan: S
         <span>{t.props} — {title}</span>
         {sheet && (
           <button type="button" className="btn tb sheet-toggle" aria-expanded={full} aria-label={t.props} onClick={() => setFull((f) => !f)}>
-            {full ? '▼' : '▲'}
+            {full ? '⌄' : '⌃'}
           </button>
         )}
       </div>
