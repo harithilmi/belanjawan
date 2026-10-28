@@ -28,7 +28,7 @@ export function RecycleBin({ plan, setPlan, onDrop }: { plan: Plan; setPlan: Set
               : t.binSummary(list.filter((c) => c.keep === 0).length, list.filter((c) => c.keep > 0).length, fmt(freed))}
           </div>
         </div>
-        <button type="button" className="btn" disabled={list.length === 0} title={t.tip.restoreAll} onClick={() => setPlan(() => ({}))}>
+        <button type="button" className="btn fill" disabled={list.length === 0} title={t.tip.restoreAll} onClick={() => setPlan(() => ({}))}>
           {t.restoreAll}
         </button>
       </div>
@@ -42,7 +42,7 @@ export function RecycleBin({ plan, setPlan, onDrop }: { plan: Plan; setPlan: Set
                 <small className="muted">{line.ministry}</small>
               </span>
               <span className="good">{fmt(freed)}</span>
-              <button type="button" className="btn tiny" title={t.tip.restore} onClick={() => setPlan((p) => setKeep(p, [line], () => 100))}>
+              <button type="button" className="btn tiny plain" title={t.tip.restore} onClick={() => setPlan((p) => setKeep(p, [line], () => 100))}>
                 {t.restore}
               </button>
             </li>
@@ -151,15 +151,15 @@ function Controls({ items, plan, setPlan }: { items: readonly Line[]; plan: Plan
         </label>
       )}
       <div className="btns">
-        <button type="button" className="btn" title={t.tip.shrink10} onClick={() => setPlan((p) => shrink10(p, editable))}>
+        <button type="button" className="btn tint" title={t.tip.shrink10} onClick={() => setPlan((p) => shrink10(p, editable))}>
           {t.shrink10}
         </button>
-        <button type="button" className="btn" title={t.tip.toBin} onClick={() => setPlan((p) => remove(p, editable))}>
+        <button type="button" className="btn tint danger" title={t.tip.toBin} onClick={() => setPlan((p) => remove(p, editable))}>
           {t.toBin}
         </button>
         <button
           type="button"
-          className="btn"
+          className="btn fill"
           title={t.tip.restore}
           disabled={editable.every((l) => keepOf(plan, l) === 100)}
           onClick={() => setPlan((p) => setKeep(p, editable, () => 100))}

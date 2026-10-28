@@ -84,8 +84,8 @@ export function App() {
         <div className="hero-top">
           <h1>{t.title}</h1>
           <span className="btns">
-            <button type="button" className="btn" onClick={() => setDialog('howto')}>{t.howTo}</button>
-            <button type="button" className="btn" onClick={switchLang}>{t.otherLang}</button>
+            <button type="button" className="btn fill" onClick={() => setDialog('howto')}>{t.howTo}</button>
+            <button type="button" className="btn fill" onClick={switchLang}>{t.otherLang}</button>
           </span>
         </div>
         <p>{t.intro(fmt(SPENDING), fmt(REVENUE), YEAR)}</p>
