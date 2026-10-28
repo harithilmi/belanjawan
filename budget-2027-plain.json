@@ -56,8 +56,8 @@
   "en": "Funds SWCorp rubbish collection and public cleaning, help for local councils, town planning, parks and New Villages."
  },
  "B/P.43|Komuniti Bandar Mampan": {
-  "ms": "Kebanyakannya untuk bomba: cegah dan padam kebakaran serta kerja menyelamat. Juga urus rumah PPR dan tribunal tuntutan pembeli rumah.",
-  "en": "Mostly pays for firefighters: preventing and fighting fires and rescue work. Also covers PPR housing and a homebuyer claims tribunal."
+  "ms": "Kebanyakannya untuk bomba mencegah dan memadam kebakaran serta kerja menyelamat, juga urus rumah PPR dan tribunal tuntutan pembeli rumah.",
+  "en": "Mostly pays for firefighters to prevent and fight fires and do rescue work, plus PPR housing and a homebuyer claims tribunal."
  },
  "B/P.45": {
   "ms": "Kementerian yang membangunkan belia melalui latihan kemahiran dan program kepimpinan, serta menggalakkan sukan dan melatih atlet negara.",
@@ -108,8 +108,8 @@
   "en": "Admin costs for the ministry and state and district education offices: finance, staff, counselling, ICT, audits and trainee-teacher scholarships."
  },
  "B/P.63|Dasar, Penilaian dan Pengurusan Prestasi": {
-  "ms": "Kerja merangka dasar pendidikan negara supaya jelas dan boleh dilaksanakan di sekolah.",
-  "en": "Covers drafting national education policy so it is clear and workable in schools."
+  "ms": "Kerja merangka dasar pendidikan negara, menilainya dan memantau prestasi supaya dasar itu jelas dan boleh dilaksanakan.",
+  "en": "Covers drafting national education policy, reviewing it and tracking performance so the policy is clear and workable."
  },
  "B/P.63|Operasi Pendidikan": {
   "ms": "Duit untuk menjalankan sekolah rendah, sekolah menengah hingga tingkatan enam, prasekolah dan program persediaan lepasan SPM.",
@@ -120,15 +120,15 @@
   "en": "Pays for textbooks and the textbook loan scheme, the syllabus, exams including STPM, school inspections and Dewan Bahasa dan Pustaka."
  },
  "B/P.63|Pembangunan Profesionalisme": {
-  "ms": "Kos melatih bakal guru, serta kursus dan program kepimpinan untuk guru dan pengetua yang sudah berkhidmat.",
-  "en": "Covers training new teachers, plus courses and leadership programmes for serving teachers and school leaders."
+  "ms": "Kos melatih bakal guru, serta kursus dan program kepimpinan untuk guru dan pemimpin pendidikan yang sudah berkhidmat.",
+  "en": "Covers training new teachers, plus courses and leadership programmes for serving teachers and education leaders."
  },
  "B/P.64": {
   "ms": "Kementerian yang membiayai universiti awam, politeknik, kolej komuniti, hospital pengajar universiti dan biasiswa penyelidikan.",
   "en": "The ministry that funds public universities, polytechnics, community colleges, university teaching hospitals and research scholarships."
  },
  "B/P.64|Pengurusan": {
-  "ms": "Kos pentadbiran kementerian, termasuk agensi MQA yang mengiktiraf kualiti kursus dan program latihan pemimpin universiti.",
+  "ms": "Kos pentadbiran kementerian, termasuk agensi MQA yang mengiktiraf kualiti kursus, serta latihan untuk pemimpin universiti.",
   "en": "Covers running the ministry, including MQA, which accredits course quality, and leadership training for university leaders."
  },
  "B/P.64|Pendidikan Tinggi": {
@@ -160,8 +160,8 @@
   "en": "Funds the bodies developing the northern corridor, Iskandar, the East Coast, Sarawak's SCORE and Sabah by drawing in investment."
  },
  "B/P.20": {
-  "ms": "Kementerian yang memajukan industri sawit, getah, kayu, koko, lada, kenaf dan tembakau melalui lembaga-lembaganya.",
-  "en": "The ministry that develops the palm oil, rubber, timber, cocoa, pepper, kenaf and tobacco industries through its boards."
+  "ms": "Kementerian yang memajukan industri sawit, getah, kayu, koko, lada dan kenaf melalui lembaga-lembaganya, serta mengawal selia industri tembakau.",
+  "en": "The ministry that develops the palm oil, rubber, timber, cocoa, pepper and kenaf industries through its boards, and regulates the tobacco industry."
  },
  "B/P.20|Pengurusan": {
   "ms": "Kos pejabat dan staf yang mentadbir kementerian perladangan dan komoditi.",
@@ -224,7 +224,7 @@
   "en": "Funds PERHILITAN, FRIM forest research and the Forestry Department: protecting wildlife, national parks and forest reserves."
  },
  "B/P.23|Pengurusan Alam Sekitar dan Perubahan Iklim": {
-  "ms": "Kawal pencemaran, nilai laporan EIA, urus buangan terjadual, beri ramalan cuaca serta amaran gempa bumi dan tsunami.",
+  "ms": "Kawal pencemaran, nilai laporan kesan alam sekitar, urus buangan terjadual, beri ramalan cuaca serta amaran gempa bumi dan tsunami.",
   "en": "Controls pollution, reviews environmental impact reports, manages scheduled waste, and gives weather forecasts plus earthquake and tsunami alerts."
  },
  "B/P.24": {
@@ -248,7 +248,7 @@
   "en": "Pays MIDA to bring foreign and local investors into manufacturing and services, and manages investment incentives."
  },
  "B/P.25": {
-  "ms": "Kementerian yang mengawal harga dan bekalan barang, melindungi pengguna, menguruskan subsidi minyak, dan menangani kos sara hidup.",
+  "ms": "Kementerian yang memantau harga dan bekalan barang, melindungi pengguna, menguruskan subsidi minyak, dan menangani kos sara hidup.",
   "en": "The ministry that watches prices and supply of goods, protects consumers, handles fuel subsidies and tackles the cost of living."
  },
  "B/P.25|Pengurusan": {
@@ -256,12 +256,12 @@
   "en": "Runs KPDN's state and head offices: enforcement, finance, ICT, staff, audits, integrity and communications."
  },
  "B/P.25|Pembangunan Perdagangan Dalam Negeri": {
-  "ms": "Duit untuk penguatkuasa yang memeriksa peniaga, kawalan petrol, diesel, minyak masak dan gula bersubsidi, aplikasi Price Catcher dan Food Bank.",
-  "en": "Pays enforcement officers who check traders, controls on subsidised petrol, diesel, cooking oil and sugar, the Price Catcher app and food banks."
+  "ms": "Duit untuk penguatkuasa yang memeriksa peniaga, kawalan petrol, diesel dan minyak masak bersubsidi, permit barang kawalan seperti gula, Price Catcher dan Food Bank.",
+  "en": "Pays enforcement officers who check traders, controls on subsidised petrol, diesel and cooking oil, permits for controlled goods like sugar, Price Catcher and food banks."
  },
  "B/P.25|Pemerkasaan Pengguna": {
   "ms": "Bayar pendidikan pengguna, khidmat nasihat aduan, standard keselamatan barang, dan Tribunal Tuntutan Pengguna untuk tuntut ganti rugi secara murah dan cepat.",
-  "en": "Pays for consumer education, complaint advice, product safety standards, and the Consumer Claims Tribunal for cheap, quick refund claims."
+  "en": "Pays for consumer education, complaint advice, product safety standards, and the Consumer Claims Tribunal for cheap, quick compensation claims."
  },
  "B/P.26": {
   "ms": "Kementerian yang membantu usahawan dan koperasi: pembiayaan PKS, TEKUN, kontraktor Bumiputera, industri halal dan latihan keusahawanan.",
@@ -324,8 +324,8 @@
   "en": "Funds the National Science Centre, the National Planetarium, National Science Week and rural science outreach, plus licensing of space objects."
  },
  "B/P.30|Pembangunan Teknologi": {
-  "ms": "Bayar makmal Jabatan Kimia untuk siasatan polis dan kesihatan awam, Agensi Nuklear, Agensi Angkasa, kawalan keselamatan sinaran dan bantuan teknologi untuk IKS.",
-  "en": "Pays the Chemistry Department labs for police and public health work, the nuclear and space agencies, radiation safety control and tech help for small firms."
+  "ms": "Bayar makmal Jabatan Kimia untuk siasatan undang-undang dan kesihatan awam, Agensi Nuklear, Agensi Angkasa, kawalan keselamatan sinaran dan bantuan teknologi untuk IKS.",
+  "en": "Pays the Chemistry Department labs for law enforcement and public health work, the nuclear and space agencies, radiation safety control and tech help for small firms."
  },
  "B/P.31": {
   "ms": "Kementerian yang promosi Malaysia kepada pelancong dan jaga seni, budaya, kraftangan dan warisan negara.",
@@ -372,8 +372,8 @@
   "en": "Pays for RTM broadcasts, BERNAMA news, FINAS film industry support, explaining government policy to the public, and media training."
  },
  "B/P.47|Infrastruktur dan Telekomunikasi": {
-  "ms": "Rancang jalur lebar gentian optik dekat sekolah dan kawasan penduduk, rangkaian 5G, kabel dasar laut dan sistem kecemasan 999.",
-  "en": "Plans fibre broadband near schools and populated areas, the 5G network, undersea cables and the 999 emergency system."
+  "ms": "Rancang dasar komunikasi, jalur lebar gentian optik dekat sekolah dan kawasan penduduk, rangkaian 5G, kabel dasar laut dan sistem kecemasan 999.",
+  "en": "Plans communications policy, fibre broadband near schools and populated areas, the 5G network, undersea cables and the 999 emergency system."
  },
  "B/P.50": {
   "ms": "Kementerian yang terajui pendigitalan negara: perkhidmatan kerajaan dalam talian, ekonomi digital dan perlindungan data peribadi.",
@@ -396,7 +396,7 @@
   "en": "Covers running the defence ministry, including paying retired soldiers' benefits and second-career programmes for veterans."
  },
  "B/P.60|Pertahanan Negara": {
-  "ms": "Duit untuk tentera darat, laut dan udara supaya sentiasa bersiap siaga mempertahankan sempadan dan perairan negara.",
+  "ms": "Duit untuk tentera darat, laut dan udara supaya sentiasa bersiap siaga mempertahankan tanah air, perairan dan ruang udara negara.",
   "en": "Pays for the army, navy and air force to stay ready to defend the country's land, waters and airspace."
  },
  "B/P.62": {
@@ -448,8 +448,8 @@
   "en": "The commission that registers voters and runs general elections and by-elections."
  },
  "B.4|Pengurusan": {
-  "ms": "Kos pentadbiran SPR, sistem ICT dan pangkalan data pengundi, penyelidikan pilihan raya, dan latihan petugas pilihan raya.",
-  "en": "Covers election commission admin, ICT and voter databases, election research, and training election workers."
+  "ms": "Kos pentadbiran SPR, sistem ICT dan pangkalan data, penyelidikan pilihan raya, dan latihan petugas pilihan raya.",
+  "en": "Covers election commission admin, ICT systems and databases, election research, and training election workers."
  },
  "B.4|Pilihan Raya": {
   "ms": "Duit untuk pejabat pilihan raya negeri, pendaftaran pengundi, menjalankan pilihan raya, menyemak sempadan kawasan dan memantau kempen.",
@@ -504,8 +504,8 @@
   "en": "Develops Kuala Lumpur, Putrajaya and Labuan: roads, drains, public parks, community centres, land matters, sports and Kampong Bharu."
  },
  "B/P.7": {
-  "ms": "Jabatan yang urus pekerja kerajaan: pengambilan, latihan, gaji, kenaikan pangkat, pencen dan biasiswa JPA.",
-  "en": "The department managing government workers: hiring, training, pay, promotions, pensions and JPA scholarships."
+  "ms": "Jabatan yang urus pekerja kerajaan: jawatan, latihan, gaji, kenaikan pangkat, pencen dan biasiswa JPA.",
+  "en": "The department managing government workers: posts, training, pay, promotions, pensions and JPA scholarships."
  },
  "B/P.7|Pengurusan": {
   "ms": "Kos pentadbiran JPA serta sistem digital yang menyimpan rekod dan urusan sumber manusia semua agensi kerajaan.",
@@ -528,7 +528,7 @@
   "en": "Covers the department's admin and the state legal adviser offices that handle advice, criminal cases and civil suits."
  },
  "B.8|Perundangan": {
-  "ms": "Bayar kerja menggubal dan menyemak undang-undang, cetak semula akta, dan terjemah undang-undang lama ke Bahasa Melayu.",
+  "ms": "Bayar kerja menggubal dan menyemak undang-undang, cetak semula akta, dan terjemah undang-undang lama dari Bahasa Inggeris ke Bahasa Melayu.",
   "en": "Pays for drafting and revising laws, reprinting acts, and translating old laws from English into Malay."
  },
  "B.8|Litigasi": {
@@ -596,8 +596,8 @@
   "en": "Office costs for the ministry: finance, HR, ICT, legal work, plus protocol for foreign diplomats and visiting dignitaries."
  },
  "B/P.13|Hubungan Diplomasi dan Kerjasama Pelbagai Hala": {
-  "ms": "Bayar penglibatan Malaysia di ASEAN, PBB, OIC dan Komanwel, termasuk isu keselamatan, hak asasi manusia dan pemeriksaan senjata kimia.",
-  "en": "Pays for Malaysia's role in ASEAN, the UN, OIC and the Commonwealth, including security, human rights and chemical weapons inspections."
+  "ms": "Bayar penglibatan Malaysia di ASEAN, PBB, OIC dan Komanwel, termasuk isu keselamatan, hak asasi manusia dan pematuhan perjanjian senjata kimia.",
+  "en": "Pays for Malaysia's role in ASEAN, the UN, OIC and the Commonwealth, including security, human rights and chemical weapons treaty compliance."
  },
  "B/P.13|Perancangan Dasar, Strategik dan Penyelidikan": {
   "ms": "Duit untuk latihan diplomat di IDFR, pusat mencegah keganasan SEARCCT, kajian dasar luar dan rundingan sempadan laut dengan negara jiran.",
@@ -620,8 +620,8 @@
   "en": "Payments set by the Constitution: royal allowances for the King, judges, the Auditor-General, House Speakers, the Election Commission and service commissions."
  },
  "T.12": {
-  "ms": "Pemberian kepada negeri dan majlis tempatan ikut bilangan penduduk dan jalan negeri, serta sumbangan kepada bank pembangunan antarabangsa.",
-  "en": "Money owed to states and local councils based on population and state roads, plus contributions to international development banks."
+  "ms": "Geran kepada negeri ikut bilangan penduduk dan jalan negeri, geran tahunan majlis tempatan, serta sumbangan kepada bank dan tabung pembangunan antarabangsa.",
+  "en": "Grants to states based on population and state roads, yearly grants to local councils, and contributions to international development banks and funds."
  },
  "T.13": {
   "ms": "Bayar faedah atas hutang kerajaan: bon dan bil perbendaharaan dalam negeri, serta pinjaman dari luar negara.",
