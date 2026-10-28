@@ -28,8 +28,6 @@ export type Ministry = {
   name: string
   sector: string
   lines: Line[]
-  /** VISI from the book. */
-  about?: string
   plain?: string
 }
 
@@ -59,7 +57,6 @@ export const sectors: Sector[] = book.sectors.map((s) => {
   const ministries = s.ministries.map((m) => ({
     code: m.code,
     name: m.name,
-    about: m.about,
     plain: plainOf(m.code),
     sector: tn(s.name),
     lines: m.programmes.map((p, i) => ({
