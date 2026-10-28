@@ -347,6 +347,8 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
 }
 /* Fingers: bigger rows and buttons. */
 @media (pointer: coarse) {
+  /* iOS Safari zooms into any text field under 16px on focus. */
+  .search input { font-size: 16px; }
   .row { min-height: 30px; }
   .row .tw { width: 16px; height: 16px; line-height: 15px; }
   .row .enter { padding: 6px; margin: -6px -2px; }
