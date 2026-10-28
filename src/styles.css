@@ -186,8 +186,6 @@ button, input { font: inherit; color: inherit; }
 .props-amt { font-size: 14px; margin: 2px 0; }
 .props-amt > b { font-size: 24px; font-weight: 700; }
 .props p { margin: 6px 0; }
-.props .about { color: var(--muted); }
-.props .about b { color: var(--text); }
 .locked-note, .note { background: #f2f2f7; border-radius: 8px; padding: 8px 10px; }
 .controls { margin: 8px 0; }
 .slider { display: flex; align-items: center; gap: 8px; }
@@ -269,7 +267,7 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
   .side { display: flex; flex-direction: column; }
   .side > .props { order: 1; }
   /* Fixed height: the tree grows as you open folders, and that would push the map down under your finger. */
-  .tree-box { flex: none; min-height: 0; height: 60svh; }
+  .tree-box { flex: none; min-height: 0; height: 50svh; }
   .hero h1 { font-size: 26px; }
   /* Selected row: Properties docks to the bottom as a sheet, so its buttons stay under the thumb. */
   .props.sheet {
