@@ -188,15 +188,6 @@ export function Properties({ plan, setPlan, selected, look = false }: { plan: Pl
       {node.kind !== 'root' && (
         <p>{t.ofSpending(pct(now / tot.spending))}</p>
       )}
-      {plain && (
-        <div className="plain-box">
-          <h4 title={t.aiTip}><SparklesIcon /> {t.plainTitle} <small>· AI</small></h4>
-          <p>{plain}</p>
-        </div>
-      )}
-      {about && <p className="about"><b>{about.label}:</b> “{about.text}”</p>}
-      {node.kind === 'line' && t.inside[node.line.name] && <p className="note">ℹ️ {t.inside[node.line.name]}</p>}
-
       {node.kind === 'root' ? (
         <p>{t.rootText((((SPENDING - REVENUE) / SPENDING) * 100).toFixed(1))}</p>
       ) : items.every((l) => l.locked) ? (
@@ -207,12 +198,23 @@ export function Properties({ plan, setPlan, selected, look = false }: { plan: Pl
         <Controls items={items} plan={plan} setPlan={setPlan} />
       )}
 
-      <Breakdown items={items} />
-      {node.kind === 'line' && (
-        <Suspense fallback={null}>
-          <Activities key={node.line.id} line={node.line} />
-        </Suspense>
-      )}
+      {/* Desktop: fixed-height panel, so only this part scrolls and the page never jumps. Keyed: new row, back to top. */}
+      <div className="props-body" key={selected}>
+        {plain && (
+          <div className="plain-box">
+            <h4 title={t.aiTip}><SparklesIcon /> {t.plainTitle} <small>· AI</small></h4>
+            <p>{plain}</p>
+          </div>
+        )}
+        {about && <p className="about"><b>{about.label}:</b> “{about.text}”</p>}
+        {node.kind === 'line' && t.inside[node.line.name] && <p className="note">ℹ️ {t.inside[node.line.name]}</p>}
+        <Breakdown items={items} />
+        {node.kind === 'line' && (
+          <Suspense fallback={null}>
+            <Activities key={node.line.id} line={node.line} />
+          </Suspense>
+        )}
+      </div>
     </section>
   )
 }

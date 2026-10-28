@@ -169,9 +169,12 @@ button, input { font: inherit; color: inherit; }
 .bin-list .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bin-list .name small { display: block; overflow: hidden; text-overflow: ellipsis; font-size: 11px; }
 
-/* Fixed room for the tallest Properties (measured 191–335px over every row), so arrowing through the tree
-   doesn't change the side column's height and with it the tree's and the page's. Desktop only: phones stack. */
-@media (min-width: 801px) { .props { min-height: 340px; } }
+/* Fixed height, so arrowing through the tree doesn't change the side column's height and with it the tree's
+   and the page's. The book detail scrolls inside instead. Desktop only: phones stack. Quick Look grows to fit. */
+@media (min-width: 801px) {
+  .props:not(.look) { height: 460px; display: flex; flex-direction: column; }
+  .props:not(.look) .props-body { flex: 1; min-height: 0; overflow: auto; margin: 8px -12px -12px; padding: 0 12px 12px; border-top: 1px solid var(--sep); }
+}
 /* Quick Look: the dialog body is already the card. */
 .props.look { margin: 0; padding: 0; box-shadow: none; width: min(560px, 86vw); min-height: 0; }
 .props-title { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; margin-bottom: 6px; }
@@ -260,7 +263,7 @@ button, input { font: inherit; color: inherit; }
   }
   .props.sheet .props-title { position: sticky; top: -12px; z-index: 1; margin: -12px -12px 6px; padding: 12px 12px 4px; background: inherit; }
   .props.sheet .sheet-toggle { display: inline-flex; }
-  .props.sheet:not(.full) > :is(.caps, p:not(.locked-note), .plain-box, .breakdown, .acts-list), .props.sheet:not(.full) .controls > p { display: none; }
+  .props.sheet:not(.full) > :is(.caps, p:not(.locked-note), .props-body), .props.sheet:not(.full) .controls > p { display: none; }
   .props.sheet .controls { margin-bottom: 0; }
   /* Room so the sheet never covers the statusbar. */
   .desktop:has(.props.sheet) { padding-bottom: 190px; }
