@@ -72,11 +72,12 @@ const samePlan = (a: Plan, b: Plan) => {
   return ka.length === Object.keys(b).length && ka.every((k) => a[k] === b[k])
 }
 
-/** The plan, saved in localStorage, with ⌘Z history. Changes less than 600ms apart (a slider drag) undo as one step. */
+/** The plan, saved in localStorage, with ⌘Z / ⌘⇧Z history. Changes less than 600ms apart (a slider drag) undo as one step. */
 export function usePlan() {
   const [plan, setPlanState] = useState<Plan>(load)
   useEffect(() => localStorage.setItem(KEY, JSON.stringify(plan)), [plan])
   const past = useRef<Plan[]>([])
+  const future = useRef<Plan[]>([])
   const lastAt = useRef(0)
 
   const setPlan = (f: (p: Plan) => Plan) => {
@@ -84,15 +85,20 @@ export function usePlan() {
     if (samePlan(next, plan)) return // e.g. shrinking a locked line: nothing to undo
     const now = Date.now()
     if (now - lastAt.current > 600) past.current = [...past.current.slice(-99), plan]
+    future.current = [] // a new change forks history: nothing left to redo
     lastAt.current = now
     setPlanState(next)
   }
-  const undo = () => {
-    const prev = past.current.at(-1)
-    if (!prev) return
-    past.current = past.current.slice(0, -1)
+  /** Step one way through history, pushing the current plan onto the other stack. */
+  const step = (from: { current: Plan[] }, to: { current: Plan[] }) => {
+    const target = from.current.at(-1)
+    if (!target) return
+    from.current = from.current.slice(0, -1)
+    to.current = [...to.current, plan]
     lastAt.current = 0
-    setPlanState(prev)
+    setPlanState(target)
   }
-  return [plan, setPlan, undo] as const
+  const undo = () => step(past, future)
+  const redo = () => step(future, past)
+  return [plan, setPlan, undo, redo] as const
 }

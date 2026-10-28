@@ -44,8 +44,43 @@ function HowToPlay({ onClose }: { onClose: () => void }) {
   )
 }
 
+// ⌘ on Apple keyboards, Ctrl elsewhere (the handlers accept both).
+const MOD = /Mac|iP(hone|ad)/.test(navigator.userAgent) ? '⌘' : 'Ctrl '
+
+function Shortcuts({ onClose }: { onClose: () => void }) {
+  const rows: [keys: string[], what: string][] = [
+    [['↑', '↓'], t.keys.move],
+    [['→', '←', 'Enter'], t.keys.fold],
+    [['⌥→', '⌥←'], t.keys.foldAll],
+    [[`${MOD}↓`, t.dblClick], t.keys.enter],
+    [[`${MOD}↑`], t.keys.up],
+    [[t.letters], t.keys.type],
+    [['Space'], t.keys.look],
+    [['−'], t.keys.shrink],
+    [['Delete'], t.keys.del],
+    [[`${MOD}Z`], t.keys.undo],
+    [[`${MOD}⇧Z`], t.keys.redo],
+    [['/'], t.keys.search],
+    [['?'], t.keys.help],
+  ]
+  return (
+    <Dialog title={t.keysTitle} onClose={onClose}>
+      {() => (
+        <dl className="keys">
+          {rows.map(([keys, what]) => (
+            <div key={what}>
+              <dt>{keys.map((k) => <kbd key={k}>{k}</kbd>)}</dt>
+              <dd>{what}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+    </Dialog>
+  )
+}
+
 export function App() {
-  const [plan, setPlan, undo] = usePlan()
+  const [plan, setPlan, undo, redo] = usePlan()
   const [selected, setSelected] = useState(ROOT)
   const [open, setOpen] = useState<Open>(() => new Set())
   // Entered folder. Deleting everything in it shows the nearest folder above instead.
@@ -66,7 +101,7 @@ export function App() {
     const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches
     document.getElementById(rowId(key))?.scrollIntoView({ block: 'nearest', behavior: smooth ? 'smooth' : 'auto' })
   }
-  const [dialog, setDialog] = useState<'share' | 'howto' | 'look' | null>(() => (localStorage.getItem(SEEN_KEY) ? null : 'howto'))
+  const [dialog, setDialog] = useState<'share' | 'howto' | 'look' | 'keys' | null>(() => (localStorage.getItem(SEEN_KEY) ? null : 'howto'))
   const tot = totals(plan)
 
   const act = (key: string, f: typeof shrink10) => {
@@ -77,14 +112,15 @@ export function App() {
     act(key, remove)
     if (nodeOf(key).kind === 'line') setSelected(cwd)
   }
-  // Page-wide keys, skipped while typing in a text box: ⌘Z undoes the last cut, / jumps to search
-  // (⌘F stays the browser's Find).
+  // Page-wide keys, skipped while typing in a text box: ⌘Z / ⌘⇧Z undo and redo, / jumps to search
+  // (⌘F stays the browser's Find), ? lists every shortcut (like YouTube and X).
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const typing = e.target instanceof HTMLTextAreaElement || (e.target instanceof HTMLInputElement && e.target.type !== 'range')
       if (typing) return
-      if ((e.metaKey || e.ctrlKey) && !e.shiftKey && e.key.toLowerCase() === 'z') undo()
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') (e.shiftKey ? redo : undo)()
       else if (e.key === '/' && !dialog) document.querySelector<HTMLInputElement>('.search input')?.focus()
+      else if (e.key === '?' && !dialog) setDialog('keys')
       else return
       e.preventDefault()
     }
@@ -203,6 +239,7 @@ export function App() {
 
       {dialog === 'share' && <ShareDialog plan={plan} onClose={closeDialog} />}
       {dialog === 'howto' && <HowToPlay onClose={closeDialog} />}
+      {dialog === 'keys' && <Shortcuts onClose={closeDialog} />}
       {dialog === 'look' && (
         <Dialog title={t.props} onClose={closeDialog}>
           {() => <Properties plan={plan} setPlan={setPlan} selected={selected} look />}

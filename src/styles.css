@@ -250,6 +250,13 @@ button, input { font: inherit; color: inherit; }
 .howto li { display: flex; align-items: center; gap: 10px; padding: 10px; margin-bottom: 6px; background: #f5f5f7; border-radius: 10px; }
 .howto-ic { font-size: 22px; width: 28px; text-align: center; }
 .small { font-size: 11px; }
+/* Shortcuts window: keycaps on the left, what they do on the right. */
+.keys { margin: 0; width: min(420px, 84vw); }
+.keys > div { display: flex; align-items: center; gap: 12px; padding: 5px 0; }
+.keys > div + div { border-top: 0.5px solid var(--sep); }
+.keys dt { flex: none; width: 150px; display: flex; flex-wrap: wrap; gap: 4px; }
+.keys dd { margin: 0; }
+kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-align: center; border-radius: 5px; background: #f5f5f7; box-shadow: 0 0 0 0.5px rgb(0 0 0 / 0.2), 0 1px 0 rgb(0 0 0 / 0.15); }
 
 @media (max-width: 800px) {
   .body { grid-template-columns: 1fr; }

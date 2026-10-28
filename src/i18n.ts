@@ -150,8 +150,28 @@ const ms = {
     { icon: '🗑️', bold: 'Seret', text: 'ke Tong Sampah untuk buang' },
     { icon: '🔒', bold: 'Berkunci', text: 'Perbelanjaan Tanggungan (bayaran khidmat hutang, bayaran persaraan, pemberian dan serahan kepada kerajaan negeri) tak boleh dipotong' },
   ],
-  howFoot: 'Pelan disimpan automatik. Papan kekunci: ↑↓ gerak, ⌘↓ ⌘↑ masuk/naik folder, Space lihat, − potong, Delete buang, ⌘Z buat asal, / cari.',
+  howFoot: 'Pelan disimpan automatik. Papan kekunci: ↑↓ gerak, Delete buang, − potong.',
   start: 'Jom mula',
+
+  /** Shortcuts window (press ?). */
+  keysTitle: 'Pintasan papan kekunci',
+  keys: {
+    move: 'Pilih baris atas / bawah',
+    fold: 'Buka / tutup folder',
+    foldAll: 'Buka / tutup folder dan semua di dalamnya',
+    enter: 'Masuk folder',
+    up: 'Naik ke folder atas',
+    type: 'Lompat ke nama',
+    look: 'Lihat semua maklumat',
+    shrink: 'Potong 10%',
+    del: 'Buang ke Tong Sampah',
+    undo: 'Buat asal',
+    redo: 'Buat semula',
+    search: 'Cari',
+    help: 'Tunjuk pintasan ini',
+  },
+  letters: 'huruf',
+  dblClick: 'klik dua kali',
 
   /** Hover tooltips. */
   tip: {
@@ -328,8 +348,27 @@ const en: typeof ms = {
     { icon: '🗑️', bold: 'Drag', text: 'to the Bin to delete' },
     { icon: '🔒', bold: 'Locked', text: 'charged expenditure (debt service charges, retirement charges, grants and transfers to state governments) cannot be cut' },
   ],
-  howFoot: 'Your plan saves automatically. Keyboard: ↑↓ move, ⌘↓ ⌘↑ into/out of folders, Space looks, − shrinks, Delete removes, ⌘Z undoes, / searches.',
+  howFoot: 'Your plan saves automatically. Keyboard: ↑↓ move, Delete removes, − shrinks.',
   start: 'Start cleanup',
+
+  keysTitle: 'Keyboard shortcuts',
+  keys: {
+    move: 'Select the row above / below',
+    fold: 'Open / close a folder',
+    foldAll: 'Open / close a folder and everything inside',
+    enter: 'Go into a folder',
+    up: 'Go up to the folder above',
+    type: 'Jump to a name',
+    look: 'See all its details',
+    shrink: 'Shrink 10%',
+    del: 'Move to the Bin',
+    undo: 'Undo',
+    redo: 'Redo',
+    search: 'Search',
+    help: 'Show these shortcuts',
+  },
+  letters: 'letters',
+  dblClick: 'double-click',
 
   tip: {
     enter: 'Open this folder (double-click, ⌘↓). Back up: ⌘↑',
