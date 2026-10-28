@@ -1,0 +1,69 @@
+{
+ "year": 2027,
+ "unit": "RM million",
+ "revenue": [
+  {
+   "group": "Direct tax",
+   "items": [
+    {
+     "name": "Company income tax",
+     "value": 106614
+    },
+    {
+     "name": "Individual income tax",
+     "value": 51837
+    },
+    {
+     "name": "Petroleum income tax",
+     "value": 20528
+    },
+    {
+     "name": "Withholding & others",
+     "value": 5471
+    },
+    {
+     "name": "Stamp duty, RPGT & Labuan",
+     "value": 15448
+    }
+   ]
+  },
+  {
+   "group": "Indirect tax",
+   "items": [
+    {
+     "name": "Service tax",
+     "value": 42450
+    },
+    {
+     "name": "Sales tax",
+     "value": 30891
+    },
+    {
+     "name": "Excise duties",
+     "value": 11784
+    },
+    {
+     "name": "Import duty",
+     "value": 3323
+    },
+    {
+     "name": "Export duty",
+     "value": 1914
+    },
+    {
+     "name": "Other indirect",
+     "value": 6800
+    }
+   ]
+  },
+  {
+   "group": "Non-tax",
+   "items": [
+    {
+     "name": "Non-tax (Petronas dividend, fees, interest)",
+     "value": 83757
+    }
+   ]
+  }
+ ]
+}

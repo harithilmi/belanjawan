@@ -1,0 +1,344 @@
+// UI copy in Bahasa Melayu (default) and English. Switching language reloads the page; the plan survives in localStorage.
+
+export type Lang = 'ms' | 'en'
+const KEY = 'malaysias-disk.lang'
+
+const stored = (() => {
+  try {
+    return globalThis.localStorage?.getItem(KEY)
+  } catch {
+    return null
+  }
+})()
+export const LANG: Lang = stored === 'en' ? 'en' : 'ms'
+
+export function switchLang() {
+  localStorage.setItem(KEY, LANG === 'ms' ? 'en' : 'ms')
+  location.reload()
+}
+
+const ms = {
+  bn: ' bilion',
+  m: ' juta',
+  title: 'Cakera Malaysia Dah Penuh',
+  intro: (s: string, r: string, y: number) =>
+    `Kerajaan nak belanja ${s} pada ${y}, tapi hasil yang dijangka cuma ${r}. Potong perbelanjaan sampai semuanya muat dalam cakera.`,
+  otherLang: 'English',
+  root: 'MY:\\Perbelanjaan\\',
+  window: 'Pembersihan Cakera',
+  drive: 'Perbendaharaan (C:)',
+  capacity: (y: number) => `Kapasiti = hasil · Guna = perbelanjaan · Belanjawan ${y}`,
+  over: (x: string) => `Lebih ${x} daripada kapasiti`,
+  fits: (x: string) => `Dah muat! Ruang kosong ${x}`,
+  spending: 'Perbelanjaan',
+  borrowed: 'Pinjaman',
+  cutSoFar: 'Dah dipotong',
+  revenue: 'Hasil',
+  roughly: (name: string, amt: string) => `Jurang ini kira-kira sama dengan seluruh peruntukan ${name} (${amt}).`,
+  balanced: (p: string) => `Belanjawan seimbang! Anda potong ${p}% daripada semua perbelanjaan.`,
+  share: 'Kongsi pelan saya',
+  howTo: 'Cara main',
+  counts: (n: number, d: number, s: number) => `${n} baris · ${d} dibuang · ${s} dikecilkan`,
+
+  bin: 'Tong Kitar Semula',
+  binEmpty: 'Kosong. Seret baris ke sini, atau pilih satu dan tekan Delete.',
+  binSummary: (d: number, s: number, x: string) => `${d} dibuang, ${s} dikecilkan · jimat ${x}`,
+  restoreAll: 'Pulihkan semua',
+  restore: 'Pulihkan',
+  deleted: 'dibuang',
+  shrunkBy: (p: number) => `dipotong ${p}%`,
+
+  props: 'Sifat',
+  rootCaps: (y: number) => `Perbelanjaan Kerajaan Persekutuan · anggaran ${y}`,
+  folder: 'Folder',
+  cut: 'jimat',
+  status: { untouched: 'Belum diusik', shrunk: 'Dikecilkan', deleted: 'Dalam Tong Kitar Semula', locked: 'Berkunci' },
+  per100: (x: string) => `RM${x} daripada setiap RM100 yang kerajaan belanjakan.`,
+  visi: 'Visi',
+  /** What is inside a line the book does not split, keyed by line name. */
+  inside: {
+    'Subsidi dan Bantuan Tunai':
+      'Buku tak pecahkan baris ini. Tinjauan Fiskal 2027 sebut subsidi dan bantuan sosial (RM72.7 bilion, semua kementerian) merangkumi subsidi bahan api BUDI95 dan BUDI Diesel, minyak masak (eCOSS), Sumbangan Tunai Rahmah (STR), Sumbangan Asas Rahmah (SARA) dan bantuan bil elektrik. Tiada angka bagi setiap satu.',
+  } as Record<string, string>,
+  outcome: 'Outcome',
+  rootText: (p: string) => `Untuk imbangkan belanjawan, potong ${p}% daripada semua perbelanjaan. Pilih folder atau fail di sebelah kiri untuk kecilkan atau buang.`,
+  lockedDebt: 'Berkunci. Bayaran khidmat hutang wajib dibayar. Kalau tak bayar, kerajaan dikira mungkir.',
+  lockedOther:
+    'Berkunci. Ini Perbelanjaan Tanggungan yang dijamin undang-undang (bayaran persaraan, pemberian dan serahan kepada kerajaan negeri).',
+  keep: 'Kekalkan',
+  shrink10: 'Potong 10%',
+  toBin: 'Buang ke Tong Kitar Semula',
+  folderNote: 'Tindakan pada folder kena pada semua fail tak berkunci di dalamnya, dengan kadar yang sama.',
+  opex: 'Perbelanjaan Mengurus (OE)',
+  devex: 'Perbelanjaan Pembangunan (DE)',
+  opexShort: 'Mengurus',
+  devexShort: 'Pembangunan',
+  colSize: 'Saiz',
+  colName: 'Nama',
+  expand: 'Kembangkan:',
+  level: (n: number) => `Tahap ${n}`,
+  collapse: 'Runtuhkan',
+  del: 'Buang',
+  shrinkAria: (n: string) => `Potong ${n} sebanyak 10%`,
+  delAria: (n: string) => `Buang ${n} ke Tong Kitar Semula`,
+
+  searchPh: 'Cari… (cth: ron95, sekolah, hutang)',
+  searchAria: 'Cari perbelanjaan',
+  searchNone: 'Tak jumpa. Cuba perkataan lain, contohnya ron95, hospital, jalan.',
+  searchAs: (terms: string) => `Dicari sebagai: ${terms}`,
+  searchNote: {
+    fuel: 'Buku tak pecahkan subsidi RON95/diesel daripada bantuan tunai (STR, SARA). Semuanya dalam satu baris: Subsidi dan Bantuan Tunai.',
+    prices: 'Tiada baris "harga barang". Kawalan harga di bawah Kementerian Perdagangan Dalam Negeri dan Kos Sara Hidup; subsidi barang dalam Subsidi dan Bantuan Tunai.',
+    minister: 'Gaji menteri tiada baris sendiri dalam buku. Yang paling dekat: Urusan Parlimen, dan pencen Anggota Pentadbiran (Tanggungan).',
+    salary: 'Gaji penjawat awam tiada baris sendiri. Ia ada dalam setiap kementerian, kebanyakannya dalam baris Pengurusan.',
+    ptptn: 'PTPTN tiada baris sendiri dalam buku. Yang paling dekat: biasiswa dan pinjaman pelajaran.',
+  },
+  mapAria: 'Peta baki perbelanjaan',
+  mapGone: 'Baris yang dibuang hilang dari peta. Klik petak untuk tengok Sifat.',
+
+  shareTitle: 'Kongsi pelan anda',
+  shareBtn: 'Kongsi…',
+  copyImage: 'Salin gambar',
+  download: 'Muat turun gambar',
+  copyText: 'Salin teks',
+  imageCopied: 'Gambar disalin.',
+  textCopied: 'Teks disalin.',
+  failed: 'Tak berjaya dalam pelayar ini.',
+  drawFailed: 'Gambar gagal dihasilkan.',
+  showText: 'Tunjuk pelan dalam bentuk teks',
+  drawing: 'Sedang dilukis…',
+  imageAlt: 'Pelan anda dalam bentuk gambar',
+
+  myPlanCuts: (x: string) => `Pelan saya potong ${x}`,
+  stillOver: (x: string) => `Masih lebih ${x} daripada kapasiti`,
+  whatICut: 'Apa yang saya potong',
+  nothingYet: 'Belum potong apa-apa.',
+  byGroup: 'Baki mengikut sektor',
+  footer: (y: number, url: string) => `Anggaran Belanjawan ${y} (MOF). Cuba sendiri: ${url}`,
+  textIntro: (x: string, y: number, v: string) => `Pelan saya potong ${x} daripada Belanjawan ${y} Malaysia (${v}).`,
+  textShort: (x: string) => `masih kurang ${x}`,
+  textBalanced: 'belanjawan seimbang',
+  textList: (l: string) => `Yang saya potong, paling besar dahulu: ${l}.`,
+  textNone: 'Saya belum potong apa-apa lagi.',
+  textTotal: (x: string, n: string) => `Jumlah dipotong ${x} daripada ${n} yang perlu.`,
+  textUrl: (u: string) => `Cuba sendiri: ${u}`,
+
+  howGoal: (g: string) => `Potong ${g}`,
+  howSub: (s: string, r: string) => `Belanja ${s}, hasil cuma ${r}. Buat sampai muat.`,
+  howSteps: [
+    { icon: '👆', bold: 'Klik', text: 'baris, tekan Potong 10%' },
+    { icon: '🗑️', bold: 'Seret', text: 'ke Tong Kitar Semula untuk buang' },
+    { icon: '🔒', bold: 'Berkunci', text: 'Perbelanjaan Tanggungan (bayaran khidmat hutang, bayaran persaraan, pemberian dan serahan kepada kerajaan negeri) tak boleh dipotong' },
+  ],
+  howFoot: 'Pelan disimpan automatik. Papan kekunci: ↑↓ gerak, Delete buang, − potong.',
+  start: 'Jom mula',
+
+  /** Hover tooltips. */
+  tip: {
+    levels: ['Tunjuk sektor sahaja', 'Buka sampai kementerian', 'Buka semua, sampai program'],
+    collapse: 'Tutup semua folder',
+    borrowed: 'Beza antara perbelanjaan dengan hasil. Kerajaan kena pinjam jumlah ini.',
+    revenue: 'Kapasiti cakera: hasil yang dijangka kerajaan dapat tahun ini',
+    cutSoFar: 'Jumlah yang anda dah potong setakat ini',
+    share: 'Buat gambar atau teks pelan anda untuk dikongsi',
+    opex: 'Mengurus (OE): gaji, bekalan, subsidi. Belanja harian kerajaan.',
+    devex: 'Pembangunan (DE): projek seperti jalan, sekolah, hospital',
+    size: 'Saiz sekarang, selepas potongan',
+    freed: 'Dah dipotong daripada baris ini',
+    restore: 'Kembalikan ke saiz asal (100%)',
+    restoreAll: 'Batalkan semua potongan',
+    shrink10: 'Kecilkan 10% lagi',
+    toBin: 'Buang terus (saiz jadi RM0)',
+    locked: 'Berkunci: tak boleh dipotong',
+  },
+
+  sources: 'Sumber dan nota',
+  srcSource: 'Sumber:',
+  srcBook: (y: number) => `Kementerian Kewangan, Anggaran Perbelanjaan Persekutuan ${y} (ringkasan dan satu PDF bagi setiap Maksud).`,
+  srcRevenue: 'Hasil:',
+  srcBody: (y: number) => `Tinjauan Fiskal ${y}, Jadual 2.1. Semua angka ialah anggaran Belanjawan ${y}.`,
+  srcTree: 'Susunan:',
+  srcTreeBody:
+    'sektor → kementerian (Maksud) → program. Folder kementerian memuatkan program Perbelanjaan Mengurus dan projek Perbelanjaan Pembangunan. Pengumpulan Maksud ke dalam sektor ialah pertimbangan kami sendiri. Butiran bawah RM5 juta digabung dalam “Lain-lain”. T.1–T.11 digabung dalam satu folder. Simpanan Luar Jangka (P.70, RM2 bilion) tidak dimasukkan, jadi jumlahnya sama dengan Tinjauan Fiskal.',
+  srcCapacity: 'Kapasiti',
+  srcCapacityBody: 'ialah hasil Kerajaan Persekutuan:',
+  srcLines: 'Setiap baris',
+  srcLinesBody:
+    'ialah Perbelanjaan Mengurus (OE) campur Perbelanjaan Pembangunan (DE). Potongan kena pada kedua-duanya dengan kadar yang sama.',
+  srcNames: 'Nama:',
+  srcNamesBody:
+    'nama kementerian dan program ditulis seperti yang dicetak oleh Kementerian Kewangan (nama HURUF BESAR ditukar ke huruf biasa). Visi kementerian dan outcome program dipetik dari buku yang sama; projek pembangunan dan Perbelanjaan Tanggungan tiada teks begini.',
+  srcLocked: 'Fail berkunci:',
+  srcLockedBody:
+    'Perbelanjaan Tanggungan (T.1–T.14): bayaran khidmat hutang, bayaran persaraan, pemberian dan serahan kepada kerajaan negeri, dan tanggungan lain di bawah Perlembagaan. Kesan ekonomi daripada potongan tidak diambil kira. Pelan anda disimpan dalam pelayar ini sahaja.',
+
+  /** Display names: revenue labels in budget-2027.json are English, sector names in budget-2027-ministry.json are BM. */
+  names: {
+    'Direct tax': 'Cukai langsung',
+    'Indirect tax': 'Cukai tidak langsung',
+    'Non-tax': 'Hasil bukan cukai',
+  } as Record<string, string>,
+}
+
+const en: typeof ms = {
+  bn: 'bn',
+  m: 'm',
+  title: "Malaysia's Disk Is Full",
+  intro: (s, r, y) =>
+    `The federal government plans to spend ${s} in ${y} but expects only ${r} in revenue. Free up space by cutting spending until it fits on the disk.`,
+  otherLang: 'Bahasa Melayu',
+  root: 'MY:\\Spending\\',
+  window: 'Disk Cleanup',
+  drive: 'Treasury (C:)',
+  capacity: (y) => `Capacity: revenue · Used: spending · Budget ${y}`,
+  over: (x) => `Over capacity by ${x}`,
+  fits: (x) => `It fits! ${x} free`,
+  spending: 'Spending',
+  borrowed: 'Borrowed',
+  cutSoFar: 'Cut so far',
+  revenue: 'Revenue',
+  roughly: (name, amt) => `That gap is roughly all of ${name} (${amt}).`,
+  balanced: (p) => `Balanced! You cut ${p}% of all spending.`,
+  share: 'Share my plan',
+  howTo: 'How to play',
+  counts: (n, d, s) => `${n} lines · ${d} deleted · ${s} shrunk`,
+
+  bin: 'Recycle Bin',
+  binEmpty: 'Empty. Drag a line here, or select one and press Delete.',
+  binSummary: (d, s, x) => `${d} deleted, ${s} shrunk · ${x} freed`,
+  restoreAll: 'Restore all',
+  restore: 'Restore',
+  deleted: 'deleted',
+  shrunkBy: (p) => `shrunk ${p}%`,
+
+  props: 'Properties',
+  rootCaps: (y) => `Federal government spending · ${y} estimate`,
+  folder: 'Folder',
+  cut: 'cut',
+  status: { untouched: 'Untouched', shrunk: 'Shrunk', deleted: 'In the Recycle Bin', locked: 'Locked' },
+  per100: (x) => `RM${x} of every RM100 the government spends.`,
+  visi: 'Vision (BM)',
+  inside: {
+    'Subsidi dan Bantuan Tunai':
+      'The book does not split this line. Tinjauan Fiskal 2027 says subsidies and social assistance (RM72.7bn, all ministries) cover the BUDI95 and BUDI Diesel fuel subsidies, cooking oil (eCOSS), Sumbangan Tunai Rahmah (STR), Sumbangan Asas Rahmah (SARA) and electricity bill aid. No amount is given for each.',
+  },
+  outcome: 'Outcome (BM)',
+  rootText: (p) => `To balance the budget, cut ${p}% of all spending. Pick a folder or file on the left to shrink or delete it.`,
+  lockedDebt: "Locked. Debt service charges can't be skipped without defaulting.",
+  lockedOther: 'Locked. This is charged expenditure (retirement charges, grants and transfers to state governments), so it stays in this game.',
+  keep: 'Keep',
+  shrink10: 'Shrink 10%',
+  toBin: 'Move to Recycle Bin',
+  folderNote: 'Folder actions apply to every unlocked file inside, by the same share.',
+  opex: 'Operating expenditure (OE)',
+  devex: 'Development expenditure (DE)',
+  opexShort: 'Operating',
+  devexShort: 'Development',
+  colSize: 'Size',
+  colName: 'Name',
+  expand: 'Expand:',
+  level: (n) => `Level ${n}`,
+  collapse: 'Collapse',
+  del: 'Del',
+  shrinkAria: (n) => `Shrink ${n} by 10%`,
+  delAria: (n) => `Move ${n} to the Recycle Bin`,
+
+  searchPh: 'Search… (e.g. ron95, school, debt)',
+  searchAria: 'Search spending',
+  searchNone: 'Nothing found. Try another word, like ron95, hospital, road.',
+  searchAs: (terms) => `Searched as: ${terms}`,
+  searchNote: {
+    fuel: 'The book does not split RON95/diesel subsidies from cash aid (STR, SARA). They are all one line: Subsidi dan Bantuan Tunai.',
+    prices: 'There is no "prices" line. Price control is under the domestic trade and cost of living ministry; goods subsidies are in Subsidi dan Bantuan Tunai.',
+    minister: "Ministers' pay has no line of its own in the book. Closest: Urusan Parlimen, and pensions for Anggota Pentadbiran (charged).",
+    salary: 'Civil servant pay has no line of its own. It is inside every ministry, mostly in the Pengurusan (management) lines.',
+    ptptn: 'PTPTN has no line of its own in the book. Closest: scholarships and study loans.',
+  },
+  mapAria: 'Map of what remains',
+  mapGone: 'Deleted lines disappear from the map. Click a tile to see its Properties.',
+
+  shareTitle: 'Share your plan',
+  shareBtn: 'Share…',
+  copyImage: 'Copy image',
+  download: 'Download image',
+  copyText: 'Copy as text',
+  imageCopied: 'Image copied.',
+  textCopied: 'Text copied.',
+  failed: 'That did not work in this browser.',
+  drawFailed: 'Could not draw the image.',
+  showText: 'Show plan as text',
+  drawing: 'Drawing…',
+  imageAlt: 'Your plan as an image',
+
+  myPlanCuts: (x) => `My plan cuts ${x}`,
+  stillOver: (x) => `Still ${x} over capacity`,
+  whatICut: 'What I cut',
+  nothingYet: 'Nothing cut yet.',
+  byGroup: 'What is left, by sector',
+  footer: (y, url) => `Budget ${y} estimates (MOF). Make yours: ${url}`,
+  textIntro: (x, y, v) => `My plan cuts ${x} from Malaysia's ${y} budget (${v}).`,
+  textShort: (x) => `still ${x} short`,
+  textBalanced: 'budget balanced',
+  textList: (l) => `What I cut, biggest first: ${l}.`,
+  textNone: 'I have not cut anything yet.',
+  textTotal: (x, n) => `Total cut ${x} of ${n} needed.`,
+  textUrl: (u) => `Make yours: ${u}`,
+
+  howGoal: (g) => `Cut ${g}`,
+  howSub: (s, r) => `Spending ${s}, revenue only ${r}. Make it fit.`,
+  howSteps: [
+    { icon: '👆', bold: 'Click', text: 'a line, press Shrink 10%' },
+    { icon: '🗑️', bold: 'Drag', text: 'to the Recycle Bin to delete' },
+    { icon: '🔒', bold: 'Locked', text: 'charged expenditure (debt service charges, retirement charges, grants and transfers to state governments) cannot be cut' },
+  ],
+  howFoot: 'Your plan saves automatically. Keyboard: ↑↓ move, Delete removes, − shrinks.',
+  start: 'Start cleanup',
+
+  tip: {
+    levels: ['Show sectors only', 'Open down to ministries', 'Open everything, down to programmes'],
+    collapse: 'Close all folders',
+    borrowed: 'Gap between spending and revenue. The government borrows this.',
+    revenue: 'Disk capacity: revenue the government expects this year',
+    cutSoFar: 'How much you have cut so far',
+    share: 'Make an image or text of your plan to share',
+    opex: 'Operating (OE): salaries, supplies, subsidies. Day-to-day spending.',
+    devex: 'Development (DE): projects like roads, schools, hospitals',
+    size: 'Current size, after cuts',
+    freed: 'Cut from this line so far',
+    restore: 'Back to original size (100%)',
+    restoreAll: 'Undo every cut',
+    shrink10: 'Shrink by another 10%',
+    toBin: 'Delete it (size becomes RM0)',
+    locked: 'Locked: cannot be cut',
+  },
+
+  sources: 'Sources and caveats',
+  srcSource: 'Source:',
+  srcBook: (y) => `Ministry of Finance, Anggaran Perbelanjaan Persekutuan ${y} (Federal Expenditure Estimates: summary and one PDF per Maksud).`,
+  srcRevenue: 'Revenue:',
+  srcBody: (y) => `Tinjauan Fiskal ${y} (Fiscal Outlook), Table 2.1. All figures are Budget ${y} estimates.`,
+  srcTree: 'Layout:',
+  srcTreeBody:
+    'sector → ministry (Maksud) → programme. Ministry folders hold operating programmes and development projects. Grouping Maksud into sectors is our own judgement. Items under RM5m are merged into “Lain-lain” (other). T.1–T.11 are merged into one folder. The RM2bn contingency reserve (P.70) is left out, so the total matches Tinjauan Fiskal.',
+  srcCapacity: 'Capacity',
+  srcCapacityBody: 'is federal revenue:',
+  srcLines: 'Each line',
+  srcLinesBody: 'is operating (OE) plus development (DE) expenditure. Cuts apply to both by the same share.',
+  srcNames: 'Names:',
+  srcNamesBody:
+    'ministry and programme names are in Malay, as printed by MOF (ALL CAPS names put in normal case), in both languages. Ministry visions and programme outcomes are quoted in Malay from the same book; development projects and charged expenditure have no such text.',
+  srcLocked: 'Locked files:',
+  srcLockedBody:
+    'charged expenditure (T.1–T.14): debt service charges, retirement charges, grants and transfers to state governments, and other constitutional charges. No economic effects of cuts are modelled. Your plan is saved only in this browser.',
+  names: {
+    Sosial: 'Social',
+    Ekonomi: 'Economic',
+    Keselamatan: 'Security',
+    'Pentadbiran am': 'General administration',
+    Tanggungan: 'Charged expenditure',
+  },
+
+}
+
+export const t = LANG === 'ms' ? ms : en
+export const tn = (name: string) => t.names[name] ?? name

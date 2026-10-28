@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "malaysias-disk",
+  "compatibility_date": "2026-10-01",
+  // Static files only, no Worker script. `npm run deploy` builds into .deploy/disk/,
+  // so asset paths match the URL path under harithilmi.com/disk/.
+  "assets": { "directory": "./.deploy" },
+  // Zone routes run before the harithilmi-com Custom Domain Worker (tuju), so only
+  // these paths come here. /disk redirects to /disk/ (default auto-trailing-slash).
+  "routes": [
+    { "pattern": "harithilmi.com/disk", "zone_name": "harithilmi.com" },
+    { "pattern": "harithilmi.com/disk/*", "zone_name": "harithilmi.com" }
+  ]
+}
