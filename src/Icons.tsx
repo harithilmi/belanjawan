@@ -47,7 +47,8 @@ const Sym = ({ d }: { d: string }) => (
   </svg>
 )
 /** scissors */
-export const CutIcon = () => <Sym d="M4 4.5a2 2 0 1 0 0 .01M4 11.5a2 2 0 1 0 0 .01M5.6 5.6 14 13M5.6 10.4 14 3" />
+// Rings centred at x 4, so their stroke stays inside the 16px box.
+export const CutIcon = () => <Sym d="M6 4.5a2 2 0 1 0-4 0 2 2 0 1 0 4 0ZM6 11.5a2 2 0 1 0-4 0 2 2 0 1 0 4 0ZM5.6 5.6 14 13M5.6 10.4 14 3" />
 /** trash */
 export const TrashIcon = () => <Sym d="M2.5 4h11M6 4V2.5h4V4M4 4l.7 9.2a1 1 0 0 0 1 .8h4.6a1 1 0 0 0 1-.8L12 4M6.8 6.5v5M9.2 6.5v5" />
 /** arrow.uturn.backward */
@@ -73,4 +74,14 @@ export const SparklesIcon = () => <Sym d="M6.5 1.5 7.8 5.2 11.5 6.5 7.8 7.8 6.5 
 /** person.2 */
 export const PeopleIcon = () => <Sym d="M6 7.5a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5ZM1.5 13.5c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4M11 3.2a2 2 0 0 1 0 4M12 9.6c1.6.4 2.5 1.7 2.5 3.9" />
 /** chevron.down / chevron.up */
-export const ChevronIcon = ({ up = false }: { up?: boolean }) => <Sym d={up ? 'M3.5 10 8 5.5l4.5 4.5' : 'M3.5 6 8 10.5 12.5 6'} />
+export const XIcon = () => <Sym d="M4.5 4.5l7 7M11.5 4.5l-7 7" />
+
+export const TapIcon = () => <Sym d="M6.5 9V3a1.25 1.25 0 0 1 2.5 0v4.5l3 .5a1.5 1.5 0 0 1 1.2 1.7l-.6 3.3a1.5 1.5 0 0 1-1.5 1.3H8.2a1.5 1.5 0 0 1-1.2-.6L4.2 10a1.2 1.2 0 0 1 1.8-1.5Z" />
+
+export const LockSymIcon = () => <Sym d="M5 7V5a3 3 0 0 1 6 0v2M4 7h8a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Z" />
+
+export const WarnIcon = () => <Sym d="M7.1 2.5a1 1 0 0 1 1.8 0l5.4 9.8a1 1 0 0 1-.9 1.5H2.6a1 1 0 0 1-.9-1.5ZM8 6v3.2M8 11.4v.1" />
+
+export const CheckCircleIcon = () => <Sym d="M8 14.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13ZM5.3 8.2l1.9 1.9 3.5-4" />
+
+export const InfoIcon = () => <Sym d="M8 14.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13ZM8 7.3v4M8 4.9v.1" />

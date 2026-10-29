@@ -56,6 +56,9 @@ const ms = {
   shrunkBy: (p: number) => `dipotong ${p}%`,
 
   props: 'Maklumat',
+  /** Phone sheet's corner button: full → folded, folded → closed. */
+  sheetFold: 'Kecilkan',
+  sheetClose: 'Tutup',
   rootCaps: (y: number) => `Perbelanjaan Kerajaan Persekutuan · anggaran ${y}`,
   folder: 'Folder',
   cut: 'jimat',
@@ -150,9 +153,9 @@ const ms = {
   howGoal: (g: string) => `Potong ${g}`,
   howSub: (s: string, r: string) => `Belanja ${s}, hasil cuma ${r}. Buat sampai muat.`,
   howSteps: [
-    { icon: '👆', bold: 'Klik', text: 'baris, tekan Potong 10%' },
-    { icon: '🗑️', bold: 'Seret', text: 'ke Tong Sampah untuk buang' },
-    { icon: '🔒', bold: 'Berkunci', text: 'Perbelanjaan Tanggungan (bayaran khidmat hutang, bayaran persaraan, pemberian dan serahan kepada kerajaan negeri) tak boleh dipotong' },
+    { bold: 'Klik', text: 'baris, tekan Potong 10%' },
+    { bold: 'Seret', text: 'ke Tong Sampah untuk buang' },
+    { bold: 'Berkunci', text: 'hutang, pencen dan pemberian negeri tak boleh dipotong' },
   ],
   howFoot: 'Pelan disimpan automatik. Papan kekunci: ↑↓ gerak, Delete buang, − potong.',
   start: 'Jom mula',
@@ -263,6 +266,8 @@ const en: typeof ms = {
   shrunkBy: (p) => `shrunk ${p}%`,
 
   props: 'Info',
+  sheetFold: 'Collapse',
+  sheetClose: 'Close',
   rootCaps: (y) => `Federal government spending · ${y} estimate`,
   folder: 'Folder',
   cut: 'cut',
@@ -353,9 +358,9 @@ const en: typeof ms = {
   howGoal: (g) => `Cut ${g}`,
   howSub: (s, r) => `Spending ${s}, revenue only ${r}. Make it fit.`,
   howSteps: [
-    { icon: '👆', bold: 'Click', text: 'a line, press Shrink 10%' },
-    { icon: '🗑️', bold: 'Drag', text: 'to the Bin to delete' },
-    { icon: '🔒', bold: 'Locked', text: 'charged expenditure (debt service charges, retirement charges, grants and transfers to state governments) cannot be cut' },
+    { bold: 'Click', text: 'a line, press Shrink 10%' },
+    { bold: 'Drag', text: 'to the Bin to delete' },
+    { bold: 'Locked', text: "debt, pensions and state grants can't be cut" },
   ],
   howFoot: 'Your plan saves automatically. Keyboard: ↑↓ move, Delete removes, − shrinks.',
   start: 'Start cleanup',

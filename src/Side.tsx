@@ -2,7 +2,7 @@ import { Suspense, use, useState } from 'react'
 import { activitiesIn, fmt, linesOf, nodeOf, REVENUE, SPENDING, sum, YEAR, type Line } from './data.ts'
 import { changes, isCut, keepOf, nowOf, setKeep, shrink10, statusOf, totals, type Plan } from './plan.ts'
 import { ConfirmDialog } from './Dialog.tsx'
-import { BinIcon, ChevronIcon, CutIcon, LockIcon, PeopleIcon, SparklesIcon, TrashIcon, UndoIcon } from './Icons.tsx'
+import { BinIcon, CutIcon, InfoIcon, LockIcon, PeopleIcon, SparklesIcon, TrashIcon, UndoIcon, XIcon } from './Icons.tsx'
 import { LANG, t } from './i18n.ts'
 import { useSheet } from './useSheet.ts'
 
@@ -48,7 +48,7 @@ export function RecycleBin({ plan, setPlan, onDrop }: { plan: Plan; setPlan: Set
         <ul className="bin-list sunken">
           {list.map(({ line, keep, freed }) => (
             <li key={line.id}>
-              <span>{keep === 0 ? '🗑' : '✂'}</span>
+              <span>{keep === 0 ? <TrashIcon /> : <CutIcon />}</span>
               <span className="name" title={`${line.name}\n${line.ministry}`}>
                 {line.name} <span className="muted">{keep === 0 ? t.deleted : t.shrunkBy(100 - keep)}</span>
                 <small className="muted">{line.ministry}</small>
@@ -182,56 +182,73 @@ export function Properties({ plan, setPlan, selected, onDelete, onDismiss = () =
     : t.root
   // On narrow screens a selected row's Properties docks to the bottom (CSS), folded to amount + buttons.
   const sheet = !look && node.kind !== 'root'
-  const { ref, full, toggle, grab } = useSheet(sheet, onDismiss)
+  const { ref, panel, full, toggle, close } = useSheet(sheet, onDismiss)
 
   return (
-    <section ref={ref} className={`props groupbox${sheet ? ' sheet' : ''}${full ? ' full' : ''}${look ? ' look' : ''}`} aria-label={t.props}>
-      <div className="props-title" {...grab}>
-        <span>{title}</span>
-        {sheet && (
-          <button type="button" className="btn tb sheet-toggle" aria-expanded={full} aria-label={t.props} onClick={toggle}>
-            <ChevronIcon up={!full} />
-          </button>
-        )}
-      </div>
-      <div className="muted caps">
-        {node.kind === 'root' ? t.rootCaps(YEAR) : `${node.kind === 'line' ? `${node.line.code} ${node.line.ministry}` : t.folder} · ${YEAR}`}
-      </div>
-      <div className="props-amt">
-        <b>{fmt(now)}</b>
-        {isCut(plan, items) && <> <s className="muted">{fmt(before)}</s> <span className="good">{t.cut} {fmt(before - now)}</span></>}
-        {node.kind === 'line' && <span className="muted"> · {t.status[statusOf(plan, node.line)]}</span>}
-      </div>
-      {node.kind !== 'root' && (
-        <p className="share">{t.ofSpending(pct(now / tot.spending))}</p>
-      )}
-      {node.kind === 'root' ? (
-        <p>{t.rootText((((SPENDING - REVENUE) / SPENDING) * 100).toFixed(1))}</p>
-      ) : items.every((l) => l.locked) ? (
-        <p className="locked-note">
-          <LockIcon /> {items.every((l) => l.code === 'T.13') ? t.lockedDebt : t.lockedOther}
-        </p>
-      ) : (
-        <Controls items={items} plan={plan} setPlan={setPlan} onDelete={() => onDelete(selected)} />
-      )}
-
-      {/* Desktop: fixed-height panel, so only this part scrolls and the page never jumps. Keyed: new row, back to top. */}
-      <div className="props-body" key={selected}>
-        {plain && (
-          <div className="plain-box">
-            <h4 title={t.aiTip}><SparklesIcon /> {t.plainTitle} <small>· AI</small></h4>
-            <p>{plain}</p>
+    // Phone: a fixed scroller whose scroll position is the sheet's (CSS); elsewhere layout-transparent.
+    <>
+      {sheet && <i className="sheet-tint" aria-hidden="true" />}
+      <div ref={ref} className={`props-wrap${sheet ? ' sheet' : ''}`}>
+        {sheet && <i className="snap-fold" />}
+        <section ref={panel} className={`props groupbox${sheet ? ' sheet' : ''}${full ? ' full' : ''}${look ? ' look' : ''}`} aria-label={t.props}>
+          {/* Tapping the grabber row toggles, like iOS. */}
+          <div className="props-title" onClick={sheet ? toggle : undefined}>
+            <span>{title}</span>
+            {sheet && (
+              <button
+                type="button"
+                className="btn tb sheet-toggle"
+                aria-label={full ? t.sheetFold : t.sheetClose}
+                onClick={(e) => {
+                  e.stopPropagation() // not also the title's toggle
+                  if (full) toggle()
+                  else close()
+                }}
+              >
+                <XIcon />
+              </button>
+            )}
           </div>
-        )}
-        {node.kind === 'line' && t.inside[node.line.name] && <p className="note">ℹ️ {t.inside[node.line.name]}</p>}
-        <Breakdown items={items} />
-        {node.kind === 'line' && (
-          <Suspense fallback={null}>
-            <Activities key={node.line.id} line={node.line} />
-          </Suspense>
-        )}
+          <div className="muted caps">
+            {node.kind === 'root' ? t.rootCaps(YEAR) : `${node.kind === 'line' ? `${node.line.code} ${node.line.ministry}` : t.folder} · ${YEAR}`}
+          </div>
+          <div className="props-amt">
+            <b>{fmt(now)}</b>
+            {isCut(plan, items) && <> <s className="muted">{fmt(before)}</s> <span className="good">{t.cut} {fmt(before - now)}</span></>}
+            {node.kind === 'line' && <span className="muted"> · {t.status[statusOf(plan, node.line)]}</span>}
+          </div>
+          {node.kind !== 'root' && (
+            <p className="share">{t.ofSpending(pct(now / tot.spending))}</p>
+          )}
+          {node.kind === 'root' ? (
+            <p>{t.rootText((((SPENDING - REVENUE) / SPENDING) * 100).toFixed(1))}</p>
+          ) : items.every((l) => l.locked) ? (
+            <p className="locked-note">
+              <LockIcon /> {items.every((l) => l.code === 'T.13') ? t.lockedDebt : t.lockedOther}
+            </p>
+          ) : (
+            <Controls items={items} plan={plan} setPlan={setPlan} onDelete={() => onDelete(selected)} />
+          )}
+
+          {/* Desktop: fixed-height panel, so only this part scrolls and the page never jumps. Keyed: new row, back to top. */}
+          <div className="props-body" key={selected}>
+            {plain && (
+              <div className="plain-box">
+                <h4 title={t.aiTip}><SparklesIcon /> {t.plainTitle} <small>· AI</small></h4>
+                <p>{plain}</p>
+              </div>
+            )}
+            {node.kind === 'line' && t.inside[node.line.name] && <p className="note"><InfoIcon /> {t.inside[node.line.name]}</p>}
+            <Breakdown items={items} />
+            {node.kind === 'line' && (
+              <Suspense fallback={null}>
+                <Activities key={node.line.id} line={node.line} />
+              </Suspense>
+            )}
+          </div>
+        </section>
       </div>
-    </section>
+    </>
   )
 }
 
@@ -239,6 +256,10 @@ function Controls({ items, plan, setPlan, onDelete }: { items: readonly Line[]; 
   const editable = items.filter((l) => !l.locked)
   const one = editable.length === 1 ? editable[0] : undefined
   const keep = one ? keepOf(plan, one) : undefined
+  const keeps = editable.map((l) => keepOf(plan, l))
+  const cut = keeps.some((k) => k < 100)
+  const gone = keeps.every((k) => k === 0) // all in the Bin: putting back is the only thing left to do
+  const restore = () => setPlan((p) => setKeep(p, editable, () => 100))
   return (
     <div className="controls">
       {one && keep !== undefined && (
@@ -255,23 +276,26 @@ function Controls({ items, plan, setPlan, onDelete }: { items: readonly Line[]; 
         </label>
       )}
       <div className="btns">
-        <button type="button" className="btn tint" title={t.tip.shrink10} onClick={() => setPlan((p) => shrink10(p, editable))}>
-          <CutIcon /> {t.shrink10}
-        </button>
-        {/* Phone sheet shows these two as icons only (CSS), so the label is also the accessible name. */}
-        <button type="button" className="btn tint danger" title={t.tip.toBin} aria-label={t.toBin} onClick={onDelete}>
-          <TrashIcon /> <span className="lbl">{t.toBin}</span>
-        </button>
-        <button
-          type="button"
-          className="btn fill"
-          title={t.tip.restore}
-          aria-label={t.restore}
-          disabled={editable.every((l) => keepOf(plan, l) === 100)}
-          onClick={() => setPlan((p) => setKeep(p, editable, () => 100))}
-        >
-          <UndoIcon /> <span className="lbl">{t.restore}</span>
-        </button>
+        {gone ? (
+          <button type="button" className="btn tint" title={t.tip.restore} onClick={restore}>
+            <UndoIcon /> {t.restore}
+          </button>
+        ) : (
+          <>
+            <button type="button" className="btn tint" title={t.tip.shrink10} onClick={() => setPlan((p) => shrink10(p, editable))}>
+              <CutIcon /> {t.shrink10}
+            </button>
+            {/* Phone sheet shows these two as icons only (CSS), so the label is also the accessible name. */}
+            <button type="button" className="btn tint danger" title={t.tip.toBin} aria-label={t.toBin} onClick={onDelete}>
+              <TrashIcon /> <span className="lbl">{t.toBin}</span>
+            </button>
+            {cut && (
+              <button type="button" className="btn fill" title={t.tip.restore} aria-label={t.restore} onClick={restore}>
+                <UndoIcon /> <span className="lbl">{t.restore}</span>
+              </button>
+            )}
+          </>
+        )}
       </div>
       {!one && <p className="muted">{t.folderNote}</p>}
     </div>

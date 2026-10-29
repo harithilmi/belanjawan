@@ -17,6 +17,8 @@
   -webkit-font-smoothing: antialiased;
 }
 * { box-sizing: border-box; }
+/* Safari 26 tints the status bar from html's background-color (it ignores gradients and theme-color): the gradient's top colour. */
+html { background-color: #dfe7f5; }
 body { margin: 0; background: linear-gradient(160deg, #dfe7f5, #f3e9f2); min-height: 100vh; }
 button, input { font: inherit; color: inherit; }
 .muted { color: var(--muted); }
@@ -76,6 +78,8 @@ button, input { font: inherit; color: inherit; }
 .drive-head > div:nth-child(2) { flex: 1; }
 .warn { color: var(--bad); font-weight: 600; font-size: 14px; }
 .ok { color: var(--good); font-weight: 600; font-size: 14px; }
+/* Inline icons sit on the text's baseline, like SF Symbols in a label. */
+:is(.warn, .ok, .note) svg { vertical-align: -2px; }
 .disk { position: relative; height: 18px; margin: 12px 0 8px; overflow: hidden; border-radius: 5px; background: #e5e5ea; box-shadow: none; }
 .disk > div { position: absolute; top: 0; bottom: 0; transition: width 200ms cubic-bezier(0.23, 1, 0.32, 1), left 200ms cubic-bezier(0.23, 1, 0.32, 1); }
 .disk .used { left: 0; background: var(--blue); }
@@ -176,6 +180,8 @@ button, input { font: inherit; color: inherit; }
   .props:not(.look) .props-body { flex: 1; min-height: 0; overflow: auto; margin: 8px -12px -12px; padding: 0 12px 12px; border-top: 1px solid var(--sep); }
 }
 /* Quick Look: the dialog body is already the card. */
+.props-wrap { display: contents; }
+.snap-fold { display: none; }
 .props.look { margin: 0; padding: 0; box-shadow: none; width: min(560px, 86vw); min-height: 0; }
 .props-title { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 14px; margin-bottom: 6px; }
 .props-title > span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -265,7 +271,10 @@ button, input { font: inherit; color: inherit; }
 .howto-goal { font-size: 26px; font-weight: 700; color: var(--bad); }
 .howto ul { list-style: none; padding: 0; margin: 14px 0; }
 .howto li { display: flex; align-items: center; gap: 10px; padding: 10px; margin-bottom: 6px; background: #f5f5f7; border-radius: 10px; }
-.howto-ic { font-size: 22px; width: 28px; text-align: center; }
+.howto-ic { flex: none; display: grid; place-items: center; width: 28px; color: var(--blue); }
+.howto-ic svg { width: 22px; height: 22px; }
+/* The one action here: a full-width, thumb-sized button. */
+.howto .btns .btn.default { flex: 1; justify-content: center; min-height: 44px; border-radius: 12px; font-size: 16px; font-weight: 600; }
 .small { font-size: 11px; }
 /* Shortcuts window: keycaps on the left, what they do on the right. */
 .keys { margin: 0; width: min(420px, 84vw); }
@@ -279,26 +288,45 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
   .body { grid-template-columns: 1fr; }
   /* Info goes back under the map: the root's Info sits in the flow, and a tile must not move when tapping it docks a sheet. */
   .side { display: flex; flex-direction: column; }
-  .side > .props { order: 1; }
+  .side .props { order: 1; }
   /* Fixed height: the tree grows as you open folders, and that would push the map down under your finger. */
   .tree-box { flex: none; min-height: 0; height: 50svh; }
   .hero h1 { font-size: 26px; }
-  /* Selected row: Properties docks to the bottom as a sheet, so its buttons stay under the thumb. */
-  .props.sheet {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 4; margin: 0;
-    border-radius: 14px 14px 0 0; box-shadow: 0 -4px 24px rgb(0 0 0 / 0.15);
-    max-height: 75vh; overflow: auto; padding-bottom: calc(8px + env(safe-area-inset-bottom));
-    /* Folded = pushed down by --y (useSheet) until only title, amount and buttons show. */
-    display: flex; flex-direction: column; transform: translateY(var(--y, 0px)); will-change: transform;
+  /* Selected row: Properties docks to the bottom as a sheet, so its buttons stay under the thumb.
+     The sheet sits in a fixed full-screen scroller under a screen-tall spacer, so dragging it is native
+     scrolling and its detents are snap points: spacer top (gone), --shown up (folded), sheet bottom (full). */
+  .props-wrap.sheet {
+    /* Fixed height pinned to the bottom: Safari's toolbar resizing then just moves it, no re-snap per frame. */
+    display: block; position: fixed; left: 0; right: 0; bottom: 0; height: 100lvh; z-index: 4;
+    overflow-y: scroll; scroll-snap-type: y mandatory; overscroll-behavior: contain; scrollbar-width: none;
+    pointer-events: none; /* taps on the empty part reach the page */
   }
-  /* Scrolling the sheet never scrolls the page behind: contained at its ends, and folded it doesn't scroll at all. */
-  .props.sheet { overscroll-behavior: contain; }
-  .props.sheet:not(.full) { overflow: hidden; }
-  .props.sheet:is(:not(.full), [data-fits]) { touch-action: none; }
+  .props-wrap.sheet::-webkit-scrollbar { display: none; }
+  .props-wrap.sheet::before { content: ''; display: block; height: 100%; scroll-snap-align: start; }
+  /* Never skipped: a hard flick from full folds, it doesn't dismiss. */
+  /* 1px tall and in flow: WebKit ignores empty or out-of-flow snap areas. Its end sits --shown below the spacer. */
+  .props-wrap.sheet > .snap-fold { display: block; position: relative; top: calc(var(--shown, 190px) - 1px); height: 1px; margin-bottom: -1px; scroll-snap-align: end; scroll-snap-stop: always; }
+  .props.sheet {
+    position: relative; margin: 0; pointer-events: auto; scroll-snap-align: end;
+    border-radius: 14px 14px 0 0; box-shadow: 0 -4px 24px rgb(0 0 0 / 0.15);
+    max-height: 75vh; overflow-y: auto; padding-bottom: calc(8px + env(safe-area-inset-bottom));
+    display: flex; flex-direction: column;
+  }
+  /* Rises in on select (positioning it is a scroll, but iOS won't animate that one). */
+  .props.sheet { animation: sheet-rise 0.35s cubic-bezier(0.2, 0.9, 0.3, 1); }
+  @keyframes sheet-rise { from { transform: translateY(100%); } }
+  /* Its own content scrolls only at full; below that every drag moves the sheet. */
+  .props.sheet:not(.full) { overflow-y: hidden; }
   /* Folded part first: the share line and book detail sit below the buttons. */
   .props.sheet > :is(.share, .props-body) { order: 1; }
-  .props.sheet .props-title { position: sticky; top: -12px; z-index: 1; margin: -12px -12px 6px; padding: 18px 12px 4px; background: inherit; touch-action: none; cursor: grab; -webkit-user-select: none; user-select: none; }
-  /* Grabber: drag the title bar between the two detents. */
+  .props.sheet .props-title { position: sticky; top: -12px; z-index: 1; margin: -12px -12px 6px; padding: 18px 12px 4px; background: inherit; cursor: pointer; -webkit-user-select: none; user-select: none; }
+  /* iOS doesn't hand a touch to a pointer-events: none scroller: a 1px sideways scroll gives the sheet
+     its own scroll view, which passes vertical drags up to the scroller (pure-web-bottom-sheet's trick). */
+  @supports (-webkit-touch-callout: none) {
+    .props.sheet { overflow-x: scroll; overscroll-behavior-x: none; touch-action: pan-y pinch-zoom; }
+    .props.sheet::after { content: ''; order: 2; flex: none; width: calc(100% + 13px); height: 1px; margin-bottom: -1px; }
+  }
+  /* Grabber: tap to toggle; the whole sheet drags. */
   .props.sheet .props-title::before { content: ''; position: absolute; top: 6px; left: 50%; width: 36px; height: 5px; margin-left: -18px; border-radius: 3px; background: rgb(60 60 67 / 0.3); }
   .props.sheet .sheet-toggle { display: inline-flex; }
   .props.sheet .controls { margin-bottom: 0; }
@@ -357,7 +385,8 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
   .seg button { min-height: 30px; }
   .bin-list li { padding: 3px 4px; }
 }
-@media (prefers-reduced-motion: reduce) { .disk > div { transition: none; } :is(.dialog, .alert)[open] { transition-property: opacity; } }
+@media (prefers-reduced-motion: reduce) {
+  .props.sheet { animation: none; } .disk > div { transition: none; } :is(.dialog, .alert)[open] { transition-property: opacity; } }
 
 /* Info panel, iOS grouped style: grey ground, each book section a white card. */
 .props { background: #f2f2f7; }
@@ -395,5 +424,12 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
 .acts-list :is(summary, .act) b { font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .props .acts-list details p { margin: 0 0 8px; font-size: 12px; color: var(--muted); }
 .acts-list .btn.plain { margin-top: 4px; padding: 0; }
-/* Opaque, so Safari 26 tints its bottom toolbar area to match. 2nd shadow fills under a sheet rubber-banded up. */
-@media (max-width: 800px) { .props.sheet { background: #f2f2f7; box-shadow: 0 -4px 24px rgb(0 0 0 / 0.15), 0 120px 0 #f2f2f7; } }
+/* Safari 26 fills behind its toolbar with the background of the top fixed element at the bottom edge
+   (a real element, not a pseudo). The sheet's scroller is see-through, so this strip over it, in the
+   sheet's colour, is what Safari picks up. */
+.sheet-tint { display: none; }
+@media (max-width: 800px) {
+  .props.sheet { background: #f2f2f7; }
+  /* As low as Safari still reads it (-8px), so only 4px shows, inside the sheet's bottom padding. */
+  .sheet-tint { display: block; position: fixed; left: 0; right: 0; bottom: -8px; z-index: 5; height: 12px; background: #f2f2f7; pointer-events: none; }
+}

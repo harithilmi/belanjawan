@@ -3,7 +3,7 @@ import { flushSync } from 'react-dom'
 import { cwdFor, fmt, lines, linesOf, nameOf, nodeOf, REVENUE, revenueGroups, ROOT, SPENDING, sum, YEAR } from './data.ts'
 import { nowOf, remove, shrink10, totals, usePlan } from './plan.ts'
 import { switchLang, t } from './i18n.ts'
-import { DriveIcon, ShareIcon } from './Icons.tsx'
+import { CheckCircleIcon, DriveIcon, LockSymIcon, ShareIcon, TapIcon, TrashIcon, WarnIcon } from './Icons.tsx'
 import { liveCwd, PathBar, reveal, revealRow, Tree, type Open } from './Tree.tsx'
 import { Properties, RecycleBin } from './Side.tsx'
 import { MapView } from './MapView.tsx'
@@ -22,6 +22,9 @@ const INSPIRATION_BY_URL = 'https://x.com/SAshworthHayes'
 const closestLine = (gap: number) =>
   lines.reduce((a, b) => (Math.abs(b.total - gap) < Math.abs(a.total - gap) ? b : a))
 
+/** Same order as `t.howSteps`. */
+const STEP_ICONS = [<TapIcon />, <TrashIcon />, <LockSymIcon />]
+
 function HowToPlay({ onClose }: { onClose: () => void }) {
   return (
     <Dialog title={t.howTo} onClose={onClose}>
@@ -30,8 +33,8 @@ function HowToPlay({ onClose }: { onClose: () => void }) {
           <p className="howto-goal">{t.howGoal(fmt(SPENDING - REVENUE))}</p>
           <p className="muted">{t.howSub(fmt(SPENDING), fmt(REVENUE))}</p>
           <ul>
-            {t.howSteps.map((s) => (
-              <li key={s.bold}><span className="howto-ic" aria-hidden="true">{s.icon}</span><b>{s.bold}</b> {s.text}</li>
+            {t.howSteps.map((s, i) => (
+              <li key={s.bold}><span className="howto-ic">{STEP_ICONS[i]}</span><span><b>{s.bold}</b> {s.text}</span></li>
             ))}
           </ul>
           <p className="muted small">{t.howFoot}</p>
@@ -175,7 +178,7 @@ export function App() {
               </div>
             </div>
             <div className={tot.gap > 0 ? 'warn' : 'ok'} role="status">
-              {tot.gap > 0 ? `⚠ ${t.over(fmt(tot.gap))}` : `✔ ${t.fits(fmt(-tot.gap))}`}
+              {tot.gap > 0 ? <><WarnIcon /> {t.over(fmt(tot.gap))}</> : <><CheckCircleIcon /> {t.fits(fmt(-tot.gap))}</>}
             </div>
             <button type="button" className="btn default" title={t.tip.share} onClick={() => setDialog('share')}><ShareIcon /> {t.share}</button>
           </div>
