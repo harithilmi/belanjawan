@@ -22,7 +22,7 @@ const ms = {
   m: ' juta',
   title: 'Storan Malaysia Dah Penuh',
   intro: (s: string, r: string, y: number) =>
-    `Kerajaan nak belanja ${s} pada ${y}, tapi hasil yang dijangka cuma ${r}. Potong perbelanjaan sampai semuanya muat dalam storan.`,
+    `Belanjawan ${y} (Bajet ${y}): kerajaan nak belanja ${s} pada ${y}, tapi hasil yang dijangka cuma ${r}. Potong perbelanjaan sampai semuanya muat dalam storan.`,
   otherLang: 'English',
   by: 'Oleh',
   inspiredBy: 'Diilhamkan oleh',
@@ -233,7 +233,7 @@ const en: typeof ms = {
   m: 'm',
   title: "Malaysia's Disk Is Full",
   intro: (s, r, y) =>
-    `The federal government plans to spend ${s} in ${y} but expects only ${r} in revenue. Free up space by cutting spending until it fits on the disk.`,
+    `Malaysia Budget ${y}: the federal government plans to spend ${s} in ${y} but expects only ${r} in revenue. Free up space by cutting spending until it fits on the disk.`,
   otherLang: 'Bahasa Melayu',
   by: 'By',
   inspiredBy: 'Inspired by',

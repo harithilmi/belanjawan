@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Storan Malaysia Dah Penuh</title>
+    <title>Belanjawan 2027 (Bajet 2027): Storan Malaysia Dah Penuh</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
-    <meta name="description" content="Belanjawan Persekutuan Malaysia sebagai storan yang dah penuh. Potong perbelanjaan sampai muat dengan hasil." />
+    <meta name="description" content="Bajet 2027 Malaysia secara interaktif: kerajaan nak belanja RM459.8 bilion, hasil cuma RM380.8 bilion. Lihat peruntukan setiap kementerian dan potong sampai muat." />
     <link rel="canonical" href="https://harithilmi.com/belanjawan/" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <meta name="theme-color" content="#dfe7f5" />
@@ -28,9 +28,36 @@
     <meta name="twitter:title" content="Malaysia's Disk Is Full — Budget 2027" />
     <meta name="twitter:description" content="The government wants to spend RM459.8 billion but expects only RM380.8 billion in revenue. Can you cut it down to fit?" />
     <meta name="twitter:image:alt" content="macOS-style Storage window: the Budget 2027 disk is full, RM79.0 billion over revenue" />
+    <!-- Structured data so search engines know what the page is about. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Storan Malaysia Dah Penuh: Belanjawan 2027",
+        "alternateName": ["Bajet 2027", "Belanjawan 2027 Malaysia", "Malaysia's Disk Is Full: Budget 2027"],
+        "url": "https://harithilmi.com/belanjawan/",
+        "description": "Simulasi interaktif Belanjawan 2027 (Bajet 2027) Malaysia. Perbelanjaan RM459.8 bilion, hasil RM380.8 bilion, peruntukan setiap kementerian dan program.",
+        "inLanguage": ["ms", "en"],
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "MYR" },
+        "image": "https://harithilmi.com/belanjawan/og.png?v=2",
+        "author": { "@type": "Person", "name": "Harith Hilmi", "url": "https://x.com/harithilmi" },
+        "about": { "@type": "Thing", "name": "Belanjawan 2027 Malaysia" }
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Replaced by React on load. Text for crawlers that skip JS. -->
+      <main class="desktop">
+        <header class="hero">
+          <h1>Storan Malaysia Dah Penuh</h1>
+          <p>Belanjawan 2027 (Bajet 2027): kerajaan nak belanja RM459.8 bilion pada 2027, tapi hasil yang dijangka cuma RM380.8 bilion. Potong perbelanjaan sampai semuanya muat dalam storan.</p>
+        </header>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
