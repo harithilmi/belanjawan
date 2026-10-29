@@ -334,6 +334,8 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
   /* Grabber: tap to toggle; the whole sheet drags. */
   .props.sheet .props-title::before { content: ''; position: absolute; top: 6px; left: 50%; width: 36px; height: 5px; margin-left: -18px; border-radius: 3px; background: rgb(60 60 67 / 0.3); }
   .props.sheet .sheet-toggle { display: inline-flex; }
+  /* Folded keeps one line so switching rows never shifts the buttons; full shows the whole name. */
+  .props.sheet.full .props-title > span { white-space: normal; }
   /* Folded part keeps one height: long ministry names cut off rather than wrap; no text selection while dragging. */
   .props.sheet > .caps { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .props.sheet > :is(.caps, .props-amt, .props-sub) { -webkit-user-select: none; user-select: none; }
@@ -409,9 +411,9 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
 .ob2 { background: #30b0c7; }
 .ob3 { background: #bf5af2; }
 .ob4 { background: #c7c7cc; }
-.money { display: grid; grid-template-columns: minmax(0, 1fr) auto 3.2em; gap: 2px 10px; margin: 0; }
+.money { display: grid; grid-template-columns: minmax(min-content, 1fr) auto 3.2em; gap: 2px 10px; margin: 0; }
 .money > div { display: contents; }
-.money dt { display: flex; gap: 6px; align-items: baseline; overflow-wrap: anywhere; }
+.money dt { display: flex; gap: 6px; align-items: baseline; overflow-wrap: break-word; }
 .money dt .sw { flex: none; }
 .money dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
 .money dd:last-child { color: var(--muted); }
