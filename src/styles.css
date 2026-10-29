@@ -191,6 +191,7 @@ button, input { font: inherit; color: inherit; }
 .caps { text-transform: uppercase; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; }
 .props-amt { font-size: 14px; margin: 2px 0; }
 .props-amt > b { font-size: 24px; font-weight: 700; }
+.props-sub { font-size: 14px; margin: 0 0 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .props p { margin: 6px 0; }
 .locked-note, .note { background: #f2f2f7; border-radius: 8px; padding: 8px 10px; }
 .controls { margin: 8px 0; }
@@ -317,7 +318,8 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
   @keyframes sheet-rise { from { transform: translateY(100%); } }
   /* Its own content scrolls only at full; below that every drag moves the sheet. */
   .props.sheet:not(.full) { overflow-y: hidden; }
-  /* Folded part first: the share line and book detail sit below the buttons. */
+  /* Folded part first: the share line and book detail sit below the buttons. Nothing shrinks: the sheet scrolls instead. */
+  .props.sheet > * { flex-shrink: 0; }
   .props.sheet > :is(.share, .props-body) { order: 1; }
   .props.sheet .props-title { position: sticky; top: -12px; z-index: 1; margin: -12px -12px 6px; padding: 18px 12px 4px; background: inherit; cursor: pointer; -webkit-user-select: none; user-select: none; }
   /* iOS doesn't hand a touch to a pointer-events: none scroller: a 1px sideways scroll gives the sheet
@@ -329,6 +331,9 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
   /* Grabber: tap to toggle; the whole sheet drags. */
   .props.sheet .props-title::before { content: ''; position: absolute; top: 6px; left: 50%; width: 36px; height: 5px; margin-left: -18px; border-radius: 3px; background: rgb(60 60 67 / 0.3); }
   .props.sheet .sheet-toggle { display: inline-flex; }
+  /* Folded part keeps one height: long ministry names cut off rather than wrap; no text selection while dragging. */
+  .props.sheet > .caps { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .props.sheet > :is(.caps, .props-amt, .props-sub) { -webkit-user-select: none; user-select: none; }
   .props.sheet .controls { margin-bottom: 0; }
   /* One row, like Maps: a wide Potong pill, then Pulihkan and Buang as round icon buttons. */
   .props.sheet .controls .btns { flex-wrap: nowrap; gap: 8px; }

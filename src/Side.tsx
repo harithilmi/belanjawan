@@ -212,11 +212,17 @@ export function Properties({ plan, setPlan, selected, onDelete, onDismiss = () =
           <div className="muted caps">
             {node.kind === 'root' ? t.rootCaps(YEAR) : `${node.kind === 'line' ? `${node.line.code} ${node.line.ministry}` : t.folder} · ${YEAR}`}
           </div>
-          <div className="props-amt">
-            <b>{fmt(now)}</b>
-            {isCut(plan, items) && <> <s className="muted">{fmt(before)}</s> <span className="good">{t.cut} {fmt(before - now)}</span></>}
-            {node.kind === 'line' && <span className="muted"> · {t.status[statusOf(plan, node.line)]}</span>}
-          </div>
+          <div className="props-amt"><b>{fmt(now)}</b></div>
+          {/* Always one line, so cutting never changes the sheet's height under the thumb. */}
+          {node.kind !== 'root' && (
+            <div className="props-sub">
+              {isCut(plan, items) ? (
+                <><s className="muted">{fmt(before)}</s> <span className="good">{t.cut} {fmt(before - now)}</span></>
+              ) : (
+                <span className="muted">{t.status[node.kind === 'line' ? statusOf(plan, node.line) : 'untouched']}</span>
+              )}
+            </div>
+          )}
           {node.kind !== 'root' && (
             <p className="share">{t.ofSpending(pct(now / tot.spending))}</p>
           )}
@@ -238,7 +244,7 @@ export function Properties({ plan, setPlan, selected, onDelete, onDismiss = () =
                 <p>{plain}</p>
               </div>
             )}
-            {node.kind === 'line' && t.inside[node.line.name] && <p className="note"><InfoIcon /> {t.inside[node.line.name]}</p>}
+            {node.kind === 'line' && t.inside[node.line.bm] && <p className="note"><InfoIcon /> {t.inside[node.line.bm]}</p>}
             <Breakdown items={items} />
             {node.kind === 'line' && (
               <Suspense fallback={null}>
