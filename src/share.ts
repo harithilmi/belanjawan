@@ -6,6 +6,38 @@ export const SITE = location.origin + location.pathname
 
 const describe = (keep: number) => (keep === 0 ? t.deleted : t.shrunkBy(100 - keep))
 
+/** Most cuts in a group that are still listed one by one; bigger groups become one row. */
+const GROUP_MIN = 4
+
+/**
+ * Card rows, biggest saving first. Files cut by the same share are merged into one row once
+ * there are GROUP_MIN of them, so a folder-wide trim reads as "221 files −10%", not 221 rows.
+ */
+function cutRows(plan: Plan) {
+  const byKeep = new Map<number, ReturnType<typeof changes>>()
+  for (const c of changes(plan)) {
+    const group = byKeep.get(c.keep)
+    if (group) group.push(c)
+    else byKeep.set(c.keep, [c])
+  }
+  return [...byKeep].flatMap(([keep, cs]) =>
+    cs.length < GROUP_MIN
+      ? cs.map((c) => ({ name: c.line.name, tag: describe(keep), sub: c.line.ministry, freed: c.freed, files: 1 }))
+      : [{
+          name: t.cutGroup(cs.length, keep),
+          tag: '',
+          // changes() is sorted, so these are the group's biggest
+          sub: `${cs.slice(0, 3).map((c) => c.line.name).join(', ')}…`,
+          freed: sum(cs.map((c) => c.freed)),
+          files: cs.length,
+        }],
+  ).sort((a, b) => b.freed - a.freed)
+}
+type Row = ReturnType<typeof cutRows>[number]
+
+/** "+N more" line under the list: counts files, not rows. */
+const moreText = (rest: readonly Row[]) => t.moreCuts(sum(rest.map((r) => r.files)), fmt(sum(rest.map((r) => r.freed))))
+
 /** Share caption: two short lines, the card carries the detail. */
 export function planText(plan: Plan): string {
   const tot = totals(plan)
@@ -134,8 +166,9 @@ function story(plan: Plan): Promise<Blob> {
   const { g, text, fit, box } = k
   const tot = totals(plan)
   const cuts = changes(plan)
-  const shown = cuts.slice(0, 6)
-  const rest = cuts.slice(shown.length)
+  const rows = cutRows(plan)
+  const shown = rows.slice(0, 6)
+  const rest = rows.slice(shown.length)
 
   // Measure first so the window can be centred in the safe area.
   const ROW = 76
@@ -162,23 +195,23 @@ function story(plan: Plan): Promise<Blob> {
   const ly = top + 280
   box(px, ly, pw, listH, 20, C.soft)
   if (shown.length === 0) text(t.nothingYet, px + 24, ly + 64, 32, C.muted)
-  shown.forEach((ch, i) => {
+  shown.forEach((row, i) => {
     const ry = ly + 10 + i * ROW
-    const amt = `−${fmt(ch.freed)}`
+    const amt = `−${fmt(row.freed)}`
     g.font = '700 32px -apple-system, BlinkMacSystemFont, sans-serif'
     const amtW = g.measureText(amt).width
     box(px + 20, ry + 14, 32, 32, 8, C.blue)
     text('✓', px + 36, ry + 40, 24, '#fff', true, 'center')
     const nameW = pw - 90 - amtW - 50
-    text(fit(ch.line.name, nameW, 32, true), px + 70, ry + 40, 32, C.text, true)
-    text(fit(`${ch.line.ministry} · ${describe(ch.keep)}`, nameW, 22), px + 70, ry + 66, 22, C.muted)
+    text(fit(row.name, nameW, 32, true), px + 70, ry + 40, 32, C.text, true)
+    text(fit(row.tag ? `${row.sub} · ${row.tag}` : row.sub, nameW, 22), px + 70, ry + 66, 22, C.muted)
     text(amt, px + pw - 20, ry + 40, 32, C.good, true, 'right')
   })
   if (rest.length) {
     const ry = ly + 10 + shown.length * ROW
     g.fillStyle = C.line
     g.fillRect(px + 20, ry + 4, pw - 40, 2)
-    text(t.moreCuts(rest.length, fmt(sum(rest.map((c) => c.freed)))), px + 20, ry + 40, 26, C.muted)
+    text(moreText(rest), px + 20, ry + 40, 26, C.muted)
   }
 
   const dy = ly + listH + 40
@@ -227,23 +260,24 @@ function wide(plan: Plan): Promise<Blob> {
   const lx = 56
   const lw = 520
   panel(lx, lw, t.whatICut)
-  const cuts = changes(plan)
-  const shown = cuts.slice(0, 7)
-  const rest = cuts.slice(shown.length)
+  const cutList = cutRows(plan)
+  const shown = cutList.slice(0, 7)
+  const rest = cutList.slice(shown.length)
   if (shown.length === 0) text(t.nothingYet, lx + 16, py + 70, 18, C.muted)
-  shown.forEach((ch, i) => {
-    // Two lines per cut: programme + how much, then its ministry (names like "Pengurusan" repeat).
+  shown.forEach((row, i) => {
+    // Two lines per row: programme + how much, then its ministry (names like "Pengurusan" repeat),
+    // or for a group, its biggest files.
     const y = py + 66 + i * 36
-    const amt = `−${fmt(ch.freed)}`
+    const amt = `−${fmt(row.freed)}`
     g.font = '700 18px -apple-system, BlinkMacSystemFont, sans-serif'
     const room = lw - 48 - g.measureText(amt).width
-    const name = fit(ch.line.name, room - 90, 17, true)
+    const name = fit(row.name, row.tag ? room - 60 : room, 17, true)
     text(name, lx + 16, y, 17, C.text, true)
-    text(describe(ch.keep), lx + 16 + g.measureText(name).width + 10, y, 14, C.muted)
-    text(fit(ch.line.ministry, room, 13), lx + 16, y + 15, 13, C.muted)
+    if (row.tag) text(row.tag, lx + 16 + g.measureText(name).width + 10, y, 14, C.muted)
+    text(fit(row.sub, room, 13), lx + 16, y + 15, 13, C.muted)
     text(amt, lx + lw - 16, y, 18, C.good, true, 'right')
   })
-  if (rest.length) text(t.moreCuts(rest.length, fmt(sum(rest.map((c) => c.freed)))), lx + 16, py + ph - 14, 15, C.muted)
+  if (rest.length) text(moreText(rest), lx + 16, py + ph - 14, 15, C.muted)
 
   const rx = 600
   const rw = W - 56 - rx

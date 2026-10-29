@@ -7,7 +7,10 @@ export const YEAR = budget.year
 
 export type Line = {
   id: string
+  /** Display name: the book's Malay, plus our own English in brackets in English mode. */
   name: string
+  /** The book's Malay name. Search terms and notes are keyed by it. */
+  bm: string
   /** Ministry (Maksud) code, e.g. "B/P.42". */
   code: string
   ministry: string
@@ -26,6 +29,8 @@ export type Line = {
 export type Ministry = {
   code: string
   name: string
+  /** The book's Malay name. */
+  bm: string
   sector: string
   lines: Line[]
   plain?: string
@@ -33,37 +38,47 @@ export type Ministry = {
 
 export type Sector = { name: string; ministries: Ministry[]; lines: Line[] }
 
-/** Plain summaries are keyed by ministry code, or "code|line name". */
+/** Plain summaries are keyed by ministry code, or "code|line name" (the book's Malay). */
 const plain: Record<string, { ms: string; en: string } | undefined> = plainText
 const plainOf = (key: string) => plain[key]?.[LANG]
+
+/** Names in the JSON: `en` is official (Maksud), `enOurs` our own translation of a programme. */
+type Named = { name: string; en?: string; enOurs?: string }
 
 /** Shape of budget-2027-ministry.json. Assigning (not casting) keeps TS checking the file against it. */
 type Book = {
   sectors: {
     name: string
-    ministries: {
+    ministries: (Named & {
       code: string
-      name: string
       locked: boolean
       about?: string
-      programmes: { name: string; opex: number; devex: number; about?: string; objek?: number[]; posts?: number }[]
-    }[]
+      programmes: (Named & { opex: number; devex: number; about?: string; objek?: number[]; posts?: number })[]
+    })[]
   }[]
 }
 const book: Book = spendingBook
 const NO_OBJEK = [0, 0, 0, 0, 0]
 
+/**
+ * English mode: official English names (Maksud, from the Supply Bill) as they are.
+ * Programme names have no official English, so ours goes in brackets after the book's Malay.
+ */
+const show = (n: Named) => (LANG === 'ms' ? n.name : (n.en ?? (n.enOurs ? `${n.name} (${n.enOurs})` : n.name)))
+
 export const sectors: Sector[] = book.sectors.map((s) => {
   const ministries = s.ministries.map((m) => ({
     code: m.code,
-    name: m.name,
+    name: show(m),
+    bm: m.name,
     plain: plainOf(m.code),
     sector: tn(s.name),
     lines: m.programmes.map((p, i) => ({
       id: `${m.code}#${i}`, // position in the book's order; bump the plan key when the data changes
-      name: p.name,
+      name: show(p),
+      bm: p.name,
       code: m.code,
-      ministry: m.name,
+      ministry: show(m),
       opex: p.opex,
       devex: p.devex,
       total: p.opex + p.devex,
@@ -80,7 +95,7 @@ export type Activity = { name: string; rm: number; fungsi?: string }
 
 /** budget-2027-activities.json: ministry code → line name → activities, biggest first. */
 export type ActivitiesByLine = Record<string, Record<string, Activity[] | undefined> | undefined>
-export const activitiesIn = (byLine: ActivitiesByLine) => (l: Line): readonly Activity[] => byLine[l.code]?.[l.name] ?? []
+export const activitiesIn = (byLine: ActivitiesByLine) => (l: Line): readonly Activity[] => byLine[l.code]?.[l.bm] ?? []
 
 export const ministries: Ministry[] = sectors.flatMap((s) => s.ministries)
 export const lines: Line[] = sectors.flatMap((s) => s.lines)

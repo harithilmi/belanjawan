@@ -8,6 +8,7 @@
     {
      "code": "B/P.14",
      "name": "Kementerian Perpaduan Negara",
+     "en": "Ministry of National Unity",
      "opex": 793.0394,
      "devex": 65.755,
      "locked": false,
@@ -15,6 +16,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 39.2563,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang cekap dan berkesan",
@@ -29,6 +31,7 @@
       },
       {
        "name": "Perpaduan Negara",
+       "enOurs": "National Unity",
        "opex": 410.5459,
        "devex": 0,
        "about": "Perpaduan dan keharmonian dalam kalangan masyarakat semakin tinggi",
@@ -43,6 +46,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 333.718,
        "devex": 0,
        "objek": [
@@ -67,26 +71,31 @@
       },
       {
        "name": "Pembaikan, Naik Taraf dan Ubah Suai Kementerian Perpaduan",
+       "enOurs": "Repair, Upgrade and Renovation of the Ministry of National Unity",
        "opex": 0,
        "devex": 24.0
       },
       {
        "name": "Pembaikan dan Naik Taraf Kemudahan Muzium",
+       "enOurs": "Repair and Upgrade of Museum Facilities",
        "opex": 0,
        "devex": 6.0
       },
       {
        "name": "Naik Taraf Bangunan-bangunan Arkib Negara Malaysia",
+       "enOurs": "Upgrade of National Archives of Malaysia Buildings",
        "opex": 0,
        "devex": 17.65
       },
       {
        "name": "Perpustakaan Negara Malaysia",
+       "enOurs": "National Library of Malaysia",
        "opex": 0,
        "devex": 6.85
       },
       {
        "name": "Lain-lain (3 butiran kecil)",
+       "en": "Other (3 small items)",
        "opex": 0,
        "devex": 11.255
       }
@@ -95,6 +104,7 @@
     {
      "code": "B/P.42",
      "name": "Kementerian Kesihatan",
+     "en": "Ministry of Health",
      "opex": 40954.794,
      "devex": 6749.5048,
      "locked": false,
@@ -102,6 +112,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 4156.4479,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -116,6 +127,7 @@
       },
       {
        "name": "Perubatan",
+       "enOurs": "Medical",
        "opex": 16058.3863,
        "devex": 0,
        "about": "Pengurusan mortaliti dan morbiditi di hospital KKM yang berkesan",
@@ -130,6 +142,7 @@
       },
       {
        "name": "Kesihatan Awam",
+       "enOurs": "Public Health",
        "opex": 7262.562,
        "devex": 0,
        "about": "Pencegahan dan kawalan penyakit berjangkit yang berkesan serta pengukuhan kesiapsiagaan menghadapi krisis kesihatan",
@@ -144,6 +157,7 @@
       },
       {
        "name": "Kesihatan Pergigian",
+       "enOurs": "Oral Health",
        "opex": 1416.6717,
        "devex": 0,
        "about": "Perkhidmatan pergigian yang berkualiti dan responsif",
@@ -158,6 +172,7 @@
       },
       {
        "name": "Perkhidmatan Farmasi",
+       "enOurs": "Pharmacy Services",
        "opex": 295.3245,
        "devex": 0,
        "about": "Perkhidmatan farmasi yang boleh diakses, saksama, berkualiti dan responsif",
@@ -172,6 +187,7 @@
       },
       {
        "name": "Penyelidikan dan Sokongan Teknikal",
+       "enOurs": "Research and Technical Support",
        "opex": 464.2359,
        "devex": 0,
        "about": "Infrastruktur kesihatan yang berfungsi dengan selamat",
@@ -186,6 +202,7 @@
       },
       {
        "name": "Keselamatan dan Kualiti Makanan",
+       "enOurs": "Food Safety and Quality",
        "opex": 146.1852,
        "devex": 0,
        "about": "Makanan di pasaran tempatan dan eksport selamat dan berkualiti",
@@ -200,6 +217,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 9009.7355,
        "devex": 0,
        "objek": [
@@ -212,6 +230,7 @@
       },
       {
        "name": "Komitmen Kewangan",
+       "enOurs": "Financial Commitments",
        "opex": 2145.245,
        "devex": 0,
        "objek": [
@@ -224,76 +243,91 @@
       },
       {
        "name": "Naik Taraf Projek Latihan",
+       "enOurs": "Upgrade of Training Projects",
        "opex": 0,
        "devex": 19.381
       },
       {
        "name": "Latihan Dalam Perkhidmatan",
+       "enOurs": "In-Service Training",
        "opex": 0,
        "devex": 117.0
       },
       {
        "name": "Perkhidmatan Kesihatan Luar Bandar",
+       "enOurs": "Rural Health Services",
        "opex": 0,
        "devex": 394.24
       },
       {
        "name": "Perkhidmatan Kesihatan Bandar",
+       "enOurs": "Urban Health Services",
        "opex": 0,
        "devex": 358.54
       },
       {
        "name": "Klinik Bergerak",
+       "enOurs": "Mobile Clinics",
        "opex": 0,
        "devex": 5.67
       },
       {
        "name": "Kemudahan Hospital",
+       "enOurs": "Hospital Facilities",
        "opex": 0,
        "devex": 823.7144
       },
       {
        "name": "Hospital Baharu",
+       "enOurs": "New Hospitals",
        "opex": 0,
        "devex": 461.95
       },
       {
        "name": "Penyelidikan dan Pembangunan (R&D)",
+       "enOurs": "Research and Development (R&D)",
        "opex": 0,
        "devex": 40.1008
       },
       {
        "name": "Ubah Suai, Naik Taraf dan Pembaikan",
+       "enOurs": "Renovation, Upgrade and Repair",
        "opex": 0,
        "devex": 429.5
       },
       {
        "name": "Perolehan dan Penyelenggaraan Tanah",
+       "enOurs": "Land Procurement and Maintenance",
        "opex": 0,
        "devex": 105.91
       },
       {
        "name": "Kemudahan Teknologi Maklumat dan Komunikasi (ICT)",
+       "enOurs": "Information and Communication Technology (ICT) Facilities",
        "opex": 0,
        "devex": 235.5882
       },
       {
        "name": "Penyelenggaraan Kuarters KKM",
+       "enOurs": "Maintenance of KKM Quarters",
        "opex": 0,
        "devex": 131.8
       },
       {
        "name": "Kemudahan Kuarters Bandar",
+       "enOurs": "Urban Quarters Facilities",
        "opex": 0,
        "devex": 12.3
       },
       {
        "name": "Pejabat dan Jabatan Kesihatan",
+       "enOurs": "Health Offices and Departments",
        "opex": 0,
        "devex": 8.01
       },
       {
        "name": "Peralatan dan Kenderaan",
+       "enOurs": "Equipment and Vehicles",
        "opex": 0,
        "devex": 968.7063
       },
@@ -304,6 +338,7 @@
       },
       {
        "name": "Lain-lain (2 butiran kecil)",
+       "en": "Other (2 small items)",
        "opex": 0,
        "devex": 2.2
       }
@@ -312,6 +347,7 @@
     {
      "code": "B/P.43",
      "name": "Kementerian Perumahan dan Kerajaan Tempatan",
+     "en": "Ministry of Housing and Local Government",
      "opex": 2158.7685,
      "devex": 4196.8313,
      "locked": false,
@@ -319,6 +355,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 139.3692,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang cekap dan berkesan",
@@ -333,6 +370,7 @@
       },
       {
        "name": "Persekitaran Bandar Mampan",
+       "enOurs": "Sustainable Urban Environment",
        "opex": 310.3713,
        "devex": 0,
        "about": "Perbandaran yang berdaya huni dan pintar",
@@ -347,6 +385,7 @@
       },
       {
        "name": "Komuniti Bandar Mampan",
+       "enOurs": "Sustainable Urban Communities",
        "opex": 1219.0176,
        "devex": 0,
        "about": "Perumahan yang mampu milik dan berkualiti",
@@ -361,6 +400,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 490.0104,
        "devex": 0,
        "objek": [
@@ -373,96 +413,115 @@
       },
       {
        "name": "Projek Kecil di Kawasan Pihak Berkuasa Tempatan",
+       "enOurs": "Small Projects in Local Authority Areas",
        "opex": 0,
        "devex": 689.0601
       },
       {
        "name": "Pembasmian Kemiskinan Bandar",
+       "enOurs": "Urban Poverty Eradication",
        "opex": 0,
        "devex": 73.0
       },
       {
        "name": "Pembangunan Kampung Baru",
+       "enOurs": "Kampung Baru Development",
        "opex": 0,
        "devex": 90.0
       },
       {
        "name": "Pengurusan Sisa Pepejal",
+       "enOurs": "Solid Waste Management",
        "opex": 0,
        "devex": 317.5656
       },
       {
        "name": "Kediaman PR1MA",
+       "enOurs": "PR1MA Homes",
        "opex": 0,
        "devex": 119.4087
       },
       {
        "name": "Kajian dan Penyelidikan Perumahan",
+       "enOurs": "Housing Studies and Research",
        "opex": 0,
        "devex": 5.438
       },
       {
        "name": "Perumahan Rakyat Dimiliki",
+       "enOurs": "Owned People's Housing",
        "opex": 0,
        "devex": 370.4649
       },
       {
        "name": "Pemulihan Projek Perumahan",
+       "enOurs": "Housing Project Rehabilitation",
        "opex": 0,
        "devex": 6.5
       },
       {
        "name": "Penyelenggaraan Perumahan",
+       "enOurs": "Housing Maintenance",
        "opex": 0,
        "devex": 159.75
       },
       {
        "name": "Rumah Mesra Rakyat SPNB",
+       "enOurs": "SPNB Rumah Mesra Rakyat",
        "opex": 0,
        "devex": 500.0
       },
       {
        "name": "Pembinaan Bangunan JBPM di Semenanjung Malaysia",
+       "enOurs": "Construction of JBPM Buildings in Peninsular Malaysia",
        "opex": 0,
        "devex": 67.1
       },
       {
        "name": "Pembinaan Bangunan JBPM di Sarawak",
+       "enOurs": "Construction of JBPM Buildings in Sarawak",
        "opex": 0,
        "devex": 6.5
       },
       {
        "name": "Perolehan Kenderaan/Helikopter dan Kelengkapan JBPM",
+       "enOurs": "Procurement of JBPM Vehicles/Helicopters and Equipment",
        "opex": 0,
        "devex": 73.8995
       },
       {
        "name": "Penyelenggaraan Bangunan dan Jentera JBPM",
+       "enOurs": "Maintenance of JBPM Buildings and Machinery",
        "opex": 0,
        "devex": 106.25
       },
       {
        "name": "Kajian Prosedur Perancangan dan Sebaran Dasar",
+       "enOurs": "Planning Procedure and Policy Dissemination Study",
        "opex": 0,
        "devex": 15.52
       },
       {
        "name": "Pembangunan Teknologi Maklumat",
+       "enOurs": "Information Technology Development",
        "opex": 0,
        "devex": 5.375
       },
       {
        "name": "Pembangunan Taman Awam",
+       "enOurs": "Public Park Development",
        "opex": 0,
        "devex": 51.6
       },
       {
        "name": "Pembangunan Landskap",
+       "enOurs": "Landscape Development",
        "opex": 0,
        "devex": 12.878
       },
       {
        "name": "Penyelidikan dan Pemuliharaan Landskap",
+       "enOurs": "Landscape Research and Conservation",
        "opex": 0,
        "devex": 5.85
       },
@@ -473,11 +532,13 @@
       },
       {
        "name": "Pembangunan Teknologi Maklumat KPKT",
+       "enOurs": "KPKT Information Technology Development",
        "opex": 0,
        "devex": 7.5
       },
       {
        "name": "Lain-lain (11 butiran kecil)",
+       "en": "Other (11 small items)",
        "opex": 0,
        "devex": 29.244
       }
@@ -486,6 +547,7 @@
     {
      "code": "B/P.45",
      "name": "Kementerian Belia dan Sukan",
+     "en": "Ministry of Youth and Sports",
      "opex": 707.0318,
      "devex": 505.665,
      "locked": false,
@@ -493,6 +555,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 101.1508,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -507,6 +570,7 @@
       },
       {
        "name": "Pembangunan Belia dan Sukan",
+       "enOurs": "Youth and Sports Development",
        "opex": 380.021,
        "devex": 0,
        "about": "Belia mahir dan progresif",
@@ -521,6 +585,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 222.16,
        "devex": 0,
        "objek": [
@@ -533,21 +598,25 @@
       },
       {
        "name": "Institut Kemahiran Belia Negara (IKBN)",
+       "enOurs": "National Youth Skills Institute (IKBN)",
        "opex": 0,
        "devex": 48.63
       },
       {
        "name": "Naik Taraf Kompleks Belia dan Sukan Negeri-Negeri",
+       "enOurs": "Upgrade of State Youth and Sports Complexes",
        "opex": 0,
        "devex": 5.922
       },
       {
        "name": "Pusat Latihan Khas",
+       "enOurs": "Special Training Centres",
        "opex": 0,
        "devex": 10.84
       },
       {
        "name": "Program Pembangunan Ahli Sukan - Program Latihan/Bakat",
+       "enOurs": "Athlete Development Programme - Training/Talent Programme",
        "opex": 0,
        "devex": 56.0
       },
@@ -558,36 +627,43 @@
       },
       {
        "name": "Penyediaan Sukan Antarabangsa",
+       "enOurs": "International Sports Preparation",
        "opex": 0,
        "devex": 81.3
       },
       {
        "name": "Naik Taraf Kompleks Sukan Negara",
+       "enOurs": "Upgrade of National Sports Complex",
        "opex": 0,
        "devex": 22.96
       },
       {
        "name": "Gelanggang Sukan",
+       "enOurs": "Sports Courts",
        "opex": 0,
        "devex": 177.25
       },
       {
        "name": "Dana Pembangunan Produk Sukan",
+       "enOurs": "Sports Product Development Fund",
        "opex": 0,
        "devex": 8.7
       },
       {
        "name": "Pembangunan Sukan Komuniti",
+       "enOurs": "Community Sports Development",
        "opex": 0,
        "devex": 20.0
       },
       {
        "name": "Penyelenggaraan Bangunan dan Fasiliti Kementerian Belia dan Sukan",
+       "enOurs": "Maintenance of Buildings and Facilities of Ministry of Youth and Sports",
        "opex": 0,
        "devex": 40.1
       },
       {
        "name": "Lain-lain (13 butiran kecil)",
+       "en": "Other (13 small items)",
        "opex": 3.7,
        "devex": 16.888,
        "objek": [
@@ -603,6 +679,7 @@
     {
      "code": "B/P.46",
      "name": "Kementerian Sumber Manusia",
+     "en": "Ministry of Human Resources",
      "opex": 1153.9219,
      "devex": 784.451,
      "locked": false,
@@ -610,6 +687,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 128.547,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -624,6 +702,7 @@
       },
       {
        "name": "Pembangunan Modal Insan",
+       "enOurs": "Human Capital Development",
        "opex": 469.519,
        "devex": 0,
        "about": "Pengarusperdanaan Pendidikan Teknikal dan Latihan Vokasional (TVET)",
@@ -638,6 +717,7 @@
       },
       {
        "name": "Pengurusan Perburuhan Negara",
+       "enOurs": "National Labour Management",
        "opex": 368.3859,
        "devex": 0,
        "about": "Pengurusan perburuhan yang berkesan",
@@ -652,6 +732,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 155.19,
        "devex": 0,
        "objek": [
@@ -676,36 +757,43 @@
       },
       {
        "name": "Program Pembangunan Sosioekonomi Masyarakat India",
+       "enOurs": "Indian Community Socioeconomic Development Programme",
        "opex": 0,
        "devex": 150.0
       },
       {
        "name": "Penyelenggaraan dan Pembaikan Bangunan dan Peralatan di bawah KESUMA",
+       "enOurs": "Maintenance and Repair of Buildings and Equipment under KESUMA",
        "opex": 0,
        "devex": 40.0
       },
       {
        "name": "Pembangunan Kemahiran",
+       "enOurs": "Skills Development",
        "opex": 0,
        "devex": 493.1076
       },
       {
        "name": "Naik Taraf Institut Latihan Jabatan Tenaga Manusia di Sarawak",
+       "enOurs": "Upgrade of Manpower Department Training Institutes in Sarawak",
        "opex": 0,
        "devex": 5.0096
       },
       {
        "name": "Perhubungan Perusahaan",
+       "enOurs": "Industrial Relations",
        "opex": 0,
        "devex": 6.0274
       },
       {
        "name": "Pengurusan Perburuhan dan Pekerjaan",
+       "enOurs": "Labour and Employment Management",
        "opex": 0,
        "devex": 89.4882
       },
       {
        "name": "Lain-lain (2 butiran kecil)",
+       "en": "Other (2 small items)",
        "opex": 0,
        "devex": 0.8182
       }
@@ -714,6 +802,7 @@
     {
      "code": "B/P.48",
      "name": "Kementerian Pembangunan Wanita, Keluarga dan Masyarakat",
+     "en": "Ministry of Women, Family and Community Development",
      "opex": 4198.1373,
      "devex": 157.0333,
      "locked": false,
@@ -721,6 +810,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 69.4146,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -735,6 +825,7 @@
       },
       {
        "name": "Kesejahteraan Wanita, Keluarga dan Masyarakat",
+       "enOurs": "Women, Family and Community Wellbeing",
        "opex": 729.6322,
        "devex": 0,
        "about": "Pemerkasaan wanita secara optimum",
@@ -749,6 +840,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 3387.3122,
        "devex": 0,
        "objek": [
@@ -773,11 +865,13 @@
       },
       {
        "name": "Pejabat Pembangunan Wanita",
+       "enOurs": "Women's Development Office",
        "opex": 0,
        "devex": 5.4
       },
       {
        "name": "Lembaga Penduduk dan Pembangunan Keluarga Negara",
+       "enOurs": "National Population and Family Development Board",
        "opex": 0,
        "devex": 29.45
       },
@@ -788,11 +882,13 @@
       },
       {
        "name": "Pembaikan/Pembesaran Institut Kebajikan Sedia Ada",
+       "enOurs": "Repair/Expansion of Existing Welfare Institutions",
        "opex": 0,
        "devex": 17.444
       },
       {
        "name": "Kompleks Penyayang",
+       "enOurs": "Penyayang Complex",
        "opex": 0,
        "devex": 5.0
       },
@@ -803,6 +899,7 @@
       },
       {
        "name": "Lain-lain (9 butiran kecil)",
+       "en": "Other (9 small items)",
        "opex": 1.05,
        "devex": 17.3112,
        "objek": [
@@ -818,6 +915,7 @@
     {
      "code": "B/P.63",
      "name": "Kementerian Pendidikan",
+     "en": "Ministry of Education",
      "opex": 63473.3998,
      "devex": 5515.102,
      "locked": false,
@@ -825,6 +923,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 6387.0759,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -839,6 +938,7 @@
       },
       {
        "name": "Dasar, Penilaian dan Pengurusan Prestasi",
+       "enOurs": "Policy, Evaluation and Performance Management",
        "opex": 24.8329,
        "devex": 0,
        "about": "Dasar Pendidikan yang relevan, jelas dan boleh dilaksana",
@@ -853,6 +953,7 @@
       },
       {
        "name": "Operasi Pendidikan",
+       "enOurs": "Education Operations",
        "opex": 48665.2305,
        "devex": 0,
        "about": "Penurunan kadar keciciran murid",
@@ -867,6 +968,7 @@
       },
       {
        "name": "Pengukuhan Operasi Pendidikan",
+       "enOurs": "Strengthening of Education Operations",
        "opex": 340.1474,
        "devex": 0,
        "about": "Sumber pendidikan yang relevan",
@@ -881,6 +983,7 @@
       },
       {
        "name": "Pembangunan Profesionalisme",
+       "enOurs": "Professionalism Development",
        "opex": 699.961,
        "devex": 0,
        "about": "PPP yang kompeten dan berprestasi tinggi",
@@ -895,6 +998,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 7356.1521,
        "devex": 0,
        "objek": [
@@ -907,71 +1011,85 @@
       },
       {
        "name": "Pendidikan Prasekolah",
+       "enOurs": "Preschool Education",
        "opex": 0,
        "devex": 51.678
       },
       {
        "name": "Rendah Akademik",
+       "enOurs": "Academic Primary Education",
        "opex": 0,
        "devex": 1058.316
       },
       {
        "name": "Menengah Akademik",
+       "enOurs": "Academic Secondary Education",
        "opex": 0,
        "devex": 593.025
       },
       {
        "name": "Sekolah Sukan Malaysia dan Negeri",
+       "enOurs": "Malaysian and State Sports Schools",
        "opex": 0,
        "devex": 62.802
       },
       {
        "name": "Sekolah Menengah Berasrama Penuh",
+       "enOurs": "Fully Residential Secondary Schools",
        "opex": 0,
        "devex": 65.214
       },
       {
        "name": "Matrikulasi",
+       "enOurs": "Matriculation",
        "opex": 0,
        "devex": 47.201
       },
       {
        "name": "Pendidikan dan Latihan Teknik Vokasional",
+       "enOurs": "Technical and Vocational Education and Training",
        "opex": 0,
        "devex": 113.726
       },
       {
        "name": "Institut Pendidikan Guru - Pembangunan Kompetensi Guru",
+       "enOurs": "Institute of Teacher Education - Teacher Competency Development",
        "opex": 0,
        "devex": 62.703
       },
       {
        "name": "Rumah Guru dan Kuarters Pendidikan",
+       "enOurs": "Teachers' Houses and Education Quarters",
        "opex": 0,
        "devex": 13.008
       },
       {
        "name": "Asrama",
+       "enOurs": "Hostels",
        "opex": 0,
        "devex": 32.308
       },
       {
        "name": "Bangunan dan Pejabat Pendidikan Negeri/Daerah",
+       "enOurs": "State/District Education Buildings and Offices",
        "opex": 0,
        "devex": 76.706
       },
       {
        "name": "Pendidikan Khas",
+       "enOurs": "Special Education",
        "opex": 0,
        "devex": 199.467
       },
       {
        "name": "Program Pembangunan Kurikulum",
+       "enOurs": "Curriculum Development Programme",
        "opex": 0,
        "devex": 120.141
       },
       {
        "name": "Sumber dan Teknologi Pendidikan",
+       "enOurs": "Education Resources and Technology",
        "opex": 0,
        "devex": 87.201
       },
@@ -982,46 +1100,55 @@
       },
       {
        "name": "Institut Aminuddin Baki",
+       "enOurs": "Aminuddin Baki Institute",
        "opex": 0,
        "devex": 6.354
       },
       {
        "name": "Program Pembangunan Sukan",
+       "enOurs": "Sports Development Programme",
        "opex": 0,
        "devex": 34.203
       },
       {
        "name": "Ubah Suai Naik Taraf Institut Pendidikan",
+       "enOurs": "Renovation and Upgrade of Education Institutes",
        "opex": 0,
        "devex": 779.0
       },
       {
        "name": "Infrastruktur Sokongan Pendidikan",
+       "enOurs": "Education Support Infrastructure",
        "opex": 0,
        "devex": 340.483
       },
       {
        "name": "Program Pembangunan Pendidikan Sabah dan Sarawak",
+       "enOurs": "Sabah and Sarawak Education Development Programme",
        "opex": 0,
        "devex": 447.771
       },
       {
        "name": "Perolehan Tanah Pendidikan",
+       "enOurs": "Education Land Procurement",
        "opex": 0,
        "devex": 47.899
       },
       {
        "name": "Program Biasiswa dan Penajaan",
+       "enOurs": "Scholarship and Sponsorship Programme",
        "opex": 0,
        "devex": 607.028
       },
       {
        "name": "Sistem Pengkomputeran Sekolah dan Institut Pendidikan",
+       "enOurs": "Computing Systems for Schools and Education Institutes",
        "opex": 0,
        "devex": 354.701
       },
       {
        "name": "Perabot dan Peralatan",
+       "enOurs": "Furniture and Equipment",
        "opex": 0,
        "devex": 150.001
       },
@@ -1032,11 +1159,13 @@
       },
       {
        "name": "Asuhan dan Didikan Awal Kanak-Kanak",
+       "enOurs": "Early Childhood Care and Education",
        "opex": 0,
        "devex": 12.806
       },
       {
        "name": "Lain-lain (1 butiran kecil)",
+       "en": "Other (1 small items)",
        "opex": 0,
        "devex": 1.0
       }
@@ -1045,6 +1174,7 @@
     {
      "code": "B/P.64",
      "name": "Kementerian Pendidikan Tinggi",
+     "en": "Ministry of Higher Education",
      "opex": 15129.2935,
      "devex": 3956.2786,
      "locked": false,
@@ -1052,6 +1182,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 414.3116,
        "devex": 0,
        "about": "Penyampaian perkhidmatan pendidikan yang berkesan",
@@ -1066,6 +1197,7 @@
       },
       {
        "name": "Pendidikan Tinggi",
+       "enOurs": "Higher Education",
        "opex": 9722.9855,
        "devex": 0,
        "about": "Graduan holistik, berciri keusahawanan dan seimbang",
@@ -1080,6 +1212,7 @@
       },
       {
        "name": "Hospital Pengajar",
+       "enOurs": "Teaching Hospitals",
        "opex": 2240.0482,
        "devex": 0,
        "about": "Profesional kesihatan dan perubatan yang kompeten",
@@ -1093,6 +1226,7 @@
       },
       {
        "name": "Pendidikan dan Latihan Teknikal dan Vokasional (TVET)",
+       "enOurs": "Technical and Vocational Education and Training (TVET)",
        "opex": 1822.5155,
        "devex": 0,
        "about": "Institusi TVET yang kompetitif",
@@ -1107,6 +1241,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 877.2519,
        "devex": 0,
        "objek": [
@@ -1131,6 +1266,7 @@
       },
       {
        "name": "Komitmen Kewangan",
+       "enOurs": "Financial Commitments",
        "opex": 18.4808,
        "devex": 0,
        "objek": [
@@ -1143,6 +1279,7 @@
       },
       {
        "name": "Pendidikan Politeknik",
+       "enOurs": "Polytechnic Education",
        "opex": 0,
        "devex": 385.9905
       },
@@ -1158,6 +1295,7 @@
       },
       {
        "name": "Pusat Perubatan Universiti Malaya (PPUM)",
+       "enOurs": "Universiti Malaya Medical Centre (PPUM)",
        "opex": 0,
        "devex": 99.5
       },
@@ -1183,6 +1321,7 @@
       },
       {
        "name": "Universiti Islam Antarabangsa Malaysia (UIAM)",
+       "enOurs": "International Islamic University Malaysia (UIAM)",
        "opex": 0,
        "devex": 337.2022
       },
@@ -1208,6 +1347,7 @@
       },
       {
        "name": "Kolej Komuniti",
+       "enOurs": "Community Colleges",
        "opex": 0,
        "devex": 62.561
       },
@@ -1243,16 +1383,19 @@
       },
       {
        "name": "Bahagian Kebajikan Pelajar Luar Negara",
+       "enOurs": "Overseas Student Welfare Division",
        "opex": 0,
        "devex": 13.1
       },
       {
        "name": "Penyelidikan Fundamental",
+       "enOurs": "Fundamental Research",
        "opex": 0,
        "devex": 57.4997
       },
       {
        "name": "Biasiswa dan Latihan Penyelidikan Universiti",
+       "enOurs": "University Scholarships and Research Training",
        "opex": 0,
        "devex": 203.0
       },
@@ -1268,11 +1411,13 @@
       },
       {
        "name": "Perancangan Strategik ICT",
+       "enOurs": "ICT Strategic Planning",
        "opex": 0,
        "devex": 83.135
       },
       {
        "name": "Universiti Pertahanan Nasional Malaysia (UPNM)",
+       "enOurs": "National Defence University of Malaysia (UPNM)",
        "opex": 0,
        "devex": 24.6696
       },
@@ -1283,11 +1428,13 @@
       },
       {
        "name": "Naik Taraf Fasiliti di Institusi Pendidikan Tinggi",
+       "enOurs": "Upgrade of Facilities at Higher Education Institutions",
        "opex": 0,
        "devex": 91.0
       },
       {
        "name": "Lain-lain (2 butiran kecil)",
+       "en": "Other (2 small items)",
        "opex": 0,
        "devex": 2.8005
       }
@@ -1301,6 +1448,7 @@
     {
      "code": "B/P.15",
      "name": "Kementerian Ekonomi",
+     "en": "Ministry of Economy",
      "opex": 645.424,
      "devex": 2118.9415,
      "locked": false,
@@ -1308,6 +1456,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 77.0712,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -1322,6 +1471,7 @@
       },
       {
        "name": "Perancangan Pembangunan Nasional",
+       "enOurs": "National Development Planning",
        "opex": 388.3429,
        "devex": 0,
        "about": "Perancangan pembangunan sosioekonomi yang komprehensif dan efektif",
@@ -1336,6 +1486,7 @@
       },
       {
        "name": "Pembangunan Ekonomi Wilayah Koridor",
+       "enOurs": "Regional Corridor Economic Development",
        "opex": 161.0,
        "devex": 0,
        "about": "Pembangunan sosioekonomi wilayah koridor yang inklusif dan mampan",
@@ -1349,6 +1500,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 16.3599,
        "devex": 0,
        "objek": [
@@ -1361,111 +1513,133 @@
       },
       {
        "name": "Matlamat Pembangunan Mampan",
+       "enOurs": "Sustainable Development Goals",
        "opex": 0,
        "devex": 16.1267
       },
       {
        "name": "Kajian-kajian Kemungkinan",
+       "enOurs": "Feasibility Studies",
        "opex": 0,
        "devex": 15.9708
       },
       {
        "name": "Penyenggaraan dan Pembaikan",
+       "enOurs": "Maintenance and Repair",
        "opex": 0,
        "devex": 7.0
       },
       {
        "name": "Pembangunan Iskandar Malaysia",
+       "enOurs": "Iskandar Malaysia Development",
        "opex": 0,
        "devex": 61.8
       },
       {
        "name": "Program Pembangunan",
+       "enOurs": "Development Programme",
        "opex": 0,
        "devex": 222.595
       },
       {
        "name": "Program Kerjasama Serantau IMT-GT dan BIMP-EAGA dan JDS",
+       "enOurs": "IMT-GT, BIMP-EAGA and JDS Regional Cooperation Programme",
        "opex": 0,
        "devex": 7.27
       },
       {
        "name": "Dana Pembangunan Infrastruktur",
+       "enOurs": "Infrastructure Development Fund",
        "opex": 0,
        "devex": 5.0
       },
       {
        "name": "Pembangunan Koridor",
+       "enOurs": "Corridor Development",
        "opex": 0,
        "devex": 779.7
       },
       {
        "name": "Pembangunan Infrastruktur DOSM",
+       "enOurs": "DOSM Infrastructure Development",
        "opex": 0,
        "devex": 10.364
       },
       {
        "name": "Pelan Hala Tuju Peralihan Tenaga Negara",
+       "enOurs": "National Energy Transition Roadmap",
        "opex": 0,
        "devex": 100.0
       },
       {
        "name": "Bantuan Teknik dan Perunding",
+       "enOurs": "Technical Aid and Consultancy",
        "opex": 0,
        "devex": 12.128
       },
       {
        "name": "Perbadanan Kemajuan Negeri: Johor",
+       "enOurs": "State Economic Development Corporation: Johor",
        "opex": 0,
        "devex": 9.0
       },
       {
        "name": "Perbadanan Kemajuan Negeri: Kedah",
+       "enOurs": "State Economic Development Corporation: Kedah",
        "opex": 0,
        "devex": 52.5
       },
       {
        "name": "Perbadanan Kemajuan Negeri: Kelantan",
+       "enOurs": "State Economic Development Corporation: Kelantan",
        "opex": 0,
        "devex": 57.5
       },
       {
        "name": "Perbadanan Kemajuan Negeri: Pahang",
+       "enOurs": "State Economic Development Corporation: Pahang",
        "opex": 0,
        "devex": 34.3
       },
       {
        "name": "Perbadanan Kemajuan Negeri: Perak",
+       "enOurs": "State Economic Development Corporation: Perak",
        "opex": 0,
        "devex": 18.0
       },
       {
        "name": "Perbadanan Kemajuan Negeri: Selangor",
+       "enOurs": "State Economic Development Corporation: Selangor",
        "opex": 0,
        "devex": 5.77
       },
       {
        "name": "Perbadanan Kemajuan Negeri: Terengganu",
+       "enOurs": "State Economic Development Corporation: Terengganu",
        "opex": 0,
        "devex": 17.8
       },
       {
        "name": "Program/Projek Pembangunan Ekonomi",
+       "enOurs": "Economic Development Programmes/Projects",
        "opex": 0,
        "devex": 603.5
       },
       {
        "name": "Banci Ekonomi/EKS",
+       "enOurs": "Economic Census/SME",
        "opex": 0,
        "devex": 42.779
       },
       {
        "name": "Program/Projek R&D&C&I RMU",
+       "enOurs": "RMU R&D&C&I Programmes/Projects",
        "opex": 0,
        "devex": 21.0
       },
       {
        "name": "Lain-lain (10 butiran kecil)",
+       "en": "Other (10 small items)",
        "opex": 2.65,
        "devex": 18.838,
        "objek": [
@@ -1481,6 +1655,7 @@
     {
      "code": "B/P.20",
      "name": "Kementerian Perladangan dan Komoditi",
+     "en": "Ministry of Plantation and Commodities",
      "opex": 485.6863,
      "devex": 332.3375,
      "locked": false,
@@ -1488,6 +1663,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 44.1228,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -1502,6 +1678,7 @@
       },
       {
        "name": "Pembangunan Agrikomoditi",
+       "enOurs": "Agricommodity Development",
        "opex": 204.6651,
        "devex": 0,
        "about": "Pengurusan agrikomoditi yang efektif",
@@ -1516,6 +1693,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 235.9384,
        "devex": 0,
        "objek": [
@@ -1528,41 +1706,49 @@
       },
       {
        "name": "Lembaga Koko Malaysia (LKM)",
+       "enOurs": "Malaysian Cocoa Board (LKM)",
        "opex": 0,
        "devex": 43.13
       },
       {
        "name": "Lembaga Kenaf dan Tembakau Negara (LKTN)",
+       "enOurs": "National Kenaf and Tobacco Board (LKTN)",
        "opex": 0,
        "devex": 20.82
       },
       {
        "name": "Program Pembangunan, Menaik Taraf dan Penyelenggaraan",
+       "enOurs": "Development, Upgrade and Maintenance Programme",
        "opex": 0,
        "devex": 78.0635
       },
       {
        "name": "Lembaga Getah Malaysia (LGM)",
+       "enOurs": "Malaysian Rubber Board (LGM)",
        "opex": 0,
        "devex": 21.0
       },
       {
        "name": "Lembaga Minyak Sawit Malaysia (MPOB)",
+       "enOurs": "Malaysian Palm Oil Board (MPOB)",
        "opex": 0,
        "devex": 104.629
       },
       {
        "name": "Lembaga Perindustrian Kayu Malaysia (MTIB)",
+       "enOurs": "Malaysian Timber Industry Board (MTIB)",
        "opex": 0,
        "devex": 25.01
       },
       {
        "name": "Lembaga Lada Malaysia (MPB)",
+       "enOurs": "Malaysian Pepper Board (MPB)",
        "opex": 0,
        "devex": 39.685
       },
       {
        "name": "Lain-lain (1 butiran kecil)",
+       "en": "Other (1 small items)",
        "opex": 0.96,
        "devex": 0,
        "objek": [
@@ -1578,6 +1764,7 @@
     {
      "code": "B/P.21",
      "name": "Kementerian Pertanian dan Keterjaminan Makanan",
+     "en": "Ministry of Agriculture and Food Security",
      "opex": 4846.1139,
      "devex": 2072.7493,
      "locked": false,
@@ -1585,6 +1772,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 155.3478,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -1599,6 +1787,7 @@
       },
       {
        "name": "Bekalan Makanan Negara",
+       "enOurs": "National Food Supply",
        "opex": 1513.14,
        "devex": 0,
        "about": "Bekalan makanan yang cukup dan selamat",
@@ -1613,6 +1802,7 @@
       },
       {
        "name": "Industri Agromakanan dan Keusahawanan Tani",
+       "enOurs": "Agri-Food Industry and Agropreneurship",
        "opex": 293.1764,
        "devex": 0,
        "about": "Pembangunan keusahawanan berdaya saing",
@@ -1627,6 +1817,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 2871.3807,
        "devex": 0,
        "objek": [
@@ -1651,151 +1842,181 @@
       },
       {
        "name": "Bahagian Pembangunan",
+       "enOurs": "Development Division",
        "opex": 0,
        "devex": 370.0
       },
       {
        "name": "Bahagian Industri Makanan dan Asas Tani",
+       "enOurs": "Food Industry and Agro-Based Division",
        "opex": 0,
        "devex": 23.0
       },
       {
        "name": "Bahagian Pembangunan Perniagaan dan Pelaburan (Pemasaran dan Eksport)",
+       "enOurs": "Business and Investment Development Division (Marketing and Export)",
        "opex": 0,
        "devex": 5.0
       },
       {
        "name": "Bahagian Pembangunan Perniagaan dan Pelaburan (Pelaburan)",
+       "enOurs": "Business and Investment Development Division (Investment)",
        "opex": 0,
        "devex": 16.0
       },
       {
        "name": "Bahagian Pemodenan Pertanian (BPP)",
+       "enOurs": "Agricultural Modernisation Division (BPP)",
        "opex": 0,
        "devex": 13.0
       },
       {
        "name": "Bahagian Pembangunan Industri Padi",
+       "enOurs": "Paddy Industry Development Division",
        "opex": 0,
        "devex": 51.596
       },
       {
        "name": "Lembaga Kemajuan Pertanian Kemubu (KADA)",
+       "enOurs": "Kemubu Agricultural Development Authority (KADA)",
        "opex": 0,
        "devex": 46.055
       },
       {
        "name": "Lembaga Kemajuan Pertanian Muda (MADA)",
+       "enOurs": "Muda Agricultural Development Authority (MADA)",
        "opex": 0,
        "devex": 207.3192
       },
       {
        "name": "Jabatan Pertanian Malaysia (DOA)",
+       "enOurs": "Department of Agriculture Malaysia (DOA)",
        "opex": 0,
        "devex": 55.4027
       },
       {
        "name": "Jabatan Pertanian Sabah",
+       "enOurs": "Sabah Agriculture Department",
        "opex": 0,
        "devex": 24.2
       },
       {
        "name": "Jabatan Pertanian Sarawak",
+       "enOurs": "Sarawak Agriculture Department",
        "opex": 0,
        "devex": 34.95
       },
       {
        "name": "Institut Penyelidikan dan Kemajuan Pertanian Malaysia (MARDI)",
+       "enOurs": "Malaysian Agricultural Research and Development Institute (MARDI)",
        "opex": 0,
        "devex": 44.4
       },
       {
        "name": "Lembaga Pertubuhan Peladang (LPP)",
+       "enOurs": "Farmers' Organisation Authority (LPP)",
        "opex": 0,
        "devex": 75.475
       },
       {
        "name": "Lembaga Perindustrian Nanas Malaysia (LPNM)",
+       "enOurs": "Malaysian Pineapple Industry Board (LPNM)",
        "opex": 0,
        "devex": 38.35
       },
       {
        "name": "Pembangunan Industri Lembu/Kerbau Pedaging",
+       "enOurs": "Beef Cattle/Buffalo Industry Development",
        "opex": 0,
        "devex": 6.0
       },
       {
        "name": "Jabatan Perkhidmatan Veterinar Malaysia (DVS)",
+       "enOurs": "Department of Veterinary Services Malaysia (DVS)",
        "opex": 0,
        "devex": 110.425
       },
       {
        "name": "Jabatan Perkhidmatan Veterinar Sabah",
+       "enOurs": "Sabah Veterinary Services Department",
        "opex": 0,
        "devex": 21.35
       },
       {
        "name": "Jabatan Perkhidmatan Veterinar Sarawak",
+       "enOurs": "Sarawak Veterinary Services Department",
        "opex": 0,
        "devex": 19.935
       },
       {
        "name": "Jabatan Perikanan Malaysia (DOF)",
+       "enOurs": "Department of Fisheries Malaysia (DOF)",
        "opex": 0,
        "devex": 125.896
       },
       {
        "name": "Jabatan Perikanan Sabah",
+       "enOurs": "Sabah Fisheries Department",
        "opex": 0,
        "devex": 17.575
       },
       {
        "name": "Jabatan Perikanan Laut Sarawak",
+       "enOurs": "Sarawak Marine Fisheries Department",
        "opex": 0,
        "devex": 21.115
       },
       {
        "name": "Lembaga Kemajuan Ikan Malaysia (LKIM)",
+       "enOurs": "Fisheries Development Authority of Malaysia (LKIM)",
        "opex": 0,
        "devex": 96.9452
       },
       {
        "name": "IADA - Pekan - Pengairan dan Saliran",
+       "enOurs": "IADA - Pekan - Irrigation and Drainage",
        "opex": 0,
        "devex": 24.0
       },
       {
        "name": "IADA - Rompin - Pengairan dan Saliran",
+       "enOurs": "IADA - Rompin - Irrigation and Drainage",
        "opex": 0,
        "devex": 8.01
       },
       {
        "name": "IADA - Kota Belud - Pengairan dan Saliran",
+       "enOurs": "IADA - Kota Belud - Irrigation and Drainage",
        "opex": 0,
        "devex": 21.07
       },
       {
        "name": "Bahagian Pengairan dan Saliran Pertanian",
+       "enOurs": "Agricultural Irrigation and Drainage Division",
        "opex": 0,
        "devex": 205.1952
       },
       {
        "name": "Pemodenan Sistem Pengairan Padi",
+       "enOurs": "Modernisation of Paddy Irrigation Systems",
        "opex": 0,
        "devex": 84.495
       },
       {
        "name": "Program Pembangunan Punca Air",
+       "enOurs": "Water Source Development Programme",
        "opex": 0,
        "devex": 22.457
       },
       {
        "name": "Jabatan Perkhidmatan Kuarantin dan Pemeriksaan Malaysia (MAQIS)",
+       "enOurs": "Malaysian Quarantine and Inspection Services Department (MAQIS)",
        "opex": 0,
        "devex": 15.111
       },
       {
        "name": "Lembaga Pemasaran Pertanian Persekutuan (FAMA)",
+       "enOurs": "Federal Agricultural Marketing Authority (FAMA)",
        "opex": 0,
        "devex": 35.785
       },
@@ -1811,6 +2032,7 @@
       },
       {
        "name": "Lain-lain (12 butiran kecil)",
+       "en": "Other (12 small items)",
        "opex": 0,
        "devex": 32.75
       }
@@ -1819,6 +2041,7 @@
     {
      "code": "B/P.22",
      "name": "Kementerian Kemajuan Desa dan Wilayah",
+     "en": "Ministry of Rural and Regional Development",
      "opex": 4850.1602,
      "devex": 7832.5324,
      "locked": false,
@@ -1826,6 +2049,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 111.3108,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -1840,6 +2064,7 @@
       },
       {
        "name": "Pembangunan Infrastruktur dan Kemudahan Asas",
+       "enOurs": "Infrastructure and Basic Facilities Development",
        "opex": 243.3734,
        "devex": 0,
        "about": "Petempatan luar bandar yang lengkap",
@@ -1854,6 +2079,7 @@
       },
       {
        "name": "Pengupayaan Ekonomi Luar Bandar",
+       "enOurs": "Rural Economic Empowerment",
        "opex": 2084.1652,
        "devex": 0,
        "about": "Masyarakat luar bandar yang berdaya maju",
@@ -1868,6 +2094,7 @@
       },
       {
        "name": "Pembangunan Modal Insan dan Pendidikan",
+       "enOurs": "Human Capital and Education Development",
        "opex": 186.4899,
        "devex": 0,
        "about": "Masyarakat luar bandar yang berpengetahuan dan berkemahiran",
@@ -1882,6 +2109,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 2224.8209,
        "devex": 0,
        "objek": [
@@ -1894,66 +2122,79 @@
       },
       {
        "name": "Pendidikan Kemahiran",
+       "enOurs": "Skills Education",
        "opex": 0,
        "devex": 21.3
       },
       {
        "name": "Pendidikan Awal Kanak-Kanak",
+       "enOurs": "Early Childhood Education",
        "opex": 0,
        "devex": 81.8858
       },
       {
        "name": "Pusat Kegiatan Masyarakat",
+       "enOurs": "Community Activity Centres",
        "opex": 0,
        "devex": 29.8
       },
       {
        "name": "Latihan dan Pembangunan Profesional KEMAS",
+       "enOurs": "KEMAS Training and Professional Development",
        "opex": 0,
        "devex": 22.1992
       },
       {
        "name": "Maktab Rendah Sains MARA",
+       "enOurs": "MARA Junior Science College",
        "opex": 0,
        "devex": 87.995
       },
       {
        "name": "Institut Kemahiran MARA",
+       "enOurs": "MARA Skills Institute",
        "opex": 0,
        "devex": 81.8
       },
       {
        "name": "Kolej Profesional MARA",
+       "enOurs": "MARA Professional College",
        "opex": 0,
        "devex": 45.05
       },
       {
        "name": "Kolej Poly-Tech MARA",
+       "enOurs": "MARA Poly-Tech College",
        "opex": 0,
        "devex": 14.7
       },
       {
        "name": "Perkhidmatan Pengangkutan",
+       "enOurs": "Transport Services",
        "opex": 0,
        "devex": 24.1462
       },
       {
        "name": "Penilaian dan Kaunseling/ Bimbingan Usahawan",
+       "enOurs": "Entrepreneur Assessment and Counselling/Guidance",
        "opex": 0,
        "devex": 40.8347
       },
       {
        "name": "Program GIATMARA",
+       "enOurs": "GIATMARA Programme",
        "opex": 0,
        "devex": 19.2
       },
       {
        "name": "Bangunan Perniagaan",
+       "enOurs": "Commercial Buildings",
        "opex": 0,
        "devex": 9.25
       },
       {
        "name": "Pinjaman/Pembiayaan Secara Islam",
+       "enOurs": "Islamic Loans/Financing",
        "opex": 0,
        "devex": 140.0
       },
@@ -1964,41 +2205,49 @@
       },
       {
        "name": "Program Penajaan Pendidikan MARA",
+       "enOurs": "MARA Education Sponsorship Programme",
        "opex": 0,
        "devex": 2127.2
       },
       {
        "name": "Bekalan Elektrik Luar Bandar Sarawak",
+       "enOurs": "Sarawak Rural Electricity Supply",
        "opex": 0,
        "devex": 101.0
       },
       {
        "name": "Bekalan Elektrik Luar Bandar Sabah",
+       "enOurs": "Sabah Rural Electricity Supply",
        "opex": 0,
        "devex": 44.8
       },
       {
        "name": "Pemasangan Baru Lampu Jalan Kampung",
+       "enOurs": "New Village Street Light Installation",
        "opex": 0,
        "devex": 15.0
       },
       {
        "name": "Bekalan Air Luar Bandar Semenanjung",
+       "enOurs": "Peninsular Rural Water Supply",
        "opex": 0,
        "devex": 135.0
       },
       {
        "name": "Bekalan Air Luar Bandar Sarawak",
+       "enOurs": "Sarawak Rural Water Supply",
        "opex": 0,
        "devex": 128.984
       },
       {
        "name": "Bekalan Air Luar Bandar Sabah",
+       "enOurs": "Sabah Rural Water Supply",
        "opex": 0,
        "devex": 145.0
       },
       {
        "name": "Bekalan Air Alternatif",
+       "enOurs": "Alternative Water Supply",
        "opex": 0,
        "devex": 15.0
       },
@@ -2009,131 +2258,157 @@
       },
       {
        "name": "Institut Kemajuan Desa (INFRA)",
+       "enOurs": "Institute for Rural Advancement (INFRA)",
        "opex": 0,
        "devex": 22.0
       },
       {
        "name": "Jabatan Kemajuan Orang Asli (JAKOA)",
+       "enOurs": "Department of Orang Asli Development (JAKOA)",
        "opex": 0,
        "devex": 173.2253
       },
       {
        "name": "Jambatan Luar Bandar",
+       "enOurs": "Rural Bridges",
        "opex": 0,
        "devex": 110.0
       },
       {
        "name": "Jalan-jalan Luar Bandar",
+       "enOurs": "Rural Roads",
        "opex": 0,
        "devex": 2266.0975
       },
       {
        "name": "Jalan Perhubungan Desa",
+       "enOurs": "Rural Link Roads",
        "opex": 0,
        "devex": 314.0
       },
       {
        "name": "Ameniti Sosial",
+       "enOurs": "Social Amenities",
        "opex": 0,
        "devex": 68.0
       },
       {
        "name": "Pengupayaan Komuniti dan Infodesa",
+       "enOurs": "Community Empowerment and Infodesa",
        "opex": 0,
        "devex": 8.258
       },
       {
        "name": "Program Bersepadu Pemajuan Kawasan",
+       "enOurs": "Integrated Area Development Programme",
        "opex": 0,
        "devex": 68.308
       },
       {
        "name": "Program Lonjakan Mega Luar Bandar",
+       "enOurs": "Rural Mega Leap Programme",
        "opex": 0,
        "devex": 31.622
       },
       {
        "name": "Kawal Selia Lembaga Kemajuan Wilayah",
+       "enOurs": "Regulation of Regional Development Authorities",
        "opex": 0,
        "devex": 21.0
       },
       {
        "name": "Pembangunan Ekonomi Luar Bandar",
+       "enOurs": "Rural Economic Development",
        "opex": 0,
        "devex": 6.5
       },
       {
        "name": "Pembangunan Ekonomi Komuniti",
+       "enOurs": "Community Economic Development",
        "opex": 0,
        "devex": 12.8519
       },
       {
        "name": "Lembaga Pemulihan dan Penyatuan Tanah (FELCRA)",
+       "enOurs": "Federal Land Consolidation and Rehabilitation Authority (FELCRA)",
        "opex": 0,
        "devex": 241.27
       },
       {
        "name": "Skim Pembangunan Kesejahteraan Rakyat",
+       "enOurs": "People's Wellbeing Development Scheme",
        "opex": 0,
        "devex": 438.0
       },
       {
        "name": "Lembaga Kemajuan Johor Tenggara (KEJORA)",
+       "enOurs": "South East Johor Development Authority (KEJORA)",
        "opex": 0,
        "devex": 30.43
       },
       {
        "name": "Lembaga Kemajuan Terengganu Tengah (KETENGAH)",
+       "enOurs": "Central Terengganu Development Authority (KETENGAH)",
        "opex": 0,
        "devex": 47.4721
       },
       {
        "name": "Lembaga Kemajuan Kelantan Selatan (KESEDAR)",
+       "enOurs": "South Kelantan Development Authority (KESEDAR)",
        "opex": 0,
        "devex": 36.841
       },
       {
        "name": "Pihak Berkuasa Kemajuan Pekebun Kecil Perusahaan Getah (RISDA)",
+       "enOurs": "Rubber Industry Smallholders Development Authority (RISDA)",
        "opex": 0,
        "devex": 228.96
       },
       {
        "name": "Lembaga Kemajuan Wilayah Kedah (KEDA)",
+       "enOurs": "Kedah Regional Development Authority (KEDA)",
        "opex": 0,
        "devex": 34.5835
       },
       {
        "name": "Lembaga Kemajuan Wilayah Pulau Pinang (PERDA)",
+       "enOurs": "Penang Regional Development Authority (PERDA)",
        "opex": 0,
        "devex": 38.9504
       },
       {
        "name": "Lembaga Industri Getah Sabah (LIGS)",
+       "enOurs": "Sabah Rubber Industry Board (LIGS)",
        "opex": 0,
        "devex": 58.735
       },
       {
        "name": "Lembaga Kemajuan Tanah Sabah (SLDB)",
+       "enOurs": "Sabah Land Development Board (SLDB)",
        "opex": 0,
        "devex": 23.213
       },
       {
        "name": "Lembaga Pemulihan dan Penyatuan Tanah Sarawak (SALCRA)",
+       "enOurs": "Sarawak Land Consolidation and Rehabilitation Authority (SALCRA)",
        "opex": 0,
        "devex": 33.0
       },
       {
        "name": "Perbadanan Kemajuan Pertanian Selangor (PKPS)",
+       "enOurs": "Selangor Agricultural Development Corporation (PKPS)",
        "opex": 0,
        "devex": 24.58
       },
       {
        "name": "Program Pembangunan TVET",
+       "enOurs": "TVET Development Programme",
        "opex": 0,
        "devex": 32.04
       },
       {
        "name": "Lain-lain (5 butiran kecil)",
+       "en": "Other (5 small items)",
        "opex": 0,
        "devex": 13.7498
       }
@@ -2142,6 +2417,7 @@
     {
      "code": "B/P.23",
      "name": "Kementerian Sumber Asli dan Kelestarian Alam",
+     "en": "Ministry of Natural Resources and Environmental Sustainability",
      "opex": 1598.804,
      "devex": 910.0175,
      "locked": false,
@@ -2149,6 +2425,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 85.5836,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -2163,6 +2440,7 @@
       },
       {
        "name": "Pengurusan Geologi dan Tanah",
+       "enOurs": "Geology and Land Management",
        "opex": 541.7922,
        "devex": 0,
        "about": "Pengurusan sumber geologi yang efisien",
@@ -2177,6 +2455,7 @@
       },
       {
        "name": "Pengurusan Hutan dan Biodiversiti",
+       "enOurs": "Forest and Biodiversity Management",
        "opex": 261.2499,
        "devex": 0,
        "about": "Pengurusan hutan simpanan kekal secara berkekalan",
@@ -2191,6 +2470,7 @@
       },
       {
        "name": "Pengurusan Alam Sekitar dan Perubahan Iklim",
+       "enOurs": "Environment and Climate Change Management",
        "opex": 276.5348,
        "devex": 0,
        "about": "Tindakan menangani perubahan iklim dan pertumbuhan hijau yang mampan",
@@ -2205,6 +2485,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 432.077,
        "devex": 0,
        "objek": [
@@ -2217,6 +2498,7 @@
       },
       {
        "name": "Rekabentuk Piawai Pejabat",
+       "enOurs": "Standard Office Design",
        "opex": 0,
        "devex": 8.0
       },
@@ -2227,101 +2509,121 @@
       },
       {
        "name": "Penyelenggaraan dan Pembaikan JUPEM",
+       "enOurs": "JUPEM Maintenance and Repair",
        "opex": 0,
        "devex": 6.0
       },
       {
        "name": "Pemetaan",
+       "enOurs": "Mapping",
        "opex": 0,
        "devex": 24.8206
       },
       {
        "name": "Projek Penandaan, Pengukuran dan Penyenggaraan Sempadan Antarabangsa",
+       "enOurs": "International Boundary Demarcation, Survey and Maintenance Project",
        "opex": 0,
        "devex": 7.635
       },
       {
        "name": "Pewujudan Sistem Pemetaan Utiliti",
+       "enOurs": "Utility Mapping System Establishment",
        "opex": 0,
        "devex": 6.89
       },
       {
        "name": "Mineral Perindustrian Semenanjung Malaysia",
+       "enOurs": "Industrial Minerals Peninsular Malaysia",
        "opex": 0,
        "devex": 9.3226
       },
       {
        "name": "Survei Geologi Marin",
+       "enOurs": "Marine Geological Survey",
        "opex": 0,
        "devex": 5.0
       },
       {
        "name": "Sistem Maklumat Mineral",
+       "enOurs": "Mineral Information System",
        "opex": 0,
        "devex": 26.172
       },
       {
        "name": "Kajian Geobencana Negara",
+       "enOurs": "National Geohazard Study",
        "opex": 0,
        "devex": 65.0
       },
       {
        "name": "Kajian Sumber Air Tanah Negara",
+       "enOurs": "National Groundwater Resources Study",
        "opex": 0,
        "devex": 10.735
       },
       {
        "name": "Pembinaan Pejabat Negeri Jabatan Mineral dan Geosains",
+       "enOurs": "Construction of Department of Mineral and Geoscience State Offices",
        "opex": 0,
        "devex": 20.3964
       },
       {
        "name": "Peningkatan Taraf dan Kemudahan Makmal Jabatan Mineral dan Geosains",
+       "enOurs": "Upgrade of Laboratory Facilities of Department of Mineral and Geoscience",
        "opex": 0,
        "devex": 8.0682
       },
       {
        "name": "Projek Kemajuan Perusahaan Hutan Sistem Maklumat Bersepadu Perhutanan Sarawak",
+       "enOurs": "Sarawak Forestry Integrated Information System Forest Industry Development Project",
        "opex": 0,
        "devex": 13.95
       },
       {
        "name": "Program Sokongan dan Pembangunan Penyelidikan Perhutanan",
+       "enOurs": "Forestry Research Support and Development Programme",
        "opex": 0,
        "devex": 7.622
       },
       {
        "name": "Program Pembangunan Mampan Sumber Hutan Sabah",
+       "enOurs": "Sabah Forest Resources Sustainable Development Programme",
        "opex": 0,
        "devex": 7.167
       },
       {
        "name": "Pejabat Stesen dan Rumah Kakitangan",
+       "enOurs": "Station Offices and Staff Quarters",
        "opex": 0,
        "devex": 12.9366
       },
       {
        "name": "Alat-alat Kelengkapan",
+       "enOurs": "Equipment",
        "opex": 0,
        "devex": 27.0125
       },
       {
        "name": "Projek Radar Cuaca",
+       "enOurs": "Weather Radar Project",
        "opex": 0,
        "devex": 50.8563
       },
       {
        "name": "Pembangunan Penyelidikan Sumber, Pengurusan dan Hasil",
+       "enOurs": "Resource, Management and Product Research Development",
        "opex": 0,
        "devex": 35.383
       },
       {
        "name": "Kemudahan Pengurusan Kementerian",
+       "enOurs": "Ministry Management Facilities",
        "opex": 0,
        "devex": 7.4
       },
       {
        "name": "Pembinaan Institut Tanah dan Ukur Negara (INSTUN)",
+       "enOurs": "Construction of National Institute of Land and Survey (INSTUN)",
        "opex": 0,
        "devex": 17.4468
       },
@@ -2332,26 +2634,31 @@
       },
       {
        "name": "Pengawalseliaan Alam Sekitar",
+       "enOurs": "Environmental Regulation",
        "opex": 0,
        "devex": 92.826
       },
       {
        "name": "Pengurusan Hutan Secara Berkekalan (JPSM)",
+       "enOurs": "Sustainable Forest Management (JPSM)",
        "opex": 0,
        "devex": 54.584
       },
       {
        "name": "Bahagian Pengurusan Biodiversiti dan Perhutanan",
+       "enOurs": "Biodiversity and Forestry Management Division",
        "opex": 0,
        "devex": 103.35
       },
       {
        "name": "Bahagian Mineral dan Geosains",
+       "enOurs": "Minerals and Geoscience Division",
        "opex": 0,
        "devex": 5.15
       },
       {
        "name": "Lain-lain (18 butiran kecil)",
+       "en": "Other (18 small items)",
        "opex": 1.5665,
        "devex": 32.7944,
        "objek": [
@@ -2367,6 +2674,7 @@
     {
      "code": "B/P.24",
      "name": "Kementerian Pelaburan, Perdagangan dan Industri",
+     "en": "Ministry of Investment, Trade and Industry",
      "opex": 686.3328,
      "devex": 1289.9347,
      "locked": false,
@@ -2374,6 +2682,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 71.0118,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -2388,6 +2697,7 @@
       },
       {
        "name": "Pembangunan Industri dan Daya Saing",
+       "enOurs": "Industry and Competitiveness Development",
        "opex": 100.8822,
        "devex": 0,
        "about": "Industri yang berdaya saing di peringkat global",
@@ -2402,6 +2712,7 @@
       },
       {
        "name": "Pengukuhan Perdagangan Antarabangsa",
+       "enOurs": "Strengthening of International Trade",
        "opex": 202.4151,
        "devex": 0,
        "about": "Peningkatan kerjasama ekonomi dan akses pasaran",
@@ -2416,6 +2727,7 @@
       },
       {
        "name": "Pengukuhan Pelaburan Berkualiti",
+       "enOurs": "Strengthening of Quality Investment",
        "opex": 189.6752,
        "devex": 0,
        "about": "Pelaburan berkualiti dalam sektor perkilangan dan perkhidmatan",
@@ -2430,6 +2742,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 108.4305,
        "devex": 0,
        "objek": [
@@ -2454,6 +2767,7 @@
       },
       {
        "name": "Bahagian Pembangunan Sektor Perkhidmatan (SSDD)",
+       "enOurs": "Services Sector Development Division (SSDD)",
        "opex": 0,
        "devex": 20.0
       },
@@ -2464,31 +2778,37 @@
       },
       {
        "name": "Aeroangkasa",
+       "enOurs": "Aerospace",
        "opex": 0,
        "devex": 63.5088
       },
       {
        "name": "Dana Pelaburan Strategik",
+       "enOurs": "Strategic Investment Fund",
        "opex": 0,
        "devex": 459.55
       },
       {
        "name": "Dana Projek Berimpak Tinggi",
+       "enOurs": "High Impact Projects Fund",
        "opex": 0,
        "devex": 46.0
       },
       {
        "name": "Menaiktaraf dan Memperbaiki Infrastruktur Asas Kawasan Perindustrian Sedia Ada",
+       "enOurs": "Upgrade and Repair of Basic Infrastructure in Existing Industrial Areas",
        "opex": 0,
        "devex": 20.0
       },
       {
        "name": "Tabung Promosi Eksport Perkhidmatan",
+       "enOurs": "Services Export Promotion Fund",
        "opex": 0,
        "devex": 55.0
       },
       {
        "name": "Program Daya Saing Negara",
+       "enOurs": "National Competitiveness Programme",
        "opex": 0,
        "devex": 10.0
       },
@@ -2499,26 +2819,31 @@
       },
       {
        "name": "Program Pembangunan Industri Automotif",
+       "enOurs": "Automotive Industry Development Programme",
        "opex": 0,
        "devex": 36.5
       },
       {
        "name": "Skim Pinjaman Mudah Automasi dan Pemodenan",
+       "enOurs": "Automation and Modernisation Soft Loan Scheme",
        "opex": 0,
        "devex": 30.0
       },
       {
        "name": "Taman Teknologi Sarawak",
+       "enOurs": "Sarawak Technology Park",
        "opex": 0,
        "devex": 17.0
       },
       {
        "name": "Taman Teknologi Sabah",
+       "enOurs": "Sabah Technology Park",
        "opex": 0,
        "devex": 39.3499
       },
       {
        "name": "Pelan Induk Perindustrian Baharu",
+       "enOurs": "New Industrial Master Plan",
        "opex": 0,
        "devex": 400.0
       },
@@ -2529,6 +2854,7 @@
       },
       {
        "name": "Lain-lain (4 butiran kecil)",
+       "en": "Other (4 small items)",
        "opex": 0,
        "devex": 9.9
       }
@@ -2537,6 +2863,7 @@
     {
      "code": "B/P.25",
      "name": "Kementerian Perdagangan Dalam Negeri dan Kos Sara Hidup",
+     "en": "Ministry of Domestic Trade and Cost of Living",
      "opex": 2292.8824,
      "devex": 73.155,
      "locked": false,
@@ -2544,6 +2871,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 393.5838,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -2558,6 +2886,7 @@
       },
       {
        "name": "Pembangunan Perdagangan Dalam Negeri",
+       "enOurs": "Domestic Trade Development",
        "opex": 78.8438,
        "devex": 0,
        "about": "Perdagangan pengedaran yang berdaya saing",
@@ -2572,6 +2901,7 @@
       },
       {
        "name": "Pemerkasaan Pengguna",
+       "enOurs": "Consumer Empowerment",
        "opex": 13.1594,
        "devex": 0,
        "about": "Pendayaupayaan pengguna yang progresif",
@@ -2586,6 +2916,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 1804.5,
        "devex": 0,
        "objek": [
@@ -2598,6 +2929,7 @@
       },
       {
        "name": "Pembangunan Infrastruktur Asas",
+       "enOurs": "Basic Infrastructure Development",
        "opex": 0,
        "devex": 18.655
       },
@@ -2613,6 +2945,7 @@
       },
       {
        "name": "Lain-lain (6 butiran kecil)",
+       "en": "Other (6 small items)",
        "opex": 2.7954,
        "devex": 5.5,
        "objek": [
@@ -2628,6 +2961,7 @@
     {
      "code": "B/P.26",
      "name": "Kementerian Pembangunan Usahawan dan Koperasi",
+     "en": "Ministry of Entrepreneur and Cooperatives Development",
      "opex": 275.2485,
      "devex": 753.2,
      "locked": false,
@@ -2635,6 +2969,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 56.0153,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -2649,6 +2984,7 @@
       },
       {
        "name": "Pembangunan Usahawan",
+       "enOurs": "Entrepreneur Development",
        "opex": 77.6562,
        "devex": 0,
        "about": "Pembiayaan keusahawanan yang kondusif",
@@ -2663,6 +2999,7 @@
       },
       {
        "name": "Pembangunan Koperasi",
+       "enOurs": "Cooperative Development",
        "opex": 118.1579,
        "devex": 0,
        "about": "Membina sektor koperasi yang berdaya tahan dan berprestasi tinggi",
@@ -2677,6 +3014,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 20.0678,
        "devex": 0,
        "objek": [
@@ -2689,36 +3027,43 @@
       },
       {
        "name": "Peningkatan Teknologi Maklumat dan Komunikasi",
+       "enOurs": "Information and Communication Technology Enhancement",
        "opex": 0,
        "devex": 8.0
       },
       {
        "name": "Perancangan dan Pelaksanaan Dasar dan Polisi Usahawan",
+       "enOurs": "Entrepreneur Policy Planning and Implementation",
        "opex": 0,
        "devex": 20.3
       },
       {
        "name": "Pembangunan Industri Halal dan Vendor",
+       "enOurs": "Halal Industry and Vendor Development",
        "opex": 0,
        "devex": 5.0
       },
       {
        "name": "Pembangunan Vendor",
+       "enOurs": "Vendor Development",
        "opex": 0,
        "devex": 8.5
       },
       {
        "name": "Dana Pembangunan dan Pembiayaan PKS",
+       "enOurs": "SME Development and Financing Fund",
        "opex": 0,
        "devex": 22.0
       },
       {
        "name": "Program Peningkatan dan Pembangunan PKS",
+       "enOurs": "SME Enhancement and Development Programme",
        "opex": 0,
        "devex": 112.0
       },
       {
        "name": "Suruhanjaya Koperasi Malaysia (SKM) - Pembangunan Koperasi",
+       "enOurs": "Malaysia Co-operative Societies Commission (SKM) - Co-operative Development",
        "opex": 0,
        "devex": 10.5
       },
@@ -2729,11 +3074,13 @@
       },
       {
        "name": "Institut Keusahawanan Negara (INSKEN)",
+       "enOurs": "National Entrepreneurship Institute (INSKEN)",
        "opex": 0,
        "devex": 9.4
       },
       {
        "name": "Lain-lain (6 butiran kecil)",
+       "en": "Other (6 small items)",
        "opex": 3.3513,
        "devex": 7.5,
        "objek": [
@@ -2749,6 +3096,7 @@
     {
      "code": "B/P.27",
      "name": "Kementerian Kerja Raya",
+     "en": "Ministry of Works",
      "opex": 1146.1845,
      "devex": 9736.0416,
      "locked": false,
@@ -2756,6 +3104,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 530.5181,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -2770,6 +3119,7 @@
       },
       {
        "name": "Pembangunan Infrastruktur Jalan dan Pembangunan Industri Pembinaan",
+       "enOurs": "Road Infrastructure and Construction Industry Development",
        "opex": 71.9595,
        "devex": 0,
        "about": "Aksesibiliti dan mobiliti jalan yang menyeluruh",
@@ -2784,6 +3134,7 @@
       },
       {
        "name": "Pembinaan Infrastruktur Bangunan",
+       "enOurs": "Building Infrastructure Construction",
        "opex": 276.8501,
        "devex": 0,
        "about": "Pengurusan projek infrastruktur bangunan yang berkesan",
@@ -2798,6 +3149,7 @@
       },
       {
        "name": "Penyelenggaraan Aset Tak Alih",
+       "enOurs": "Immovable Asset Maintenance",
        "opex": 153.6956,
        "devex": 0,
        "about": "Pengurusan dan penyelenggaraan Jalan Persekutuan yang berkesan",
@@ -2812,6 +3164,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 105.455,
        "devex": 0,
        "objek": [
@@ -2836,71 +3189,85 @@
       },
       {
        "name": "Pemulihan Infrastruktur Jalan dan Jambatan",
+       "enOurs": "Road and Bridge Infrastructure Rehabilitation",
        "opex": 0,
        "devex": 135.965
       },
       {
        "name": "Membina Persimpangan Bertingkat",
+       "enOurs": "Construction of Interchanges",
        "opex": 0,
        "devex": 30.25
       },
       {
        "name": "Pembinaan Jalan dan Jambatan",
+       "enOurs": "Road and Bridge Construction",
        "opex": 0,
        "devex": 135.91
       },
       {
        "name": "Pelbagai Pembinaan",
+       "enOurs": "Miscellaneous Construction",
        "opex": 0,
        "devex": 145.51
       },
       {
        "name": "Naik Taraf Jalan Raya dan Laluan",
+       "enOurs": "Upgrade of Roads and Routes",
        "opex": 0,
        "devex": 102.1
       },
       {
        "name": "Naik Taraf Jalan-jalan",
+       "enOurs": "Upgrade of Roads",
        "opex": 0,
        "devex": 3283.095
       },
       {
        "name": "Pemulihan Infrastruktur Jalan",
+       "enOurs": "Road Infrastructure Rehabilitation",
        "opex": 0,
        "devex": 5.5
       },
       {
        "name": "Pembinaan Jalan Baharu",
+       "enOurs": "New Road Construction",
        "opex": 0,
        "devex": 652.95
       },
       {
        "name": "Lain-lain Pembinaan",
+       "enOurs": "Other Construction",
        "opex": 0,
        "devex": 233.1593
       },
       {
        "name": "Pembinaan Jambatan",
+       "enOurs": "Bridge Construction",
        "opex": 0,
        "devex": 8.06
       },
       {
        "name": "Kajian Perlindungan/Pembaikan Cerun-cerun",
+       "enOurs": "Slope Protection/Repair Study",
        "opex": 0,
        "devex": 68.5
       },
       {
        "name": "Naik Taraf dan Memulihkan Jalan",
+       "enOurs": "Upgrade and Rehabilitation of Roads",
        "opex": 0,
        "devex": 45.0
       },
       {
        "name": "Pembinaan Jalan-jalan",
+       "enOurs": "Road Construction",
        "opex": 0,
        "devex": 671.5
       },
       {
        "name": "Membina Jalan-jalan",
+       "enOurs": "Road Construction",
        "opex": 0,
        "devex": 564.3
       },
@@ -2911,51 +3278,61 @@
       },
       {
        "name": "Naik Taraf, Pembaikan dan Penyelenggaraan Aset KKR",
+       "enOurs": "Upgrade, Repair and Maintenance of KKR Assets",
        "opex": 0,
        "devex": 40.0
       },
       {
        "name": "Pembangunan Pejabat Baharu Kerajaan Persekutuan di Luar Kuala Lumpur",
+       "enOurs": "Development of New Federal Government Offices outside Kuala Lumpur",
        "opex": 0,
        "devex": 7.05
       },
       {
        "name": "Pemulihan dan Penambahbaikan Bangunan Kerajaan Persekutuan",
+       "enOurs": "Rehabilitation and Improvement of Federal Government Buildings",
        "opex": 0,
        "devex": 17.3
       },
       {
        "name": "Projek ICT KKR",
+       "enOurs": "KKR ICT Projects",
        "opex": 0,
        "devex": 21.55
       },
       {
        "name": "Projek ICT JKR",
+       "enOurs": "JKR ICT Projects",
        "opex": 0,
        "devex": 13.313
       },
       {
        "name": "Penyelidikan dan Pembangunan Kejuruteraan",
+       "enOurs": "Engineering Research and Development",
        "opex": 0,
        "devex": 36.2
       },
       {
        "name": "Membina Persimpangan Bertingkat dan Jejambat",
+       "enOurs": "Construction of Interchanges and Flyovers",
        "opex": 0,
        "devex": 10.0
       },
       {
        "name": "Lebuhraya Pan Borneo",
+       "enOurs": "Pan Borneo Highway",
        "opex": 0,
        "devex": 1380.0
       },
       {
        "name": "Pengambilan Balik Tanah untuk Projek",
+       "enOurs": "Land Acquisition for Projects",
        "opex": 0,
        "devex": 110.0
       },
       {
        "name": "Lain-lain (5 butiran kecil)",
+       "en": "Other (5 small items)",
        "opex": 0,
        "devex": 16.08
       }
@@ -2964,6 +3341,7 @@
     {
      "code": "B/P.28",
      "name": "Kementerian Pengangkutan",
+     "en": "Ministry of Transport",
      "opex": 1673.6042,
      "devex": 5398.7894,
      "locked": false,
@@ -2971,6 +3349,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 109.8687,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -2985,6 +3364,7 @@
       },
       {
        "name": "Perkhidmatan Pengangkutan",
+       "enOurs": "Transport Services",
        "opex": 964.4381,
        "devex": 0,
        "about": "Perkhidmatan pengangkutan yang berkesan",
@@ -2999,6 +3379,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 576.2695,
        "devex": 0,
        "objek": [
@@ -3023,76 +3404,91 @@
       },
       {
        "name": "Kerja-kerja Pengerukan Kuala-kuala Sungai Kecil di Pelabuhan-pelabuhan di Semenanjung Malaysia",
+       "enOurs": "Dredging of Small River Mouths at Ports in Peninsular Malaysia",
        "opex": 0,
        "devex": 25.1
       },
       {
        "name": "Pembaikan dan Pembinaan Jeti Jabatan Laut Semenanjung",
+       "enOurs": "Repair and Construction of Peninsular Marine Department Jetties",
        "opex": 0,
        "devex": 161.2554
       },
       {
        "name": "Pembaikan/Pembinaan Kompleks Pejabat/Sistem Peralatan Jabatan Laut",
+       "enOurs": "Repair/Construction of Marine Department Office Complexes/Equipment Systems",
        "opex": 0,
        "devex": 106.5744
       },
       {
        "name": "Pembaikan dan Pembinaan Jeti di Sabah",
+       "enOurs": "Repair and Construction of Jetties in Sabah",
        "opex": 0,
        "devex": 10.0
       },
       {
        "name": "Pejabat/Bangunan Baru, Peralatan dan Pengkomputeran JPJ",
+       "enOurs": "JPJ New Offices/Buildings, Equipment and Computerisation",
        "opex": 0,
        "devex": 169.5895
       },
       {
        "name": "Projek Membaik Pulih dan Mengukuhkan Landasan Keretapi Pantai Timur",
+       "enOurs": "East Coast Railway Track Repair and Strengthening Project",
        "opex": 0,
        "devex": 443.4
       },
       {
        "name": "Meningkatkan Keupayaan KTMB",
+       "enOurs": "KTMB Capacity Enhancement",
        "opex": 0,
        "devex": 907.1057
       },
       {
        "name": "Sambungan Rel ke Pelabuhan",
+       "enOurs": "Rail Links to Ports",
        "opex": 0,
        "devex": 18.108
       },
       {
        "name": "Pembelian Rolling Stock KTMB",
+       "enOurs": "KTMB Rolling Stock Purchase",
        "opex": 0,
        "devex": 54.001
       },
       {
        "name": "Peningkatan Infrastruktur Rel",
+       "enOurs": "Rail Infrastructure Improvement",
        "opex": 0,
        "devex": 25.0
       },
       {
        "name": "Pembinaan dan Menaik Taraf Infrastruktur Lapangan Terbang",
+       "enOurs": "Construction and Upgrade of Airport Infrastructure",
        "opex": 0,
        "devex": 112.28
       },
       {
        "name": "Pembesaran dan Menaik Taraf Lapangan Terbang Kuching/Miri/ Sibu/Mukah/Padang Terbang Bario",
+       "enOurs": "Expansion and Upgrade of Kuching/Miri/Sibu/Mukah Airports/Bario Airstrip",
        "opex": 0,
        "devex": 185.4
       },
       {
        "name": "Menaik Taraf dan Pembangunan Sistem Kawalan/Pengurusan Trafik",
+       "enOurs": "Upgrade and Development of Traffic Control/Management Systems",
        "opex": 0,
        "devex": 258.203
       },
       {
        "name": "Kajian Strategik Pengangkutan",
+       "enOurs": "Strategic Transport Study",
        "opex": 0,
        "devex": 16.5
       },
       {
        "name": "Bayaran Pampasan dan Premium Tanah di bawah Kementerian Pengangkutan",
+       "enOurs": "Compensation and Land Premium Payments under the Ministry of Transport",
        "opex": 0,
        "devex": 65.006
       },
@@ -3103,26 +3499,31 @@
       },
       {
        "name": "Penyelidikan dan Pembangunan Kejuruteraan",
+       "enOurs": "Engineering Research and Development",
        "opex": 0,
        "devex": 11.4968
       },
       {
        "name": "Projek Pembangunan Makmal MIROS",
+       "enOurs": "MIROS Laboratory Development Project",
        "opex": 0,
        "devex": 30.5
       },
       {
        "name": "Pengangkutan Awam Bandar",
+       "enOurs": "Urban Public Transport",
        "opex": 0,
        "devex": 2691.4917
       },
       {
        "name": "Penyenggaraan Infrastruktur Pelabuhan",
+       "enOurs": "Port Infrastructure Maintenance",
        "opex": 0,
        "devex": 15.0
       },
       {
        "name": "Lain-lain (3 butiran kecil)",
+       "en": "Other (3 small items)",
        "opex": 1.98,
        "devex": 4.0,
        "objek": [
@@ -3138,6 +3539,7 @@
     {
      "code": "B/P.30",
      "name": "Kementerian Sains, Teknologi dan Inovasi",
+     "en": "Ministry of Science, Technology and Innovation",
      "opex": 775.4622,
      "devex": 516.9298,
      "locked": false,
@@ -3145,6 +3547,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 75.0993,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang efektif dan efisien",
@@ -3159,6 +3562,7 @@
       },
       {
        "name": "Perancangan dan Pembudayaan Sains",
+       "enOurs": "Science Planning and Acculturation",
        "opex": 76.6238,
        "devex": 0,
        "about": "Pembudayaan Sains, Teknologi dan Inovasi yang berkesan",
@@ -3173,6 +3577,7 @@
       },
       {
        "name": "Pembangunan Teknologi",
+       "enOurs": "Technology Development",
        "opex": 410.8391,
        "devex": 0,
        "about": "Peningkatan sumbangan inisiatif pembangunan teknologi tempatan",
@@ -3187,6 +3592,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 212.9,
        "devex": 0,
        "objek": [
@@ -3199,36 +3605,43 @@
       },
       {
        "name": "Jabatan Kimia Malaysia",
+       "enOurs": "Department of Chemistry Malaysia",
        "opex": 0,
        "devex": 113.0655
       },
       {
        "name": "Baik Pulih dan Penyelenggaraan Bangunan dan Peralatan",
+       "enOurs": "Building and Equipment Repair and Maintenance",
        "opex": 0,
        "devex": 56.0
       },
       {
        "name": "Agensi Angkasa Malaysia (MYSA)",
+       "enOurs": "Malaysian Space Agency (MYSA)",
        "opex": 0,
        "devex": 18.6891
       },
       {
        "name": "Agensi Nuklear Malaysia",
+       "enOurs": "Malaysian Nuclear Agency",
        "opex": 0,
        "devex": 14.15
       },
       {
        "name": "Institut Bioteknologi Kebangsaan Malaysia (NIBM)",
+       "enOurs": "National Institute of Biotechnology Malaysia (NIBM)",
        "opex": 0,
        "devex": 46.4013
       },
       {
        "name": "Program Penyelidikan dan Pembangunan (R&D)",
+       "enOurs": "Research and Development (R&D) Programme",
        "opex": 0,
        "devex": 53.0
       },
       {
        "name": "Yayasan Inovasi Malaysia",
+       "enOurs": "Malaysian Foundation for Innovation",
        "opex": 0,
        "devex": 5.5
       },
@@ -3239,6 +3652,7 @@
       },
       {
        "name": "Pelbagai Suntikan Ekuiti",
+       "enOurs": "Miscellaneous Equity Injections",
        "opex": 0,
        "devex": 51.5
       },
@@ -3259,6 +3673,7 @@
       },
       {
        "name": "Lain-lain (5 butiran kecil)",
+       "en": "Other (5 small items)",
        "opex": 0,
        "devex": 8.8059
       }
@@ -3267,6 +3682,7 @@
     {
      "code": "B/P.31",
      "name": "Kementerian Pelancongan, Seni dan Budaya",
+     "en": "Ministry of Tourism, Arts and Culture",
      "opex": 1257.3187,
      "devex": 511.664,
      "locked": false,
@@ -3274,6 +3690,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 111.9717,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -3288,6 +3705,7 @@
       },
       {
        "name": "Pembangunan dan Promosi Pelancongan",
+       "enOurs": "Tourism Development and Promotion",
        "opex": 201.55,
        "devex": 0,
        "about": "Produk pelancongan lebih berdaya saing",
@@ -3302,6 +3720,7 @@
       },
       {
        "name": "Pembangunan dan Promosi Kebudayaan",
+       "enOurs": "Culture Development and Promotion",
        "opex": 281.556,
        "devex": 0,
        "about": "Pembangunan modal insan dalam bidang seni budaya dan warisan yang berdaya saing",
@@ -3316,6 +3735,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 240.6,
        "devex": 0,
        "objek": [
@@ -3340,31 +3760,37 @@
       },
       {
        "name": "Program Penyediaan/Peningkatan Kemudahan Pelancongan",
+       "enOurs": "Tourism Facilities Provision/Upgrade Programme",
        "opex": 0,
        "devex": 136.685
       },
       {
        "name": "Penyelenggaraan Kemudahan/Infrastruktur",
+       "enOurs": "Maintenance of Facilities/Infrastructure",
        "opex": 0,
        "devex": 150.0
       },
       {
        "name": "Pembangunan Ecotourism",
+       "enOurs": "Ecotourism Development",
        "opex": 0,
        "devex": 69.05
       },
       {
        "name": "Program Peningkatan Kemudahan Homestay",
+       "enOurs": "Homestay Facilities Upgrade Programme",
        "opex": 0,
        "devex": 31.0
       },
       {
        "name": "Program Pemuliharaan/Pemugaran Tinggalan Sejarah",
+       "enOurs": "Historical Heritage Conservation/Restoration Programme",
        "opex": 0,
        "devex": 31.0
       },
       {
        "name": "Taman Seni Budaya Negeri-negeri",
+       "enOurs": "State Arts and Culture Parks",
        "opex": 0,
        "devex": 5.9
       },
@@ -3375,6 +3801,7 @@
       },
       {
        "name": "Perbadanan Kemajuan Kraftangan Malaysia",
+       "enOurs": "Malaysian Handicraft Development Corporation",
        "opex": 0,
        "devex": 10.725
       },
@@ -3385,11 +3812,13 @@
       },
       {
        "name": "Pemasaran dan Promosi",
+       "enOurs": "Marketing and Promotion",
        "opex": 0,
        "devex": 10.0
       },
       {
        "name": "Lain-lain (2 butiran kecil)",
+       "en": "Other (2 small items)",
        "opex": 0.686,
        "devex": 1.6,
        "objek": [
@@ -3405,6 +3834,7 @@
     {
      "code": "B/P.33",
      "name": "Kementerian Peralihan Tenaga dan Transformasi Air",
+     "en": "Ministry of Energy Transition and Water Transformation",
      "opex": 403.4084,
      "devex": 4926.2045,
      "locked": false,
@@ -3412,6 +3842,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 56.2808,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -3426,6 +3857,7 @@
       },
       {
        "name": "Pengurusan Tenaga",
+       "enOurs": "Energy Management",
        "opex": 12.1702,
        "devex": 0,
        "about": "Perkhidmatan bekalan elektrik yang cekap, kos efektif dan mesra alam",
@@ -3440,6 +3872,7 @@
       },
       {
        "name": "Pengurusan Air dan Pembetungan",
+       "enOurs": "Water and Sewerage Management",
        "opex": 262.4832,
        "devex": 0,
        "about": "Pengurusan aset dan data berkaitan sumber air yang efisien",
@@ -3454,6 +3887,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 70.1109,
        "devex": 0,
        "objek": [
@@ -3466,116 +3900,139 @@
       },
       {
        "name": "Pembangunan Sumber Air Negara",
+       "enOurs": "National Water Resources Development",
        "opex": 0,
        "devex": 8.71
       },
       {
        "name": "Pemulihan Empangan",
+       "enOurs": "Dam Rehabilitation",
        "opex": 0,
        "devex": 40.3597
       },
       {
        "name": "Jentera-jentera dan Kelengkapan",
+       "enOurs": "Machinery and Equipment",
        "opex": 0,
        "devex": 5.5
       },
       {
        "name": "Rancangan Kawalan dan Isyarat Bahaya Banjir",
+       "enOurs": "Flood Control and Warning Scheme",
        "opex": 0,
        "devex": 23.2
       },
       {
        "name": "Menaik Taraf Infrastruktur dan Saliran Bandar, Tebatan Banjir",
+       "enOurs": "Upgrade of Urban Infrastructure and Drainage, Flood Mitigation",
        "opex": 0,
        "devex": 38.1342
       },
       {
        "name": "Kerja-kerja kecil JPS, Pelbagai Negeri",
+       "enOurs": "JPS Minor Works, Various States",
        "opex": 0,
        "devex": 103.0
       },
       {
        "name": "Mencegah Hakisan Pantai",
+       "enOurs": "Coastal Erosion Prevention",
        "opex": 0,
        "devex": 97.8
       },
       {
        "name": "Memperbaiki, Mengindah, Membersih dan Merawat Air Sungai-sungai dan Infrastruktur MASMA",
+       "enOurs": "Repair, Beautification, Cleaning and Treatment of Rivers and MASMA Infrastructure",
        "opex": 0,
        "devex": 245.4265
       },
       {
        "name": "Mengorek Kuala-kuala Sungai",
+       "enOurs": "River Mouth Dredging",
        "opex": 0,
        "devex": 83.925
       },
       {
        "name": "Rancangan Pengurusan Sungai Saliran Mesra Alam",
+       "enOurs": "Eco-Friendly River and Drainage Management Scheme",
        "opex": 0,
        "devex": 61.4158
       },
       {
        "name": "Rancangan Tebatan Banjir (RTB) dan Saliran Bandar",
+       "enOurs": "Flood Mitigation Scheme (RTB) and Urban Drainage",
        "opex": 0,
        "devex": 1440.6045
       },
       {
        "name": "Projek Tebatan Banjir Berkeutamaan Tinggi",
+       "enOurs": "High Priority Flood Mitigation Projects",
        "opex": 0,
        "devex": 1031.901
       },
       {
        "name": "Penyelidikan dan Pembangunan",
+       "enOurs": "Research and Development",
        "opex": 0,
        "devex": 15.22
       },
       {
        "name": "Rancangan Bekalan Air Negeri Johor",
+       "enOurs": "Johor Water Supply Scheme",
        "opex": 0,
        "devex": 100.42
       },
       {
        "name": "Rancangan Bekalan Air Negeri Kedah",
+       "enOurs": "Kedah Water Supply Scheme",
        "opex": 0,
        "devex": 83.204
       },
       {
        "name": "Rancangan Bekalan Air Negeri Melaka",
+       "enOurs": "Melaka Water Supply Scheme",
        "opex": 0,
        "devex": 34.67
       },
       {
        "name": "Rancangan Bekalan Air Negeri Kelantan",
+       "enOurs": "Kelantan Water Supply Scheme",
        "opex": 0,
        "devex": 25.3
       },
       {
        "name": "Rancangan Bekalan Air Negeri Sembilan",
+       "enOurs": "Negeri Sembilan Water Supply Scheme",
        "opex": 0,
        "devex": 18.44
       },
       {
        "name": "Rancangan Bekalan Air Negeri Pahang",
+       "enOurs": "Pahang Water Supply Scheme",
        "opex": 0,
        "devex": 23.0992
       },
       {
        "name": "Rancangan Bekalan Air Negeri Pulau Pinang",
+       "enOurs": "Pulau Pinang Water Supply Scheme",
        "opex": 0,
        "devex": 31.794
       },
       {
        "name": "Rancangan Bekalan Air Labuan",
+       "enOurs": "Labuan Water Supply Scheme",
        "opex": 0,
        "devex": 31.8884
       },
       {
        "name": "Rancangan Bekalan Air Sabah",
+       "enOurs": "Sabah Water Supply Scheme",
        "opex": 0,
        "devex": 166.444
       },
       {
        "name": "Rancangan Bekalan Air Sarawak",
+       "enOurs": "Sarawak Water Supply Scheme",
        "opex": 0,
        "devex": 55.794
       },
@@ -3586,6 +4043,7 @@
       },
       {
        "name": "Tanggungan-tanggungan Untuk Pengambilan Tanah",
+       "enOurs": "Land Acquisition Liabilities",
        "opex": 0,
        "devex": 6.591
       },
@@ -3596,31 +4054,37 @@
       },
       {
        "name": "Program Kecekapan Tenaga dan Tenaga Diperbaharui",
+       "enOurs": "Energy Efficiency and Renewable Energy Programme",
        "opex": 0,
        "devex": 11.9572
       },
       {
        "name": "Bekalan Elektrik Sabah (BES)",
+       "enOurs": "Sabah Electricity Supply (BES)",
        "opex": 0,
        "devex": 125.95
       },
       {
        "name": "Bekalan Elektrik",
+       "enOurs": "Electricity Supply",
        "opex": 0,
        "devex": 15.2
       },
       {
        "name": "Projek Pembetungan Negara",
+       "enOurs": "National Sewerage Project",
        "opex": 0,
        "devex": 429.5228
       },
       {
        "name": "Non-Revenue Water (NRW) Nasional",
+       "enOurs": "National Non-Revenue Water (NRW)",
        "opex": 0,
        "devex": 501.0874
       },
       {
        "name": "Lain-lain (9 butiran kecil)",
+       "en": "Other (9 small items)",
        "opex": 2.3633,
        "devex": 21.767,
        "objek": [
@@ -3636,6 +4100,7 @@
     {
      "code": "B/P.47",
      "name": "Kementerian Komunikasi",
+     "en": "Ministry of Communications",
      "opex": 1136.1494,
      "devex": 1477.3593,
      "locked": false,
@@ -3643,6 +4108,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 116.1615,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -3657,6 +4123,7 @@
       },
       {
        "name": "Komunikasi Strategik dan Industri Kreatif",
+       "enOurs": "Strategic Communications and Creative Industry",
        "opex": 855.767,
        "devex": 0,
        "about": "Komunikasi strategik berkesan",
@@ -3671,6 +4138,7 @@
       },
       {
        "name": "Infrastruktur dan Telekomunikasi",
+       "enOurs": "Infrastructure and Telecommunications",
        "opex": 10.7442,
        "devex": 0,
        "about": "Infrastruktur dan rangkaian komunikasi yang menyeluruh",
@@ -3685,6 +4153,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 96.4667,
        "devex": 0,
        "objek": [
@@ -3709,46 +4178,55 @@
       },
       {
        "name": "Rumah Kakitangan di Stesen Daerah RTM",
+       "enOurs": "Staff Housing at RTM District Stations",
        "opex": 0,
        "devex": 19.3
       },
       {
        "name": "Jabatan Penyiaran Malaysia Tawau",
+       "enOurs": "Department of Broadcasting Malaysia Tawau",
        "opex": 0,
        "devex": 20.46
       },
       {
        "name": "Bangunan Penyiaran RTM Bintulu",
+       "enOurs": "RTM Bintulu Broadcasting Building",
        "opex": 0,
        "devex": 12.6
       },
       {
        "name": "Sistem Penyiaran TV Digital Berdefinisi Tinggi",
+       "enOurs": "High Definition Digital TV Broadcasting System",
        "opex": 0,
        "devex": 139.8422
       },
       {
        "name": "Menaik Taraf Infrastruktur Fizikal Premis Jabatan Penyiaran Malaysia",
+       "enOurs": "Upgrade of Department of Broadcasting Malaysia Premises Physical Infrastructure",
        "opex": 0,
        "devex": 30.159
       },
       {
        "name": "Menaik Taraf Sistem Penerbitan TV",
+       "enOurs": "Upgrade of TV Production System",
        "opex": 0,
        "devex": 5.0
       },
       {
        "name": "Ibu Pejabat Jabatan Penerangan Sarawak",
+       "enOurs": "Sarawak Information Department Headquarters",
        "opex": 0,
        "devex": 8.6
       },
       {
        "name": "Menaik Taraf Pejabat Penerangan Negeri, Bahagian dan Daerah Seluruh Negara",
+       "enOurs": "Upgrade of State, Division and District Information Offices Nationwide",
        "opex": 0,
        "devex": 5.0
       },
       {
        "name": "Pertubuhan Berita Nasional Malaysia (BERNAMA)",
+       "enOurs": "Malaysian National News Agency (BERNAMA)",
        "opex": 0,
        "devex": 11.32
       },
@@ -3759,26 +4237,31 @@
       },
       {
        "name": "Projek Kerajaan Elektronik",
+       "enOurs": "Electronic Government Project",
        "opex": 0,
        "devex": 5.4
       },
       {
        "name": "Sistem Panggilan Kecemasan Negara 999",
+       "enOurs": "National Emergency Call System 999",
        "opex": 0,
        "devex": 113.8385
       },
       {
        "name": "Jalinan Digital Negara (JENDELA)",
+       "enOurs": "National Digital Network (JENDELA)",
        "opex": 0,
        "devex": 670.0
       },
       {
        "name": "Perbadanan Kemajuan Filem Nasional Malaysia (FINAS)",
+       "enOurs": "National Film Development Corporation Malaysia (FINAS)",
        "opex": 0,
        "devex": 118.0505
       },
       {
        "name": "Dasar Industri Kreatif Negara",
+       "enOurs": "National Creative Industry Policy",
        "opex": 0,
        "devex": 60.0
       },
@@ -3789,6 +4272,7 @@
       },
       {
        "name": "Lain-lain (8 butiran kecil)",
+       "en": "Other (8 small items)",
        "opex": 4.0,
        "devex": 8.0813,
        "objek": [
@@ -3804,6 +4288,7 @@
     {
      "code": "B/P.50",
      "name": "Kementerian Digital",
+     "en": "Ministry of Digital",
      "opex": 250.9314,
      "devex": 1111.214,
      "locked": false,
@@ -3811,6 +4296,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 68.2112,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -3825,6 +4311,7 @@
       },
       {
        "name": "Pembangunan Digital",
+       "enOurs": "Digital Development",
        "opex": 106.8915,
        "devex": 0,
        "about": "Penyampaian perkhidmatan Kerajaan secara digital yang dipercayai, berpaksikan rakyat dan mudah diakses",
@@ -3839,6 +4326,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 74.2201,
        "devex": 0,
        "objek": [
@@ -3856,11 +4344,13 @@
       },
       {
        "name": "Bantuan Teknik dan Perunding",
+       "enOurs": "Technical Aid and Consultancy",
        "opex": 0,
        "devex": 5.9842
       },
       {
        "name": "Projek Kerajaan Elektronik",
+       "enOurs": "Electronic Government Project",
        "opex": 0,
        "devex": 11.0935
       },
@@ -3876,11 +4366,13 @@
       },
       {
        "name": "Perkhidmatan Kerajaan Digital",
+       "enOurs": "Digital Government Services",
        "opex": 0,
        "devex": 947.2945
       },
       {
        "name": "Lain-lain (2 butiran kecil)",
+       "en": "Other (2 small items)",
        "opex": 1.6086,
        "devex": 0,
        "objek": [
@@ -3901,6 +4393,7 @@
     {
      "code": "B/P.60",
      "name": "Kementerian Pertahanan",
+     "en": "Ministry of Defence",
      "opex": 14523.0,
      "devex": 7585.217,
      "locked": false,
@@ -3908,6 +4401,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 1135.7336,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -3922,6 +4416,7 @@
       },
       {
        "name": "Pertahanan Negara",
+       "enOurs": "National Defence",
        "opex": 12706.3273,
        "devex": 0,
        "about": "Kesiagaan tertinggi ATM",
@@ -3936,6 +4431,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 680.9391,
        "devex": 0,
        "objek": [
@@ -3948,56 +4444,67 @@
       },
       {
        "name": "Pembinaan (Tentera Darat)",
+       "enOurs": "Construction (Army)",
        "opex": 0,
        "devex": 436.0549
       },
       {
        "name": "Kelengkapan (Tentera Darat)",
+       "enOurs": "Equipment (Army)",
        "opex": 0,
        "devex": 1331.895
       },
       {
        "name": "Pembinaan (Tentera Laut)",
+       "enOurs": "Construction (Navy)",
        "opex": 0,
        "devex": 102.0023
       },
       {
        "name": "Kelengkapan (Tentera Laut)",
+       "enOurs": "Equipment (Navy)",
        "opex": 0,
        "devex": 1853.3922
       },
       {
        "name": "Pembinaan (Tentera Udara)",
+       "enOurs": "Construction (Air Force)",
        "opex": 0,
        "devex": 119.7557
       },
       {
        "name": "Kelengkapan (Tentera Udara)",
+       "enOurs": "Equipment (Air Force)",
        "opex": 0,
        "devex": 1588.6465
       },
       {
        "name": "Pembinaan (Tiga Perkhidmatan)",
+       "enOurs": "Construction (Tri-Service)",
        "opex": 0,
        "devex": 87.6433
       },
       {
        "name": "Kelengkapan (Tiga Perkhidmatan)",
+       "enOurs": "Equipment (Tri-Service)",
        "opex": 0,
        "devex": 573.9917
       },
       {
        "name": "Pembinaan (Awam)",
+       "enOurs": "Construction (Civil)",
        "opex": 0,
        "devex": 29.9
       },
       {
        "name": "Penyelidikan dan Pembangunan Pertahanan (Lain-lain)",
+       "enOurs": "Defence Research and Development (Other)",
        "opex": 0,
        "devex": 65.0377
       },
       {
        "name": "Perumahan Angkatan Tentera Malaysia",
+       "enOurs": "Malaysian Armed Forces Housing",
        "opex": 0,
        "devex": 957.3012
       },
@@ -4008,11 +4515,13 @@
       },
       {
        "name": "Program Latihan Khidmat Negara",
+       "enOurs": "National Service Training Programme",
        "opex": 0,
        "devex": 192.0993
       },
       {
        "name": "Lain-lain (1 butiran kecil)",
+       "en": "Other (1 small items)",
        "opex": 0,
        "devex": 3.0
       }
@@ -4021,6 +4530,7 @@
     {
      "code": "B/P.62",
      "name": "Kementerian Dalam Negeri",
+     "en": "Ministry of Home Affairs",
      "opex": 18019.7016,
      "devex": 3962.9897,
      "locked": false,
@@ -4028,6 +4538,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 924.5513,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -4042,6 +4553,7 @@
       },
       {
        "name": "Keselamatan Dalam Negeri dan Ketenteraman Awam",
+       "enOurs": "Internal Security and Public Order",
        "opex": 11794.1502,
        "devex": 0,
        "about": "Keselamatan dalam negeri dan ketenteraman awam terpelihara",
@@ -4056,6 +4568,7 @@
       },
       {
        "name": "Pengurusan Pendaftaran, Imigresen, Kawalan Sempadan dan Pintu Masuk",
+       "enOurs": "Registration, Immigration, Border Control and Entry Point Management",
        "opex": 2129.3304,
        "devex": 0,
        "about": "Kawalan pendaftaran dan imigresen yang berkesan",
@@ -4070,6 +4583,7 @@
       },
       {
        "name": "Pencegahan, Rawatan dan Pemulihan",
+       "enOurs": "Prevention, Treatment and Rehabilitation",
        "opex": 1736.8676,
        "devex": 0,
        "about": "Pencegahan, rawatan dan pemulihan efektif",
@@ -4084,6 +4598,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 1424.8021,
        "devex": 0,
        "objek": [
@@ -4108,146 +4623,175 @@
       },
       {
        "name": "Ibu Pejabat Kementerian Dalam Negeri",
+       "enOurs": "Ministry of Home Affairs Headquarters",
        "opex": 0,
        "devex": 464.405
       },
       {
        "name": "Agensi Antidadah Kebangsaan",
+       "enOurs": "National Anti-Drugs Agency",
        "opex": 0,
        "devex": 72.95
       },
       {
        "name": "Perumahan (PDRM)",
+       "enOurs": "Housing (PDRM)",
        "opex": 0,
        "devex": 7.3
       },
       {
        "name": "Ibu Pejabat Polis (PDRM)",
+       "enOurs": "Police Headquarters (PDRM)",
        "opex": 0,
        "devex": 347.61
       },
       {
        "name": "Balai-balai dan Pondok Polis (PDRM)",
+       "enOurs": "Police Stations and Posts (PDRM)",
        "opex": 0,
        "devex": 52.38
       },
       {
        "name": "Pusat Latihan (PDRM)",
+       "enOurs": "Training Centres (PDRM)",
        "opex": 0,
        "devex": 12.2
       },
       {
        "name": "Pengkalan Marin (PDRM)",
+       "enOurs": "Marine Base (PDRM)",
        "opex": 0,
        "devex": 12.45
       },
       {
        "name": "Unit Udara (PDRM)",
+       "enOurs": "Air Unit (PDRM)",
        "opex": 0,
        "devex": 20.075
       },
       {
        "name": "Pasukan Gerakan Am (PDRM)",
+       "enOurs": "General Operations Force (PDRM)",
        "opex": 0,
        "devex": 90.994
       },
       {
        "name": "Pembaikan dan Ubahsuai (PDRM)",
+       "enOurs": "Repair and Renovation (PDRM)",
        "opex": 0,
        "devex": 112.856
       },
       {
        "name": "Lanci-lanci Polis (PDRM)",
+       "enOurs": "Police Launches (PDRM)",
        "opex": 0,
        "devex": 38.3705
       },
       {
        "name": "Peralatan Keselamatan (PDRM)",
+       "enOurs": "Security Equipment (PDRM)",
        "opex": 0,
        "devex": 57.0
       },
       {
        "name": "Alat-alat Perhubungan Radio (PDRM)",
+       "enOurs": "Radio Communication Equipment (PDRM)",
        "opex": 0,
        "devex": 28.257
       },
       {
        "name": "Senjata Api dan Peluru (PDRM)",
+       "enOurs": "Firearms and Ammunition (PDRM)",
        "opex": 0,
        "devex": 174.813
       },
       {
        "name": "Kenderaan (PDRM)",
+       "enOurs": "Vehicles (PDRM)",
        "opex": 0,
        "devex": 87.835
       },
       {
        "name": "Kapal-kapal Terbang (PDRM)",
+       "enOurs": "Aircraft (PDRM)",
        "opex": 0,
        "devex": 96.81
       },
       {
        "name": "Alat Bantuan Teknik (PDRM)",
+       "enOurs": "Technical Support Equipment (PDRM)",
        "opex": 0,
        "devex": 263.2033
       },
       {
        "name": "Sistem Teknologi Maklumat (PDRM)",
+       "enOurs": "Information Technology Systems (PDRM)",
        "opex": 0,
        "devex": 265.0
       },
       {
        "name": "Pejabat-pejabat dan Rumah Kediaman (Imigresen)",
+       "enOurs": "Offices and Residential Quarters (Immigration)",
        "opex": 0,
        "devex": 101.392
       },
       {
        "name": "Kelengkapan dan Kenderaan (Imigresen)",
+       "enOurs": "Equipment and Vehicles (Immigration)",
        "opex": 0,
        "devex": 7.828
       },
       {
        "name": "Pengkomputeran (Imigresen)",
+       "enOurs": "Computerisation (Immigration)",
        "opex": 0,
        "devex": 274.0
       },
       {
        "name": "Pembaikan dan Ubah suai (Imigresen)",
+       "enOurs": "Repair and Renovation (Immigration)",
        "opex": 0,
        "devex": 33.69
       },
       {
        "name": "Pejabat-pejabat dan Rumah Kediaman (JPN)",
+       "enOurs": "Offices and Residential Quarters (JPN)",
        "opex": 0,
        "devex": 14.0
       },
       {
        "name": "Pengkomputeran dan Kad Pintar (JPN)",
+       "enOurs": "Computerisation and Smart Cards (JPN)",
        "opex": 0,
        "devex": 60.0
       },
       {
        "name": "Ibu Pejabat (Penjara)",
+       "enOurs": "Headquarters (Prisons)",
        "opex": 0,
        "devex": 20.5
       },
       {
        "name": "Bangunan-bangunan (Penjara)",
+       "enOurs": "Buildings (Prisons)",
        "opex": 0,
        "devex": 113.2
       },
       {
        "name": "Pusat Latihan (Penjara)",
+       "enOurs": "Training Centres (Prisons)",
        "opex": 0,
        "devex": 10.8
       },
       {
        "name": "Kenderaan (Penjara)",
+       "enOurs": "Vehicles (Prisons)",
        "opex": 0,
        "devex": 34.9
       },
       {
        "name": "Pembaikan dan Ubah suai (Penjara)",
+       "enOurs": "Repair and Renovation (Prisons)",
        "opex": 0,
        "devex": 59.4
       },
@@ -4258,6 +4802,7 @@
       },
       {
        "name": "Pembangunan ESSCOM",
+       "enOurs": "ESSCOM Development",
        "opex": 0,
        "devex": 50.9
       },
@@ -4268,11 +4813,13 @@
       },
       {
        "name": "Agensi Penguatkuasaan Maritim Malaysia (APMM)",
+       "enOurs": "Malaysian Maritime Enforcement Agency (APMM)",
        "opex": 0,
        "devex": 868.351
       },
       {
        "name": "Lain-lain (7 butiran kecil)",
+       "en": "Other (7 small items)",
        "opex": 0,
        "devex": 12.66
       }
@@ -4286,6 +4833,7 @@
     {
      "code": "B.1",
      "name": "Parlimen Malaysia",
+     "en": "Parliament Malaysia",
      "opex": 196.784,
      "devex": 0.0,
      "locked": false,
@@ -4293,6 +4841,7 @@
      "programmes": [
       {
        "name": "Urusan Parlimen",
+       "enOurs": "Parliamentary Affairs",
        "opex": 181.2676,
        "devex": 0,
        "about": "Pengurusan Dewan yang berkesan",
@@ -4307,6 +4856,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 14.7164,
        "devex": 0,
        "objek": [
@@ -4319,6 +4869,7 @@
       },
       {
        "name": "Lain-lain (1 butiran kecil)",
+       "en": "Other (1 small items)",
        "opex": 0.8,
        "devex": 0,
        "objek": [
@@ -4334,6 +4885,7 @@
     {
      "code": "B.2",
      "name": "Pejabat Penyimpan Mohor Besar Raja-Raja",
+     "en": "Keeper of the Rulers' Seal Office",
      "opex": 5.4011,
      "devex": 0.0,
      "locked": false,
@@ -4341,6 +4893,7 @@
      "programmes": [
       {
        "name": "Lain-lain (3 butiran kecil)",
+       "en": "Other (3 small items)",
        "opex": 5.4011,
        "devex": 0,
        "objek": [
@@ -4357,6 +4910,7 @@
     {
      "code": "B.3",
      "name": "Jabatan Audit Negara",
+     "en": "National Audit Department",
      "opex": 224.5771,
      "devex": 0.0,
      "locked": false,
@@ -4364,6 +4918,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 61.6354,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -4378,6 +4933,7 @@
       },
       {
        "name": "Pengauditan",
+       "enOurs": "Auditing",
        "opex": 154.1326,
        "devex": 0,
        "about": "Perkhidmatan pengauditan yang berkualiti",
@@ -4392,6 +4948,7 @@
       },
       {
        "name": "Lain-lain (2 butiran kecil)",
+       "en": "Other (2 small items)",
        "opex": 8.8091,
        "devex": 0,
        "objek": [
@@ -4407,6 +4964,7 @@
     {
      "code": "B.4",
      "name": "Suruhanjaya Pilihan Raya",
+     "en": "Election Commission",
      "opex": 1178.3111,
      "devex": 0.0,
      "locked": false,
@@ -4414,6 +4972,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 36.7036,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -4428,6 +4987,7 @@
       },
       {
        "name": "Pilihan Raya",
+       "enOurs": "Elections",
        "opex": 40.5472,
        "devex": 0,
        "about": "Warganegara berpengetahuan dan celik demokrasi",
@@ -4442,6 +5002,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 11.5615,
        "devex": 0,
        "objek": [
@@ -4469,6 +5030,7 @@
     {
      "code": "B.5",
      "name": "Suruhanjaya Perkhidmatan Awam",
+     "en": "Public Services Commission",
      "opex": 57.7916,
      "devex": 0.0,
      "locked": false,
@@ -4476,6 +5038,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 30.4575,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -4490,6 +5053,7 @@
       },
       {
        "name": "Pengambilan",
+       "enOurs": "Recruitment",
        "opex": 12.1337,
        "devex": 0,
        "about": "Pelantikan pegawai awam yang berintegriti dan kompeten",
@@ -4504,6 +5068,7 @@
       },
       {
        "name": "Perkhidmatan",
+       "enOurs": "Services",
        "opex": 12.4734,
        "devex": 0,
        "about": "Pengurusan perkhidmatan dan kawalan tatatertib pegawai awam yang berkesan dan teratur",
@@ -4518,6 +5083,7 @@
       },
       {
        "name": "Lain-lain (2 butiran kecil)",
+       "en": "Other (2 small items)",
        "opex": 2.727,
        "devex": 0,
        "objek": [
@@ -4533,6 +5099,7 @@
     {
      "code": "B/P.6",
      "name": "Jabatan Perdana Menteri",
+     "en": "Prime Minister's Department",
      "opex": 5855.6463,
      "devex": 5753.6839,
      "locked": false,
@@ -4540,6 +5107,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 856.5374,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -4554,6 +5122,7 @@
       },
       {
        "name": "Penyelarasan Pembangunan Nasional",
+       "enOurs": "National Development Coordination",
        "opex": 758.0724,
        "devex": 0,
        "about": "Penyelarasan pembangunan nasional yang komprehensif",
@@ -4568,6 +5137,7 @@
       },
       {
        "name": "Pengurusan Keselamatan",
+       "enOurs": "Security Management",
        "opex": 605.2094,
        "devex": 0,
        "about": "Pengurusan keselamatan negara menyeluruh",
@@ -4582,6 +5152,7 @@
       },
       {
        "name": "Pengurusan Kehakiman dan Perundangan",
+       "enOurs": "Judicial and Legal Management",
        "opex": 1101.8479,
        "devex": 0,
        "about": "Penyampaian perkhidmatan kehakiman dan perundangan yang berkesan",
@@ -4596,6 +5167,7 @@
       },
       {
        "name": "Kemajuan Islam",
+       "enOurs": "Islamic Development",
        "opex": 1499.8539,
        "devex": 0,
        "about": "Pengurusan dan pembangunan Hal Ehwal Islam yang inklusif dan berkesan",
@@ -4610,6 +5182,7 @@
       },
       {
        "name": "Pengurusan Integriti",
+       "enOurs": "Integrity Management",
        "opex": 50.9279,
        "devex": 0,
        "about": "Pengurusan aduan dan integriti yang berkesan",
@@ -4624,6 +5197,7 @@
       },
       {
        "name": "Pengurusan Wilayah Persekutuan",
+       "enOurs": "Federal Territories Management",
        "opex": 327.196,
        "devex": 0,
        "about": "Pembangunan fizikal, ekonomi dan komuniti Wilayah Persekutuan yang mampan",
@@ -4638,6 +5212,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 606.6174,
        "devex": 0,
        "objek": [
@@ -4662,16 +5237,19 @@
       },
       {
        "name": "Majlis Keselamatan Negara",
+       "enOurs": "National Security Council",
        "opex": 0,
        "devex": 746.4663
       },
       {
        "name": "Program Pembangunan",
+       "enOurs": "Development Programme",
        "opex": 0,
        "devex": 280.948
       },
       {
        "name": "Infrastruktur Luar Bandar",
+       "enOurs": "Rural Infrastructure",
        "opex": 0,
        "devex": 47.8323
       },
@@ -4687,111 +5265,133 @@
       },
       {
        "name": "Menaik Taraf Jalan dan Jambatan",
+       "enOurs": "Upgrade of Roads and Bridges",
        "opex": 0,
        "devex": 14.6591
       },
       {
        "name": "Membina dan Menaik Taraf Pagar Keselamatan dan lain-lain",
+       "enOurs": "Construction and Upgrade of Security Fences and Other",
        "opex": 0,
        "devex": 5.0
       },
       {
        "name": "Penyertaan Bumiputra Pulau Pinang",
+       "enOurs": "Bumiputera Participation Pulau Pinang",
        "opex": 0,
        "devex": 37.0
       },
       {
        "name": "Membina dan Menaik Taraf Masjid/Surau dan Institut Latihan Islam",
+       "enOurs": "Construction and Upgrade of Mosques/Surau and Islamic Training Institutes",
        "opex": 0,
        "devex": 60.5842
       },
       {
        "name": "Pembinaan Sekolah Agama",
+       "enOurs": "Construction of Religious Schools",
        "opex": 0,
        "devex": 25.0
       },
       {
        "name": "Perbadanan Labuan",
+       "enOurs": "Labuan Corporation",
        "opex": 0,
        "devex": 14.8
       },
       {
        "name": "Pembinaan Pejabat dan Perumahan SPRM",
+       "enOurs": "Construction of MACC (SPRM) Offices and Housing",
        "opex": 0,
        "devex": 87.25
       },
       {
        "name": "Pusat Pentadbiran Putrajaya",
+       "enOurs": "Putrajaya Administrative Centre",
        "opex": 0,
        "devex": 84.135
       },
       {
        "name": "Pembinaan Akademi Kehakiman Shariah",
+       "enOurs": "Construction of Shariah Judicial Academy",
        "opex": 0,
        "devex": 5.0
       },
       {
        "name": "Membina dan Menaik Taraf Bangunan-bangunan Mahkamah/Kajian-kajian di bawah BHEUU",
+       "enOurs": "Construction and Upgrade of Court Buildings/Studies under BHEUU",
        "opex": 0,
        "devex": 86.5
       },
       {
        "name": "Pengkomputeran Mahkamah",
+       "enOurs": "Court Computerisation",
        "opex": 0,
        "devex": 63.213
       },
       {
        "name": "Agensi Pengurusan Bencana Negara (NADMA)",
+       "enOurs": "National Disaster Management Agency (NADMA)",
        "opex": 0,
        "devex": 16.44
       },
       {
        "name": "Pembangunan Sistem dan Peralatan ICT",
+       "enOurs": "ICT Systems and Equipment Development",
        "opex": 0,
        "devex": 13.6723
       },
       {
        "name": "Pengurusan Kuarters Kerajaan/Rumah Rasmi",
+       "enOurs": "Government Quarters/Official Residence Management",
        "opex": 0,
        "devex": 376.251
       },
       {
        "name": "Bangunan Gunasama Persekutuan Sarawak/Rumah kediaman SUP Sarawak",
+       "enOurs": "Sarawak Federal Shared Building/Sarawak SUP Residence",
        "opex": 0,
        "devex": 32.3
       },
       {
        "name": "Pembangunan Mahkamah Syariah",
+       "enOurs": "Shariah Court Development",
        "opex": 0,
        "devex": 25.0
       },
       {
        "name": "Pembinaan Bangunan Jabatan Audit Negara",
+       "enOurs": "Construction of National Audit Department Building",
        "opex": 0,
        "devex": 5.0
       },
       {
        "name": "Pengubahsuaian dan Menaik Taraf Parlimen Malaysia",
+       "enOurs": "Renovation and Upgrade of Parliament of Malaysia",
        "opex": 0,
        "devex": 14.05
       },
       {
        "name": "Jabatan Pertahanan Awam Malaysia (JPAM)",
+       "enOurs": "Malaysia Civil Defence Force (JPAM)",
        "opex": 0,
        "devex": 8.46
       },
       {
        "name": "Pembangunan Masyarakat dan Pembersihan Sungai",
+       "enOurs": "Community Development and River Cleaning",
        "opex": 0,
        "devex": 10.0
       },
       {
        "name": "Program Kelestarian FELDA",
+       "enOurs": "FELDA Sustainability Programme",
        "opex": 0,
        "devex": 1150.0
       },
       {
        "name": "Projek Perumahan Awam Malaysia",
+       "enOurs": "Malaysian Public Housing Project",
        "opex": 0,
        "devex": 150.0
       },
@@ -4802,31 +5402,37 @@
       },
       {
        "name": "Penyelarasan Program Pembasmian Kemiskinan",
+       "enOurs": "Poverty Eradication Programme Coordination",
        "opex": 0,
        "devex": 25.4
       },
       {
        "name": "Program Komunikasi Dasar-dasar dan Program Kerajaan",
+       "enOurs": "Communication Programme for Government Policies and Programmes",
        "opex": 0,
        "devex": 5.0
       },
       {
        "name": "Projek-projek Kecil",
+       "enOurs": "Small Projects",
        "opex": 0,
        "devex": 222.0
       },
       {
        "name": "Projek Khas",
+       "enOurs": "Special Projects",
        "opex": 0,
        "devex": 76.0
       },
       {
        "name": "Projek Mesra Rakyat",
+       "enOurs": "Mesra Rakyat Project",
        "opex": 0,
        "devex": 444.0
       },
       {
        "name": "Perkhidmatan Kerajaan Digital",
+       "enOurs": "Digital Government Services",
        "opex": 0,
        "devex": 7.673
       },
@@ -4837,16 +5443,19 @@
       },
       {
        "name": "Pengurusan Aset dan Bangunan Jabatan Perdana Menteri",
+       "enOurs": "Prime Minister's Department Asset and Building Management",
        "opex": 0,
        "devex": 446.399
       },
       {
        "name": "Dana Mudahcara Infrastruktur",
+       "enOurs": "Infrastructure Facilitation Fund",
        "opex": 0,
        "devex": 100.6723
       },
       {
        "name": "Lain-lain (7 butiran kecil)",
+       "en": "Other (7 small items)",
        "opex": 0,
        "devex": 13.577
       }
@@ -4855,6 +5464,7 @@
     {
      "code": "B/P.7",
      "name": "Jabatan Perkhidmatan Awam",
+     "en": "Public Service Department",
      "opex": 541.9972,
      "devex": 1157.2142,
      "locked": false,
@@ -4862,6 +5472,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 231.9621,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -4876,6 +5487,7 @@
       },
       {
        "name": "Pembangunan Sumber Manusia",
+       "enOurs": "Human Resource Development",
        "opex": 167.188,
        "devex": 0,
        "about": "Modal insan berkeupayaan tinggi",
@@ -4890,6 +5502,7 @@
       },
       {
        "name": "Pengurusan Sumber Manusia",
+       "enOurs": "Human Resource Management",
        "opex": 86.1431,
        "devex": 0,
        "about": "Sumber manusia yang optimum",
@@ -4904,6 +5517,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 54.95,
        "devex": 0,
        "objek": [
@@ -4916,26 +5530,31 @@
       },
       {
        "name": "Institut Tadbiran Awam Negara",
+       "enOurs": "National Institute of Public Administration",
        "opex": 0,
        "devex": 43.7653
       },
       {
        "name": "Program Pembangunan",
+       "enOurs": "Development Programme",
        "opex": 0,
        "devex": 5.0
       },
       {
        "name": "Komputer Induk JPA",
+       "enOurs": "JPA Mainframe Computer",
        "opex": 0,
        "devex": 38.4489
       },
       {
        "name": "Biasiswa dan Pinjaman Pelajaran JPA",
+       "enOurs": "JPA Scholarships and Education Loans",
        "opex": 0,
        "devex": 1070.0
       },
       {
        "name": "Lain-lain (1 butiran kecil)",
+       "en": "Other (1 small items)",
        "opex": 1.754,
        "devex": 0,
        "objek": [
@@ -4951,6 +5570,7 @@
     {
      "code": "B.8",
      "name": "Jabatan Peguam Negara",
+     "en": "Attorney General's Chambers",
      "opex": 302.0263,
      "devex": 0.0,
      "locked": false,
@@ -4958,6 +5578,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 170.2601,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -4972,6 +5593,7 @@
       },
       {
        "name": "Perundangan",
+       "enOurs": "Legal",
        "opex": 15.7552,
        "devex": 0,
        "about": "Undang-undang relevan dan kemas kini",
@@ -4986,6 +5608,7 @@
       },
       {
        "name": "Litigasi",
+       "enOurs": "Litigation",
        "opex": 55.6734,
        "devex": 0,
        "about": "Pengendalian kes yang efektif",
@@ -5000,6 +5623,7 @@
       },
       {
        "name": "Penasihat",
+       "enOurs": "Advisory",
        "opex": 28.5454,
        "devex": 0,
        "about": "Nasihat yang teratur dari segi undang-undang",
@@ -5014,6 +5638,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 18.8024,
        "devex": 0,
        "objek": [
@@ -5041,6 +5666,7 @@
     {
      "code": "B.9",
      "name": "Suruhanjaya Pencegahan Rasuah Malaysia",
+     "en": "Malaysian Anti-Corruption Commission",
      "opex": 409.7476,
      "devex": 0.0,
      "locked": false,
@@ -5048,6 +5674,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 236.1617,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -5062,6 +5689,7 @@
       },
       {
        "name": "Operasi",
+       "enOurs": "Operations",
        "opex": 115.5658,
        "devex": 0,
        "about": "Operasi dan penguatkuasaan yang efektif",
@@ -5076,6 +5704,7 @@
       },
       {
        "name": "Pencegahan",
+       "enOurs": "Prevention",
        "opex": 38.7217,
        "devex": 0,
        "about": "Pencegahan rasuah dan tatakelola yang berkesan",
@@ -5090,6 +5719,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 5.2157,
        "devex": 0,
        "objek": [
@@ -5102,6 +5732,7 @@
       },
       {
        "name": "Komitmen Kewangan",
+       "enOurs": "Financial Commitments",
        "opex": 11.52,
        "devex": 0,
        "objek": [
@@ -5114,6 +5745,7 @@
       },
       {
        "name": "Lain-lain (1 butiran kecil)",
+       "en": "Other (1 small items)",
        "opex": 2.5627,
        "devex": 0,
        "objek": [
@@ -5129,6 +5761,7 @@
     {
      "code": "B/P.10",
      "name": "Perbendaharaan",
+     "en": "Treasury",
      "opex": 4701.8737,
      "devex": 3323.3317,
      "locked": false,
@@ -5136,6 +5769,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 321.0804,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -5150,6 +5784,7 @@
       },
       {
        "name": "Strategi Fiskal",
+       "enOurs": "Fiscal Strategy",
        "opex": 1389.3043,
        "devex": 0,
        "about": "Pencapaian belanjawan berimbang",
@@ -5164,6 +5799,7 @@
       },
       {
        "name": "Strategi Pelaburan",
+       "enOurs": "Investment Strategy",
        "opex": 81.8825,
        "devex": 0,
        "about": "Strategi dan pengurusan pelaburan yang berkesan",
@@ -5178,6 +5814,7 @@
       },
       {
        "name": "Perkhidmatan Kewangan Awam",
+       "enOurs": "Public Finance Services",
        "opex": 268.8094,
        "devex": 0,
        "about": "Perkhidmatan kewangan awam yang cekap",
@@ -5192,6 +5829,7 @@
       },
       {
        "name": "Perkhidmatan Perakaunan",
+       "enOurs": "Accounting Services",
        "opex": 316.676,
        "devex": 0,
        "about": "Perkhidmatan perakaunan dan kewangan yang berkesan",
@@ -5206,6 +5844,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 2301.6398,
        "devex": 0,
        "objek": [
@@ -5230,26 +5869,31 @@
       },
       {
        "name": "Projek Pembangunan Langkawi",
+       "enOurs": "Langkawi Development Project",
        "opex": 0,
        "devex": 21.7
       },
       {
        "name": "Baik Pulih Pejabat dan Kuarters",
+       "enOurs": "Office and Quarters Repair",
        "opex": 0,
        "devex": 5.74
       },
       {
        "name": "Pengkomputeran Jabatan Akauntan Negara",
+       "enOurs": "Accountant General's Department Computerisation",
        "opex": 0,
        "devex": 72.4904
       },
       {
        "name": "Pelbagai Suntikan Modal",
+       "enOurs": "Miscellaneous Capital Injections",
        "opex": 0,
        "devex": 2565.5702
       },
       {
        "name": "Projek Berimpak Tinggi dan Kesejahteraan Rakyat",
+       "enOurs": "High Impact and People's Wellbeing Projects",
        "opex": 0,
        "devex": 200.0
       },
@@ -5260,21 +5904,25 @@
       },
       {
        "name": "Program Pembiayaan",
+       "enOurs": "Financing Programme",
        "opex": 0,
        "devex": 23.25
       },
       {
        "name": "Pejabat dan Rumah Kediaman Kastam",
+       "enOurs": "Customs Offices and Residential Quarters",
        "opex": 0,
        "devex": 114.326
       },
       {
        "name": "Kelengkapan Operasi Kastam",
+       "enOurs": "Customs Operational Equipment",
        "opex": 0,
        "devex": 204.2495
       },
       {
        "name": "Lain-lain (4 butiran kecil)",
+       "en": "Other (4 small items)",
        "opex": 0,
        "devex": 5.9
       }
@@ -5283,12 +5931,14 @@
     {
      "code": "B.11",
      "name": "Perkhidmatan Am Perbendaharaan",
+     "en": "Treasury General Services",
      "opex": 61479.0015,
      "devex": 0.0,
      "locked": false,
      "programmes": [
       {
        "name": "Perkhidmatan Penyelidikan Khas",
+       "enOurs": "Special Research Services",
        "opex": 300.0,
        "devex": 0,
        "objek": [
@@ -5301,6 +5951,7 @@
       },
       {
        "name": "Bayaran Sewa Kereta Saloon Jabatan-jabatan Kerajaan",
+       "enOurs": "Saloon Car Rental for Government Departments",
        "opex": 6.0,
        "devex": 0,
        "objek": [
@@ -5313,6 +5964,7 @@
       },
       {
        "name": "Elaun Ex-Gratia dan Pemberian Sagu Hati",
+       "enOurs": "Ex-Gratia Allowances and Compensation Grants",
        "opex": 10.0,
        "devex": 0,
        "objek": [
@@ -5325,6 +5977,7 @@
       },
       {
        "name": "Bayaran Perkhidmatan",
+       "enOurs": "Service Payments",
        "opex": 450.0,
        "devex": 0,
        "objek": [
@@ -5337,6 +5990,7 @@
       },
       {
        "name": "Subsidi dan Bantuan Tunai",
+       "enOurs": "Subsidy and Cash Aid",
        "opex": 53027.6022,
        "devex": 0,
        "objek": [
@@ -5349,6 +6003,7 @@
       },
       {
        "name": "Pemberian di bawah Senarai Bersama",
+       "enOurs": "Grants under the Concurrent List",
        "opex": 961.0,
        "devex": 0,
        "objek": [
@@ -5361,6 +6016,7 @@
       },
       {
        "name": "Pelarasan Transaksi Mata Wang Asing",
+       "enOurs": "Foreign Currency Transaction Adjustments",
        "opex": 30.0,
        "devex": 0,
        "objek": [
@@ -5373,6 +6029,7 @@
       },
       {
        "name": "Bayaran untuk Sektor Strategik",
+       "enOurs": "Payments for Strategic Sectors",
        "opex": 1743.895,
        "devex": 0,
        "objek": [
@@ -5385,6 +6042,7 @@
       },
       {
        "name": "Subsidi Kadar Faedah kepada Bank Pembangunan Malaysia Berhad (BPMB)",
+       "enOurs": "Interest Rate Subsidy to Bank Pembangunan Malaysia Berhad (BPMB)",
        "opex": 22.4,
        "devex": 0,
        "objek": [
@@ -5397,6 +6055,7 @@
       },
       {
        "name": "Subsidi Faedah Imbuhan Tabung Pinjaman",
+       "enOurs": "Loan Fund Interest Compensation Subsidy",
        "opex": 2107.4,
        "devex": 0,
        "objek": [
@@ -5409,6 +6068,7 @@
       },
       {
        "name": "Bayaran Pemansuhan Duti Import dan Eksais atas Barangan Petroleum kepada Negeri Sabah dan Sarawak",
+       "enOurs": "Payment for Abolition of Import and Excise Duties on Petroleum Products to Sabah and Sarawak",
        "opex": 240.0,
        "devex": 0,
        "objek": [
@@ -5421,6 +6081,7 @@
       },
       {
        "name": "Pemberian Kemudahan Asas Kecil",
+       "enOurs": "Small Basic Facilities Grants",
        "opex": 100.0,
        "devex": 0,
        "objek": [
@@ -5433,6 +6094,7 @@
       },
       {
        "name": "Pemberian Kemudahan Projek Khas",
+       "enOurs": "Special Project Facilities Grants",
        "opex": 1553.0,
        "devex": 0,
        "objek": [
@@ -5445,6 +6107,7 @@
       },
       {
        "name": "Pembiayaan Funding Gap KTMB",
+       "enOurs": "KTMB Funding Gap Financing",
        "opex": 330.0,
        "devex": 0,
        "objek": [
@@ -5457,6 +6120,7 @@
       },
       {
        "name": "Sumbangan Malaysia kepada Tabung Kerjasama Kewangan ASEAN dan AMRO",
+       "enOurs": "Malaysia's Contribution to the ASEAN Financial Cooperation Fund and AMRO",
        "opex": 7.15,
        "devex": 0,
        "objek": [
@@ -5469,6 +6133,7 @@
       },
       {
        "name": "Pemberian Bantuan Bil Lampu kepada PBT",
+       "enOurs": "Electricity Bill Aid Grants to Local Authorities (PBT)",
        "opex": 200.0,
        "devex": 0,
        "objek": [
@@ -5481,6 +6146,7 @@
       },
       {
        "name": "Sumbangan Bantuan Kemanusiaan",
+       "enOurs": "Humanitarian Aid Contributions",
        "opex": 20.0,
        "devex": 0,
        "objek": [
@@ -5493,6 +6159,7 @@
       },
       {
        "name": "Pejabat World Bank Group dan Pejabat Wilayah Bank Pembangunan Islam (IsDB) di KL",
+       "enOurs": "World Bank Group Office and Islamic Development Bank (IsDB) Regional Office in KL",
        "opex": 18.4416,
        "devex": 0,
        "objek": [
@@ -5505,6 +6172,7 @@
       },
       {
        "name": "Pembiayaan Funding Gap Felcra Berhad",
+       "enOurs": "Felcra Berhad Funding Gap Financing",
        "opex": 50.0,
        "devex": 0,
        "objek": [
@@ -5517,6 +6185,7 @@
       },
       {
        "name": "Peruntukan Skim Pinjaman Rumah Panjang (SPRP)",
+       "enOurs": "Longhouse Loan Scheme Allocation (SPRP)",
        "opex": 20.0,
        "devex": 0,
        "objek": [
@@ -5529,6 +6198,7 @@
       },
       {
        "name": "Pampasan kerana Tuntutan yang dibuat kepada Kerajaan",
+       "enOurs": "Compensation for Claims Made against the Government",
        "opex": 5.0,
        "devex": 0,
        "objek": [
@@ -5541,6 +6211,7 @@
       },
       {
        "name": "Bayaran Balik Hasil",
+       "enOurs": "Revenue Refunds",
        "opex": 120.0,
        "devex": 0,
        "objek": [
@@ -5553,6 +6224,7 @@
       },
       {
        "name": "Lain-lain Bayaran Balik",
+       "enOurs": "Other Refunds",
        "opex": 110.0,
        "devex": 0,
        "objek": [
@@ -5565,6 +6237,7 @@
       },
       {
        "name": "Malaysia Airports Holdings Bhd (MAHB) - Pengambilalihan Litar F1",
+       "enOurs": "Malaysia Airports Holdings Bhd (MAHB) - F1 Circuit Acquisition",
        "opex": 46.0,
        "devex": 0,
        "objek": [
@@ -5577,6 +6250,7 @@
       },
       {
        "name": "Lain-lain (13 butiran kecil)",
+       "en": "Other (13 small items)",
        "opex": 1.1127,
        "devex": 0,
        "objek": [
@@ -5592,12 +6266,14 @@
     {
      "code": "B.12",
      "name": "Peruntukan Kepada Kumpulan Wang Terkanun",
+     "en": "Contribution to Statutory Funds",
      "opex": 1979.0204,
      "devex": 0.0,
      "locked": false,
      "programmes": [
       {
        "name": "Kumpulan Wang Rizab Negeri",
+       "enOurs": "State Reserve Fund",
        "opex": 450.0,
        "devex": 0,
        "objek": [
@@ -5610,6 +6286,7 @@
       },
       {
        "name": "Kumpulan Wang Persaraan",
+       "enOurs": "Retirement Fund",
        "opex": 500.0,
        "devex": 0,
        "objek": [
@@ -5622,6 +6299,7 @@
       },
       {
        "name": "Kumpulan Wang Amanah Bantuan Bencana Negara",
+       "enOurs": "National Disaster Relief Trust Fund",
        "opex": 200.0,
        "devex": 0,
        "objek": [
@@ -5634,6 +6312,7 @@
       },
       {
        "name": "Kumpulan Wang Amanah Lembaga Peperiksaan",
+       "enOurs": "Examinations Board Trust Fund",
        "opex": 300.0,
        "devex": 0,
        "objek": [
@@ -5646,6 +6325,7 @@
       },
       {
        "name": "Kumpulan Wang Amanah Tabung Modal Pusingan Jabatan Pembangunan Koperasi",
+       "enOurs": "Cooperative Development Department Revolving Capital Fund Trust Fund",
        "opex": 10.0,
        "devex": 0,
        "objek": [
@@ -5658,6 +6338,7 @@
       },
       {
        "name": "Kumpulan Wang Amanah Sukan Negara",
+       "enOurs": "National Sports Trust Fund",
        "opex": 228.59,
        "devex": 0,
        "objek": [
@@ -5670,6 +6351,7 @@
       },
       {
        "name": "Kumpulan Wang Amanah Pelajar Miskin",
+       "enOurs": "Poor Students Trust Fund",
        "opex": 180.0,
        "devex": 0,
        "objek": [
@@ -5682,6 +6364,7 @@
       },
       {
        "name": "Kumpulan Wang Amanah Tabung Bantuan Perubatan (TBP)",
+       "enOurs": "Medical Aid Fund (TBP) Trust Fund",
        "opex": 60.0,
        "devex": 0,
        "objek": [
@@ -5694,6 +6377,7 @@
       },
       {
        "name": "Kumpulan Wang Amanah Dana Automotif Bumiputera",
+       "enOurs": "Bumiputera Automotive Trust Fund",
        "opex": 10.0,
        "devex": 0,
        "objek": [
@@ -5706,6 +6390,7 @@
       },
       {
        "name": "Kumpulan Wang Amanah Malaysia Science Endowment (MSE)",
+       "enOurs": "Malaysia Science Endowment (MSE) Trust Fund",
        "opex": 20.0,
        "devex": 0,
        "objek": [
@@ -5718,6 +6403,7 @@
       },
       {
        "name": "Kumpulan Wang Amanah Projek Perumahan Rakyat Dimiliki",
+       "enOurs": "People's Owned Housing Project Trust Fund",
        "opex": 10.0,
        "devex": 0,
        "objek": [
@@ -5730,6 +6416,7 @@
       },
       {
        "name": "Lain-lain (13 butiran kecil)",
+       "en": "Other (13 small items)",
        "opex": 10.4304,
        "devex": 0,
        "objek": [
@@ -5745,6 +6432,7 @@
     {
      "code": "B/P.13",
      "name": "Kementerian Luar Negeri",
+     "en": "Ministry of Foreign Affairs",
      "opex": 986.2727,
      "devex": 225.872,
      "locked": false,
@@ -5752,6 +6440,7 @@
      "programmes": [
       {
        "name": "Pengurusan",
+       "enOurs": "Management",
        "opex": 126.8254,
        "devex": 0,
        "about": "Penyampaian perkhidmatan yang berkesan",
@@ -5766,6 +6455,7 @@
       },
       {
        "name": "Hubungan Diplomasi dan Kerjasama Pelbagai Hala",
+       "enOurs": "Multilateral Diplomatic Relations and Cooperation",
        "opex": 13.887,
        "devex": 0,
        "about": "Pengukuhan peranan Malaysia dalam diplomasi pelbagai hala",
@@ -5780,6 +6470,7 @@
       },
       {
        "name": "Perancangan Dasar, Strategik dan Penyelidikan",
+       "enOurs": "Policy, Strategic Planning and Research",
        "opex": 32.5823,
        "devex": 0,
        "about": "Wilayah dan maritim Malaysia terpelihara",
@@ -5794,6 +6485,7 @@
       },
       {
        "name": "Hubungan Diplomasi dan Kerjasama Dua Hala",
+       "enOurs": "Bilateral Diplomatic Relations and Cooperation",
        "opex": 603.5261,
        "devex": 0,
        "about": "Hubungan dan kerjasama dua hala yang akrab dan kukuh",
@@ -5808,6 +6500,7 @@
       },
       {
        "name": "Program Khusus",
+       "enOurs": "Special Programme",
        "opex": 206.2519,
        "devex": 0,
        "objek": [
@@ -5820,11 +6513,13 @@
       },
       {
        "name": "Pejabat-pejabat dan Bangunan-bangunan di Seberang Laut",
+       "enOurs": "Overseas Offices and Buildings",
        "opex": 0,
        "devex": 185.772
       },
       {
        "name": "Program MTCP",
+       "enOurs": "MTCP Programme",
        "opex": 0,
        "devex": 20.0
       },
@@ -5835,6 +6530,7 @@
       },
       {
        "name": "Lain-lain (2 butiran kecil)",
+       "en": "Other (2 small items)",
        "opex": 3.2,
        "devex": 0.1,
        "objek": [
@@ -5850,6 +6546,7 @@
     {
      "code": "B.40",
      "name": "Suruhanjaya Perkhidmatan Pendidikan",
+     "en": "Education Service Commission",
      "opex": 26.0492,
      "devex": 0.0,
      "locked": false,
@@ -5857,6 +6554,7 @@
      "programmes": [
       {
        "name": "Urusan Pengambilan dan Perkhidmatan Anggota Perkhidmatan Pendidikan",
+       "enOurs": "Recruitment and Service Affairs of Education Service Personnel",
        "opex": 26.0492,
        "devex": 0,
        "about": "Urusan pengambilan dan perkhidmatan yang teratur",
@@ -5879,12 +6577,14 @@
     {
      "code": "T.1-T.11",
      "name": "Tanggungan Perlembagaan Lain",
+     "en": "Other Constitutional Charges",
      "opex": 185.7895,
      "devex": 0,
      "locked": true,
      "programmes": [
       {
        "name": "T.1 Peruntukan Diraja Bagi S.P.B. Yang di-Pertuan Agong",
+       "en": "T.1 Civil List",
        "opex": 13.533,
        "devex": 0,
        "objek": [
@@ -5898,6 +6598,7 @@
       },
       {
        "name": "T.2 Elaun-elaun Diraja",
+       "en": "T.2 Royal Allowances",
        "opex": 1.4921,
        "devex": 0,
        "objek": [
@@ -5910,6 +6611,7 @@
       },
       {
        "name": "T.3 Ketua Hakim Negara, Hakim Besar dan Hakim",
+       "en": "T.3 Chief Justice, Chief Judges and Judges",
        "opex": 150.475,
        "devex": 0,
        "objek": [
@@ -5923,6 +6625,7 @@
       },
       {
        "name": "T.4 Ketua Audit Negara",
+       "en": "T.4 Auditor General",
        "opex": 0.9004,
        "devex": 0,
        "objek": [
@@ -5936,6 +6639,7 @@
       },
       {
        "name": "T.5 Yang di-Pertua Dewan Rakyat",
+       "en": "T.5 Speaker of the House of Representatives",
        "opex": 0.564,
        "devex": 0,
        "objek": [
@@ -5949,6 +6653,7 @@
       },
       {
        "name": "T.6 Yang di-Pertua Dewan Negara",
+       "en": "T.6 President of the Senate",
        "opex": 0.504,
        "devex": 0,
        "objek": [
@@ -5962,6 +6667,7 @@
       },
       {
        "name": "T.7 Suruhanjaya Pilihan Raya",
+       "en": "T.7 Election Commission",
        "opex": 2.7634,
        "devex": 0,
        "objek": [
@@ -5975,6 +6681,7 @@
       },
       {
        "name": "T.8 Suruhanjaya Perkhidmatan Kehakiman dan Perundangan",
+       "en": "T.8 Judicial and Legal Service Commission",
        "opex": 0.0116,
        "devex": 0,
        "objek": [
@@ -5988,6 +6695,7 @@
       },
       {
        "name": "T.9 Suruhanjaya Perkhidmatan Awam",
+       "en": "T.9 Public Services Commission",
        "opex": 6.87,
        "devex": 0,
        "objek": [
@@ -6001,6 +6709,7 @@
       },
       {
        "name": "T.10 Suruhanjaya Perkhidmatan Pendidikan",
+       "en": "T.10 Education Service Commission",
        "opex": 5.8954,
        "devex": 0,
        "objek": [
@@ -6014,6 +6723,7 @@
       },
       {
        "name": "T.11 Suruhanjaya Pasukan Polis",
+       "en": "T.11 Police Force Commission",
        "opex": 2.7806,
        "devex": 0,
        "objek": [
@@ -6030,12 +6740,14 @@
     {
      "code": "T.12",
      "name": "Perbendaharaan",
+     "en": "Treasury",
      "opex": 10261.912,
      "devex": 0.0,
      "locked": true,
      "programmes": [
       {
        "name": "Pemberian Mengikut Bilangan Orang",
+       "enOurs": "Capitation Grants",
        "opex": 571.11,
        "devex": 0,
        "objek": [
@@ -6048,6 +6760,7 @@
       },
       {
        "name": "Penyelenggaraan Jalan Raya Negeri yang Mencapai Mutu Minimum",
+       "enOurs": "Maintenance of State Roads Meeting Minimum Standards",
        "opex": 3767.89,
        "devex": 0,
        "objek": [
@@ -6060,6 +6773,7 @@
       },
       {
        "name": "Penyelenggaraan Jalan Raya Negeri yang Substandard",
+       "enOurs": "Maintenance of Substandard State Roads",
        "opex": 1918.11,
        "devex": 0,
        "objek": [
@@ -6072,6 +6786,7 @@
       },
       {
        "name": "Pemberian Khas Tahunan Sarawak",
+       "enOurs": "Sarawak Special Annual Grant",
        "opex": 1500.0,
        "devex": 0,
        "objek": [
@@ -6084,6 +6799,7 @@
       },
       {
        "name": "Pemberian Khas Tahunan Sabah",
+       "enOurs": "Sabah Special Annual Grant",
        "opex": 1500.0,
        "devex": 0,
        "objek": [
@@ -6096,6 +6812,7 @@
       },
       {
        "name": "Pemberian Tahunan kepada Pihak Berkuasa Tempatan (Geran Tahunan Berdasarkan Kaedah Keseimbangan)",
+       "enOurs": "Annual Grants to Local Authorities (Annual Grant Based on Equalisation Method)",
        "opex": 310.0,
        "devex": 0,
        "objek": [
@@ -6108,6 +6825,7 @@
       },
       {
        "name": "Pemberian Tahunan Selangor",
+       "enOurs": "Selangor Annual Grant",
        "opex": 25.8057,
        "devex": 0,
        "objek": [
@@ -6120,6 +6838,7 @@
       },
       {
        "name": "Pemberian Tahunan dan Sumbangan Khas Kedah",
+       "enOurs": "Kedah Annual Grant and Special Contribution",
        "opex": 10.01,
        "devex": 0,
        "objek": [
@@ -6132,6 +6851,7 @@
       },
       {
        "name": "Yuran Tambahan kepada Persatuan Pembangunan Antarabangsa",
+       "enOurs": "Additional Subscription to the International Development Association",
        "opex": 14.625,
        "devex": 0,
        "objek": [
@@ -6144,6 +6864,7 @@
       },
       {
        "name": "Sumbangan kepada Bank Pembangunan Islam (IsDB)",
+       "enOurs": "Contribution to the Islamic Development Bank (IsDB)",
        "opex": 45.2153,
        "devex": 0,
        "objek": [
@@ -6156,6 +6877,7 @@
       },
       {
        "name": "Sumbangan Malaysia kepada Asian Development Fund (ADF14)",
+       "enOurs": "Malaysia's Contribution to the Asian Development Fund (ADF14)",
        "opex": 6.2415,
        "devex": 0,
        "objek": [
@@ -6168,6 +6890,7 @@
       },
       {
        "name": "Bayaran Tuntutan dan Pampasan atas Perintah Mahkamah",
+       "enOurs": "Payment of Claims and Compensation under Court Orders",
        "opex": 200.0,
        "devex": 0,
        "objek": [
@@ -6180,6 +6903,7 @@
       },
       {
        "name": "Bayaran Balik Cukai Kastam",
+       "enOurs": "Customs Duty Refunds",
        "opex": 350.0,
        "devex": 0,
        "objek": [
@@ -6192,6 +6916,7 @@
       },
       {
        "name": "Bayaran Balik Wang Lesen, Lencana dan Plat Kereta Sewa",
+       "enOurs": "Refund of Hire Car Licence, Badge and Plate Fees",
        "opex": 11.0,
        "devex": 0,
        "objek": [
@@ -6204,6 +6929,7 @@
       },
       {
        "name": "Bayaran Balik Wang Tak Dituntut dari Hasil",
+       "enOurs": "Refund of Unclaimed Moneys from Revenue",
        "opex": 30.0,
        "devex": 0,
        "objek": [
@@ -6216,6 +6942,7 @@
       },
       {
        "name": "Lain-lain (10 butiran kecil)",
+       "en": "Other (10 small items)",
        "opex": 1.9045,
        "devex": 0,
        "objek": [
@@ -6231,12 +6958,14 @@
     {
      "code": "T.13",
      "name": "Perbelanjaan Kerana Hutang Negara",
+     "en": "Charges on Account of Public Debt",
      "opex": 61013.0,
      "devex": 0.0,
      "locked": true,
      "programmes": [
       {
        "name": "Faedah atas Sekuriti Kerajaan Malaysia (SKM)",
+       "enOurs": "Interest on Malaysian Government Securities (SKM)",
        "opex": 30150.0,
        "devex": 0,
        "objek": [
@@ -6249,6 +6978,7 @@
       },
       {
        "name": "Potongan atas Bil Perbendaharaan",
+       "enOurs": "Discount on Treasury Bills",
        "opex": 500.89,
        "devex": 0,
        "objek": [
@@ -6261,6 +6991,7 @@
       },
       {
        "name": "Faedah atas Pinjaman Pasaran Luar Negeri",
+       "enOurs": "Interest on External Market Loans",
        "opex": 949.3,
        "devex": 0,
        "objek": [
@@ -6273,6 +7004,7 @@
       },
       {
        "name": "Faedah atas Pinjaman Projek Luar Negeri",
+       "enOurs": "Interest on External Project Loans",
        "opex": 31.009,
        "devex": 0,
        "objek": [
@@ -6285,6 +7017,7 @@
       },
       {
        "name": "Bayaran Pengurusan atas Pinjaman Luar Negeri",
+       "enOurs": "Management Fees on External Loans",
        "opex": 18.0005,
        "devex": 0,
        "objek": [
@@ -6297,6 +7030,7 @@
       },
       {
        "name": "Bayaran Keuntungan atas Terbitan Pelaburan Kerajaan (TPK)",
+       "enOurs": "Profit Payments on Government Investment Issues (TPK)",
        "opex": 29363.0,
        "devex": 0,
        "objek": [
@@ -6309,6 +7043,7 @@
       },
       {
        "name": "Lain-lain (7 butiran kecil)",
+       "en": "Other (7 small items)",
        "opex": 0.8005,
        "devex": 0,
        "objek": [
@@ -6324,12 +7059,14 @@
     {
      "code": "T.14",
      "name": "Pencen, Elaun Bersara dan Ganjaran",
+     "en": "Pensions, Retirement Allowances and Gratuities",
      "opex": 44000.0,
      "devex": 0.0,
      "locked": true,
      "programmes": [
       {
        "name": "Gantian Cuti Rehat",
+       "enOurs": "Annual Leave Encashment",
        "opex": 1384.4686,
        "devex": 0,
        "objek": [
@@ -6342,6 +7079,7 @@
       },
       {
        "name": "Pencen dan Pencen Terbitan - Semenanjung Malaysia",
+       "enOurs": "Pensions and Derivative Pensions - Peninsular Malaysia",
        "opex": 17879.746,
        "devex": 0,
        "objek": [
@@ -6354,6 +7092,7 @@
       },
       {
        "name": "Pencen dan Pencen Terbitan - Sarawak",
+       "enOurs": "Pensions and Derivative Pensions - Sarawak",
        "opex": 1614.89,
        "devex": 0,
        "objek": [
@@ -6366,6 +7105,7 @@
       },
       {
        "name": "Pencen dan Pencen Terbitan - Sabah",
+       "enOurs": "Pensions and Derivative Pensions - Sabah",
        "opex": 1443.7076,
        "devex": 0,
        "objek": [
@@ -6378,6 +7118,7 @@
       },
       {
        "name": "Pencen dan Pencen Terbitan - Polis",
+       "enOurs": "Pensions and Derivative Pensions - Police",
        "opex": 2753.3718,
        "devex": 0,
        "objek": [
@@ -6390,6 +7131,7 @@
       },
       {
        "name": "Pencen dan Pencen Terbitan - Angkatan Tentera Malaysia",
+       "enOurs": "Pensions and Derivative Pensions - Malaysian Armed Forces",
        "opex": 4398.5412,
        "devex": 0,
        "objek": [
@@ -6402,6 +7144,7 @@
       },
       {
        "name": "Pencen dan Pencen Terbitan - Anggota Pentadbiran dan Ahli Parlimen",
+       "enOurs": "Pensions and Derivative Pensions - Members of the Administration and Members of Parliament",
        "opex": 136.8339,
        "devex": 0,
        "objek": [
@@ -6414,6 +7157,7 @@
       },
       {
        "name": "Pencen dan Pencen Terbitan - Hakim",
+       "enOurs": "Pensions and Derivative Pensions - Judges",
        "opex": 36.6192,
        "devex": 0,
        "objek": [
@@ -6426,6 +7170,7 @@
       },
       {
        "name": "Pencen dan Pencen Terbitan - Badan Berkanun dan Pihak Berkuasa Tempatan",
+       "enOurs": "Pensions and Derivative Pensions - Statutory Bodies and Local Authorities",
        "opex": 4935.2,
        "devex": 0,
        "objek": [
@@ -6438,6 +7183,7 @@
       },
       {
        "name": "Ganjaran dan Ganjaran Terbitan - Semenanjung Malaysia",
+       "enOurs": "Gratuities and Derivative Gratuities - Peninsular Malaysia",
        "opex": 5102.1007,
        "devex": 0,
        "objek": [
@@ -6450,6 +7196,7 @@
       },
       {
        "name": "Ganjaran dan Ganjaran Terbitan - Polis",
+       "enOurs": "Gratuities and Derivative Gratuities - Police",
        "opex": 520.3177,
        "devex": 0,
        "objek": [
@@ -6462,6 +7209,7 @@
       },
       {
        "name": "Ganjaran dan Ganjaran Terbitan - Angkatan Tentera Malaysia",
+       "enOurs": "Gratuities and Derivative Gratuities - Malaysian Armed Forces",
        "opex": 827.8835,
        "devex": 0,
        "objek": [
@@ -6474,6 +7222,7 @@
       },
       {
        "name": "Ganjaran dan Ganjaran Terbitan - Sarawak",
+       "enOurs": "Gratuities and Derivative Gratuities - Sarawak",
        "opex": 473.4201,
        "devex": 0,
        "objek": [
@@ -6486,6 +7235,7 @@
       },
       {
        "name": "Ganjaran dan Ganjaran Terbitan - Sabah",
+       "enOurs": "Gratuities and Derivative Gratuities - Sabah",
        "opex": 499.3481,
        "devex": 0,
        "objek": [
@@ -6498,6 +7248,7 @@
       },
       {
        "name": "Ganjaran dan Ganjaran Terbitan - Anggota Pentadbiran dan Ahli Parlimen",
+       "enOurs": "Gratuities and Derivative Gratuities - Members of the Administration and Members of Parliament",
        "opex": 54.6064,
        "devex": 0,
        "objek": [
@@ -6510,6 +7261,7 @@
       },
       {
        "name": "Ganjaran dan Ganjaran Terbitan - Hakim",
+       "enOurs": "Gratuities and Derivative Gratuities - Judges",
        "opex": 7.525,
        "devex": 0,
        "objek": [
@@ -6522,6 +7274,7 @@
       },
       {
        "name": "Ganjaran dan Ganjaran Terbitan - Badan Berkanun dan Pihak Berkuasa Tempatan",
+       "enOurs": "Gratuities and Derivative Gratuities - Statutory Bodies and Local Authorities",
        "opex": 668.2,
        "devex": 0,
        "objek": [
@@ -6534,6 +7287,7 @@
       },
       {
        "name": "Pencen dan Pencen Terbitan - Semenanjung Malaysia",
+       "enOurs": "Pensions and Derivative Pensions - Peninsular Malaysia",
        "opex": 755.32,
        "devex": 0,
        "objek": [
@@ -6546,6 +7300,7 @@
       },
       {
        "name": "Pencen dan Pencen Terbitan - Sarawak",
+       "enOurs": "Pensions and Derivative Pensions - Sarawak",
        "opex": 69.789,
        "devex": 0,
        "objek": [
@@ -6558,6 +7313,7 @@
       },
       {
        "name": "Pencen dan Pencen Terbitan - Sabah",
+       "enOurs": "Pensions and Derivative Pensions - Sabah",
        "opex": 66.6278,
        "devex": 0,
        "objek": [
@@ -6570,6 +7326,7 @@
       },
       {
        "name": "Pencen dan Pencen Terbitan - Polis",
+       "enOurs": "Pensions and Derivative Pensions - Police",
        "opex": 68.8875,
        "devex": 0,
        "objek": [
@@ -6582,6 +7339,7 @@
       },
       {
        "name": "Pencen dan Pencen Terbitan - Angkatan Tentera Malaysia",
+       "enOurs": "Pensions and Derivative Pensions - Malaysian Armed Forces",
        "opex": 30.0,
        "devex": 0,
        "objek": [
@@ -6594,6 +7352,7 @@
       },
       {
        "name": "Pencen dan Pencen Terbitan - Badan Berkanun dan Pihak Berkuasa Tempatan",
+       "enOurs": "Pensions and Derivative Pensions - Statutory Bodies and Local Authorities",
        "opex": 95.1,
        "devex": 0,
        "objek": [
@@ -6606,6 +7365,7 @@
       },
       {
        "name": "Ex-Gratia - Semenanjung Malaysia",
+       "enOurs": "Ex-Gratia - Peninsular Malaysia",
        "opex": 126.37,
        "devex": 0,
        "objek": [
@@ -6618,6 +7378,7 @@
       },
       {
        "name": "Ex-Gratia - Polis",
+       "enOurs": "Ex-Gratia - Police",
        "opex": 7.7,
        "devex": 0,
        "objek": [
@@ -6654,6 +7415,7 @@
       },
       {
        "name": "Ex-Gratia Badan Berkanun dan Pihak Berkuasa Tempatan",
+       "enOurs": "Ex-Gratia for Statutory Bodies and Local Authorities",
        "opex": 17.4,
        "devex": 0,
        "objek": [
@@ -6666,6 +7428,7 @@
       },
       {
        "name": "Lain-lain (11 butiran kecil)",
+       "en": "Other (11 small items)",
        "opex": 13.0259,
        "devex": 0,
        "objek": [

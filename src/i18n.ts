@@ -53,7 +53,7 @@ const ms = {
   delAction: 'Buang',
   restore: 'Pulihkan',
   deleted: 'dibuang',
-  shrunkBy: (p: number) => `dipotong ${p}%`,
+  shrunkBy: (p: number) => `−${p}%`,
 
   props: 'Maklumat',
   /** Phone sheet's corner button: full → folded, folded → closed. */
@@ -84,12 +84,11 @@ const ms = {
   fewerActs: 'Tunjuk 5 sahaja',
   fungsi: 'Fungsi',
   rootText: (p: string) => `Untuk imbangkan belanjawan, potong ${p}% daripada semua perbelanjaan. Pilih folder atau fail di sebelah kiri untuk kecilkan atau buang.`,
-  lockedDebt: 'Berkunci. Bayaran khidmat hutang wajib dibayar. Kalau tak bayar, kerajaan dikira mungkir.',
-  lockedOther:
-    'Berkunci. Ini Perbelanjaan Tanggungan yang dijamin undang-undang (bayaran persaraan, pemberian dan serahan kepada kerajaan negeri).',
+  lockedDebt: 'Hutang wajib dibayar. Tak bayar, kerajaan mungkir.',
+  lockedOther: 'Dijamin undang-undang: pencen dan pemberian kepada negeri.',
   keep: 'Kekalkan',
   shrink10: 'Potong 10%',
-  toBin: 'Buang ke Tong Sampah',
+  toBin: 'Buang',
   folderNote: 'Tindakan pada folder kena pada semua fail tak berkunci di dalamnya, dengan kadar yang sama.',
   opex: 'Perbelanjaan Mengurus (OE)',
   devex: 'Perbelanjaan Pembangunan (DE)',
@@ -141,6 +140,8 @@ const ms = {
   freedUp: 'Saya kosongkan',
   toDelete: (n: number) => `Fail untuk dibuang (${n}):`,
   moreCuts: (n: number, x: string) => `+${n} lagi · ${x}`,
+  /** Share card row for many files cut by the same share. */
+  cutGroup: (n: number, keep: number) => (keep === 0 ? `${n} fail dibuang` : `${n} fail −${100 - keep}%`),
   tryIt: 'Cuba sendiri',
   cancel: 'Batal',
   storyFoot: (y: number) => `Anggaran Belanjawan ${y} (MOF)`,
@@ -263,7 +264,7 @@ const en: typeof ms = {
   delAction: 'Move to Bin',
   restore: 'Restore',
   deleted: 'deleted',
-  shrunkBy: (p) => `shrunk ${p}%`,
+  shrunkBy: (p) => `−${p}%`,
 
   props: 'Info',
   sheetFold: 'Collapse',
@@ -290,8 +291,8 @@ const en: typeof ms = {
   fewerActs: 'Show top 5 only',
   fungsi: 'Function (BM)',
   rootText: (p) => `To balance the budget, cut ${p}% of all spending. Pick a folder or file on the left to shrink or delete it.`,
-  lockedDebt: "Locked. Debt service charges can't be skipped without defaulting.",
-  lockedOther: 'Locked. This is charged expenditure (retirement charges, grants and transfers to state governments), so it stays in this game.',
+  lockedDebt: "Debt must be paid. Skip it and the government defaults.",
+  lockedOther: 'Guaranteed by law: pensions and grants to states.',
   keep: 'Keep',
   shrink10: 'Shrink 10%',
   toBin: 'Move to Bin',
@@ -346,6 +347,7 @@ const en: typeof ms = {
   freedUp: 'I freed up',
   toDelete: (n) => `Files to delete (${n}):`,
   moreCuts: (n, x) => `+${n} more · ${x}`,
+  cutGroup: (n, keep) => (keep === 0 ? `${n} files deleted` : `${n} files −${100 - keep}%`),
   tryIt: 'Try it yourself',
   cancel: 'Cancel',
   storyFoot: (y) => `Budget ${y} estimates (MOF)`,
@@ -416,7 +418,7 @@ const en: typeof ms = {
   srcLinesBody: 'is operating (OE) plus development (DE) expenditure. Cuts apply to both by the same share.',
   srcNames: 'Names:',
   srcNamesBody:
-    'ministry and programme names are in Malay, as printed by MOF (ALL CAPS names put in normal case), in both languages. The Objek Am split, post counts and activity functions come from the same book (text in Malay); development projects and charged expenditure have no such text. The ✨ “In plain words” box is written by AI from that book text only.',
+    'ministry names are the official English ones from the Supply Bill statement (Command Paper 21 of 2026). The book has no English, so programme names are in Malay as printed by MOF (ALL CAPS names put in normal case), with our own unofficial translation in brackets. The Objek Am split, post counts and activity functions come from the same book (text in Malay); development projects and charged expenditure have no such text. The ✨ “In plain words” box is written by AI from that book text only.',
   srcLocked: 'Locked files:',
   srcLockedBody:
     'charged expenditure (T.1–T.14): debt service charges, retirement charges, grants and transfers to state governments, and other constitutional charges. No economic effects of cuts are modelled. Your plan is saved only in this browser.',

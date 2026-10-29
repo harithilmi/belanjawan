@@ -97,12 +97,14 @@ const byWord = new Map<string, Group>([
 /** Half-typed alias ("ron" → "ron95"), only used when the literal words find nothing. */
 const byPrefix = (q: string) => (q.length < 3 ? undefined : [...byWord].find(([w]) => w.startsWith(q))?.[1])
 
+// Search the book's Malay names too, so the Malay terms above also work in English mode.
 type Entry = { key: string; label: string; sub: string; size: number; hay: string; name: string }
-const entry = (key: string, label: string, sub: string, size: number): Entry =>
-  ({ key, label, sub, size, name: ` ${norm(label)}`, hay: ` ${norm(`${label} ${sub}`)}` })
+const entry = (key: string, label: string, bm: string, sub: string, subBm: string, size: number): Entry =>
+  ({ key, label, sub, size, name: ` ${norm(`${label} ${bm}`)}`, hay: ` ${norm(`${label} ${bm} ${sub} ${subBm}`)}` })
+const bmOf = new Map(ministries.map((m) => [m.code, m.bm]))
 const entries: Entry[] = [
-  ...ministries.map((m) => entry(ministryKey(m), m.name, m.sector, sum(m.lines.map((l) => l.total)))),
-  ...lines.map((l) => entry(l.id, l.name, l.ministry, l.total)),
+  ...ministries.map((m) => entry(ministryKey(m), m.name, m.bm, m.sector, '', sum(m.lines.map((l) => l.total)))),
+  ...lines.map((l) => entry(l.id, l.name, l.bm, l.ministry, bmOf.get(l.code) ?? '', l.total)),
 ]
 
 // Word-start match, so "air" finds "Bekalan Air" but not "Pengairan".

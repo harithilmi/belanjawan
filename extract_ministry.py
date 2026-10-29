@@ -13,6 +13,8 @@ their posts ("posts", Bil. Jawatan 2027), and their activities with each one's F
 - Lines under RM5 million are merged into one "Lain-lain" line per ministry.
 - T.1-T.11 (small constitutional charges) are merged into one ministry, one line each.
 - P.70 Simpanan Luar Jangka (contingency, RM2bn DE) is left out, so the total matches Tinjauan Fiskal.
+- English: Maksud names ("en") are official, from the English half of Command Paper 21 (Supply Bill statement).
+  The books have no English, so programme names get our own translation ("enOurs", from programme-names-en.json).
 """
 
 import json
@@ -23,8 +25,10 @@ import urllib.request
 from pathlib import Path
 
 BASE = "https://belanjawan.mof.gov.my/pdf/belanjawan2027/perbelanjaan/"
+CMD = "https://parlimen.gov.my/ipms/eps/2026-10-09/CMD.21.2026%20-%20CMD21.2026.pdf"
 OUT = Path(__file__).with_name("budget-2027-ministry.json")
 ACTS = OUT.with_name("budget-2027-activities.json")
+OURS = Path(__file__).with_name("programme-names-en.json")
 SMALL = 5.0  # RM million
 DRILL = {"B.11", "T.12", "T.13", "T.14"}
 TOTAL = 459_840  # Tinjauan Fiskal 2027: OE 376,840 + DE 85,000 - P.70 2,000
@@ -44,12 +48,12 @@ SMALL_T = [f"T.{i}" for i in range(1, 12)]
 NUM = r"\d{1,3}(?:,\d{3})*"
 
 
-def text(d: Path, code: str) -> str:
+def text(d: Path, code: str, url: str = "") -> str:
     """pdftotext -layout of one PDF, downloading it first if needed."""
     name = code.replace("/", "")
     pdf, txt = d / f"{name}.pdf", d / f"{name}.txt"
     if not pdf.exists():
-        urllib.request.urlretrieve(BASE + pdf.name, pdf)
+        urllib.request.urlretrieve(url or BASE + pdf.name, pdf)
     if not txt.exists():
         subprocess.run(["pdftotext", "-layout", str(pdf), str(txt)], check=True)
     return txt.read_text()
@@ -73,6 +77,16 @@ def summary(d: Path) -> dict[str, dict]:
             name += " " + nxt
         oe, de = (rm(m[3]), rm(m[4])) if m[4] else ((rm(m[3]), 0) if m[1].startswith("T") else (0, rm(m[3])))
         out[m[1]] = {"name": name, "oe": oe, "de": de}
+    return out
+
+
+def english(d: Path) -> dict[str, str]:
+    """Official English Maksud names (B.14 -> "Ministry of National Unity"), from the English half of CMD 21."""
+    t = text(d, "cmd21", CMD)
+    t = t[t.index("MINISTRY OF FINANCE STATEMENT"):]
+    out: dict[str, str] = {}
+    for m in re.finditer(rf"^\s+([BT]\.\d+)\s+(.+?)(?:\s{{2,}}{NUM})?\s*$", t, re.M):
+        out.setdefault(m[1], m[2])
     return out
 
 
@@ -201,7 +215,7 @@ def merge_small(progs: list[dict]) -> list[dict]:
     big = [p for p in progs if p["opex"] + p["devex"] >= SMALL]
     small = [p for p in progs if p["opex"] + p["devex"] < SMALL]
     if small:
-        big.append({"name": f"Lain-lain ({len(small)} butiran kecil)",
+        big.append({"name": f"Lain-lain ({len(small)} butiran kecil)", "en": f"Other ({len(small)} small items)",
                     "opex": round(sum(p["opex"] for p in small), 4),
                     "devex": round(sum(p["devex"] for p in small), 4), **joined(small)})
     return big
@@ -220,8 +234,9 @@ def mil(rm_: int) -> float:
     return round(rm_ / 1e6, 4)
 
 
-def ministry(d: Path, s: dict, code: str) -> dict:
+def ministry(d: Path, s: dict, code: str, en: dict[str, str], ours: dict[str, str]) -> dict:
     sm = s[code]
+    sm_en = en[code.replace("B/P", "B")]
     t = text(d, code)
     oe = oe_items(t, code in DRILL) if sm["oe"] else []
     if sm["oe"] and not oe:  # no programme table (small T.x): one line
@@ -237,21 +252,30 @@ def ministry(d: Path, s: dict, code: str) -> dict:
                  **({"fungsi": f} if (f := fungsi.get((p["name"], key(a["name"])))) else {})}
                 for a in sorted(p["acts"], key=lambda a: -a["rm"]) if a["rm"]]
 
+    # A line named like its Maksud (no programme table) takes the official name; the rest get ours.
+    def names(n: str) -> dict:
+        if n == sm["name"]:
+            return {"name": n, "en": sm_en}
+        e = ours.get(n, "")
+        return {"name": n, **({"enOurs": e} if e.strip('"') != n.strip('"') else {})}  # '"One-Off" (One-Off)'
+
     # "about" etc. are only set when the book has them (DE projects and most T.x have none).
-    progs = [{"name": p["name"], "opex": mil(p["rm"]), "devex": 0,
+    progs = [{**names(p["name"]), "opex": mil(p["rm"]), "devex": 0,
               **({"about": outcomes[p["name"]]} if p["name"] in outcomes else {}),
               **({"objek": [mil(v) for v in p["objek"]]} if p["objek"] else {}),
               **({"posts": p["posts"]} if p["posts"] else {}),
               **({"activities": a} if len(a := acts(p)) > 1 else {})}
              for p in oe if p["rm"]] + \
-            [{"name": n, "opex": 0, "devex": mil(v)} for n, v in de if v]
-    return {"code": code, "name": sm["name"], "opex": mil(sm["oe"]), "devex": mil(sm["de"]),
+            [{**names(n), "opex": 0, "devex": mil(v)} for n, v in de if v]
+    return {"code": code, "name": sm["name"], "en": sm_en, "opex": mil(sm["oe"]), "devex": mil(sm["de"]),
             "locked": code.startswith("T"), **({"about": visi} if visi else {}), "programmes": merge_small(progs)}
 
 
 def main(d: Path) -> None:
     d.mkdir(parents=True, exist_ok=True)
     s = summary(d)
+    en = english(d)
+    ours = json.loads(OURS.read_text()) if OURS.exists() else {}
     assert len(s) == 40 + 14, len(s)
     used = {c for cs in SECTORS.values() for c in cs} - {"T.1-T.11"} | set(SMALL_T) | {"P.70"}
     assert used == set(s), set(s) ^ used
@@ -261,17 +285,21 @@ def main(d: Path) -> None:
         ms = []
         for code in codes:
             if code != "T.1-T.11":
-                ms.append(ministry(d, s, code))
+                ms.append(ministry(d, s, code, en, ours))
                 continue
-            parts = [ministry(d, s, c) for c in SMALL_T]
-            ms.append({"code": code, "name": "Tanggungan Perlembagaan Lain",
+            parts = [ministry(d, s, c, en, ours) for c in SMALL_T]
+            ms.append({"code": code, "name": "Tanggungan Perlembagaan Lain", "en": "Other Constitutional Charges",
                        "opex": round(sum(p["opex"] for p in parts), 4), "devex": 0, "locked": True,
-                       "programmes": [{"name": f"{p['code']} {p['name']}", "opex": p["opex"], "devex": 0,
-                                       **joined(p["programmes"])} for p in parts]})
+                       "programmes": [{"name": f"{p['code']} {p['name']}", "en": f"{p['code']} {p['en']}",
+                                       "opex": p["opex"], "devex": 0, **joined(p["programmes"])} for p in parts]})
         sectors.append({"name": sector, "ministries": ms})
 
     total = sum(p["opex"] + p["devex"] for sec in sectors for m in sec["ministries"] for p in m["programmes"])
     assert abs(total - TOTAL) < 0.01, total
+    missing = sorted({p["name"] for sec in sectors for m in sec["ministries"] for p in m["programmes"]
+                      if p.get("enOurs") == ""})
+    if missing:  # print them, so a new year's names can be translated into programme-names-en.json
+        sys.exit("no English in programme-names-en.json for:\n" + "\n".join(missing))
     for sec in sectors:
         for m in sec["ministries"]:
             assert abs(sum(p["opex"] for p in m["programmes"]) - m["opex"]) < 0.001, m["code"]
