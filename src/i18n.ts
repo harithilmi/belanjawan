@@ -63,7 +63,7 @@ const ms = {
   folder: 'Folder',
   cut: 'jimat',
   status: { untouched: 'Belum diusik', shrunk: 'Dikecilkan', deleted: 'Dalam Tong Sampah', locked: 'Berkunci' },
-  ofSpending: (x: string) => `${x}% daripada perbelanjaan kerajaan.`,
+  ofSpending: (x: string) => `${x}% daripada jumlah`,
   /** What is inside a line the book does not split, keyed by line name. */
   inside: {
     'Subsidi dan Bantuan Tunai':
@@ -273,7 +273,7 @@ const en: typeof ms = {
   folder: 'Folder',
   cut: 'cut',
   status: { untouched: 'Untouched', shrunk: 'Shrunk', deleted: 'In the Bin', locked: 'Locked' },
-  ofSpending: (x) => `${x}% of government spending.`,
+  ofSpending: (x) => `${x}% of total`,
   inside: {
     'Subsidi dan Bantuan Tunai':
       'The book does not split this line. Tinjauan Fiskal 2027 says subsidies and social assistance (RM72.7bn, all ministries) cover the BUDI95 and BUDI Diesel fuel subsidies, cooking oil (eCOSS), Sumbangan Tunai Rahmah (STR), Sumbangan Asas Rahmah (SARA) and electricity bill aid. The Budget 2027 speech says fuel RM40bn and STR + SARA RM16bn, but that (RM56bn) is more than this line, so some of it may sit elsewhere.',

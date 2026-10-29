@@ -212,7 +212,7 @@ export function Properties({ plan, setPlan, selected, onDelete, onDismiss = () =
           <div className="muted caps">
             {node.kind === 'root' ? t.rootCaps(YEAR) : `${node.kind === 'line' ? `${node.line.code} ${node.line.ministry}` : t.folder} · ${YEAR}`}
           </div>
-          <div className="props-amt"><b>{fmt(now)}</b></div>
+          <div className="props-amt"><b>{fmt(now)}</b>{node.kind !== 'root' && <span className="muted"> · {t.ofSpending(pct(now / tot.spending))}</span>}</div>
           {/* Always one line, so cutting never changes the sheet's height under the thumb. */}
           {node.kind !== 'root' && (
             <div className="props-sub">
@@ -222,9 +222,6 @@ export function Properties({ plan, setPlan, selected, onDelete, onDismiss = () =
                 <span className="muted">{t.status[node.kind === 'line' ? statusOf(plan, node.line) : 'untouched']}</span>
               )}
             </div>
-          )}
-          {node.kind !== 'root' && (
-            <p className="share">{t.ofSpending(pct(now / tot.spending))}</p>
           )}
           {node.kind === 'root' ? (
             <p>{t.rootText((((SPENDING - REVENUE) / SPENDING) * 100).toFixed(1))}</p>
