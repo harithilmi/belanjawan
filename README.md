@@ -1,5 +1,7 @@
 # Malaysia's disk is full
 
+Live: https://harithilmi.com/belanjawan/
+
 Static Vite + React app. No backend: data JSON is bundled, the plan lives in localStorage.
 
 ```sh
