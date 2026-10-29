@@ -442,4 +442,8 @@ kbd { font: inherit; font-size: 12px; min-width: 22px; padding: 1px 6px; text-al
   .props.sheet { background: #f2f2f7; }
   /* As low as Safari still reads it (-8px), so only 4px shows, inside the sheet's bottom padding. */
   .sheet-tint { display: block; position: fixed; left: 0; right: 0; bottom: -8px; z-index: 5; height: 12px; background: #f2f2f7; pointer-events: none; }
+  /* Searching: the sheet slides off so the keyboard and hits get the room; picking or leaving brings it back.
+     transform, not display: none, which would reset its scroll to the dismiss detent. */
+  @media (prefers-reduced-motion: no-preference) { :is(.props-wrap.sheet, .sheet-tint) { transition: transform 0.25s ease; } }
+  .desktop:has(.search input:focus) :is(.props-wrap.sheet, .sheet-tint) { transform: translateY(100%); }
 }

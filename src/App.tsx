@@ -102,7 +102,22 @@ export function App() {
       setOpen((o) => reveal(o, key))
     })
     const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches
-    revealRow(key, smooth ? 'smooth' : 'auto')
+    const go = () => revealRow(key, smooth ? 'smooth' : 'auto')
+    // Picked from search on a phone: leave the box so the sheet (hidden while searching) comes back.
+    const input = document.activeElement
+    if (!(input instanceof HTMLInputElement) || !matchMedia('(max-width: 800px)').matches) return go()
+    input.blur()
+    // Touch keyboard closing: scroll once the screen is full size again.
+    const vv = window.visualViewport
+    if (!vv || !matchMedia('(pointer: coarse)').matches) return go()
+    let timer = 0
+    const once = () => {
+      clearTimeout(timer)
+      vv.removeEventListener('resize', once)
+      go()
+    }
+    vv.addEventListener('resize', once)
+    timer = window.setTimeout(once, 600)
   }
   const [dialog, setDialog] = useState<'share' | 'howto' | 'look' | 'keys' | null>(() => (localStorage.getItem(SEEN_KEY) ? null : 'howto'))
   const tot = totals(plan)

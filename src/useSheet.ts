@@ -58,13 +58,18 @@ export function useSheet(on: boolean, onDismiss: () => void) {
     // No scrollend (older Safari): settle once scroll events stop.
     const native = 'onscrollend' in window
     const onScroll = () => {
+      // Unlock content scrolling the moment the top is reached, not after the snap settles.
+      if (el.scrollTop >= el.scrollHeight - el.clientHeight - 2) setFull(true)
+      if (native) return
       clearTimeout(timer)
       timer = window.setTimeout(settle, 150)
     }
-    el.addEventListener(native ? 'scrollend' : 'scroll', native ? settle : onScroll)
+    el.addEventListener('scroll', onScroll)
+    if (native) el.addEventListener('scrollend', settle)
     return () => {
       clearTimeout(timer)
-      el.removeEventListener(native ? 'scrollend' : 'scroll', native ? settle : onScroll)
+      el.removeEventListener('scroll', onScroll)
+      el.removeEventListener('scrollend', settle)
     }
   }, [on, s])
 

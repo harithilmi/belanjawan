@@ -82,9 +82,11 @@ export function revealRow(key: string, behavior: ScrollBehavior = 'auto') {
   const want = r.top < top ? r.top - top : r.bottom > b.bottom ? r.bottom - b.bottom : 0
   const by = Math.max(-box.scrollTop, Math.min(want, box.scrollHeight - box.clientHeight - box.scrollTop))
   if (by) box.scrollBy({ top: by, behavior })
-  // Still under the phone sheet? Scroll the page too. Its scroller's scrollTop is how much sheet shows.
+  // Still under the phone sheet? Scroll the page too. Its scroller's scrollTop is how much sheet shows;
+  // m42 drops any slide still running (it hides while searching).
   const sheet = document.querySelector('.props-wrap.sheet')
-  const under = sheet ? r.bottom - by - (sheet.getBoundingClientRect().bottom - sheet.scrollTop) + 8 : 0
+  const slide = sheet ? new DOMMatrix(getComputedStyle(sheet).transform).m42 : 0
+  const under = sheet ? r.bottom - by - (sheet.getBoundingClientRect().bottom - slide - sheet.scrollTop) + 8 : 0
   if (under > 0) window.scrollBy({ top: under, behavior })
 }
 /** Size bar: width = current size / biggest at this level, filled with the opex/devex split. */
