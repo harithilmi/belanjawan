@@ -1,8 +1,8 @@
-import { fmt, sectors, REVENUE, SPENDING, sum, YEAR } from './data.ts'
+import { BASE, fmt, sectors, REVENUE, SPENDING, sum, YEAR } from './data.ts'
 import { changes, nowOf, totals, type Plan } from './plan.ts'
 import { t } from './i18n.ts'
 
-export const SITE = location.origin + location.pathname
+export const SITE = location.origin + BASE
 
 const describe = (keep: number) => (keep === 0 ? t.deleted : t.shrunkBy(100 - keep))
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { flushSync } from 'react-dom'
-import { cwdFor, fmt, lines, linesOf, nameOf, nodeOf, REVENUE, revenueGroups, ROOT, SPENDING, sum, YEAR } from './data.ts'
+import { cwdFor, fmt, lines, linesOf, nameOf, nodeOf, REVENUE, revenueGroups, ROOT, SPENDING, START, sum, urlOf, YEAR } from './data.ts'
 import { nowOf, remove, shrink10, totals, usePlan } from './plan.ts'
 import { switchLang, t } from './i18n.ts'
 import { CheckCircleIcon, DriveIcon, LockSymIcon, ShareIcon, TapIcon, TrashIcon, WarnIcon } from './Icons.tsx'
@@ -84,8 +84,14 @@ function Shortcuts({ onClose }: { onClose: () => void }) {
 
 export function App() {
   const [plan, setPlan, undo, redo] = usePlan()
-  const [selected, setSelected] = useState(ROOT)
-  const [open, setOpen] = useState<Open>(() => new Set())
+  const [selected, setSelected] = useState(START)
+  const [open, setOpen] = useState<Open>(() => reveal(new Set(), START))
+  // Each ministry has its own page (for search engines), so the URL follows the selection.
+  useEffect(() => {
+    const url = urlOf(selected)
+    if (url !== location.pathname) history.replaceState(null, '', url + location.search)
+  }, [selected])
+  useEffect(() => revealRow(START), [])
   // Entered folder. Deleting everything in it shows the nearest folder above instead.
   const [entered, setEntered] = useState(ROOT)
   const cwd = liveCwd(plan, entered)

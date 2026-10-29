@@ -2,6 +2,7 @@ import budget from '../budget-2027.json' with { type: 'json' }
 import spendingBook from '../budget-2027-ministry.json' with { type: 'json' }
 import plainText from '../budget-2027-plain.json' with { type: 'json' }
 import { LANG, t, tn } from './i18n.ts'
+import { slugByCode } from './slug.ts'
 
 export const YEAR = budget.year
 
@@ -34,6 +35,8 @@ export type Ministry = {
   sector: string
   lines: Line[]
   plain?: string
+  /** URL path segment: harithilmi.com/belanjawan/<slug>/ */
+  slug: string
 }
 
 export type Sector = { name: string; ministries: Ministry[]; lines: Line[] }
@@ -72,6 +75,7 @@ export const sectors: Sector[] = book.sectors.map((s) => {
     name: show(m),
     bm: m.name,
     plain: plainOf(m.code),
+    slug: slugByCode.get(m.code) ?? m.code,
     sector: tn(s.name),
     lines: m.programmes.map((p, i) => ({
       id: `${m.code}#${i}`, // position in the book's order; bump the plan key when the data changes
@@ -154,6 +158,21 @@ export function linesOf(n: TreeNode): Line[] {
     case 'sector': return n.sector.lines
     case 'root': return lines
   }
+}
+
+const bySlug = new Map(ministries.map((m) => [m.slug, m]))
+const [, dir = '/', last = ''] = /^(.*\/)([^/]+)\/$/.exec(location.pathname) ?? []
+const opened = bySlug.get(last)
+/** The app's own path without a ministry slug, e.g. "/belanjawan/". */
+export const BASE = opened ? dir : location.pathname.replace(/[^/]*$/, '')
+/** Row to select on load: the ministry in the URL, if any. */
+export const START = opened ? ministryKey(opened) : ROOT
+
+/** URL for a selection: its ministry's page, or the app's root for anything above a ministry. */
+export function urlOf(key: string): string {
+  const n = nodeOf(key)
+  const m = n.kind === 'ministry' ? n.ministry : n.kind === 'line' ? ministries.find((x) => x.code === n.line.code) : undefined
+  return m ? `${BASE}${m.slug}/` : BASE
 }
 
 /** Folders above a key, root first. */
