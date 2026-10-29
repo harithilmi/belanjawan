@@ -20,7 +20,7 @@ export function switchLang() {
 const ms = {
   bn: ' bilion',
   m: ' juta',
-  title: 'Storan Malaysia Dah Penuh',
+  title: 'Storan Malaysia Dah Penuh (test)',
   intro: (s: string, r: string, y: number) =>
     `Belanjawan ${y} (Bajet ${y}): kerajaan nak belanja ${s} pada ${y}, tapi hasil yang dijangka cuma ${r}. Potong perbelanjaan sampai semuanya muat dalam storan.`,
   otherLang: 'English',
@@ -231,7 +231,7 @@ const ms = {
 const en: typeof ms = {
   bn: 'bn',
   m: 'm',
-  title: "Malaysia's Disk Is Full",
+  title: "Malaysia's Disk Is Full (test)",
   intro: (s, r, y) =>
     `Malaysia Budget ${y}: the federal government plans to spend ${s} in ${y} but expects only ${r} in revenue. Free up space by cutting spending until it fits on the disk.`,
   otherLang: 'Bahasa Melayu',
